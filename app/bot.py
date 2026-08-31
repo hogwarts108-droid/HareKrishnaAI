@@ -218,20 +218,36 @@ async def scripture_callback(update: Update, context: ContextTypes.DEFAULT_TYPE)
     user_id = query.from_user.id
     lang = get_user_lang(user_id)
     
+    # Map scripture buttons to specific search queries
     scriptures = {
-        "scripture_bg": ("Bhagavad Gita 2.47", "Bhagavad Gita"),
-        "scripture_yoga": ("Yoga Sutra 1.2", "Yoga Sutra"),
-        "scripture_bhagavatam": ("Srimad Bhagavatam 1.1", "Srimad Bhagavatam"),
-        "scripture_iso": ("Sri Isopanishad 1", "Sri Isopanishad"),
-        "scripture_chaitanya": ("Chaitanya Charitamrita 1.1", "Chaitanya Charitamrita"),
-        "scripture_krishna": ("Wer ist Krishna?", "Krishna")
+        "scripture_bg": "Bhagavad Gita 1.1",
+        "scripture_yoga": "Yoga Sutra 1.1",
+        "scripture_bhagavatam": "Srimad Bhagavatam 1.1",
+        "scripture_iso": "Sri Isopanishad",
+        "scripture_chaitanya": "Chaitanya Charitamrita 1.1",
+        "scripture_krishna": "Krishna Introduction who_is"
     }
     
-    query_text, title = scriptures.get(query.data, ("", ""))
+    query_text = scriptures.get(query.data, "")
+    title = {
+        "scripture_bg": "Bhagavad Gita",
+        "scripture_yoga": "Yoga Sutra",
+        "scripture_bhagavatam": "Srimad Bhagavatam",
+        "scripture_iso": "Sri Isopanishad",
+        "scripture_chaitanya": "Chaitanya Charitamrita",
+        "scripture_krishna": "Krishna"
+    }.get(query.data, "")
+    
     await query.answer()
     
     if query_text:
-        await query.edit_message_text(text=f"Suche nach: {title}...", parse_mode="Markdown")
+        if lang == 'de':
+            await query.edit_message_text(text=f"Suche nach: {title}...", parse_mode="Markdown")
+        elif lang == 'en':
+            await query.edit_message_text(text=f"Searching: {title}...", parse_mode="Markdown")
+        else:
+            await query.edit_message_text(text=f"खोज रहे हैं: {title}...", parse_mode="Markdown")
+        
         result = cached_find_answer(query_text)
         if result:
             text = generate_answer_text(query_text, result, lang=lang)
@@ -244,8 +260,10 @@ async def scripture_callback(update: Update, context: ContextTypes.DEFAULT_TYPE)
         else:
             if lang == 'de':
                 await query.edit_message_text(text="Keine Ergebnisse gefunden.")
-            else:
+            elif lang == 'en':
                 await query.edit_message_text(text="No results found.")
+            else:
+                await query.edit_message_text(text="कोई परिणाम नहीं मिला।")
 
 
 async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):

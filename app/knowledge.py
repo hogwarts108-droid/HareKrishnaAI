@@ -193,6 +193,22 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
     if not entries:
         return None
 
+    # Priority 1: Special handling for Krishna Introduction
+    if "krishna" in q_lower and ("introduction" in q_lower or "who_is" in q_lower):
+        for entry in entries:
+            src_lower = entry.get("source", "").lower()
+            chapter_lower = entry.get("chapter", "").lower()
+            if (src_lower == "krishna" and chapter_lower == "introduction"):
+                return {
+                    "source": entry.get("source", "Unbekannt"),
+                    "chapter": entry.get("chapter", ""),
+                    "verse": entry.get("verse", ""),
+                    "sanskrit": entry.get("sanskrit", ""),
+                    "translation": entry.get("translation", {}),
+                    "explanation": entry.get("explanation", {}),
+                }
+
+    # Priority 2: Standard reference matching
     patterns = []
     for token in ["bg", "gita", "bhagavad gita", "yoga sutra", "yogasutra", "isopanishad", "sri isopanishad", "srimad bhagavatam", "bhagavatam", "krishna"]:
         if token in q_lower:

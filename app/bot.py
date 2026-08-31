@@ -73,12 +73,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     keyboard = [
         [InlineKeyboardButton("Deutsch", callback_data="lang_de"),
-         InlineKeyboardButton("English", callback_data="lang_en")]
+         InlineKeyboardButton("English", callback_data="lang_en")],
+        [InlineKeyboardButton("हिंदी", callback_data="lang_hi")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
     await update.message.reply_text(
-        "Hallo! Wähle deine Sprache / Hello! Choose your language:",
+        "Hallo! Wähle deine Sprache / Hello! Choose your language / नमस्ते! भाषा चुनें:",
         reply_markup=reply_markup
     )
 
@@ -101,7 +102,7 @@ async def language_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "• Chaitanya Charitamrita • Krishna\n\n"
             "Verwende /help für Hilfe!"
         )
-    else:
+    elif query.data == "lang_en":
         USER_LANGUAGES[user_id] = 'en'
         lang = 'en'
         welcome_text = (
@@ -113,6 +114,19 @@ async def language_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "• Sri Isopanishad • Srimad Bhagavatam\n"
             "• Chaitanya Charitamrita • Krishna\n\n"
             "Use /help for help!"
+        )
+    else:  # Hindi
+        USER_LANGUAGES[user_id] = 'hi'
+        lang = 'hi'
+        welcome_text = (
+            "🙏 **हरे कृष्ण!**\n\n"
+            "मैं **HareKrishnaAI** हूँ।\n"
+            "पवित्र शास्त्रों के लिए आपका साथी।\n\n"
+            "📚 मेरा ज्ञान:\n"
+            "• भगवद गीता • योग सूत्र\n"
+            "• श्री इशोपनिषद • श्रीमद भागवतम्\n"
+            "• चैतन्य चरितामृत • कृष्ण\n\n"
+            "सहायता के लिए /help का उपयोग करें!"
         )
     
     await query.answer()
@@ -140,7 +154,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "✅ Was ist Dharma?\n\n"
             "Stelle einfach deine Frage!"
         )
-    else:
+    elif lang == 'en':
         text = (
             "**Commands:**\n"
             "/start - Choose language\n"
@@ -153,6 +167,20 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "✅ Who is Krishna?\n"
             "✅ What is Dharma?\n\n"
             "Just ask your question!"
+        )
+    else:  # Hindi
+        text = (
+            "**कमांड:**\n"
+            "/start - भाषा चुनें\n"
+            "/help - यह सहायता\n"
+            "/list - उपलब्ध शास्त्र\n"
+            "/reload - इंडेक्स रीफ्रेश करें\n\n"
+            "**प्रश्न पूछें:**\n"
+            "✅ भगवद गीता 2.47\n"
+            "✅ योग सूत्र 1.2\n"
+            "✅ कृष्ण कौन हैं?\n"
+            "✅ धर्म क्या है?\n\n"
+            "बस अपना प्रश्न पूछें!"
         )
     
     await update.message.reply_text(text, parse_mode="Markdown")
@@ -176,8 +204,10 @@ async def list_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     if lang == 'de':
         text = "Wähle eine Schrift:"
-    else:
+    elif lang == 'en':
         text = "Choose a scripture:"
+    else:  # Hindi
+        text = "एक शास्त्र चुनें:"
     
     await update.message.reply_text(text, reply_markup=reply_markup)
 
@@ -230,8 +260,10 @@ async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if is_rate_limited(user_id):
         if lang == 'de':
             msg = "Zu viele Anfragen! Bitte warte einen Moment."
-        else:
+        elif lang == 'en':
             msg = "Too many requests! Please wait a moment."
+        else:  # Hindi
+            msg = "बहुत सारे अनुरोध! कृपया एक पल प्रतीक्षा करें।"
         await update.message.reply_text(msg)
         return
     
@@ -254,7 +286,7 @@ async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     "• Yoga Sutra 1.2\n"
                     "• /list"
                 )
-            else:
+            elif lang == 'en':
                 text = (
                     "I don't have a matching verse.\n\n"
                     "Try:\n"
@@ -262,13 +294,23 @@ async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     "• Yoga Sutra 1.2\n"
                     "• /list"
                 )
+            else:  # Hindi
+                text = (
+                    "मेरे पास इसके लिए कोई मिलान वाली श्लोक नहीं है।\n\n"
+                    "कोशिश करें:\n"
+                    "• भगवद गीता 2.47\n"
+                    "• योग सूत्र 1.2\n"
+                    "• /list"
+                )
             await update.message.reply_text(text)
     except Exception as e:
         logger.error(f"Error processing message from user {user_id}: {e}")
         if lang == 'de':
             error_msg = "Entschuldigung, ein Fehler ist aufgetreten. Bitte versuche es später erneut."
-        else:
+        elif lang == 'en':
             error_msg = "Sorry, an error occurred. Please try again later."
+        else:  # Hindi
+            error_msg = "क्षमा करें, एक त्रुटि हुई। कृपया बाद में फिर से प्रयास करें।"
         await update.message.reply_text(error_msg)
 
 
@@ -281,24 +323,30 @@ async def cmd_reload(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         if lang == 'de':
             await update.message.reply_text("Aktualisiere Index...")
-        else:
+        elif lang == 'en':
             await update.message.reply_text("Updating index...")
+        else:  # Hindi
+            await update.message.reply_text("इंडेक्स अपडेट कर रहे हैं...")
         
         count = reload_index()
         cached_find_answer.cache_clear()  # Clear cache
         
         if lang == 'de':
             msg = f"Index aktualisiert: {count} Eintraege"
-        else:
+        elif lang == 'en':
             msg = f"Index updated: {count} entries"
+        else:  # Hindi
+            msg = f"इंडेक्स अपडेट: {count} प्रविष्टियां"
         
         await update.message.reply_text(msg)
     except Exception as e:
         logger.error(f"Error during reload: {e}")
         if lang == 'de':
             error_msg = "Fehler beim Aktualisieren des Index."
-        else:
+        elif lang == 'en':
             error_msg = "Error updating index."
+        else:  # Hindi
+            error_msg = "इंडेक्स अपडेट करने में त्रुटि।"
         await update.message.reply_text(error_msg)
 
 

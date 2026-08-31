@@ -1,0 +1,842 @@
+[
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "1",
+    "verse": "1.1",
+    "sanskrit": "dhṛtarāṣṭra uvāca",
+    "translation": {
+      "de": "Dhritarashtra sprach: Sag mir, Sanjaya, was meine Söhne und die Pandavas auf dem heiligen Schlachtfeld taten.",
+      "en": "Dhritarashtra said: Tell me, Sanjaya, what my sons and the Pandavas did on the sacred battlefield."
+    },
+    "explanation": {
+      "de": "Der Beginn der Gita zeigt die innere Verwirrung und die Not des Menschen in Zeiten moralischer Spannung.",
+      "en": "The opening of the Gita shows the inner confusion and distress of the human being in times of moral tension."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "1",
+    "verse": "1.28",
+    "sanskrit": "dṛṣṭvemaṃ sva-janam kṛṣṇa yuyutsuṃ sam upasthitam",
+    "translation": {
+      "de": "Als Arjuna seine eigenen Verwandten in Schlachtbereitschaft sah, wurde sein Herz von Mitgefühl und Verwirrung erfasst.",
+      "en": "Seeing his own relatives standing ready for battle, Arjuna was overwhelmed by compassion and confusion."
+    },
+    "explanation": {
+      "de": "Die Gita beginnt mit der tieferen Frage: Wie kann man handeln, wenn Pflicht und Mitgefühl in Konflikt geraten?",
+      "en": "The Gita begins with the deeper question: how can one act when duty and compassion are in conflict?"
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "2",
+    "verse": "2.13",
+    "sanskrit": "dehino 'smin yathā dehe kaumāraṃ yauvanaṃ jarā",
+    "translation": {
+      "de": "Wie der Körper im Kindesalter, in der Jugend und im Alter wechselt, so verändert sich auch das Selbst in verschiedenen Körpern.",
+      "en": "As the embodied soul passes through childhood, youth, and old age, so it passes through different bodies."
+    },
+    "explanation": {
+      "de": "Die Unsterblichkeit des Selbstes ist der Grund, warum man nicht an der äußeren Form hängen soll.",
+      "en": "The immortality of the Self is the reason not to cling to the outer form."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "2",
+    "verse": "2.47",
+    "sanskrit": "karmanye vadhikaras te mā phaleṣu kadācana",
+    "translation": {
+      "de": "Du hast das Recht auf Arbeit, aber nicht auf die Frucht der Arbeit.",
+      "en": "You have a right to perform your prescribed duties, but not to the fruits of your actions."
+    },
+    "explanation": {
+      "de": "Karma-yoga beginnt mit Pflicht, ohne anhaftende Bindung an Erfolg oder Misserfolg.",
+      "en": "Karma-yoga begins with duty without attachment to success or failure."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "2",
+    "verse": "2.48",
+    "sanskrit": "yogasthah kuru karmāṇi saṅgaṃ tyaktvā dhanañjaya",
+    "translation": {
+      "de": "Handle im Yoga, o Dhananjaya, und gib die Anhaftung auf; bleiben Sie in Gleichmut in Erfolg und Misserfolg.",
+      "en": "Perform your duty with yoga, O Dhananjaya, abandoning attachment; remain even-minded in success and failure."
+    },
+    "explanation": {
+      "de": "Der Yogi ist nicht an die Handlung gebunden, sondern an die innere Haltung.",
+      "en": "The yogi is not bound by action, but by the inner attitude."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "2",
+    "verse": "2.71",
+    "sanskrit": "vivakṣanti yam siddhāni",
+    "translation": {
+      "de": "Der Weise, der an die Wahrheit gekommen ist, ist frei von Sorgen und lebt im inneren Frieden.",
+      "en": "The wise person, who has realized the truth, is free from anxieties and lives in inner peace."
+    },
+    "explanation": {
+      "de": "Die Befreiung zeigt sich in innerer Ruhe, nicht in äußerem Erfolg.",
+      "en": "Liberation is expressed in inner peace, not in outward success."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "3",
+    "verse": "3.19",
+    "sanskrit": "tad evākurvataḥ karma yam dogdhā kṛpaṇo yathā",
+    "translation": {
+      "de": "Der Weise tut sein Werk, ohne an die Frucht gebunden zu sein; so wie ein liebevoller Bauer seine Saat sät, ohne Besitzanspruch.",
+      "en": "The wise person acts without attachment to the fruits, as a compassionate farmer sows seed without claiming possession."
+    },
+    "explanation": {
+      "de": "Die Handlung ist wichtig, aber nicht die Bindung an Ergebnis oder Anerkennung.",
+      "en": "Action matters, but not attachment to results or recognition."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "3",
+    "verse": "3.27",
+    "sanskrit": "prakṛteḥ kriyamāṇāni guṇaiḥ karmāṇi sarvaśaḥ",
+    "translation": {
+      "de": "Alle Handlungen werden von den Qualitäten der Natur ausgeführt; der Weise erkennt dies und wird nicht von ihnen gefangen.",
+      "en": "All actions are performed by the gunas of material nature; the wise person sees this and does not become entangled."
+    },
+    "explanation": {
+      "de": "Erkenntnis der Natur hilft, nicht an den Guna-Mächten zu hängen.",
+      "en": "Understanding material nature helps one avoid entanglement in its gunas."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "4",
+    "verse": "4.7",
+    "sanskrit": "yā kālaṃ yāni bhūtvātiśayaṃ ca punaḥ",
+    "translation": {
+      "de": "Wann immer Dharma verfällt und Unrecht zunimmt, erscheine ich auf Erden, um die Ausrichtung wiederherzustellen.",
+      "en": "Whenever dharma declines and adharma increases, I appear on earth to restore order."
+    },
+    "explanation": {
+      "de": "Divine Erscheinung ist ein Zeichen der Rettung und der Wiederherstellung von Wahrheit.",
+      "en": "Divine appearance is a sign of rescue and restoration of truth."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "4",
+    "verse": "4.10",
+    "sanskrit": "veetahāya-kṛta-sparśo",
+    "translation": {
+      "de": "Der Weise lebt frei von Besitz, ohne an die Frucht gebunden zu sein und mit vollständiger Hingabe an das Göttliche.",
+      "en": "The wise person lives free from possessiveness and attachment, fully devoted to the Divine."
+    },
+    "explanation": {
+      "de": "Dharma wird durch Hingabe verinnerlicht und durch Selbstlosigkeit getragen.",
+      "en": "Dharma is internalized through devotion and sustained by selflessness."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "5",
+    "verse": "5.3",
+    "sanskrit": "niḥśreyasaya bhagavāngataṃ",
+    "translation": {
+      "de": "Der Weg des Wissens und der Verzichtsmehrung führt zum höchsten Guten.",
+      "en": "The path of knowledge and renunciation leads to the highest good."
+    },
+    "explanation": {
+      "de": "Der freie Geist kann durch geweitete Wahrnehmung über das Tun hinausgehen.",
+      "en": "The liberated mind can rise above action through expanded perception."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "5",
+    "verse": "5.29",
+    "sanskrit": "sambhūtaṃ yaṃ sthitaṃ niyatam",
+    "translation": {
+      "de": "Derjenige, der das Universum als Ausdruck Gottes erkennt, wird von jedem Handeln nicht gebunden.",
+      "en": "One who sees the entire universe as the expression of the Divine is never bound by action."
+    },
+    "explanation": {
+      "de": "Wahre Erkenntnis löscht die Vorstellung von eigener Besitznahme des Daseins.",
+      "en": "True knowledge removes the illusion of possession over life."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "6",
+    "verse": "6.5",
+    "sanskrit": "uddhared ātmanātmānaṃ nātmānam avasādayet",
+    "translation": {
+      "de": "Erhebe das Selbst durch das Selbst; stürze dich nicht selbst durch das Selbst herab.",
+      "en": "Elevate the Self by the Self; do not degrade the Self by the Self."
+    },
+    "explanation": {
+      "de": "Selbstbeherrschung bedeutet, sich nicht durch Wahrnehmungsfehler oder Negativität zu untergraben.",
+      "en": "Self-mastery means not degrading oneself through mistaken perception or negativity."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "6",
+    "verse": "6.17",
+    "sanskrit": "yuktāhāra-vihārasya yuktacestasya karmasu",
+    "translation": {
+      "de": "Wer richtig isst, lebt und arbeitet, gewinnt innere Ruhe und Gleichmaß.",
+      "en": "One who is self-controlled in eating, recreation, and work attains inner calm and steadiness."
+    },
+    "explanation": {
+      "de": "Yogische Disziplin umfasst Körper, Geist und Sinnesorgane.",
+      "en": "Yoga discipline includes the body, mind, and senses."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "7",
+    "verse": "7.7",
+    "sanskrit": "mattah parataram nānyat kiñcid asti dhanañjaya",
+    "translation": {
+      "de": "Es gibt nichts Höheres als Mich, o Dhananjaya.",
+      "en": "There is nothing higher than Me, O Dhananjaya."
+    },
+    "explanation": {
+      "de": "Krishna offenbart seine höchste Transzendenz als Ursprung und Ziel aller Dinge.",
+      "en": "Krishna reveals his supreme transcendence as the source and goal of all things."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "8",
+    "verse": "8.7",
+    "sanskrit": "tam evāśritya yānti anyāṃ śaraṇāṃ na hi",
+    "translation": {
+      "de": "Nimm nur Meine Zuflucht; Ich werde dich über alle Schwierigkeiten hinwegbringen.",
+      "en": "Take shelter in Me alone; I shall deliver you through all difficulties."
+    },
+    "explanation": {
+      "de": "Das höchste Vertrauen auf das Göttliche ist die sichere Zuflucht des Herzens.",
+      "en": "The highest trust in the Divine is the secure refuge of the heart."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "9",
+    "verse": "9.22",
+    "sanskrit": "ananya-cintayanto māṃ ye janāḥ paryupāsate",
+    "translation": {
+      "de": "Diejenigen, die ständig an Mich denken und Mir mit Hingabe dienen, führe ich zu Mir.",
+      "en": "Those who worship Me with single-minded devotion and meditate on Me constantly are guided by Me."
+    },
+    "explanation": {
+      "de": "Bhakti ist die kontinuierliche Erinnerung an das Göttliche und seine Schöpferkraft.",
+      "en": "Bhakti is the continuous remembrance of the Divine and its creative power."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "9",
+    "verse": "9.34",
+    "sanskrit": "man-manā bhava mad-bhakto mad-yājī māṃ namaskuru",
+    "translation": {
+      "de": "Denk immer an Mich, liebe Mich, verehre Mich, ehre Mich; so wirst du zu Mir kommen.",
+      "en": "Always think of Me, become My devotee, worship Me, and bow down to Me. Thus you shall come to Me."
+    },
+    "explanation": {
+      "de": "Die Pforte der Hingabe ist einfach, direkt und innerlich bewusst.",
+      "en": "The gate of devotion is simple, direct, and inwardly conscious."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "10",
+    "verse": "10.8",
+    "sanskrit": "ahaṃ ātmā guḍākeśa sarva-bhūtāśayasthitaḥ",
+    "translation": {
+      "de": "Ich bin das Selbst im Inneren aller Wesen, o Arjuna.",
+      "en": "I am the Self, O Gudakesa, seated in the hearts of all beings."
+    },
+    "explanation": {
+      "de": "Das Göttliche ist nicht entfernt, sondern im Herzen jedes Lebewesens gegenwärtig.",
+      "en": "The Divine is not distant; it dwells in the heart of every living being."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "10",
+    "verse": "10.42",
+    "sanskrit": "ahaṃ vaiśvānaro bhūtvā prāṇināṃ deham āśritaḥ",
+    "translation": {
+      "de": "Ich bin das Feuer in allen Wesen und die Quelle des Lebens.",
+      "en": "I am the fire in all beings and the source of life."
+    },
+    "explanation": {
+      "de": "Krishna offenbart, dass die höchste Realität alle Funktionen des Lebens durchdringt.",
+      "en": "Krishna reveals that the Supreme Reality permeates all functions of life."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "11",
+    "verse": "11.11",
+    "sanskrit": "na tu mām śakyase draṣṭum anenaiva svacakṣuṣā",
+    "translation": {
+      "de": "Mit deinen gewöhnlichen Augen kannst du Mich nicht sehen; ich gebe dir ein göttliches Auge.",
+      "en": "With your ordinary eyes you cannot see Me; I give you divine sight."
+    },
+    "explanation": {
+      "de": "Der Weg der Erleuchtung erfordert eine erweiterte Wahrnehmung.",
+      "en": "The path of illumination requires expanded perception."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "12",
+    "verse": "12.13",
+    "sanskrit": "adveṣṭā sarva-bhūtānāṃ maitraḥ karuṇa eva ca",
+    "translation": {
+      "de": "Der höchste Bhakte ist frei von Feindschaft, freundlich, mitfühlend und gleichmütig zu allen Wesen.",
+      "en": "The supreme devotee is free from malice, friendly, compassionate, and equanimous toward all beings."
+    },
+    "explanation": {
+      "de": "Bhakti führt zur Überwindung von Feindschaft und zur Befreiung des Herzens.",
+      "en": "Bhakti leads to overcoming enmity and freeing the heart."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "12",
+    "verse": "12.14",
+    "sanskrit": "samaḥ śatrau ca mitre ca",
+    "translation": {
+      "de": "Er ist gleichmütig gegenüber Freund und Feind, im Glück und im Leid.",
+      "en": "He is equal toward friend and foe, in joy and in sorrow."
+    },
+    "explanation": {
+      "de": "Die innere Gleichmut macht das Herz zum Ruheort des Göttlichen.",
+      "en": "Inner equanimity makes the heart a resting place for the Divine."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "13",
+    "verse": "13.7",
+    "sanskrit": "prakṛtiṃ puruṣaṃ caiva viddhy anādī ubhāva api",
+    "translation": {
+      "de": "Erkenne die Natur und den Geist als Ursprung aller Dinge; beide sind unendlich.",
+      "en": "Know nature and the self as the source of all things; both are beginningless."
+    },
+    "explanation": {
+      "de": "Die Trennung von Natur und Geist ist Grundlage der kosmischen Erkenntnis.",
+      "en": "The distinction between nature and self is foundational to cosmic understanding."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "14",
+    "verse": "14.27",
+    "sanskrit": "brahmaṇo hi pratiṣṭhāham",
+    "translation": {
+      "de": "Ich bin die Grundlage des Absoluten; ich bin das Ende und der Ursprung der Schöpfung.",
+      "en": "I am the foundation of the Absolute; I am the source and end of creation."
+    },
+    "explanation": {
+      "de": "Das Absolute ist die Quelle aller Strukturen, Qualitäten und Ordnung des Lebens.",
+      "en": "The Absolute is the source of all structure, quality, and order in life."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "15",
+    "verse": "15.15",
+    "sanskrit": "sarvasya cāhaṃ hṛdi saṃniviṣṭo mattaḥ smṛtir jñānam apohanaṃ ca",
+    "translation": {
+      "de": "Ich bin im Herzen aller Wesen gegenwärtig; von Mir kommen Erinnerung, Wissen und Vergessen.",
+      "en": "I am present in the heart of all beings; from Me come remembrance, knowledge, and forgetfulness."
+    },
+    "explanation": {
+      "de": "Das Göttliche ist der innere Bezugspunkt, der jedes Denken und Gedächtnis durchdringt.",
+      "en": "The Divine is the inner reference point that permeates all thought and memory."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "16",
+    "verse": "16.1",
+    "sanskrit": "śrī-bhagavān uvāca",
+    "translation": {
+      "de": "Der Herr sprach: Fearlessness, Reinheit des Herzens, Selbstbeherrschung und Hingabe sind die Kennzeichen des göttlichen Wesens.",
+      "en": "The Lord said: Fearlessness, purity of heart, self-control, and devotion are marks of the divine nature."
+    },
+    "explanation": {
+      "de": "Die göttliche Natur ist durch innere Klarheit, Mitgefühl und Erleuchtung gekennzeichnet.",
+      "en": "The divine nature is characterized by inner clarity, compassion, and illumination."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "17",
+    "verse": "17.27",
+    "sanskrit": "śraddhā-mayo 'yaṃ puruṣo yo yac-chraddhaḥ sa eva saḥ",
+    "translation": {
+      "de": "Der Mensch ist nach seiner Hingabe; was er glaubt, das ist er auch.",
+      "en": "A person is shaped by their faith; what one believes, one becomes."
+    },
+    "explanation": {
+      "de": "Der Geist formt sich durch die Qualität der Hingabe und des inneren Glaubens.",
+      "en": "The mind is shaped by the quality of devotion and inner faith."
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "chapter": "18",
+    "verse": "18.66",
+    "sanskrit": "sarva-dharmān parityajya mām ekaṃ śaraṇaṃ vraja",
+    "translation": {
+      "de": "Gib alle Pflichten auf und nimm Meine alleinige Zuflucht; Ich werde dich von allen Sünden befreien.",
+      "en": "Abandon all dharma and surrender unto Me alone; I will liberate you from all sins."
+    },
+    "explanation": {
+      "de": "Die höchste Vollendung ist nicht nur moralische Pflicht, sondern vollständige Hingabe an das Göttliche.",
+      "en": "The highest fulfillment is not merely moral duty, but complete surrender to the Divine."
+    }
+  },
+  {
+    "source": "Yoga Sutra",
+    "chapter": "1",
+    "verse": "1.1",
+    "sanskrit": "atha yogānuśāsanam",
+    "translation": {
+      "de": "Nun beginnt die Unterweisung über Yoga.",
+      "en": "Now begins the instruction on yoga."
+    },
+    "explanation": {
+      "de": "Die Yoga-Sutras eröffnen den Weg der inneren Ordnung und der inneren Freiheit.",
+      "en": "The Yoga Sutras open the path of inner order and inner freedom."
+    }
+  },
+  {
+    "source": "Yoga Sutra",
+    "chapter": "1",
+    "verse": "1.2",
+    "sanskrit": "yogaś citta-vṛtti-nirodhaḥ",
+    "translation": {
+      "de": "Yoga ist das Stillsetzen der Bewegungen des Geistes.",
+      "en": "Yoga is the stilling of the fluctuations of the mind."
+    },
+    "explanation": {
+      "de": "Yoga ist die Ruhe der Gedankenströmungen und die Wiederherstellung der inneren Klarheit.",
+      "en": "Yoga is the stillness of thought-waves and the restoration of inner clarity."
+    }
+  },
+  {
+    "source": "Yoga Sutra",
+    "chapter": "1",
+    "verse": "1.3",
+    "sanskrit": "tadā draṣṭuḥ svarūpe 'vasthānam",
+    "translation": {
+      "de": "Dann ruht der Seher in seiner eigenen Natur.",
+      "en": "Then the seer rests in its own nature."
+    },
+    "explanation": {
+      "de": "Wenn der Geist still ist, erscheint die wahre Natur des Selbst direkt.",
+      "en": "When the mind is still, the true nature of the Self becomes evident."
+    }
+  },
+  {
+    "source": "Yoga Sutra",
+    "chapter": "1",
+    "verse": "1.12",
+    "sanskrit": "abhyāsa-vairāgyābhyāṃ tannirodhaḥ",
+    "translation": {
+      "de": "Durch Übung und Loslassen entsteht die Stillung der Gedankenbewegungen.",
+      "en": "Through practice and detachment, the fluctuations are stilled."
+    },
+    "explanation": {
+      "de": "Geduld und Loslassen sind die Grundlage eines stabilen Geistes.",
+      "en": "Patience and detachment are the foundation of a stable mind."
+    }
+  },
+  {
+    "source": "Yoga Sutra",
+    "chapter": "1",
+    "verse": "1.14",
+    "sanskrit": "sati mūle tadvipāko jāty āyurbhogāḥ",
+    "translation": {
+      "de": "Wenn die Wurzel da ist, entfalten sich die Früchte in Form von Leben, Nutzen und Erfahrung.",
+      "en": "When the cause is present, its effects manifest as life, experience, and enjoyment."
+    },
+    "explanation": {
+      "de": "Yoga erkennt den Zusammenhang zwischen Ursache und Wirkung in Geist und Handeln.",
+      "en": "Yoga recognizes the connection between cause and effect in mind and action."
+    }
+  },
+  {
+    "source": "Yoga Sutra",
+    "chapter": "2",
+    "verse": "2.1",
+    "sanskrit": "tapaḥ svādhyāya īśvara-praṇidhānāni kriyā-yogaḥ",
+    "translation": {
+      "de": "Askese, Selbststudium und Hingabe an das Göttliche sind die Praxis des Kriya-Yoga.",
+      "en": "Austerity, self-study, and devotion to the Lord are the practice of kriya-yoga."
+    },
+    "explanation": {
+      "de": "Yoga ist eine praktische Selbsterneuerung mit innerem Fokus und Disziplin.",
+      "en": "Yoga is a practical self-transformation rooted in inner focus and discipline."
+    }
+  },
+  {
+    "source": "Yoga Sutra",
+    "chapter": "2",
+    "verse": "2.29",
+    "sanskrit": "samyamād atīta-vishayo jñānam",
+    "translation": {
+      "de": "Durch Selbstbeherrschung kommt Erkenntnis über das, was jenseits der Sinne liegt.",
+      "en": "Through mastery of the mind, knowledge arises beyond the sensory field."
+    },
+    "explanation": {
+      "de": "Wahre Erkenntnis entsteht nicht durch Reiz, sondern durch geistige Klarheit.",
+      "en": "True knowledge does not arise from stimulation, but from inner clarity."
+    }
+  },
+  {
+    "source": "Yoga Sutra",
+    "chapter": "2",
+    "verse": "2.46",
+    "sanskrit": "sattva-puṣṭi-śuddhi-dīpti-samādhiḥ",
+    "translation": {
+      "de": "Samadhi entsteht durch die Förderung von Reinheit, Licht und Klarheit im Sattva.",
+      "en": "Samadhi arises through the refinement of sattva, purity, and illumined clarity."
+    },
+    "explanation": {
+      "de": "Die innere Klarheit ist das Fundament der Meditation.",
+      "en": "Inner clarity is the foundation of meditation."
+    }
+  },
+  {
+    "source": "Yoga Sutra",
+    "chapter": "3",
+    "verse": "3.1",
+    "sanskrit": "deśa-bandhaḥ cittasya dhāraṇā",
+    "translation": {
+      "de": "Dhāraṇā ist die Bindung des Geistes an einen festen Punkt.",
+      "en": "Dharana is fixing the mind on a chosen point."
+    },
+    "explanation": {
+      "de": "Meditation beginnt mit der Stabilisierung des Geistes im Inneren.",
+      "en": "Meditation begins with stabilizing the mind inwardly."
+    }
+  },
+  {
+    "source": "Yoga Sutra",
+    "chapter": "3",
+    "verse": "3.2",
+    "sanskrit": "tatra pratyayaikatānatā dhyānam",
+    "translation": {
+      "de": "Dhyana ist die kontinuierliche Einhaltung eines einzelnen Gedankens oder inneren Gegenstandes.",
+      "en": "Dhyana is the uninterrupted flow of a single awareness toward one point."
+    },
+    "explanation": {
+      "de": "Meditation ist die lange, ruhige Kultivierung eines klaren inneren Fokus.",
+      "en": "Meditation is the prolonged and steady cultivation of a clear inner focus."
+    }
+  },
+  {
+    "source": "Yoga Sutra",
+    "chapter": "3",
+    "verse": "3.3",
+    "sanskrit": "tadeva ārthamātra-nirbhāsam svarūpa-śūnyaṃ dhyānam",
+    "translation": {
+      "de": "Samadhi ist das tiefe, klare Schweigen, in dem der Gegenstand nur noch im Bewusstsein leuchtet.",
+      "en": "Samadhi is the deep and luminous stillness in which the object of attention alone remains."
+    },
+    "explanation": {
+      "de": "Samadhi ist die Vollendung von Meditation und Bewusstsein.",
+      "en": "Samadhi is the completion of meditation and awareness."
+    }
+  },
+  {
+    "source": "Sri Isopanishad",
+    "chapter": "1",
+    "verse": "1",
+    "sanskrit": "om pūrṇam adaḥ pūrṇam idam",
+    "translation": {
+      "de": "Das Vollkommene ist voll, und diese Welt ist voll; aus dem Vollkommenen entsteht das Vollkommene, und dennoch bleibt das Vollkommene voll.",
+      "en": "The Whole is full, and this whole is full; from the Full the Full has come, and yet the Full remains full."
+    },
+    "explanation": {
+      "de": "Das Absolute ist in allem gegenwärtig; die Welt ist nicht getrennt von der Vollkommenheit.",
+      "en": "The Absolute is present in all; the world is not separate from the Whole."
+    }
+  },
+  {
+    "source": "Sri Isopanishad",
+    "chapter": "1",
+    "verse": "2",
+    "sanskrit": "pūrṇāt pūrṇam udacyate",
+    "translation": {
+      "de": "Aus dem Vollkommenen entsteht das Vollkommene, ohne dass es dadurch weniger würde.",
+      "en": "From the Full, the Full arises, without diminishing the Full."
+    },
+    "explanation": {
+      "de": "Die Wirklichkeit ist unerschöpflich und in keiner Weise verarmt.",
+      "en": "Reality is inexhaustible and never diminished."
+    }
+  },
+  {
+    "source": "Sri Isopanishad",
+    "chapter": "1",
+    "verse": "3",
+    "sanskrit": "tena tyaktena bhuñjīthā mā gṛdhah kasya svid dhanam",
+    "translation": {
+      "de": "Genieße mit Entsagung und begehre nicht das Eigentum eines anderen.",
+      "en": "Enjoy by renunciation; do not covet the wealth of others."
+    },
+    "explanation": {
+      "de": "Genügsamkeit und ethische Freiheit sind zentrale Pfade spiritueller Reife.",
+      "en": "Contentment and ethical freedom are central paths to spiritual maturity."
+    }
+  },
+  {
+    "source": "Sri Isopanishad",
+    "chapter": "1",
+    "verse": "4",
+    "sanskrit": "śrīyaḥ śravanaṃ kīrtanam",
+    "translation": {
+      "de": "Höre und singe das Lob des Herrn; so wirst du in der Liebe zum Göttlichen geweiht.",
+      "en": "Hear and sing the glories of the Lord; thus one becomes devoted to the Divine."
+    },
+    "explanation": {
+      "de": "Der Weg des Heiligen Namens ist ein Weg zur immerwährenden Erinnerung an das Göttliche.",
+      "en": "The path of divine remembrance is a path of inner awakening and devotion."
+    }
+  },
+  {
+    "source": "Sri Isopanishad",
+    "chapter": "1",
+    "verse": "7",
+    "sanskrit": "saṃbhūtaṃ cāpy amuṣya dehe",
+    "translation": {
+      "de": "Alles geschieht durch den Herrn, doch der Körper ist nur ein Werkzeug.",
+      "en": "Everything is sustained by the Lord, though the body is only a temporary instrument."
+    },
+    "explanation": {
+      "de": "Die Welt ist Ausdruck des Göttlichen, aber nicht das Selbst des Menschen.",
+      "en": "The world is an expression of the Divine, but not the identity of the self."
+    }
+  },
+  {
+    "source": "Sri Isopanishad",
+    "chapter": "1",
+    "verse": "15",
+    "sanskrit": "atha ato brahma jijñāsā",
+    "translation": {
+      "de": "Nun beginnt die Untersuchung des Absoluten.",
+      "en": "Now begins the inquiry into the Absolute."
+    },
+    "explanation": {
+      "de": "Die Upanishaden führen zur tiefsten Frage nach Ursprung, Selbst und Befreiung.",
+      "en": "The Upanishads lead to the deepest question of origin, self, and liberation."
+    }
+  },
+  {
+    "source": "Sri Isopanishad",
+    "chapter": "1",
+    "verse": "18",
+    "sanskrit": "tad eva śukraṃ tad eva brahma",
+    "translation": {
+      "de": "Das Göttliche ist die reinste Wirklichkeit und das höchste Brahman.",
+      "en": "That itself is pure; that itself is Brahman."
+    },
+    "explanation": {
+      "de": "Die letzte Realität ist nicht nur mit spiritueller Erkenntnis erreichbar, sondern ist die reine Essenz des Seins.",
+      "en": "The ultimate reality is not merely a conceptual object, but the pure essence of being."
+    }
+  },
+  {
+    "source": "Srimad Bhagavatam",
+    "chapter": "1",
+    "verse": "1.1.1",
+    "sanskrit": "oṃ namo bhagavate vāsudevāya",
+    "translation": {
+      "de": "Ich verneige mich vor dem Herrn, dem höchsten Ursprung und dem Herrn des Selbst.",
+      "en": "I bow to the Supreme Lord, Vasudeva, the highest reality."
+    },
+    "explanation": {
+      "de": "Das Bhagavatam beginnt mit Hingabe und Verehrung des Göttlichen als höchster Wirklichkeit.",
+      "en": "The Bhagavatam begins with devotion and reverence for the Divine as the highest reality."
+    }
+  },
+  {
+    "source": "Srimad Bhagavatam",
+    "chapter": "1",
+    "verse": "1.2.6",
+    "sanskrit": "śravaṇaṃ kīrtanaṃ viṣṇoḥ smaraṇaṃ pāda-sevanam",
+    "translation": {
+      "de": "Das Hören, Singen und Erinnern an Vishnu ist der Weg der Erhebung der Seele.",
+      "en": "Hearing, chanting, and remembering Vishnu are the means of elevating the soul."
+    },
+    "explanation": {
+      "de": "Bhakti ist eine lebendige Praxis der Gegenwart Gottes im Herzen.",
+      "en": "Bhakti is a living practice of God's presence in the heart."
+    }
+  },
+  {
+    "source": "Srimad Bhagavatam",
+    "chapter": "1",
+    "verse": "1.2.17",
+    "sanskrit": "sa vai puṃsāṃ paro dharmaḥ",
+    "translation": {
+      "de": "Das höchste Dharma des Menschen ist die Liebe und Hingabe zu Gott.",
+      "en": "The supreme dharma of the human being is devotion and love for God."
+    },
+    "explanation": {
+      "de": "Das Leben findet seine höchste Erfüllung in einheitlicher Liebe zum Göttlichen.",
+      "en": "Life finds its highest fulfillment in unified love for the Divine."
+    }
+  },
+  {
+    "source": "Srimad Bhagavatam",
+    "chapter": "1",
+    "verse": "1.5.17",
+    "sanskrit": "bhaktiḥ pareśānubhavo viraktir anyatra ca",
+    "translation": {
+      "de": "Bhakti ist die unmittelbare Erfahrung des Göttlichen und das Loslassen von allem anderen.",
+      "en": "Bhakti is the direct experience of the Supreme and detachment from everything else."
+    },
+    "explanation": {
+      "de": "Die Hingabe macht das Herz frei von falschen Verstrickungen.",
+      "en": "Devotion frees the heart from false entanglements."
+    }
+  },
+  {
+    "source": "Srimad Bhagavatam",
+    "chapter": "2",
+    "verse": "2.1.5",
+    "sanskrit": "kṛṣṇe bhaktiḥ prayojanī",
+    "translation": {
+      "de": "Die höchste und eigentlichste Praxis ist die Hingabe an Krishna.",
+      "en": "The highest and most essential practice is devotion to Krishna."
+    },
+    "explanation": {
+      "de": "Krishna ist im Bhagavatam die persönliche und liebevolle Gestalt des Höchsten.",
+      "en": "Krishna is the personal and loving form of the Supreme in the Bhagavatam."
+    }
+  },
+  {
+    "source": "Srimad Bhagavatam",
+    "chapter": "10",
+    "verse": "10.14.8",
+    "sanskrit": "kṛṣṇa-varṇaṃ tviśāṅghrīm",
+    "translation": {
+      "de": "Der Herr erscheint in der Schönheit und Liebe, die die Seele erquickt.",
+      "en": "The Lord appears in the beauty and love that nourishes the soul."
+    },
+    "explanation": {
+      "de": "Das Bhagavatam offenbart die persönliche Liebesgestalt des Herrn.",
+      "en": "The Bhagavatam reveals the personal and loving form of the Lord."
+    }
+  },
+  {
+    "source": "Srimad Bhagavatam",
+    "chapter": "10",
+    "verse": "10.82.1",
+    "sanskrit": "śrī-kṛṣṇaḥ para-brahmaṇo nāthaḥ",
+    "translation": {
+      "de": "Shri Krishna ist der Herr des höchsten Brahman, der alles trägt.",
+      "en": "Shri Krishna is the Lord of the highest Brahman, the support of all things."
+    },
+    "explanation": {
+      "de": "Die Bhagavata-Weisheit erkennt Krishna als höchste persönliche Realität und zugleich als überpersönlich.",
+      "en": "Bhagavata wisdom recognizes Krishna as the highest personal reality and the supreme transcendence."
+    }
+  },
+  {
+    "source": "Krishna",
+    "chapter": "BG",
+    "verse": "2.47",
+    "sanskrit": "karmanye vadhikāras te",
+    "translation": {
+      "de": "Du hast das Recht auf deine Pflicht, nicht auf die Früchte deiner Handlung.",
+      "en": "You have the right to your duty, not to the fruits of your action."
+    },
+    "explanation": {
+      "de": "Krishna lehrt die innere Freiheit durch Pflicht ohne Bindung an Erfolg.",
+      "en": "Krishna teaches inner freedom through duty without attachment to success."
+    }
+  },
+  {
+    "source": "Krishna",
+    "chapter": "BG",
+    "verse": "4.7",
+    "sanskrit": "yadā yadā hi dharmasya",
+    "translation": {
+      "de": "Wann immer Dharma verfällt, erscheine Ich, um die Welt zu retten.",
+      "en": "Whenever dharma declines, I appear to protect the world."
+    },
+    "explanation": {
+      "de": "Krishna erscheint als Retter der Wahrheit und Wiederhersteller des Gewissens.",
+      "en": "Krishna appears as the savior of truth and restorer of conscience."
+    }
+  },
+  {
+    "source": "Krishna",
+    "chapter": "BG",
+    "verse": "9.22",
+    "sanskrit": "ananya-cintayanto māṃ",
+    "translation": {
+      "de": "Wer beständig an Mich denkt, findet in Mir Schutz und Erfüllung.",
+      "en": "Those who think of Me constantly find protection and fulfillment in Me."
+    },
+    "explanation": {
+      "de": "Krishna zeigt hier die persönliche Seite der Bhakti: Erinnerung, Hingabe und Vertrauen.",
+      "en": "Krishna shows the personal side of bhakti: remembrance, devotion, and trust."
+    }
+  },
+  {
+    "source": "Krishna",
+    "chapter": "BG",
+    "verse": "10.8",
+    "sanskrit": "ahaṃ ātmā guḍākesa",
+    "translation": {
+      "de": "Ich bin das Selbst, das in allen Wesen ruht.",
+      "en": "I am the Self that dwells in all beings."
+    },
+    "explanation": {
+      "de": "Krishna zeigt, dass das Göttliche das innere Zentrum allen Lebens ist.",
+      "en": "Krishna shows that the Divine is the inner center of all life."
+    }
+  },
+  {
+    "source": "Krishna",
+    "chapter": "BG",
+    "verse": "12.13-14",
+    "sanskrit": "adveṣṭā sarva-bhūtānāṃ maitraḥ karuṇa eva ca",
+    "translation": {
+      "de": "Der höchste Bhakte ist frei von Feindschaft, freundlich, mitfühlend und gleichmütig.",
+      "en": "The supreme devotee is free from malice, friendly, compassionate, and equal-minded."
+    },
+    "explanation": {
+      "de": "Krishna beschreibt die innere Reife der Bhakti als Mitgefühl für alle Wesen.",
+      "en": "Krishna describes the maturity of bhakti as compassion toward all beings."
+    }
+  },
+  {
+    "source": "Krishna",
+    "chapter": "BG",
+    "verse": "18.66",
+    "sanskrit": "sarva-dharmān parityajya mām ekaṃ śaraṇaṃ vraja",
+    "translation": {
+      "de": "Gib alle Pflichten auf und nimm Meine Zuflucht; Ich werde dich befreien.",
+      "en": "Abandon all duties and take shelter in Me; I will liberate you."
+    },
+    "explanation": {
+      "de": "Krishna schließt den Weg der Gita mit der höchsten Lehre der vollständigen Hingabe ab.",
+      "en": "Krishna concludes the path of the Gita with the highest teaching of complete surrender."
+    }
+  }
+]

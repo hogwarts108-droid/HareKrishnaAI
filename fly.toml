@@ -1,0 +1,10 @@
+[build]
+builder = "paackages"
+
+[env]
+TELEGRAM_BOT_TOKEN = ""
+PYTHONUNBUFFERED = "1"
+
+[[build.processes]]
+type = "web"
+command = "python -m app.bot"

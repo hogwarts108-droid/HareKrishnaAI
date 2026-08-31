@@ -1,0 +1,57 @@
+[
+  {
+    "source": "Upanishaden",
+    "verse": "Katha Upanishad 1.2.1",
+    "sanskrit": "atma eva atra atmani",
+    "translation": {
+      "de": "Das Selbst (Atman) ist hier im Inneren zu finden; erkenne das Selbst als das wahre Wesen deiner Existenz."
+    },
+    "explanation": {
+      "de": "Atman ist nicht extern; erkenne das wahre Selbst in dir." 
+    }
+  },
+  {
+    "source": "Srimad Bhagavatam",
+    "verse": "1.2.6",
+    "sanskrit": "adharmo vidvan matim",
+    "translation": {
+      "de": "Wissen und Unterscheidungskraft führen den Weisen; wahres Wissen unterscheidet das Rechte vom Unrechten."
+    },
+    "explanation": {
+      "de": "Wahrer Wissender handelt nach Unterscheidungskraft und Pflicht." 
+    }
+  },
+  {
+    "source": "Yoga Sutra",
+    "verse": "1.2",
+    "sanskrit": "yogash chitta vritti nirodhah",
+    "translation": {
+      "de": "Yoga ist das Zur‑Ruhe‑Bringen der Bewegungen des Geistes; durch Stillung erlangt man Klarheit."
+    },
+    "explanation": {
+      "de": "Durch Stille des Geistes erlangt man Klarheit und Befreiung." 
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "verse": "12.15",
+    "sanskrit": "visuddhatma",
+    "translation": {
+      "de": "Derjenige, dessen Selbst rein ist und der frei von Feindschaft gegenüber allen Wesen ist, lebt in Gleichmut."
+    },
+    "explanation": {
+      "de": "Wahre Bhakti zeigt sich in Gleichmut und Mitgefühl für alle." 
+    }
+  },
+  {
+    "source": "Bhagavad Gita",
+    "verse": "18.66",
+    "sanskrit": "sarva dharman parityajya mam ekam saranam vraja",
+    "translation": {
+      "de": "Gib alle Pflichten auf und nimm allein Zuflucht zu Mir: verlassen auf Mich allein findest du Schutz und Befreiung."
+    },
+    "explanation": {
+      "de": "Vertraue dem Höchsten vollständig und lebe in Hingabe." 
+    }
+  }
+]

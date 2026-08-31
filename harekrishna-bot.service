@@ -1,0 +1,18 @@
+#!/bin/bash
+# Dieser Service sorgt dafür, dass der Bot auf Linux immer läuft
+
+[Unit]
+Description=HareKrishnaAI Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=$USER
+WorkingDirectory=/home/$USER/HareKrishnaAI
+Environment="PATH=/home/$USER/.venv/bin"
+ExecStart=/home/$USER/.venv/bin/python -m app.bot
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -261,9 +261,9 @@ async def scripture_callback(update: Update, context: ContextTypes.DEFAULT_TYPE)
             if len(text) > 4000:
                 chunks = [text[i:i+4000] for i in range(0, len(text), 4000)]
                 for chunk in chunks:
-                    await query.message.reply_text(chunk, parse_mode="Markdown")
+                    await query.message.reply_text(chunk)
             else:
-                await query.edit_message_text(text=text, parse_mode="Markdown")
+                await query.edit_message_text(text=text)
         else:
             if lang == 'de':
                 await query.edit_message_text(text="Keine Ergebnisse gefunden.")
@@ -299,9 +299,9 @@ async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
             if len(text) > 4000:
                 chunks = [text[i:i+4000] for i in range(0, len(text), 4000)]
                 for chunk in chunks:
-                    await update.message.reply_text(chunk, parse_mode="Markdown")
+                    await update.message.reply_text(chunk)
             else:
-                await update.message.reply_text(text, parse_mode="Markdown")
+                await update.message.reply_text(text)
         else:
             if lang == 'de':
                 text = (

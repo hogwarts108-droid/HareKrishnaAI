@@ -407,19 +407,26 @@ def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de')
     verse = entry.get('verse') or ''
     ref_line = ""
     if chapter and verse and str(verse).lower() != 'full':
-        ref_line = f"\n📖 Kapitel: {chapter}\n📜 Vers: {verse}"
+        ref_line = f"\n📖 Quelle: {chapter}\n📜 Vers: {verse}"
     elif chapter:
-        ref_line = f"\n📖 Kapitel: {chapter}"
+        ref_line = f"\n📖 Quelle: {chapter}"
     elif verse:
         ref_line = f"\n📜 Vers: {verse}"
 
-    text = (
-        "📖 Quelle: " + str(entry.get('source','')) +
-        ref_line +
-        "\n\n🕉 Sanskrit:\n" + str(entry.get('sanskrit','')) +
-        "\n\n🌍 Übersetzung:\n" + trans_text +
-        "\n\n🪷 Erklärung:\n" + expl_text
-    )
+    source = str(entry.get('source',''))
+    sanskrit = str(entry.get('sanskrit',''))
+    
+    text = f"""📖 Quelle: {source}{ref_line}
+
+🕉 Sanskrit:
+{sanskrit}
+
+🌍 Übersetzung:
+{trans_text}
+
+🪷 Erklärung:
+{expl_text}"""
+    
     return text
 
 

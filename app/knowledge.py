@@ -204,12 +204,25 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
     if not entries:
         return None
 
-    # Priority 1: Special handling for Krishna Introduction
-    if "krishna" in q_lower and ("introduction" in q_lower or "who_is" in q_lower):
+    # PRIORITY 1: Special handling for concept questions (Who is X?)
+    if any(x in q_lower for x in ["wer ist", "who is", "कौन है", "क्या है", "what is"]):
+        if "krishna" in q_lower:
+            for entry in entries:
+                src_lower = entry.get("source", "").lower()
+                chapter_lower = entry.get("chapter", "").lower()
+                if src_lower == "krishna" and chapter_lower == "introduction":
+                    return {
+                        "source": entry.get("source", "Unbekannt"),
+                        "chapter": entry.get("chapter", ""),
+                        "verse": entry.get("verse", ""),
+                        "sanskrit": entry.get("sanskrit", ""),
+                        "translation": entry.get("translation", {}),
+                        "explanation": entry.get("explanation", {}),
+                    }
+        # Look for introduction chapters for other scriptures
         for entry in entries:
-            src_lower = entry.get("source", "").lower()
             chapter_lower = entry.get("chapter", "").lower()
-            if (src_lower == "krishna" and chapter_lower == "introduction"):
+            if chapter_lower == "introduction" or chapter_lower == "philosophy":
                 return {
                     "source": entry.get("source", "Unbekannt"),
                     "chapter": entry.get("chapter", ""),
@@ -219,9 +232,9 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
                     "explanation": entry.get("explanation", {}),
                 }
 
-    # Priority 2: Standard reference matching
+    # PRIORITY 2: Direct reference matching (Bhagavad Gita 2.47)
     patterns = []
-    for token in ["bg", "gita", "bhagavad gita", "yoga sutra", "yogasutra", "isopanishad", "sri isopanishad", "srimad bhagavatam", "bhagavatam", "krishna"]:
+    for token in ["bg", "gita", "bhagavad gita", "yoga sutra", "yogasutra", "isopanishad", "sri isopanishad", "srimad bhagavatam", "bhagavatam", "krishna", "vedas", "upanishads", "rig veda", "yajur veda", "sama veda", "atharva veda", "isha upanishad", "kena upanishad", "katha upanishad", "mundaka upanishad"]:
         if token in q_lower:
             patterns.append(token)
 
@@ -248,6 +261,7 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
                 "explanation": entry.get("explanation", {}),
             }
 
+    # PRIORITY 3: Exact verse reference (2.47, 1.1, etc.)
     for entry in entries:
         chapter = str(entry.get("chapter") or "")
         verse = str(entry.get("verse") or "")

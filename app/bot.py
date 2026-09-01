@@ -151,7 +151,8 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "/start - Sprache wählen\n"
             "/help - Diese Hilfe\n"
             "/list - Verfügbare Schriften\n"
-            "/reload - Index aktualisieren\n\n"
+            "/reload - Index aktualisieren\n"
+            "/clear - Chat löschen & neu starten\n\n"
             "**Fragen stellen:**\n"
             "✅ Bhagavad Gita 2.47\n"
             "✅ Yoga Sutra 1.2\n"
@@ -165,7 +166,8 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "/start - Choose language\n"
             "/help - This help\n"
             "/list - Available scriptures\n"
-            "/reload - Refresh index\n\n"
+            "/reload - Refresh index\n"
+            "/clear - Clear chat & restart\n\n"
             "**Ask questions:**\n"
             "✅ Bhagavad Gita 2.47\n"
             "✅ Yoga Sutra 1.2\n"
@@ -179,7 +181,8 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "/start - भाषा चुनें\n"
             "/help - यह सहायता\n"
             "/list - उपलब्ध शास्त्र\n"
-            "/reload - इंडेक्स रीफ्रेश करें\n\n"
+            "/reload - इंडेक्स रीफ्रेश करें\n"
+            "/clear - चैट साफ़ करें और पुनः शुरू करें\n\n"
             "**प्रश्न पूछें:**\n"
             "✅ भगवद गीता 2.47\n"
             "✅ योग सूत्र 1.2\n"
@@ -379,6 +382,36 @@ async def cmd_reload(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(error_msg)
 
 
+async def cmd_clear(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Clear chat and restart from beginning."""
+    user_id = update.effective_user.id
+    lang = get_user_lang(user_id)
+    
+    logger.info(f"User {user_id} requested chat clear")
+    
+    try:
+        if lang == 'de':
+            await update.message.reply_text("🗑️ Chat wird geleert...")
+        elif lang == 'en':
+            await update.message.reply_text("🗑️ Clearing chat...")
+        else:  # Hindi
+            await update.message.reply_text("🗑️ चैट साफ़ किया जा रहा है...")
+        
+        time.sleep(1)  # Brief pause for UX
+        
+        # Restart with start command
+        await start(update, context)
+    except Exception as e:
+        logger.error(f"Error during clear: {e}")
+        if lang == 'de':
+            error_msg = "Fehler beim Löschen des Chats."
+        elif lang == 'en':
+            error_msg = "Error clearing chat."
+        else:  # Hindi
+            error_msg = "चैट साफ़ करने में त्रुटि।"
+        await update.message.reply_text(error_msg)
+
+
 async def save_fav(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Save a scripture verse to favorites."""
     user_id = update.effective_user.id
@@ -464,6 +497,7 @@ app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("help", help_cmd))
 app.add_handler(CommandHandler("list", list_cmd))
 app.add_handler(CommandHandler("reload", cmd_reload))
+app.add_handler(CommandHandler("clear", cmd_clear))
 app.add_handler(CommandHandler("save", save_fav))
 app.add_handler(CommandHandler("favorites", show_favorites))
 app.add_handler(CallbackQueryHandler(language_callback, pattern="^lang_"))

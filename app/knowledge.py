@@ -427,6 +427,15 @@ def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de')
 🪷 Erklärung:
 {expl_text}"""
     
+    # Add link to full story if this is Krishna Introduction
+    if source.lower() == "krishna" and chapter.lower() == "introduction":
+        if lang == 'de':
+            text += "\n\n📚 Weitere Kapitel: /list → Krishna"
+        elif lang == 'en':
+            text += "\n\n📚 Read full story: /list → Krishna"
+        else:  # Hindi
+            text += "\n\n📚 पूरी कहानी: /list → Krishna"
+    
     return text
 
 

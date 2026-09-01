@@ -471,4 +471,20 @@ app.add_handler(
 logger.info("Bot started successfully")
 print("Bot is running...")
 
-app.run_polling()
+# Use webhooks for Railway if PORT env var is set, otherwise use polling
+import os as os_module
+PORT = int(os_module.environ.get("PORT", 0))
+
+if PORT > 0:
+    # Webhook mode for Railway
+    logger.info(f"Starting bot in webhook mode on port {PORT}")
+    app.run_webhook(
+        listen="0.0.0.0",
+        port=PORT,
+        url_path=TOKEN,
+        webhook_url=f"https://{os_module.environ.get('RAILWAY_PUBLIC_DOMAIN', 'localhost')}/{TOKEN}"
+    )
+else:
+    # Polling mode for local development
+    logger.info("Starting bot in polling mode")
+    app.run_polling()

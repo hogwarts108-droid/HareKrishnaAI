@@ -3,6 +3,7 @@
     "builder": "nixpacks"
   },
   "deploy": {
-    "branch": "main"
+    "branch": "main",
+    "restartPolicyType": "always"
   }
 }

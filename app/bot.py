@@ -479,6 +479,7 @@ def start_web_server():
         from flask import Flask, render_template
         import json
         from pathlib import Path
+        import os as os_module
         
         flask_app = Flask(__name__, template_folder='app/templates')
         BASE_DIR = Path(__file__).resolve().parent.parent

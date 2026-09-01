@@ -1,0 +1,66 @@
+[
+  {
+    "source": "Isha Upanishad",
+    "chapter": "1",
+    "verse": "full",
+    "sanskrit": "ईशा वास्यमिदं सर्वम्।",
+    "translation": {
+      "en": "The Supreme Lord is the controller of all.",
+      "de": "Der Höchste Herr ist der Herrscher von allem.",
+      "hi": "सर्वोच्च भगवान सभी के नियंत्रक हैं।"
+    },
+    "explanation": {
+      "en": "The Isha Upanishad teaches that the Supreme Brahman pervades all existence.",
+      "de": "Die Isha Upanishad lehrt, dass das Höchste Brahman die gesamte Existenz durchdringt.",
+      "hi": "ईश उपनिषद सिखाता है कि परम ब्रह्मान सभी अस्तित्व को व्याप्त करता है।"
+    }
+  },
+  {
+    "source": "Kena Upanishad",
+    "chapter": "1",
+    "verse": "1",
+    "sanskrit": "केन इष्टं पतति प्राणः।",
+    "translation": {
+      "en": "By whose will does the mind and senses move? Who directs them?",
+      "de": "Durch wessen Willen bewegen sich der Verstand und die Sinne? Wer lenkt sie?",
+      "hi": "किसकी इच्छा से मन और इंद्रियां चलती हैं? कौन उन्हें निर्देशित करता है?"
+    },
+    "explanation": {
+      "en": "The Kena Upanishad investigates the ultimate cause of all activity and consciousness.",
+      "de": "Die Kena Upanishad untersucht die letzte Ursache aller Aktivität und des Bewusstseins.",
+      "hi": "केन उपनिषद सभी गतिविधि और चेतना के अंतिम कारण की जांच करता है।"
+    }
+  },
+  {
+    "source": "Katha Upanishad",
+    "chapter": "1",
+    "verse": "1",
+    "sanskrit": "उशन्न वै श्रेयान्न प्रेयो मनुष्यम्।",
+    "translation": {
+      "en": "The good (Shreya) and the pleasant (Preya) are different paths before man.",
+      "de": "Das Gute (Shreya) und das Angenehme (Preya) sind verschiedene Wege vor dem Menschen.",
+      "hi": "अच्छा (श्रेय) और सुखद (प्रेय) मनुष्य के सामने अलग-अलग रास्ते हैं।"
+    },
+    "explanation": {
+      "en": "The Katha Upanishad explores the eternal soul and the path to self-realization.",
+      "de": "Die Katha Upanishad erforscht die ewige Seele und den Weg zur Selbstverwirklichung.",
+      "hi": "कठ उपनिषद शाश्वत आत्मा और आत्मबोध के मार्ग की खोज करता है।"
+    }
+  },
+  {
+    "source": "Mundaka Upanishad",
+    "chapter": "1",
+    "verse": "1",
+    "sanskrit": "ब्रह्मा देवानां प्रथमः।",
+    "translation": {
+      "en": "Brahma is the first among the gods.",
+      "de": "Brahma ist der erste unter den Göttern.",
+      "hi": "ब्रह्मा देवताओं में पहले हैं।"
+    },
+    "explanation": {
+      "en": "The Mundaka Upanishad teaches about Brahman and the ultimate knowledge.",
+      "de": "Die Mundaka Upanishad lehrt über Brahman und das ultimative Wissen.",
+      "hi": "मुंडक उपनिषद ब्रह्मान और अंतिम ज्ञान के बारे में सिखाता है।"
+    }
+  }
+]

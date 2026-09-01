@@ -9,6 +9,9 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 KNOWLEDGE_DIR = Path(BASE_DIR / "data" / "scriptures")
 
+# Import database
+from app.database import get_all_knowledge, insert_knowledge as db_insert_knowledge
+
 try:
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn.metrics.pairwise import linear_kernel
@@ -108,21 +111,29 @@ def _normalize_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def _load_documents() -> List[Dict[str, Any]]:
+    """Load documents from JSON files and database."""
     entries: List[Dict[str, Any]] = []
-    if not KNOWLEDGE_DIR.exists():
-        return entries
-
-    for path in KNOWLEDGE_DIR.rglob("*.json"):
-        try:
-            text = path.read_text(encoding="utf-8")
-            data = json.loads(text)
-            if isinstance(data, dict):
-                entries.append(_normalize_entry(data))
-            elif isinstance(data, list):
-                entries.extend([_normalize_entry(e) for e in data if isinstance(e, dict)])
-        except Exception:
-            continue
-
+    
+    # Load from JSON files
+    if KNOWLEDGE_DIR.exists():
+        for path in KNOWLEDGE_DIR.rglob("*.json"):
+            try:
+                text = path.read_text(encoding="utf-8")
+                data = json.loads(text)
+                if isinstance(data, dict):
+                    entries.append(_normalize_entry(data))
+                elif isinstance(data, list):
+                    entries.extend([_normalize_entry(e) for e in data if isinstance(e, dict)])
+            except Exception:
+                continue
+    
+    # Also try to load from database
+    try:
+        db_entries = get_all_knowledge()
+        entries.extend(db_entries)
+    except Exception:
+        pass
+    
     return entries
 
 

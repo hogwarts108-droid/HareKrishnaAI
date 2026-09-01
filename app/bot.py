@@ -15,6 +15,7 @@ if sys.platform == 'win32':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 from app.knowledge import find_answer, generate_answer_text, reload_index
+from app.database import save_favorite, get_favorites, remove_favorite, set_user_language, get_user_language
 
 # Setup logging
 logging.basicConfig(
@@ -198,7 +199,9 @@ async def list_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("Srimad Bhagavatam", callback_data="scripture_bhagavatam")],
         [InlineKeyboardButton("Sri Isopanishad", callback_data="scripture_iso")],
         [InlineKeyboardButton("Chaitanya Charitamrita", callback_data="scripture_chaitanya")],
-        [InlineKeyboardButton("Krishna", callback_data="scripture_krishna")]
+        [InlineKeyboardButton("Krishna", callback_data="scripture_krishna")],
+        [InlineKeyboardButton("Vedas", callback_data="scripture_vedas")],
+        [InlineKeyboardButton("Upanishads", callback_data="scripture_upanishads")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
@@ -225,7 +228,9 @@ async def scripture_callback(update: Update, context: ContextTypes.DEFAULT_TYPE)
         "scripture_bhagavatam": "Srimad Bhagavatam 1.1",
         "scripture_iso": "Sri Isopanishad",
         "scripture_chaitanya": "Chaitanya Charitamrita 1.1",
-        "scripture_krishna": "Krishna Introduction who_is"
+        "scripture_krishna": "Krishna Introduction who_is",
+        "scripture_vedas": "Rig Veda 1.1",
+        "scripture_upanishads": "Isha Upanishad"
     }
     
     query_text = scriptures.get(query.data, "")
@@ -235,7 +240,9 @@ async def scripture_callback(update: Update, context: ContextTypes.DEFAULT_TYPE)
         "scripture_bhagavatam": "Srimad Bhagavatam",
         "scripture_iso": "Sri Isopanishad",
         "scripture_chaitanya": "Chaitanya Charitamrita",
-        "scripture_krishna": "Krishna"
+        "scripture_krishna": "Krishna",
+        "scripture_vedas": "Vedas",
+        "scripture_upanishads": "Upanishads"
     }.get(query.data, "")
     
     await query.answer()
@@ -368,6 +375,82 @@ async def cmd_reload(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(error_msg)
 
 
+async def save_fav(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Save a scripture verse to favorites."""
+    user_id = update.effective_user.id
+    lang = get_user_lang(user_id)
+    
+    if not context.args:
+        if lang == 'de':
+            msg = "Verwendung: /save Bhagavad Gita 2.47"
+        elif lang == 'en':
+            msg = "Usage: /save Bhagavad Gita 2.47"
+        else:
+            msg = "उपयोग: /save भगवद गीता 2.47"
+        await update.message.reply_text(msg)
+        return
+    
+    query = " ".join(context.args)
+    result = cached_find_answer(query)
+    
+    if result:
+        success = save_favorite(user_id, result.get("source", ""), result.get("chapter", ""), result.get("verse", ""))
+        if success:
+            if lang == 'de':
+                msg = f"Gespeichert: {result.get('source')} {result.get('chapter')}.{result.get('verse')}"
+            elif lang == 'en':
+                msg = f"Saved: {result.get('source')} {result.get('chapter')}.{result.get('verse')}"
+            else:
+                msg = f"सहेजा गया: {result.get('source')} {result.get('chapter')}.{result.get('verse')}"
+        else:
+            if lang == 'de':
+                msg = "Bereits in Favoriten!"
+            elif lang == 'en':
+                msg = "Already in favorites!"
+            else:
+                msg = "पहले से पसंदीदा में है!"
+    else:
+        if lang == 'de':
+            msg = "Vers nicht gefunden!"
+        elif lang == 'en':
+            msg = "Verse not found!"
+        else:
+            msg = "श्लोक नहीं मिला!"
+    
+    await update.message.reply_text(msg)
+    logger.info(f"User {user_id} saved favorite: {query}")
+
+
+async def show_favorites(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Show all saved favorites."""
+    user_id = update.effective_user.id
+    lang = get_user_lang(user_id)
+    
+    favorites = get_favorites(user_id)
+    
+    if not favorites:
+        if lang == 'de':
+            msg = "Du hast keine Favoriten gespeichert! Benutze /save"
+        elif lang == 'en':
+            msg = "You have no favorites! Use /save"
+        else:
+            msg = "आपके कोई पसंदीदा नहीं हैं! /save का उपयोग करें"
+        await update.message.reply_text(msg)
+        return
+    
+    text = "⭐ **Deine Favoriten:**\n\n" if lang == 'de' else "⭐ **Your Favorites:**\n\n" if lang == 'en' else "⭐ **आपके पसंदीदा:**\n\n"
+    
+    for i, fav in enumerate(favorites[:20], 1):  # Show first 20
+        ref = f"{fav['source']} {fav['chapter']}.{fav['verse']}" if fav['verse'] else f"{fav['source']} {fav['chapter']}"
+        text += f"{i}. {ref}\n"
+    
+    if len(favorites) > 20:
+        text += f"\n... und {len(favorites) - 20} mehr"
+    
+    await update.message.reply_text(text, parse_mode="Markdown")
+    logger.info(f"User {user_id} viewed favorites")
+
+
 if not TOKEN:
     raise RuntimeError("TELEGRAM_TOKEN fehlt in .env")
 
@@ -377,6 +460,8 @@ app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("help", help_cmd))
 app.add_handler(CommandHandler("list", list_cmd))
 app.add_handler(CommandHandler("reload", cmd_reload))
+app.add_handler(CommandHandler("save", save_fav))
+app.add_handler(CommandHandler("favorites", show_favorites))
 app.add_handler(CallbackQueryHandler(language_callback, pattern="^lang_"))
 app.add_handler(CallbackQueryHandler(scripture_callback, pattern="^scripture_"))
 app.add_handler(

@@ -1,0 +1,66 @@
+[
+  {
+    "source": "Rig Veda",
+    "chapter": "1",
+    "verse": "1.1",
+    "sanskrit": "अग्निं इले पुरोहितं यज्ञस्य देवमृत्विजम्। होतारं रत्नधातमम्।।",
+    "translation": {
+      "en": "I praise Agni, the priest, who is the mediator of the sacrifice, the divine minister, and the bestower of treasures.",
+      "de": "Ich preise Agni, den Priester, der der Vermittler des Opfers ist, der göttliche Minister und Schatzbringer.",
+      "hi": "मैं अग्नि की प्रशंसा करता हूँ, जो यज्ञ का माध्यम है, दिव्य मंत्री और खजाने का दाता है।"
+    },
+    "explanation": {
+      "en": "The Rig Veda opens with the invocation of Agni, the god of fire, symbolizing the beginning of spiritual knowledge and the sacrificial process.",
+      "de": "Der Rig Veda beginnt mit der Anrufung von Agni, dem Feuer-Gott, was den Beginn des spirituellen Wissens symbolisiert.",
+      "hi": "ऋग्वेद अग्नि के आह्वान से शुरू होता है, जो आध्यात्मिक ज्ञान की शुरुआत का प्रतीक है।"
+    }
+  },
+  {
+    "source": "Yajur Veda",
+    "chapter": "1",
+    "verse": "1",
+    "sanskrit": "ईशा वास्यमिदं सर्वं यत्किंच जगत्यां जगत्।",
+    "translation": {
+      "en": "All this - whatever exists in this universe - is indwelt by the Lord.",
+      "de": "Alles - was auch immer in diesem Universum existiert - ist vom Herrn durchdrungen.",
+      "hi": "यह सब कुछ - जो कुछ भी इस ब्रह्मांड में मौजूद है - प्रभु से व्याप्त है।"
+    },
+    "explanation": {
+      "en": "The Yajur Veda emphasizes the omnipresence of the divine Lord in all creation.",
+      "de": "Die Yajur Veda betont die Allgegenwart des göttlichen Herrn in der gesamten Schöpfung.",
+      "hi": "यजुर्वेद सभी सृष्टि में प्रभु की सर्वव्यापकता पर जोर देता है।"
+    }
+  },
+  {
+    "source": "Sama Veda",
+    "chapter": "1",
+    "verse": "1",
+    "sanskrit": "अग्निमीळे पुरोहितं यज्ञस्य देवमृत्विजम्।",
+    "translation": {
+      "en": "The Sama Veda is the Veda of melodies and is used in rituals and worship.",
+      "de": "Die Sama Veda ist die Veda der Melodien und wird in Ritualen und Verehrung verwendet.",
+      "hi": "साम वेद मेलोडीज़ का वेद है और इसे पूजा में उपयोग किया जाता है।"
+    },
+    "explanation": {
+      "en": "The Sama Veda teaches that through music and rhythm, one can connect with the divine.",
+      "de": "Die Sama Veda lehrt, dass man sich durch Musik und Rhythmus mit dem Göttlichen verbinden kann.",
+      "hi": "साम वेद सिखाता है कि संगीत और लय के माध्यम से दिव्य से जुड़ सकते हैं।"
+    }
+  },
+  {
+    "source": "Atharva Veda",
+    "chapter": "1",
+    "verse": "1",
+    "sanskrit": "अथर्वा वेद",
+    "translation": {
+      "en": "The Atharva Veda deals with practical knowledge for health, protection, and well-being.",
+      "de": "Die Atharva Veda befasst sich mit praktischem Wissen für Gesundheit, Schutz und Wohlbefinden.",
+      "hi": "अथर्व वेद स्वास्थ्य, सुरक्षा और कल्याण के लिए व्यावहारिक ज्ञान से संबंधित है।"
+    },
+    "explanation": {
+      "en": "The Atharva Veda includes mantras for healing, protection spells, and hymns for daily life.",
+      "de": "Die Atharva Veda enthält Mantras zur Heilung, Schutzsprüche und Hymnen für den täglichen Leben.",
+      "hi": "अथर्व वेद में चिकित्सा, सुरक्षा और दैनिक जीवन के लिए मंत्र हैं।"
+    }
+  }
+]

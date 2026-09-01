@@ -431,9 +431,16 @@ def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de')
     if source.lower() == "krishna" and chapter.lower() == "introduction":
         # Get domain for link
         railway_domain = os.getenv('RAILWAY_PUBLIC_DOMAIN', '')
-        if railway_domain:
-            krishna_url = f"https://{railway_domain}:9001/krishna"
+        port = os.getenv('PORT', '0')
+        
+        if railway_domain and port != '0':
+            # On Railway - use public domain
+            krishna_url = f"https://{railway_domain}/krishna"
+        elif port != '0':
+            # On server with PORT but no RAILWAY_PUBLIC_DOMAIN
+            krishna_url = f"http://localhost:{port}/krishna"
         else:
+            # Local development
             krishna_url = "http://localhost:8001/krishna"
         
         if lang == 'de':

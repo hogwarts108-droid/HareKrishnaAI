@@ -10,6 +10,9 @@ from datetime import datetime
 from functools import lru_cache
 import time
 import threading
+from flask import Flask, render_template
+import json
+from pathlib import Path
 
 # Fix encoding for Windows
 if sys.platform == 'win32':
@@ -472,59 +475,45 @@ app.add_handler(
 logger.info("Bot started successfully")
 print("Bot is running...")
 
-# Start Flask web server in a separate thread
-def start_web_server():
-    """Start Flask web server for serving Krishna story."""
-    try:
-        from flask import Flask, render_template
-        import json
-        from pathlib import Path
-        import os as os_module
-        
-        flask_app = Flask(__name__, template_folder='app/templates')
-        BASE_DIR = Path(__file__).resolve().parent.parent
-        
-        @flask_app.route('/krishna')
-        def krishna_story():
-            """Serve the complete Krishna story page."""
-            krishna_file = BASE_DIR / "data" / "scriptures" / "krishna_book.json"
-            try:
-                with open(krishna_file, 'r', encoding='utf-8') as f:
-                    krishna_entries = json.load(f)
-            except Exception as e:
-                logger.error(f"Error loading Krishna data: {e}")
-                krishna_entries = []
-            
-            return render_template('krishna.html', entries=krishna_entries)
-        
-        @flask_app.route('/health')
-        def health():
-            return {'status': 'ok'}
-        
-        web_port = int(os_module.environ.get("PORT", 0)) + 1000 if int(os_module.environ.get("PORT", 0)) > 0 else 8001
-        logger.info(f"Starting web server on port {web_port}")
-        flask_app.run(host='0.0.0.0', port=web_port, debug=False, use_reloader=False)
-    except Exception as e:
-        logger.error(f"Error starting web server: {e}")
+# Create Flask app for web routes
+flask_app = Flask(__name__, template_folder='app/templates')
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Start web server in background thread
-web_thread = threading.Thread(target=start_web_server, daemon=True)
-web_thread.start()
-time.sleep(2)  # Give web server time to start
+@flask_app.route('/krishna')
+def krishna_story():
+    """Serve the complete Krishna story page."""
+    krishna_file = BASE_DIR / "data" / "scriptures" / "krishna_book.json"
+    try:
+        with open(krishna_file, 'r', encoding='utf-8') as f:
+            krishna_entries = json.load(f)
+    except Exception as e:
+        logger.error(f"Error loading Krishna data: {e}")
+        krishna_entries = []
+    
+    return render_template('krishna.html', entries=krishna_entries)
+
+@flask_app.route('/health')
+def health():
+    return {'status': 'ok'}
 
 # Use webhooks for Railway if PORT env var is set, otherwise use polling
-import os as os_module
-PORT = int(os_module.environ.get("PORT", 0))
+PORT = int(os.environ.get("PORT", 0))
+RAILWAY_PUBLIC_DOMAIN = os.environ.get('RAILWAY_PUBLIC_DOMAIN', '')
 
 if PORT > 0:
-    # Webhook mode for Railway
+    # Webhook mode for Railway - integrate Flask with Telegram
     logger.info(f"Starting bot in webhook mode on port {PORT}")
-    app.run_webhook(
-        listen="0.0.0.0",
-        port=PORT,
-        url_path=TOKEN,
-        webhook_url=f"https://{os_module.environ.get('RAILWAY_PUBLIC_DOMAIN', 'localhost')}/{TOKEN}"
-    )
+    
+    @flask_app.post(f"/{TOKEN}")
+    async def telegram_webhook():
+        """Handle Telegram webhook."""
+        from telegram import Update
+        update = Update.de_json(await flask_app.request.json, app.bot)
+        await app.process_update(update)
+        return 'ok'
+    
+    # Start Flask app (which includes both web routes and telegram webhook)
+    flask_app.run(host='0.0.0.0', port=PORT, debug=False, use_reloader=False)
 else:
     # Polling mode for local development
     logger.info("Starting bot in polling mode")

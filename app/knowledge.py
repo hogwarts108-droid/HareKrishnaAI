@@ -429,12 +429,20 @@ def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de')
     
     # Add link to full story if this is Krishna Introduction
     if source.lower() == "krishna" and chapter.lower() == "introduction":
+        import os
+        # Get domain for link
+        railway_domain = os.getenv('RAILWAY_PUBLIC_DOMAIN', '')
+        if railway_domain:
+            krishna_url = f"https://{railway_domain}:9001/krishna"
+        else:
+            krishna_url = "http://localhost:8001/krishna"
+        
         if lang == 'de':
-            text += "\n\n📚 Weitere Kapitel: /list → Krishna"
+            text += f"\n\n📚 Die vollständige Geschichte:\n{krishna_url}"
         elif lang == 'en':
-            text += "\n\n📚 Read full story: /list → Krishna"
+            text += f"\n\n📚 Read the full story:\n{krishna_url}"
         else:  # Hindi
-            text += "\n\n📚 पूरी कहानी: /list → Krishna"
+            text += f"\n\n📚 पूरी कहानी:\n{krishna_url}"
     
     return text
 

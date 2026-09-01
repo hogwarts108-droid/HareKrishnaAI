@@ -10,3 +10,4 @@ scikit-learn>=1.2.0
 sentence-transformers>=2.2.2
 openai>=1.0.0
 watchdog>=2.2.1
+flask>=2.0.0

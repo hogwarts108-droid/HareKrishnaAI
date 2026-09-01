@@ -9,6 +9,7 @@ import logging
 from datetime import datetime
 from functools import lru_cache
 import time
+import threading
 
 # Fix encoding for Windows
 if sys.platform == 'win32':
@@ -470,6 +471,45 @@ app.add_handler(
 
 logger.info("Bot started successfully")
 print("Bot is running...")
+
+# Start Flask web server in a separate thread
+def start_web_server():
+    """Start Flask web server for serving Krishna story."""
+    try:
+        from flask import Flask, render_template
+        import json
+        from pathlib import Path
+        
+        flask_app = Flask(__name__, template_folder='app/templates')
+        BASE_DIR = Path(__file__).resolve().parent.parent
+        
+        @flask_app.route('/krishna')
+        def krishna_story():
+            """Serve the complete Krishna story page."""
+            krishna_file = BASE_DIR / "data" / "scriptures" / "krishna_book.json"
+            try:
+                with open(krishna_file, 'r', encoding='utf-8') as f:
+                    krishna_entries = json.load(f)
+            except Exception as e:
+                logger.error(f"Error loading Krishna data: {e}")
+                krishna_entries = []
+            
+            return render_template('krishna.html', entries=krishna_entries)
+        
+        @flask_app.route('/health')
+        def health():
+            return {'status': 'ok'}
+        
+        web_port = int(os_module.environ.get("PORT", 0)) + 1000 if int(os_module.environ.get("PORT", 0)) > 0 else 8001
+        logger.info(f"Starting web server on port {web_port}")
+        flask_app.run(host='0.0.0.0', port=web_port, debug=False, use_reloader=False)
+    except Exception as e:
+        logger.error(f"Error starting web server: {e}")
+
+# Start web server in background thread
+web_thread = threading.Thread(target=start_web_server, daemon=True)
+web_thread.start()
+time.sleep(2)  # Give web server time to start
 
 # Use webhooks for Railway if PORT env var is set, otherwise use polling
 import os as os_module

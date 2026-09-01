@@ -429,7 +429,6 @@ def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de')
     
     # Add link to full story if this is Krishna Introduction
     if source.lower() == "krishna" and chapter.lower() == "introduction":
-        import os
         # Get domain for link
         railway_domain = os.getenv('RAILWAY_PUBLIC_DOMAIN', '')
         if railway_domain:

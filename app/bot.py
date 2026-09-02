@@ -10,7 +10,7 @@ from datetime import datetime
 from functools import lru_cache
 import time
 import threading
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import json
 from pathlib import Path
 
@@ -585,8 +585,9 @@ def krishna_story():
 
 @flask_app.route('/figures')
 def figures_index():
-    """Serve figure index page with Wikipedia links."""
+    """Serve figure index page with Wikipedia links and optional search."""
     figures_file = BASE_DIR / "data" / "scriptures" / "figures_introductions.json"
+    q = request.args.get('q', '').strip().lower()
     try:
         with open(figures_file, 'r', encoding='utf-8') as f:
             figures_data = json.load(f)
@@ -606,11 +607,23 @@ def figures_index():
         figures = list(figures_dict.values())
         figures.sort(key=lambda x: x['source'])
         
+        # If search query provided, filter figures
+        if q:
+            filtered = []
+            for fig in figures:
+                name = (fig['source'] or '').lower()
+                wiki = (fig.get('wikipedia') or '').lower()
+                translations_text = ' '.join(
+                    [entry.get('translation', {}).get('de','') + ' ' + entry.get('translation', {}).get('en','') + ' ' + entry.get('translation', {}).get('hi','') for entry in fig.get('entries', [])]
+                ).lower()
+                if q in name or q in wiki or q in translations_text:
+                    filtered.append(fig)
+            figures = filtered
     except Exception as e:
         logger.error(f"Error loading figures data: {e}")
         figures = []
     
-    return render_template('figures.html', figures=figures)
+    return render_template('figures.html', figures=figures, q=request.args.get('q',''))
 
 @flask_app.route('/health')
 def health():

@@ -202,5 +202,107 @@
       "hi": "शिव हिंदू धर्म में सबसे महत्वपूर्ण देवताओं में से एक हैं और त्रिमूर्ति के तीसरे देवता हैं। वह विनाश, रूपांतरण और ध्यान के देवता हैं। शिव को अक्सर गहरे ध्यान में दर्शाया जाता है और आमतौर पर तीसरी आंख, सांपों और एक ड्रम (डमरू) के साथ दिखाया जाता है। वह महादेव (महान देवता) के रूप में भी जाने जाते हैं। शिव परिवर्तन की ब्रह्मांडीय शक्ति का प्रतीक है।"
     },
     "wikipedia": "https://en.wikipedia.org/wiki/Shiva"
+  },
+  {
+    "source": "Gopis",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "गोपी",
+    "translation": {
+      "de": "Die Gopis sind die Kuhhirtinnen von Vrindavan und stehen für hingebungsvolle Liebe zu Krishna.",
+      "en": "The Gopis are the cowherd girls of Vrindavan, exemplifying devotional love for Krishna.",
+      "hi": "गोपी वृंदावन की गौपिकाएँ हैं और कृष्ण के प्रति भक्ति प्रेम का प्रतीक हैं।"
+    },
+    "explanation": {
+      "de": "Die Gopis — besonders Radha — verkörpern die reinste Form der Bhakti. Ihre Liebe und Hingabe zu Krishna werden in vielen Schriften und Liedern besungen.",
+      "en": "The Gopis — especially Radha — embody the purest form of bhakti. Their love and devotion to Krishna are celebrated in many scriptures and songs.",
+      "hi": "गोपी, विशेषकर राधा, भक्ति के शुद्धतम रूप का प्रतिनिधित्व करती हैं। उनका प्रेम और समर्पण कई शास्त्रों और भजनों में उल्लिखित है।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Gopi"
+  },
+  {
+    "source": "Vyasa",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "व्यास",
+    "translation": {
+      "de": "Vyasa ist der weise Kompilator der Veden und der Autor des Mahabharata.",
+      "en": "Vyasa is the sage who compiled the Vedas and authored the Mahabharata.",
+      "hi": "व्यास वेदों के संकलक और महाभारत के रचयिता महर्षि हैं।"
+    },
+    "explanation": {
+      "de": "Vyasa (Krishna Dvaipayana) wird in den vedischen Schriften als großer Rishi und Lehrer verehrt. Er ordnete die Veden und übermittelte die Überlieferungen an folgende Generationen.",
+      "en": "Vyasa (Krishna Dvaipayana) is revered as a great rishi and teacher who organized the Vedas and transmitted the traditions to later generations.",
+      "hi": "व्यास (कृष्ण द्वैपायन) एक महान ऋषि और गुरु माने जाते हैं जिन्होंने वेदों का विन्यास किया और परंपराओं को अगली पीढ़ियों तक पहुँचाया।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Veda_Vyasa"
+  },
+  {
+    "source": "Valmiki",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "वाल्मीकि",
+    "translation": {
+      "de": "Valmiki ist der Dichter des Ramayana und ein wichtiger Weise der vedischen Tradition.",
+      "en": "Valmiki is the poet of the Ramayana and an important sage in the Vedic tradition.",
+      "hi": "वाल्मीकि रामायण के कवि और वैदिक परंपरा के एक महत्वपूर्ण ऋषि हैं।"
+    },
+    "explanation": {
+      "de": "Valmiki schrieb das Ramayana, die Geschichte von Rama, Sita und Lakshmana. Er gilt als Adi Kavi (erster Dichter) und beeinflusste die sanskritische Literatur nachhaltig.",
+      "en": "Valmiki authored the Ramayana, the story of Rama, Sita and Lakshmana. He is regarded as the Adi Kavi (first poet) and greatly influenced Sanskrit literature.",
+      "hi": "वाल्मीकि ने रामायण की रचना की, जो राम, सीता और लक्ष्मण की कथा है। उन्हें आदि कवि माना जाता है और उन्होंने संस्कृत साहित्य को प्रभावित किया।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Valmiki"
+  },
+  {
+    "source": "Putana",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "पुतना",
+    "translation": {
+      "de": "Putana war eine Dämonin, die als Kindermörderin bekannt ist; Krishna tötete sie als Säugling.",
+      "en": "Putana was a demoness known for killing infants; Krishna killed her as a baby.",
+      "hi": "पुतना एक राक्षसी थी जो शिशुओं को मारने के लिए जानी जाती है; कृष्ण ने शिशु अवस्था में उसे मारा।"
+    },
+    "explanation": {
+      "de": "Putana wurde von Kamsa gesandt, um das neugeborene Krishna zu töten. Krishna saugte ihre vergiftete Brust aus und tötete sie, woraus seine göttliche Natur ersichtlich wird.",
+      "en": "Putana was sent by Kamsa to kill the newborn Krishna. Krishna sucked her poisoned breast and killed her, revealing his divine nature.",
+      "hi": "पुतना को कंस ने नवजात कृष्ण को मारने के लिए भेजा था। कृष्ण ने उसके विषयुक्त स्तन का रस चूसकर उसे मारा और अपनी दिव्य प्रकृति प्रकट की।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Putana"
+  },
+  {
+    "source": "Hiranyakashipu",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "हिरण्यकशिपु",
+    "translation": {
+      "de": "Hiranyakashipu war ein mächtiger Dämonenkönig, bekannt aus der Prahlada-Geschichte.",
+      "en": "Hiranyakashipu was a powerful demon king known from the story of Prahlada.",
+      "hi": "हिरण्यकशिपु एक शक्तिशाली राक्षस राजा थे जो प्रह्लाद की कथा से प्रसिद्ध हैं।"
+    },
+    "explanation": {
+      "de": "Hiranyakashipu wurde durch seinen Sohn Prahlada und die Intervention von Vishnu (als Narasimha) besiegt. Die Geschichte zeigt Hingabe gegen tyrannische Macht.",
+      "en": "Hiranyakashipu was defeated through the devotion of his son Prahlada and the intervention of Vishnu (as Narasimha). The story highlights devotion versus tyrannical power.",
+      "hi": "हिरण्यकशिपु को उनके पुत्र प्रह्लाद की भक्ति और विष्णु (नरसिंह) के हस्तक्षेप के माध्यम से हराया गया था। यह कथा समर्पण बनाम अत्याचारी शक्ति को दर्शाती है।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Hiranyakashipu"
+  },
+  {
+    "source": "Prahlada",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "प्रह्लाद",
+    "translation": {
+      "de": "Prahlada war ein hingebungsvoller junger Verehrer von Vishnu, bekannt für unerschütterliche Bhakti.",
+      "en": "Prahlada was a devoted young devotee of Vishnu, known for unwavering bhakti.",
+      "hi": "प्रह्लाद विष्णु के एक समर्पित युवा उपासक थे, जो अडिग भक्ति के लिए प्रसिद्ध हैं।"
+    },
+    "explanation": {
+      "de": "Prahlada widerstand den Verfolgungen seines Vaters Hiranyakashipu und blieb seinen spirituellen Überzeugungen treu. Seine Geschichte lehrt Standhaftigkeit im Glauben.",
+      "en": "Prahlada resisted the persecutions of his father Hiranyakashipu and remained true to his spiritual convictions. His story teaches steadfastness in faith.",
+      "hi": "प्रह्लाद ने अपने पिता हिरण्यकशिपु के अत्याचारों का विरोध किया और अपनी आध्यात्मिक मान्यताओं के प्रति सच्चे रहे। उनकी कथा आस्था में दृढ़ता सिखाती है।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Prahlada"
   }
 ]

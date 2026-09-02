@@ -141,6 +141,12 @@
             <p>Lerne die wichtigsten Götter und Heiligen kennen</p>
         </div>
 
+        <!-- Search form -->
+        <form method="get" action="/figures" style="margin-bottom:20px; text-align:center;">
+            <input type="text" name="q" placeholder="Suche Figuren (z. B. Krishna, Radha, Gopi)" value="{{ q|default('') }}" style="width:60%; padding:10px; border-radius:8px; border:1px solid #ddd; font-size:1em;">
+            <button type="submit" style="padding:10px 14px; margin-left:8px; border-radius:8px; background:#667eea; color:white; border:none; font-weight:600;">Suchen</button>
+        </form>
+
         {% if figures %}
         <div class="figures-grid">
             {% for figure in figures %}
@@ -169,7 +175,6 @@
             <p>Keine Figuren gefunden.</p>
         </div>
         {% endif %}
-
         <a href="/" class="back-link">← Zurück zum Bot</a>
     </div>
 </body>

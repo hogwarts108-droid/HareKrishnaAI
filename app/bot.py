@@ -530,44 +530,10 @@ def krishna_story():
 def health():
     return {'status': 'ok'}
 
-# Use webhooks for Railway if PORT env var is set AND RAILWAY_PUBLIC_DOMAIN is available
-# Otherwise fall back to polling
-PORT = int(os.environ.get("PORT", 0))
-RAILWAY_PUBLIC_DOMAIN = os.environ.get('RAILWAY_PUBLIC_DOMAIN', '')
+# Use polling mode for reliability (handles all updates in order)
+# This is more stable than webhooks and doesn't require domain configuration
+logger.info("Starting bot in polling mode (24/7)")
+logger.info("Bot will receive updates continuously from Telegram servers")
 
-if PORT > 0 and RAILWAY_PUBLIC_DOMAIN:
-    # Webhook mode for Railway - integrate Flask with Telegram
-    logger.info(f"Starting bot in webhook mode on port {PORT}")
-    
-    @flask_app.post(f"/{TOKEN}")
-    async def telegram_webhook():
-        """Handle Telegram webhook."""
-        from telegram import Update
-        update = Update.de_json(await flask_app.request.json, app.bot)
-        await app.process_update(update)
-        return 'ok'
-    
-    # Register webhook URL with Telegram before starting Flask
-    async def setup_webhook():
-        """Register the webhook URL with Telegram."""
-        try:
-            webhook_url = f"https://{RAILWAY_PUBLIC_DOMAIN}/{TOKEN}"
-            logger.info(f"Setting webhook URL: {webhook_url}")
-            await app.bot.set_webhook(url=webhook_url, allowed_updates=["message", "callback_query"])
-            logger.info("Webhook registered successfully")
-        except Exception as e:
-            logger.error(f"Failed to register webhook: {e}")
-    
-    # Run webhook setup before starting Flask
-    import asyncio
-    try:
-        asyncio.run(setup_webhook())
-    except Exception as e:
-        logger.error(f"Error during webhook setup: {e}")
-    
-    # Start Flask app (which includes both web routes and telegram webhook)
-    flask_app.run(host='0.0.0.0', port=PORT, debug=False, use_reloader=False)
-else:
-    # Polling mode - works anywhere (local or Railway without webhook domain)
-    logger.info("Starting bot in polling mode (24/7)")
+if __name__ == '__main__':
     app.run_polling()

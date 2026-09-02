@@ -530,11 +530,12 @@ def krishna_story():
 def health():
     return {'status': 'ok'}
 
-# Use webhooks for Railway if PORT env var is set, otherwise use polling
+# Use webhooks for Railway if PORT env var is set AND RAILWAY_PUBLIC_DOMAIN is available
+# Otherwise fall back to polling
 PORT = int(os.environ.get("PORT", 0))
 RAILWAY_PUBLIC_DOMAIN = os.environ.get('RAILWAY_PUBLIC_DOMAIN', '')
 
-if PORT > 0:
+if PORT > 0 and RAILWAY_PUBLIC_DOMAIN:
     # Webhook mode for Railway - integrate Flask with Telegram
     logger.info(f"Starting bot in webhook mode on port {PORT}")
     
@@ -550,12 +551,7 @@ if PORT > 0:
     async def setup_webhook():
         """Register the webhook URL with Telegram."""
         try:
-            if RAILWAY_PUBLIC_DOMAIN:
-                webhook_url = f"https://{RAILWAY_PUBLIC_DOMAIN}/{TOKEN}"
-            else:
-                # Fallback: use localhost (won't work on Railway, but for local testing)
-                webhook_url = f"http://localhost:{PORT}/{TOKEN}"
-            
+            webhook_url = f"https://{RAILWAY_PUBLIC_DOMAIN}/{TOKEN}"
             logger.info(f"Setting webhook URL: {webhook_url}")
             await app.bot.set_webhook(url=webhook_url, allowed_updates=["message", "callback_query"])
             logger.info("Webhook registered successfully")
@@ -572,6 +568,6 @@ if PORT > 0:
     # Start Flask app (which includes both web routes and telegram webhook)
     flask_app.run(host='0.0.0.0', port=PORT, debug=False, use_reloader=False)
 else:
-    # Polling mode for local development
-    logger.info("Starting bot in polling mode")
+    # Polling mode - works anywhere (local or Railway without webhook domain)
+    logger.info("Starting bot in polling mode (24/7)")
     app.run_polling()

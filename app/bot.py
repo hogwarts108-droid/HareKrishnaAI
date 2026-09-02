@@ -546,6 +546,29 @@ if PORT > 0:
         await app.process_update(update)
         return 'ok'
     
+    # Register webhook URL with Telegram before starting Flask
+    async def setup_webhook():
+        """Register the webhook URL with Telegram."""
+        try:
+            if RAILWAY_PUBLIC_DOMAIN:
+                webhook_url = f"https://{RAILWAY_PUBLIC_DOMAIN}/{TOKEN}"
+            else:
+                # Fallback: use localhost (won't work on Railway, but for local testing)
+                webhook_url = f"http://localhost:{PORT}/{TOKEN}"
+            
+            logger.info(f"Setting webhook URL: {webhook_url}")
+            await app.bot.set_webhook(url=webhook_url, allowed_updates=["message", "callback_query"])
+            logger.info("Webhook registered successfully")
+        except Exception as e:
+            logger.error(f"Failed to register webhook: {e}")
+    
+    # Run webhook setup before starting Flask
+    import asyncio
+    try:
+        asyncio.run(setup_webhook())
+    except Exception as e:
+        logger.error(f"Error during webhook setup: {e}")
+    
     # Start Flask app (which includes both web routes and telegram webhook)
     flask_app.run(host='0.0.0.0', port=PORT, debug=False, use_reloader=False)
 else:

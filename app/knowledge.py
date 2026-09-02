@@ -303,45 +303,55 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
 
     # PRIORITY 3: Exact verse reference (2.47, 1.1, etc.) - prefer entries where ref matches and source hint matches if present
     if ref:
-        # exact matches first
+        exact_matches = []
+        # collect all entries where chapter.verse == ref
         for entry in entries:
             chapter = str(entry.get("chapter") or "").strip()
             verse = str(entry.get("verse") or "").strip()
             entry_ref = f"{chapter}.{verse}" if chapter and verse and verse.lower() != "full" else ""
             if entry_ref == ref:
-                # if user provided a source hint, prefer matching source
-                if src_hint:
-                    if src_hint in _normalize_source(entry.get('source','')):
+                exact_matches.append(entry)
+        
+        if exact_matches:
+            # if user provided a source hint, filter to matching source
+            if src_hint:
+                for match in exact_matches:
+                    if src_hint in _normalize_source(match.get('source','')):
                         return {
-                            "source": entry.get("source", "Unbekannt"),
-                            "chapter": entry.get("chapter", ""),
-                            "verse": entry.get("verse", ""),
-                            "sanskrit": entry.get("sanskrit", ""),
-                            "translation": entry.get("translation", {}),
-                            "explanation": entry.get("explanation", {}),
+                            "source": match.get("source", "Unbekannt"),
+                            "chapter": match.get("chapter", ""),
+                            "verse": match.get("verse", ""),
+                            "sanskrit": match.get("sanskrit", ""),
+                            "translation": match.get("translation", {}),
+                            "explanation": match.get("explanation", {}),
                         }
-                else:
-                    return {
-                        "source": entry.get("source", "Unbekannt"),
-                        "chapter": entry.get("chapter", ""),
-                        "verse": entry.get("verse", ""),
-                        "sanskrit": entry.get("sanskrit", ""),
-                        "translation": entry.get("translation", {}),
-                        "explanation": entry.get("explanation", {}),
-                    }
-        # fallback: return first entry with matching ref
-        for entry in entries:
-            chapter = str(entry.get("chapter") or "").strip()
-            verse = str(entry.get("verse") or "").strip()
-            entry_ref = f"{chapter}.{verse}" if chapter and verse and verse.lower() != "full" else ""
-            if entry_ref == ref:
+                # fallback: return first match if no source hint match found
+                match = exact_matches[0]
                 return {
-                    "source": entry.get("source", "Unbekannt"),
-                    "chapter": entry.get("chapter", ""),
-                    "verse": entry.get("verse", ""),
-                    "sanskrit": entry.get("sanskrit", ""),
-                    "translation": entry.get("translation", {}),
-                    "explanation": entry.get("explanation", {}),
+                    "source": match.get("source", "Unbekannt"),
+                    "chapter": match.get("chapter", ""),
+                    "verse": match.get("verse", ""),
+                    "sanskrit": match.get("sanskrit", ""),
+                    "translation": match.get("translation", {}),
+                    "explanation": match.get("explanation", {}),
+                }
+            else:
+                # no source hint: prefer Bhagavad Gita, then others
+                bhagavad_match = None
+                first_match = exact_matches[0]
+                for match in exact_matches:
+                    if 'bhagavad' in _normalize_source(match.get('source','')):
+                        bhagavad_match = match
+                        break
+                
+                chosen = bhagavad_match if bhagavad_match else first_match
+                return {
+                    "source": chosen.get("source", "Unbekannt"),
+                    "chapter": chosen.get("chapter", ""),
+                    "verse": chosen.get("verse", ""),
+                    "sanskrit": chosen.get("sanskrit", ""),
+                    "translation": chosen.get("translation", {}),
+                    "explanation": chosen.get("explanation", {}),
                 }
 
     return None

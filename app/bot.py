@@ -635,4 +635,28 @@ logger.info("Starting bot in polling mode (24/7)")
 logger.info("Bot will receive updates continuously from Telegram servers")
 
 if __name__ == '__main__':
-    app.run_polling()
+    # Ensure webhook removed and use resilient polling with retries on Conflict
+    import telegram as _telegram
+    import time as _time
+    try:
+        app.bot.delete_webhook(drop_pending_updates=True)
+    except Exception:
+        pass
+
+    retries = 0
+    while True:
+        try:
+            app.run_polling()
+            break
+        except Exception as e:
+            logger.error(f"Polling failed: {e}")
+            # Handle Telegram Conflict (another getUpdates running)
+            if isinstance(e, _telegram.error.Conflict) or 'Conflict' in str(e):
+                retries += 1
+                wait = min(60, 5 * retries)
+                logger.warning(f"Conflict detected when polling. Retrying in {wait}s (attempt {retries})")
+                _time.sleep(wait)
+                continue
+            else:
+                # For other errors, surface and stop
+                raise

@@ -200,13 +200,17 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
         return None
 
     q_lower = q.lower()
+    # Preprocess: separate letters and digits to catch 'BG1.1' -> 'bg 1.1'
+    q_proc = re.sub(r"([a-zA-Z])(?=\d)", r"\1 ", q_lower)
+    q_proc = re.sub(r"(?<=\d)([a-zA-Z])", r" \1", q_proc)
+
     entries = _load_documents()
     if not entries:
         return None
 
     # PRIORITY 1: Special handling for concept questions (Who is X?)
-    if any(x in q_lower for x in ["wer ist", "who is", "कौन है", "क्या है", "what is"]):
-        if "krishna" in q_lower:
+    if any(x in q_proc for x in ["wer ist", "who is", "कौन है", "क्या है", "what is"]):
+        if "krishna" in q_proc:
             for entry in entries:
                 src_lower = entry.get("source", "").lower()
                 chapter_lower = entry.get("chapter", "").lower()
@@ -232,12 +236,44 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
                     "explanation": entry.get("explanation", {}),
                 }
 
-    # PRIORITY 2: Direct reference matching (Bhagavad Gita 2.47)
-    patterns = []
-    for token in ["bg", "gita", "bhagavad gita", "yoga sutra", "yogasutra", "isopanishad", "sri isopanishad", "srimad bhagavatam", "bhagavatam", "krishna", "vedas", "upanishads", "rig veda", "yajur veda", "sama veda", "atharva veda", "isha upanishad", "kena upanishad", "katha upanishad", "mundaka upanishad"]:
-        if token in q_lower:
-            patterns.append(token)
+    # Try to parse explicit reference like 'BG 1.1' or 'Bhagavad Gita 2.47' or 'BG1.1'
+    alias_map = {
+        'bg': 'bhagavad gita', 'gita': 'bhagavad gita', 'bhagavad': 'bhagavad gita',
+        'sb': 'srimad bhagavatam', 'bhagavatam': 'srimad bhagavatam', 'srimad bhagavatam': 'srimad bhagavatam',
+        'yoga': 'yoga sutra', 'yoga sutra': 'yoga sutra', 'isopanishad': 'sri isopanishad',
+    }
 
+    # find all tokens and possible reference numbers
+    m_ref = re.search(r"(\b(?:\d+(?:\.\d+)+)\b)", q_proc)
+    ref = m_ref.group(1) if m_ref else None
+
+    # find source token
+    src_hint = None
+    for a in alias_map.keys():
+        if re.search(rf"\b{re.escape(a)}\b", q_proc):
+            src_hint = alias_map[a]
+            break
+
+    # if explicit source and ref present, try exact match
+    if src_hint and ref:
+        for entry in entries:
+            src_norm = _normalize_source(entry.get('source',''))
+            if src_hint != src_norm and src_hint not in src_norm:
+                continue
+            chapter = str(entry.get('chapter') or "").strip()
+            verse = str(entry.get('verse') or "").strip()
+            entry_ref = f"{chapter}.{verse}" if chapter and verse and verse.lower() != 'full' else ''
+            if entry_ref == ref:
+                return {
+                    'source': entry.get('source','Unbekannt'),
+                    'chapter': entry.get('chapter',''),
+                    'verse': entry.get('verse',''),
+                    'sanskrit': entry.get('sanskrit',''),
+                    'translation': entry.get('translation',{}),
+                    'explanation': entry.get('explanation',{}),
+                }
+
+    # PRIORITY 2: Direct reference matching (Bhagavad Gita 2.47) - improved
     for entry in entries:
         src = _normalize_source(entry.get("source", ""))
         chapter = str(entry.get("chapter") or "")
@@ -245,13 +281,17 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
         if not src:
             continue
 
-        candidates = [
-            f"{src} {chapter}.{verse}" if chapter and verse and verse.lower() != "full" else "",
-            f"{src} {chapter}" if chapter else "",
-            f"{src} {verse}" if verse and verse.lower() != "full" else "",
-            src,
-        ]
-        if any(c and c in q_lower for c in candidates):
+        # build variants to match against processed query
+        variants = []
+        if chapter and verse and verse.lower() != 'full':
+            variants.append(f"{src} {chapter}.{verse}")
+        if chapter:
+            variants.append(f"{src} {chapter}")
+        if verse and verse.lower() != 'full':
+            variants.append(f"{src} {verse}")
+        variants.append(src)
+
+        if any(v and v in q_proc for v in variants):
             return {
                 "source": entry.get("source", "Unbekannt"),
                 "chapter": entry.get("chapter", ""),
@@ -261,20 +301,48 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
                 "explanation": entry.get("explanation", {}),
             }
 
-    # PRIORITY 3: Exact verse reference (2.47, 1.1, etc.)
-    for entry in entries:
-        chapter = str(entry.get("chapter") or "")
-        verse = str(entry.get("verse") or "")
-        entry_ref = f"{chapter}.{verse}" if chapter and verse and verse.lower() != "full" else ""
-        if entry_ref and entry_ref in q_lower:
-            return {
-                "source": entry.get("source", "Unbekannt"),
-                "chapter": entry.get("chapter", ""),
-                "verse": entry.get("verse", ""),
-                "sanskrit": entry.get("sanskrit", ""),
-                "translation": entry.get("translation", {}),
-                "explanation": entry.get("explanation", {}),
-            }
+    # PRIORITY 3: Exact verse reference (2.47, 1.1, etc.) - prefer entries where ref matches and source hint matches if present
+    if ref:
+        # exact matches first
+        for entry in entries:
+            chapter = str(entry.get("chapter") or "").strip()
+            verse = str(entry.get("verse") or "").strip()
+            entry_ref = f"{chapter}.{verse}" if chapter and verse and verse.lower() != "full" else ""
+            if entry_ref == ref:
+                # if user provided a source hint, prefer matching source
+                if src_hint:
+                    if src_hint in _normalize_source(entry.get('source','')):
+                        return {
+                            "source": entry.get("source", "Unbekannt"),
+                            "chapter": entry.get("chapter", ""),
+                            "verse": entry.get("verse", ""),
+                            "sanskrit": entry.get("sanskrit", ""),
+                            "translation": entry.get("translation", {}),
+                            "explanation": entry.get("explanation", {}),
+                        }
+                else:
+                    return {
+                        "source": entry.get("source", "Unbekannt"),
+                        "chapter": entry.get("chapter", ""),
+                        "verse": entry.get("verse", ""),
+                        "sanskrit": entry.get("sanskrit", ""),
+                        "translation": entry.get("translation", {}),
+                        "explanation": entry.get("explanation", {}),
+                    }
+        # fallback: return first entry with matching ref
+        for entry in entries:
+            chapter = str(entry.get("chapter") or "").strip()
+            verse = str(entry.get("verse") or "").strip()
+            entry_ref = f"{chapter}.{verse}" if chapter and verse and verse.lower() != "full" else ""
+            if entry_ref == ref:
+                return {
+                    "source": entry.get("source", "Unbekannt"),
+                    "chapter": entry.get("chapter", ""),
+                    "verse": entry.get("verse", ""),
+                    "sanskrit": entry.get("sanskrit", ""),
+                    "translation": entry.get("translation", {}),
+                    "explanation": entry.get("explanation", {}),
+                }
 
     return None
 

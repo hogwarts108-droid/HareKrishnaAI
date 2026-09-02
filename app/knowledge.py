@@ -86,23 +86,20 @@ def _normalize_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
     chapter = str(entry.get("chapter") or "")
     verse = str(entry.get("verse") or "")
 
-    # If verse already contains dots (e.g., "1.3" or "1.2.6"), and chapter is just a number,
-    # then verse is the full reference - don't prepend chapter
-    if chapter and verse and re.match(r"^\d+\.", verse):
-        # verse is already full reference like "1.3" or "1.2.6"
-        # chapter is redundant, just use verse
+    # If verse already contains dots (e.g., "1.3" or "1.2.6"), it's a full reference
+    # Don't split it again - just clear redundant chapter
+    if verse and re.match(r"^\d+\.", verse):
+        # verse is already full reference, ignore chapter
         chapter = ""
-    
-    # If no chapter but verse has dots, split it: "1.3" -> chapter="1", verse="3"
-    if not chapter and isinstance(verse, str) and re.search(r"^\d+(?:\.\d+)+$", verse.strip()):
+    # Only split verse if it doesn't already have chapter embedded
+    elif not chapter and isinstance(verse, str) and re.search(r"^\d+(?:\.\d+)+$", verse.strip()):
         parts = verse.strip().split(".")
         if len(parts) >= 2:
             chapter = parts[0]
             verse = ".".join(parts[1:]) if len(parts) > 2 else parts[1]
             entry["chapter"] = chapter
             entry["verse"] = verse
-    
-    if chapter and not verse:
+    elif chapter and not verse:
         entry["verse"] = chapter
         entry["chapter"] = chapter
 

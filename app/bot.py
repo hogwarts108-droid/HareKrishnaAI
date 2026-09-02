@@ -18,6 +18,15 @@ from pathlib import Path
 if sys.platform == 'win32':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
+# Language detection
+try:
+    from langdetect import detect, detect_langs
+    HAS_LANGDETECT = True
+except ImportError:
+    HAS_LANGDETECT = False
+    logger_temp = logging.getLogger(__name__)
+    logger_temp.warning("langdetect not installed. Install with: pip install langdetect")
+
 from app.knowledge import find_answer, generate_answer_text, reload_index
 from app.database import save_favorite, get_favorites, remove_favorite, set_user_language, get_user_language
 
@@ -64,6 +73,23 @@ def is_rate_limited(user_id: int) -> bool:
     
     USER_REQUESTS[user_id].append(now)
     return False
+
+
+def detect_user_language(text: str) -> str:
+    """Auto-detect language from user input."""
+    if not HAS_LANGDETECT or not text or len(text.strip()) < 3:
+        return None
+    
+    try:
+        detected = detect(text)
+        # Map detected lang codes to our supported langs
+        lang_map = {
+            'de': 'de', 'en': 'en', 'hi': 'hi',
+            'en-US': 'en', 'en-GB': 'en', 'de-DE': 'de'
+        }
+        return lang_map.get(detected, None)
+    except:
+        return None
 
 
 def get_user_lang(user_id: int) -> str:
@@ -283,10 +309,17 @@ async def scripture_callback(update: Update, context: ContextTypes.DEFAULT_TYPE)
 async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle text messages."""
     user_id = update.effective_user.id
-    lang = get_user_lang(user_id)
     question = update.message.text
     
-    logger.info(f"User {user_id} asked: {question}")
+    # Auto-detect language from user input
+    detected_lang = detect_user_language(question)
+    if detected_lang:
+        lang = detected_lang
+        USER_LANGUAGES[user_id] = lang  # Remember for next time
+    else:
+        lang = get_user_lang(user_id)
+    
+    logger.info(f"User {user_id} asked ({lang}): {question}")
     
     # Rate limiting
     if is_rate_limited(user_id):
@@ -303,36 +336,47 @@ async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
         result = cached_find_answer(question)
         if result:
             text = generate_answer_text(question, result, lang=lang)
+            
+            # Add inline buttons for figure entries
+            reply_markup = None
+            source = result.get("source", "").lower().replace(" ", "-")
+            wikipedia_url = f"https://en.wikipedia.org/wiki/{result.get('source')}"
+            
+            keyboard = [
+                [InlineKeyboardButton("📚 Wikipedia", url=wikipedia_url),
+                 InlineKeyboardButton("❤️ Save", callback_data=f"save_{source}")]
+            ]
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            
             if len(text) > 4000:
                 chunks = [text[i:i+4000] for i in range(0, len(text), 4000)]
-                for chunk in chunks:
-                    await update.message.reply_text(chunk)
+                for i, chunk in enumerate(chunks):
+                    # Only add buttons to last chunk
+                    markup = reply_markup if i == len(chunks) - 1 else None
+                    await update.message.reply_text(chunk, reply_markup=markup)
             else:
-                await update.message.reply_text(text)
+                await update.message.reply_text(text, reply_markup=reply_markup)
         else:
             if lang == 'de':
                 text = (
                     "Ich habe dazu keinen passenden Vers.\n\n"
                     "Versuche:\n"
                     "• Bhagavad Gita 2.47\n"
-                    "• Yoga Sutra 1.2\n"
-                    "• /list"
+                    "• /list - Alle Figuren ansehen"
                 )
             elif lang == 'en':
                 text = (
                     "I don't have a matching verse.\n\n"
                     "Try:\n"
                     "• Bhagavad Gita 2.47\n"
-                    "• Yoga Sutra 1.2\n"
-                    "• /list"
+                    "• /list - View all figures"
                 )
             else:  # Hindi
                 text = (
                     "मेरे पास इसके लिए कोई मिलान वाली श्लोक नहीं है।\n\n"
                     "कोशिश करें:\n"
                     "• भगवद गीता 2.47\n"
-                    "• योग सूत्र 1.2\n"
-                    "• /list"
+                    "• /list - सभी आंकड़े देखें"
                 )
             await update.message.reply_text(text)
     except Exception as e:
@@ -525,6 +569,36 @@ def krishna_story():
         krishna_entries = []
     
     return render_template('krishna.html', entries=krishna_entries)
+
+
+@flask_app.route('/figures')
+def figures_index():
+    """Serve figure index page with Wikipedia links."""
+    figures_file = BASE_DIR / "data" / "scriptures" / "figures_introductions.json"
+    try:
+        with open(figures_file, 'r', encoding='utf-8') as f:
+            figures_data = json.load(f)
+        
+        # Group by source (figure name)
+        figures_dict = {}
+        for entry in figures_data:
+            source = entry.get('source')
+            if source not in figures_dict:
+                figures_dict[source] = {
+                    'source': source,
+                    'wikipedia': entry.get('wikipedia', ''),
+                    'entries': []
+                }
+            figures_dict[source]['entries'].append(entry)
+        
+        figures = list(figures_dict.values())
+        figures.sort(key=lambda x: x['source'])
+        
+    except Exception as e:
+        logger.error(f"Error loading figures data: {e}")
+        figures = []
+    
+    return render_template('figures.html', figures=figures)
 
 @flask_app.route('/health')
 def health():

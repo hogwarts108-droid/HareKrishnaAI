@@ -454,9 +454,12 @@ def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de')
 
 
 def reload_index() -> int:
-    """Public function to rebuild the in-memory index and return number of entries."""
+    """Quick reload - only refresh entries without rebuilding vectors (much faster)."""
+    global _ENTRIES
     try:
-        _build_index()
+        _ENTRIES = _load_documents()
+        # Don't rebuild vectors/embeddings - that's expensive
+        # Only update on full _build_index() at startup
         return len(_ENTRIES)
     except Exception:
         return 0

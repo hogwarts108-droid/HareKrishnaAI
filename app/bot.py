@@ -391,38 +391,50 @@ async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def cmd_reload(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Reload knowledge base index."""
+    """Reload knowledge base index (fast - only reloads entries)."""
     user_id = update.effective_user.id
     lang = get_user_lang(user_id)
     logger.info(f"User {user_id} triggered reload")
     
     try:
         if lang == 'de':
-            await update.message.reply_text("Aktualisiere Index...")
+            msg_loading = "⏳ Lade Knowledge Base neu..."
         elif lang == 'en':
-            await update.message.reply_text("Updating index...")
+            msg_loading = "⏳ Reloading knowledge base..."
         else:  # Hindi
-            await update.message.reply_text("इंडेक्स अपडेट कर रहे हैं...")
+            msg_loading = "⏳ नॉलेज बेस को फिर से लोड कर रहे हैं..."
         
+        loading_msg = await update.message.reply_text(msg_loading)
+        
+        import time
+        start = time.time()
         count = reload_index()
         cached_find_answer.cache_clear()  # Clear cache
+        elapsed = time.time() - start
         
         if lang == 'de':
-            msg = f"Index aktualisiert: {count} Eintraege"
+            msg = f"✅ Index aktualisiert: {count} Einträge ({elapsed:.1f}s)"
         elif lang == 'en':
-            msg = f"Index updated: {count} entries"
+            msg = f"✅ Index updated: {count} entries ({elapsed:.1f}s)"
         else:  # Hindi
-            msg = f"इंडेक्स अपडेट: {count} प्रविष्टियां"
+            msg = f"✅ इंडेक्स अपडेट: {count} प्रविष्टियां ({elapsed:.1f}s)"
         
-        await update.message.reply_text(msg)
+        # Edit the loading message with final result
+        try:
+            await loading_msg.edit_text(msg)
+        except:
+            # If edit fails, just send new message
+            await update.message.reply_text(msg)
+            
     except Exception as e:
         logger.error(f"Error during reload: {e}")
         if lang == 'de':
-            error_msg = "Fehler beim Aktualisieren des Index."
+            error_msg = "❌ Fehler beim Aktualisieren des Index."
         elif lang == 'en':
-            error_msg = "Error updating index."
+            error_msg = "❌ Error updating index."
         else:  # Hindi
-            error_msg = "इंडेक्स अपडेट करने में त्रुटि।"
+            error_msg = "❌ इंडेक्स अपडेट करने में त्रुटि।"
+        
         await update.message.reply_text(error_msg)
 
 

@@ -1,7 +1,7 @@
 import json
 import re
 from pathlib import Path
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Tuple
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,6 +11,17 @@ KNOWLEDGE_DIR = Path(BASE_DIR / "data" / "scriptures")
 
 # Import database
 from app.database import get_all_knowledge, insert_knowledge as db_insert_knowledge
+
+# Fuzzy matching library
+try:
+    from difflib import SequenceMatcher
+except Exception:
+    SequenceMatcher = None
+
+try:
+    from fuzzywuzzy import fuzz
+except Exception:
+    fuzz = None
 
 try:
     from sklearn.feature_extraction.text import TfidfVectorizer
@@ -363,7 +374,43 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
     return None
 
 
+def _normalize_query(question: str) -> str:
+    """Normalize query to handle common misspellings and alternatives."""
+    q = question.lower()
+    
+    # Common alternative spellings
+    replacements = {
+        "krisha": "krishna",
+        "krisna": "krishna",
+        "krishna gita": "bhagavad gita",
+        "arjun": "arjuna",
+        "arjun": "arjuna",
+        "radha": "radha",
+        "raadha": "radha",
+        "yogaa sutra": "yoga sutra",
+        "bagavad": "bhagavad",
+        "bhagwad": "bhagavad",
+        "gita": "bhagavad gita",
+        "upanishad": "isopanishad",
+        "isopanisad": "isopanishad",
+        "bhagavatam": "srimad bhagavatam",
+        "bhagavat": "srimad bhagavatam",
+        "charitra": "chaitanya charitamrita",
+        "chaitanya": "chaitanya charitamrita",
+    }
+    
+    # Apply replacements
+    for wrong, correct in replacements.items():
+        if wrong in q:
+            q = q.replace(wrong, correct)
+    
+    return q
+
+
 def find_answer(question: str) -> Optional[Dict[str, Any]]:
+    # Normalize query for better matching
+    normalized_q = _normalize_query(question)
+    
     question = (question or "").strip()
     if not question:
         return None
@@ -371,6 +418,12 @@ def find_answer(question: str) -> Optional[Dict[str, Any]]:
     direct = _query_exact_reference_matches(question)
     if direct:
         return direct
+    
+    # Try again with normalized version if it's different
+    if normalized_q != question.lower():
+        direct = _query_exact_reference_matches(normalized_q)
+        if direct:
+            return direct
 
     # rebuild index if files changed
     global _LAST_INDEX_MTIME
@@ -451,6 +504,60 @@ def find_answer(question: str) -> Optional[Dict[str, Any]]:
         }
 
     return None
+
+
+def suggest_corrections(question: str) -> List[Tuple[str, float]]:
+    """Suggest corrections for misspelled or unclear queries using fuzzy matching."""
+    q_lower = question.lower().strip()
+    entries = _load_documents()
+    if not entries:
+        return []
+    
+    suggestions = []
+    
+    # Collect all searchable terms
+    searchable_terms = set()
+    for entry in entries:
+        # Add source names
+        if entry.get("source"):
+            searchable_terms.add(entry.get("source", "").lower())
+        # Add chapter names
+        if entry.get("chapter") and entry.get("chapter").lower() not in ["introduction", "philosophy", "full"]:
+            searchable_terms.add(entry.get("chapter", "").lower())
+    
+    # Add common scripture abbreviations
+    common_terms = {
+        "bhagavad gita": 0.95,
+        "yoga sutra": 0.95,
+        "srimad bhagavatam": 0.95,
+        "sri isopanishad": 0.95,
+        "chaitanya charitamrita": 0.95,
+        "krishna": 0.95,
+        "arjuna": 0.90,
+        "radha": 0.90,
+        "shiva": 0.90,
+        "brahma": 0.90,
+        "vishnu": 0.90,
+    }
+    
+    searchable_terms.update(common_terms.keys())
+    
+    # Use fuzzy matching if available
+    if fuzz:
+        for term in searchable_terms:
+            score = fuzz.token_set_ratio(q_lower, term) / 100.0
+            if score > 0.6:  # Only suggest if >60% match
+                suggestions.append((term, score))
+    else:
+        # Fallback: use simple SequenceMatcher
+        for term in searchable_terms:
+            ratio = SequenceMatcher(None, q_lower, term).ratio()
+            if ratio > 0.6:
+                suggestions.append((term, ratio))
+    
+    # Sort by score descending
+    suggestions.sort(key=lambda x: x[1], reverse=True)
+    return suggestions[:3]  # Return top 3
 
 
 def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de') -> str:

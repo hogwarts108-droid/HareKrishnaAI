@@ -27,7 +27,7 @@ except ImportError:
     logger_temp = logging.getLogger(__name__)
     logger_temp.warning("langdetect not installed. Install with: pip install langdetect")
 
-from app.knowledge import find_answer, generate_answer_text, reload_index
+from app.knowledge import find_answer, generate_answer_text, reload_index, suggest_corrections
 from app.database import save_favorite, get_favorites, remove_favorite, set_user_language, get_user_language
 
 # Setup logging
@@ -440,6 +440,20 @@ async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     "• `/figures` - सभी आंकड़े देखें\n"
                     "• `/help` - अधिक आदेश"
                 )
+            
+            # Try to suggest corrections
+            suggestions = suggest_corrections(question)
+            if suggestions:
+                if lang == 'de':
+                    text += "\n\n*💡 Meintest du:*\n"
+                elif lang == 'en':
+                    text += "\n\n*💡 Did you mean:*\n"
+                else:  # Hindi
+                    text += "\n\n*💡 क्या आप मतलब हैं:*\n"
+                
+                for i, (suggestion, score) in enumerate(suggestions, 1):
+                    text += f"{i}. `{suggestion}`\n"
+            
             await update.message.reply_text(text)
     except Exception as e:
         logger.error(f"Error processing message from user {user_id}: {e}")

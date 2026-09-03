@@ -392,13 +392,41 @@ async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
             
             # Add inline buttons for figure entries
             reply_markup = None
-            source = result.get("source", "").lower().replace(" ", "-")
-            wikipedia_url = f"https://en.wikipedia.org/wiki/{result.get('source')}"
+            source = result.get("source", "")
+            source_lower = source.lower().replace(" ", "-")
+            wikipedia_url = f"https://en.wikipedia.org/wiki/{source}"
             
-            keyboard = [
-                [InlineKeyboardButton("📚 Wikipedia", url=wikipedia_url),
-                 InlineKeyboardButton("❤️ Save", callback_data=f"save_{source}")]
-            ]
+            # Build keyboard with multiple button rows
+            keyboard = []
+            
+            # Row 1: Wikipedia and Save buttons
+            keyboard.append([
+                InlineKeyboardButton("📚 Wikipedia", url=wikipedia_url),
+                InlineKeyboardButton("❤️ Save", callback_data=f"save_{source_lower}")
+            ])
+            
+            # Row 2: Media buttons (if available)
+            from app.knowledge import _get_media_for_source
+            media = _get_media_for_source(source)
+            media_buttons = []
+            
+            if media.get('youtube_videos'):
+                media_buttons.append(
+                    InlineKeyboardButton("🎬 Videos", url=media['youtube_videos'][0].get('url', '#'))
+                )
+            if media.get('audio_resources'):
+                media_buttons.append(
+                    InlineKeyboardButton("🎵 Audio", url=media['audio_resources'][0].get('url', '#'))
+                )
+            
+            if media_buttons:
+                keyboard.append(media_buttons)
+            
+            # Row 3: Share button
+            keyboard.append([
+                InlineKeyboardButton("📤 Share", callback_data=f"share_{source_lower}")
+            ])
+            
             reply_markup = InlineKeyboardMarkup(keyboard)
             
             if len(text) > 4000:
@@ -650,6 +678,25 @@ async def show_favorites(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logger.info(f"User {user_id} viewed favorites")
 
 
+async def share_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle share button callback."""
+    query = update.callback_query
+    user_id = query.from_user.id
+    lang = get_user_lang(user_id)
+    
+    # Extract source from callback data (share_source-name)
+    source = query.data.replace("share_", "").replace("-", " ").title()
+    
+    if lang == 'de':
+        share_msg = f"🙏 Schau dir das an!\n\n*{source}*\n\nBitte stelle deine Frage:"
+    elif lang == 'en':
+        share_msg = f"🙏 Check this out!\n\n*{source}*\n\nPlease ask your question:"
+    else:  # Hindi
+        share_msg = f"🙏 इसे देखो!\n\n*{source}*\n\nकृपया अपना प्रश्न पूछें:"
+    
+    await query.answer("📤 Link kopiert!", show_alert=False)
+    await query.message.reply_text(share_msg, parse_mode="Markdown")
+    logger.info(f"User {user_id} shared: {source}")
 if not TOKEN:
     raise RuntimeError("TELEGRAM_TOKEN fehlt in .env")
 
@@ -664,6 +711,7 @@ app.add_handler(CommandHandler("save", save_fav))
 app.add_handler(CommandHandler("favorites", show_favorites))
 app.add_handler(CallbackQueryHandler(language_callback, pattern="^lang_"))
 app.add_handler(CallbackQueryHandler(scripture_callback, pattern="^scripture_"))
+app.add_handler(CallbackQueryHandler(share_callback, pattern="^share_"))
 app.add_handler(
     MessageHandler(filters.TEXT & ~filters.COMMAND, answer)
 )

@@ -560,6 +560,38 @@ def suggest_corrections(question: str) -> List[Tuple[str, float]]:
     return suggestions[:3]  # Return top 3
 
 
+def _load_media_resources() -> Dict[str, Any]:
+    """Load media resources (images, videos, audio) for figures and scriptures."""
+    media_file = KNOWLEDGE_DIR / "media_resources.json"
+    if not media_file.exists():
+        return {}
+    try:
+        with open(media_file, encoding='utf-8') as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _get_media_for_source(source: str) -> Dict[str, Any]:
+    """Get media resources for a specific figure or scripture."""
+    media_db = _load_media_resources()
+    source_lower = source.lower()
+    
+    # Check figures
+    figures = media_db.get('figures', {})
+    for fig_name, fig_media in figures.items():
+        if fig_name.lower() == source_lower:
+            return fig_media
+    
+    # Check scriptures
+    scriptures = media_db.get('scriptures', {})
+    for script_name, script_media in scriptures.items():
+        if script_name.lower() == source_lower:
+            return script_media
+    
+    return {}
+
+
 def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de') -> str:
     """Generate a beautifully formatted answer with proper Markdown structure."""
     if not entry:
@@ -659,12 +691,56 @@ def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de')
     
     # Add helpful hints based on content type
     if is_introduction:
+        # Get media resources for this figure
+        media = _get_media_for_source(source)
+        
+        # Add media links if available
+        if media:
+            text += "\n\n*📺 Ressourcen:*\n"
+            
+            # Add video links
+            if media.get('youtube_videos'):
+                text += "🎬 _Videos:_\n"
+                for video in media.get('youtube_videos', [])[:2]:  # Max 2 videos
+                    title = video.get('title', 'Video')
+                    url = video.get('url', '#')
+                    text += f"  • [{title}]({url})\n"
+            
+            # Add audio links
+            if media.get('audio_resources'):
+                text += "🎵 _Audio:_\n"
+                for audio in media.get('audio_resources', [])[:2]:  # Max 2 audio
+                    title = audio.get('title', 'Audio')
+                    url = audio.get('url', '#')
+                    text += f"  • [{title}]({url})\n"
+        
+        # Add helpful tip
         if lang == 'de':
             text += "\n\n💡 _Tipp: Schreib eine Figur (z.B. 'Radha', 'Arjuna') für mehr Infos._"
         elif lang == 'en':
             text += "\n\n💡 _Tip: Write a character name (e.g., 'Radha', 'Arjuna') for more info._"
         else:
             text += "\n\n💡 _सुझाव: अधिक जानकारी के लिए कोई नाम लिखें (उदा. 'राधा', 'अर्जुन')।_"
+    else:
+        # For verse entries, add scripture media links
+        media = _get_media_for_source(source)
+        if media.get('recitation_links'):
+            if lang == 'de':
+                text += "\n\n*🎧 Rezitation:*\n"
+            elif lang == 'en':
+                text += "\n\n*🎧 Recitation:*\n"
+            else:
+                text += "\n\n*🎧 पाठ:*\n"
+            
+            for recitation in media.get('recitation_links', [])[:1]:
+                url = recitation.get('url', '#')
+                lang_name = recitation.get('language', 'Sanskrit')
+                if lang == 'de':
+                    text += f"  [Sanskrit Rezitation hören]({url})\n"
+                elif lang == 'en':
+                    text += f"  [Listen to Sanskrit recitation]({url})\n"
+                else:
+                    text += f"  [संस्कृत पाठ सुनें]({url})\n"
     
     return text
 

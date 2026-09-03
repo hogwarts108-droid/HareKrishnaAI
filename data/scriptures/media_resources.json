@@ -1,0 +1,123 @@
+{
+  "figures": {
+    "Krishna": {
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Krishna_Janmashtami.jpg/640px-Krishna_Janmashtami.jpg",
+      "youtube_videos": [
+        {
+          "title": "Krishna - The Divine Cowherd",
+          "url": "https://www.youtube.com/results?search_query=krishna+divine+cowherd",
+          "duration": "documentary"
+        },
+        {
+          "title": "Krishna's Life Story",
+          "url": "https://www.youtube.com/results?search_query=krishna+life+story",
+          "duration": "documentary"
+        }
+      ],
+      "audio_resources": [
+        {
+          "title": "Hare Krishna Mantra",
+          "url": "https://www.youtube.com/results?search_query=hare+krishna+mantra",
+          "type": "mantra"
+        },
+        {
+          "title": "Bhagavad Gita Recitation",
+          "url": "https://www.youtube.com/results?search_query=bhagavad+gita+recitation",
+          "type": "recitation"
+        }
+      ]
+    },
+    "Radha": {
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Radha_Krishna.jpg/640px-Radha_Krishna.jpg",
+      "youtube_videos": [
+        {
+          "title": "Radha's Devotion to Krishna",
+          "url": "https://www.youtube.com/results?search_query=radha+krishna+devotion",
+          "duration": "documentary"
+        }
+      ],
+      "audio_resources": [
+        {
+          "title": "Radha Krishna Bhajan",
+          "url": "https://www.youtube.com/results?search_query=radha+krishna+bhajan",
+          "type": "bhajan"
+        }
+      ]
+    },
+    "Arjuna": {
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Arjuna_Mahabharata.jpg/640px-Arjuna_Mahabharata.jpg",
+      "youtube_videos": [
+        {
+          "title": "Arjuna in Mahabharata",
+          "url": "https://www.youtube.com/results?search_query=arjuna+mahabharata+kurukshetra",
+          "duration": "documentary"
+        },
+        {
+          "title": "Bhagavad Gita Teaching",
+          "url": "https://www.youtube.com/results?search_query=bhagavad+gita+krishna+arjuna",
+          "duration": "educational"
+        }
+      ],
+      "audio_resources": [
+        {
+          "title": "Bhagavad Gita Chanting",
+          "url": "https://www.youtube.com/results?search_query=bhagavad+gita+sanskrit+chanting",
+          "type": "chanting"
+        }
+      ]
+    },
+    "Balarama": {
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Balarama.jpg/640px-Balarama.jpg",
+      "youtube_videos": [
+        {
+          "title": "Balarama - Krishna's Elder Brother",
+          "url": "https://www.youtube.com/results?search_query=balarama+krishna",
+          "duration": "documentary"
+        }
+      ]
+    }
+  },
+  "scriptures": {
+    "Bhagavad Gita": {
+      "recitation_links": [
+        {
+          "chapter_verse": "all",
+          "url": "https://www.youtube.com/results?search_query=bhagavad+gita+complete+recitation",
+          "language": "Sanskrit"
+        }
+      ],
+      "explained_links": [
+        {
+          "chapter_verse": "1.1",
+          "url": "https://www.youtube.com/results?search_query=bhagavad+gita+1.1+explanation",
+          "teacher": "various"
+        }
+      ]
+    },
+    "Yoga Sutra": {
+      "recitation_links": [
+        {
+          "chapter_verse": "all",
+          "url": "https://www.youtube.com/results?search_query=yoga+sutra+patanjali+recitation",
+          "language": "Sanskrit"
+        }
+      ]
+    }
+  },
+  "mantras": {
+    "Hare Krishna": {
+      "text": "Hare Krishna, Hare Krishna, Krishna Krishna, Hare Hare, Hare Rama, Hare Rama, Rama Rama, Hare Hare",
+      "audio_url": "https://www.youtube.com/results?search_query=hare+krishna+mantra+full",
+      "meaning_de": "Bitte, ich bete zu Harischandra, bitte rette mich",
+      "meaning_en": "Please, I pray to Lord Krishna, please save me",
+      "meaning_hi": "हरे कृष्ण, कृष्ण को समर्पित"
+    },
+    "Om": {
+      "text": "ॐ",
+      "audio_url": "https://www.youtube.com/results?search_query=om+mantra+meditation",
+      "meaning_de": "Das kosmische Klang-Symbol, die Essenz aller Mantras",
+      "meaning_en": "The cosmic sound symbol, the essence of all mantras",
+      "meaning_hi": "ब्रह्मांडीय ध्वनि प्रतीक, सभी मंत्रों का सार"
+    }
+  }
+}

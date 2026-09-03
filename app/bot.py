@@ -103,16 +103,18 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logger.info(f"User {user_id} started bot")
     
     keyboard = [
-        [InlineKeyboardButton("Deutsch", callback_data="lang_de"),
-         InlineKeyboardButton("English", callback_data="lang_en")],
-        [InlineKeyboardButton("हिंदी", callback_data="lang_hi")]
+        [InlineKeyboardButton("🇩🇪 Deutsch", callback_data="lang_de"),
+         InlineKeyboardButton("🇬🇧 English", callback_data="lang_en")],
+        [InlineKeyboardButton("🇮🇳 हिंदी", callback_data="lang_hi")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
-    await update.message.reply_text(
-        "Hallo! Wähle deine Sprache / Hello! Choose your language / नमस्ते! भाषा चुनें:",
-        reply_markup=reply_markup
+    msg = (
+        "🙏 *हरे कृष्ण* - *Hare Krishna* 🙏\n\n"
+        "✨ *Choose your language* | *Wähle deine Sprache* | *अपनी भाषा चुनें* ✨"
     )
+    
+    await update.message.reply_text(msg, reply_markup=reply_markup, parse_mode="Markdown")
 
 
 async def language_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -124,40 +126,55 @@ async def language_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         USER_LANGUAGES[user_id] = 'de'
         lang = 'de'
         welcome_text = (
-            "🙏 **Hare Krishna!**\n\n"
-            "Ich bin **HareKrishnaAI**.\n"
-            "Dein Begleiter zu den heiligen Schriften.\n\n"
-            "📚 Mein Wissen:\n"
-            "• Bhagavad Gita • Yoga Sutra\n"
-            "• Sri Isopanishad • Srimad Bhagavatam\n"
-            "• Chaitanya Charitamrita • Krishna\n\n"
-            "Verwende /help für Hilfe!"
+            "✨ *Hare Krishna!* ✨\n\n"
+            "🙏 Willkommen zu *HareKrishnaAI*\n"
+            "_Dein Begleiter durch die heiligen Schriften_\n\n"
+            "📚 *Mein Wissen:*\n"
+            "• 📖 Bhagavad Gita\n"
+            "• 🧘 Yoga Sutra\n"
+            "• 🕉️ Sri Isopanishad\n"
+            "• 👑 Srimad Bhagavatam\n"
+            "• ✍️ Chaitanya Charitamrita\n"
+            "• 🐋 Krishna Stories\n\n"
+            "💡 *Schnellstart:*\n"
+            "Schreib einfach `Bhagavad Gita 2.47` oder frage `Wer ist Krishna?`\n\n"
+            "📌 Verwende `/help` für alle Befehle!"
         )
     elif query.data == "lang_en":
         USER_LANGUAGES[user_id] = 'en'
         lang = 'en'
         welcome_text = (
-            "🙏 **Hare Krishna!**\n\n"
-            "I am **HareKrishnaAI**.\n"
-            "Your companion to the holy scriptures.\n\n"
-            "📚 My knowledge:\n"
-            "• Bhagavad Gita • Yoga Sutra\n"
-            "• Sri Isopanishad • Srimad Bhagavatam\n"
-            "• Chaitanya Charitamrita • Krishna\n\n"
-            "Use /help for help!"
+            "✨ *Hare Krishna!* ✨\n\n"
+            "🙏 Welcome to *HareKrishnaAI*\n"
+            "_Your companion through the holy scriptures_\n\n"
+            "📚 *My Knowledge:*\n"
+            "• 📖 Bhagavad Gita\n"
+            "• 🧘 Yoga Sutra\n"
+            "• 🕉️ Sri Isopanishad\n"
+            "• 👑 Srimad Bhagavatam\n"
+            "• ✍️ Chaitanya Charitamrita\n"
+            "• 🐋 Krishna Stories\n\n"
+            "💡 *Quick Start:*\n"
+            "Just write `Bhagavad Gita 2.47` or ask `Who is Krishna?`\n\n"
+            "📌 Use `/help` for all commands!"
         )
     else:  # Hindi
         USER_LANGUAGES[user_id] = 'hi'
         lang = 'hi'
         welcome_text = (
-            "🙏 **हरे कृष्ण!**\n\n"
-            "मैं **HareKrishnaAI** हूँ।\n"
-            "पवित्र शास्त्रों के लिए आपका साथी।\n\n"
-            "📚 मेरा ज्ञान:\n"
-            "• भगवद गीता • योग सूत्र\n"
-            "• श्री इशोपनिषद • श्रीमद भागवतम्\n"
-            "• चैतन्य चरितामृत • कृष्ण\n\n"
-            "सहायता के लिए /help का उपयोग करें!"
+            "✨ *हरे कृष्ण!* ✨\n\n"
+            "🙏 *HareKrishnaAI* में आपका स्वागत है\n"
+            "_पवित्र शास्त्रों के माध्यम से आपका साथी_\n\n"
+            "📚 *मेरा ज्ञान:*\n"
+            "• 📖 भगवद गीता\n"
+            "• 🧘 योग सूत्र\n"
+            "• 🕉️ श्री इशोपनिषद\n"
+            "• 👑 श्रीमद भागवतम्\n"
+            "• ✍️ चैतन्य चरितामृत\n"
+            "• 🐋 कृष्ण कहानियां\n\n"
+            "💡 *त्वरित शुरुआत:*\n"
+            "बस `भगवद गीता 2.47` लिखें या `कृष्ण कौन हैं?` पूछें\n\n"
+            "📌 सभी आदेशों के लिए `/help` का उपयोग करें!"
         )
     
     await query.answer()
@@ -166,55 +183,91 @@ async def language_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Help command."""
+    """Help command with detailed formatting."""
     user_id = update.effective_user.id
     lang = get_user_lang(user_id)
     logger.info(f"User {user_id} requested help")
     
     if lang == 'de':
         text = (
-            "**Befehle:**\n"
-            "/start - Sprache wählen\n"
-            "/help - Diese Hilfe\n"
-            "/list - Verfügbare Schriften\n"
-            "/reload - Index aktualisieren\n"
-            "/clear - Chat löschen & neu starten\n\n"
-            "**Fragen stellen:**\n"
-            "✅ Bhagavad Gita 2.47\n"
-            "✅ Yoga Sutra 1.2\n"
-            "✅ Wer ist Krishna?\n"
-            "✅ Was ist Dharma?\n\n"
-            "Stelle einfach deine Frage!"
+            "🆘 *Hilfe & Befehle*\n\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "*📌 Hauptbefehle:*\n"
+            "`/start` - Sprache neu wählen\n"
+            "`/figures` - Alle Figuren ansehen\n"
+            "`/help` - Diese Hilfe\n"
+            "`/reload` - Index aktualisieren\n\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "*💬 Fragen stellen (Beispiele):*\n"
+            "`Bhagavad Gita 2.47` - Ein spezifischer Vers\n"
+            "`BG 1.1` - Abkürzung möglich\n"
+            "`Krishna` - Frage eine Figur ab\n"
+            "`Wer ist Arjuna?` - Natürliche Frage\n"
+            "`Was ist Dharma?` - Konzepte lernen\n\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "*🌍 Unterstützte Schriften:*\n"
+            "📖 Bhagavad Gita\n"
+            "📚 Srimad Bhagavatam\n"
+            "🧘 Yoga Sutra\n"
+            "🕉️ Sri Isopanishad\n"
+            "✍️ Chaitanya Charitamrita\n"
+            "👑 Krishna (Geschichten)\n\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "💡 _Tipp: Schreib einfach deine Frage - ich verstehe auch natürliche Sprache!_"
         )
     elif lang == 'en':
         text = (
-            "**Commands:**\n"
-            "/start - Choose language\n"
-            "/help - This help\n"
-            "/list - Available scriptures\n"
-            "/reload - Refresh index\n"
-            "/clear - Clear chat & restart\n\n"
-            "**Ask questions:**\n"
-            "✅ Bhagavad Gita 2.47\n"
-            "✅ Yoga Sutra 1.2\n"
-            "✅ Who is Krishna?\n"
-            "✅ What is Dharma?\n\n"
-            "Just ask your question!"
+            "🆘 *Help & Commands*\n\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "*📌 Main Commands:*\n"
+            "`/start` - Choose language again\n"
+            "`/figures` - View all characters\n"
+            "`/help` - This help\n"
+            "`/reload` - Refresh index\n\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "*💬 Ask Questions (Examples):*\n"
+            "`Bhagavad Gita 2.47` - A specific verse\n"
+            "`BG 1.1` - Shorthand works\n"
+            "`Krishna` - Ask about a character\n"
+            "`Who is Arjuna?` - Natural questions\n"
+            "`What is Dharma?` - Learn concepts\n\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "*🌍 Supported Scriptures:*\n"
+            "📖 Bhagavad Gita\n"
+            "📚 Srimad Bhagavatam\n"
+            "🧘 Yoga Sutra\n"
+            "🕉️ Sri Isopanishad\n"
+            "✍️ Chaitanya Charitamrita\n"
+            "👑 Krishna (Stories)\n\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "💡 _Tip: Just write your question - I understand natural language!_"
         )
     else:  # Hindi
         text = (
-            "**कमांड:**\n"
-            "/start - भाषा चुनें\n"
-            "/help - यह सहायता\n"
-            "/list - उपलब्ध शास्त्र\n"
-            "/reload - इंडेक्स रीफ्रेश करें\n"
-            "/clear - चैट साफ़ करें और पुनः शुरू करें\n\n"
-            "**प्रश्न पूछें:**\n"
-            "✅ भगवद गीता 2.47\n"
-            "✅ योग सूत्र 1.2\n"
-            "✅ कृष्ण कौन हैं?\n"
-            "✅ धर्म क्या है?\n\n"
-            "बस अपना प्रश्न पूछें!"
+            "🆘 *सहायता और आदेश*\n\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "*📌 मुख्य आदेश:*\n"
+            "`/start` - भाषा फिर से चुनें\n"
+            "`/figures` - सभी पात्र देखें\n"
+            "`/help` - यह सहायता\n"
+            "`/reload` - इंडेक्स रीफ्रेश करें\n\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "*💬 प्रश्न पूछें (उदाहरण):*\n"
+            "`भगवद गीता 2.47` - एक विशिष्ट श्लोक\n"
+            "`BG 1.1` - संक्षिप्त नाम काम करता है\n"
+            "`कृष्ण` - एक पात्र के बारे में पूछें\n"
+            "`अर्जुन कौन हैं?` - प्राकृतिक प्रश्न\n"
+            "`धर्म क्या है?` - अवधारणाएं जानें\n\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "*🌍 समर्थित शास्त्र:*\n"
+            "📖 भगवद गीता\n"
+            "📚 श्रीमद भागवतम्\n"
+            "🧘 योग सूत्र\n"
+            "🕉️ श्री इशोपनिषद\n"
+            "✍️ चैतन्य चरितामृत\n"
+            "👑 कृष्ण (कहानियां)\n\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "💡 _सुझाव: बस अपना प्रश्न लिखें - मैं प्राकृतिक भाषा समझता हूँ!_"
         )
     
     await update.message.reply_text(text, parse_mode="Markdown")
@@ -359,52 +412,73 @@ async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
         else:
             if lang == 'de':
                 text = (
-                    "Ich habe dazu keinen passenden Vers.\n\n"
-                    "Versuche:\n"
-                    "• Bhagavad Gita 2.47\n"
-                    "• /list - Alle Figuren ansehen"
+                    "🙏 *Hare Krishna!*\n\n"
+                    "Ich habe dazu keinen passenden Vers in meiner Datenbank.\n\n"
+                    "*Versuche:*\n"
+                    "• `Bhagavad Gita 2.47` - Verse eingeben\n"
+                    "• `Krishna` - Eine Figur erfragen\n"
+                    "• `/figures` - Alle Figuren ansehen\n"
+                    "• `/help` - Weitere Befehle"
                 )
             elif lang == 'en':
                 text = (
-                    "I don't have a matching verse.\n\n"
-                    "Try:\n"
-                    "• Bhagavad Gita 2.47\n"
-                    "• /list - View all figures"
+                    "🙏 *Hare Krishna!*\n\n"
+                    "I don't have a matching verse in my database.\n\n"
+                    "*Try:*\n"
+                    "• `Bhagavad Gita 2.47` - Enter a verse\n"
+                    "• `Krishna` - Ask about a character\n"
+                    "• `/figures` - View all characters\n"
+                    "• `/help` - More commands"
                 )
             else:  # Hindi
                 text = (
+                    "🙏 *हरे कृष्ण!*\n\n"
                     "मेरे पास इसके लिए कोई मिलान वाली श्लोक नहीं है।\n\n"
-                    "कोशिश करें:\n"
-                    "• भगवद गीता 2.47\n"
-                    "• /list - सभी आंकड़े देखें"
+                    "*कोशिश करें:*\n"
+                    "• `भगवद गीता 2.47` - श्लोक दर्ज करें\n"
+                    "• `कृष्ण` - एक चरित्र के बारे में पूछें\n"
+                    "• `/figures` - सभी आंकड़े देखें\n"
+                    "• `/help` - अधिक आदेश"
                 )
             await update.message.reply_text(text)
     except Exception as e:
         logger.error(f"Error processing message from user {user_id}: {e}")
         if lang == 'de':
-            error_msg = "Entschuldigung, ein Fehler ist aufgetreten. Bitte versuche es später erneut."
+            error_msg = (
+                "⚠️ *Entschuldigung!*\n\n"
+                "Es gab einen Fehler bei der Verarbeitung deiner Anfrage.\n\n"
+                "_Bitte versuche es in wenigen Augenblicken erneut._"
+            )
         elif lang == 'en':
-            error_msg = "Sorry, an error occurred. Please try again later."
+            error_msg = (
+                "⚠️ *Sorry!*\n\n"
+                "An error occurred while processing your request.\n\n"
+                "_Please try again in a few moments._"
+            )
         else:  # Hindi
-            error_msg = "क्षमा करें, एक त्रुटि हुई। कृपया बाद में फिर से प्रयास करें।"
+            error_msg = (
+                "⚠️ *क्षमा करें!*\n\n"
+                "आपके अनुरोध को संसाधित करते समय एक त्रुटि हुई।\n\n"
+                "_कृपया कुछ क्षणों में फिर से कोशिश करें।_"
+            )
         await update.message.reply_text(error_msg)
 
 
 async def cmd_reload(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Reload knowledge base index (fast - only reloads entries)."""
+    """Reload knowledge base index with visual feedback."""
     user_id = update.effective_user.id
     lang = get_user_lang(user_id)
     logger.info(f"User {user_id} triggered reload")
     
     try:
         if lang == 'de':
-            msg_loading = "⏳ Lade Knowledge Base neu..."
+            msg_loading = "🔄 *Aktualisiere Knowledge Base...*\n⏳ Einen Moment bitte..."
         elif lang == 'en':
-            msg_loading = "⏳ Reloading knowledge base..."
+            msg_loading = "🔄 *Reloading knowledge base...*\n⏳ One moment please..."
         else:  # Hindi
-            msg_loading = "⏳ नॉलेज बेस को फिर से लोड कर रहे हैं..."
+            msg_loading = "🔄 *नॉलेज बेस को अपडेट कर रहे हैं...*\n⏳ कृपया एक पल प्रतीक्षा करें..."
         
-        loading_msg = await update.message.reply_text(msg_loading)
+        loading_msg = await update.message.reply_text(msg_loading, parse_mode="Markdown")
         
         import time
         start = time.time()
@@ -413,29 +487,47 @@ async def cmd_reload(update: Update, context: ContextTypes.DEFAULT_TYPE):
         elapsed = time.time() - start
         
         if lang == 'de':
-            msg = f"✅ Index aktualisiert: {count} Einträge ({elapsed:.1f}s)"
+            msg = (
+                f"✅ *Index erfolgreich aktualisiert!*\n\n"
+                f"📊 Statistik:\n"
+                f"• Einträge geladen: `{count}`\n"
+                f"• Zeitaufwand: `{elapsed:.2f}s`\n\n"
+                f"🚀 Bereit für neue Fragen!"
+            )
         elif lang == 'en':
-            msg = f"✅ Index updated: {count} entries ({elapsed:.1f}s)"
+            msg = (
+                f"✅ *Index successfully updated!*\n\n"
+                f"📊 Statistics:\n"
+                f"• Entries loaded: `{count}`\n"
+                f"• Time taken: `{elapsed:.2f}s`\n\n"
+                f"🚀 Ready for new questions!"
+            )
         else:  # Hindi
-            msg = f"✅ इंडेक्स अपडेट: {count} प्रविष्टियां ({elapsed:.1f}s)"
+            msg = (
+                f"✅ *इंडेक्स सफलतापूर्वक अपडेट हुआ!*\n\n"
+                f"📊 आंकड़े:\n"
+                f"• प्रविष्टियां लोड: `{count}`\n"
+                f"• समय लगा: `{elapsed:.2f}s`\n\n"
+                f"🚀 नए प्रश्नों के लिए तैयार!"
+            )
         
         # Edit the loading message with final result
         try:
-            await loading_msg.edit_text(msg)
+            await loading_msg.edit_text(msg, parse_mode="Markdown")
         except:
             # If edit fails, just send new message
-            await update.message.reply_text(msg)
+            await update.message.reply_text(msg, parse_mode="Markdown")
             
     except Exception as e:
         logger.error(f"Error during reload: {e}")
         if lang == 'de':
-            error_msg = "❌ Fehler beim Aktualisieren des Index."
+            error_msg = "❌ *Fehler!*\n\nDas Index-Update ist fehlgeschlagen. Bitte versuche es später erneut."
         elif lang == 'en':
-            error_msg = "❌ Error updating index."
+            error_msg = "❌ *Error!*\n\nIndex update failed. Please try again later."
         else:  # Hindi
-            error_msg = "❌ इंडेक्स अपडेट करने में त्रुटि।"
+            error_msg = "❌ *त्रुटि!*\n\nइंडेक्स अपडेट विफल हुआ। कृपया बाद में फिर से प्रयास करें।"
         
-        await update.message.reply_text(error_msg)
+        await update.message.reply_text(error_msg, parse_mode="Markdown")
 
 
 async def cmd_clear(update: Update, context: ContextTypes.DEFAULT_TYPE):

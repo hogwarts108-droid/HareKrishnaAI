@@ -454,85 +454,110 @@ def find_answer(question: str) -> Optional[Dict[str, Any]]:
 
 
 def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de') -> str:
-    """Generate a polished answer using OpenAI if available, otherwise format from the entry."""
+    """Generate a beautifully formatted answer with proper Markdown structure."""
     if not entry:
-        return (
-            "🙏 Hare Krishna!\n\n"
-            "Ich habe dazu noch keinen passenden Vers in meiner Datenbank."
-        )
+        if lang == 'de':
+            return (
+                "🙏 *Hare Krishna!*\n\n"
+                "Ich habe dazu noch keinen passenden Vers in meiner Datenbank. "
+                "Versuche es mit einem anderen Begriff oder einer bekannten Schrift wie *Bhagavad Gita 2.47*"
+            )
+        elif lang == 'en':
+            return (
+                "🙏 *Hare Krishna!*\n\n"
+                "I don't have a matching verse in my database yet. "
+                "Try a different term or a famous scripture like *Bhagavad Gita 2.47*"
+            )
+        else:  # Hindi
+            return (
+                "🙏 *हरे कृष्ण!*\n\n"
+                "मेरे पास इसके लिए कोई मिलान वाली श्लोक नहीं है। "
+                "एक अलग शब्द का प्रयास करें या *भगवद गीता 2.47* जैसे एक प्रसिद्ध शास्त्र का प्रयास करें"
+            )
 
+    source = str(entry.get('source', ''))
+    chapter = str(entry.get('chapter') or '')
+    verse = str(entry.get('verse') or '')
+    sanskrit = str(entry.get('sanskrit', ''))
+    
     translation = entry.get('translation', {})
     explanation = entry.get('explanation', {})
     trans_text = translation.get(lang) or translation.get('de') or translation.get('en') or ''
     expl_text = explanation.get(lang) or explanation.get('de') or explanation.get('en') or ''
 
-    # If OpenAI available and API key present, call to generate a concise answer
-    if openai is not None and os.getenv('OPENAI_API_KEY'):
-        try:
-            openai.api_key = os.getenv('OPENAI_API_KEY')
-            prompt = (
-                f"Question: {question}\n\n"
-                f"Source: {entry.get('source','')}\nVerse: {entry.get('verse','')}\n"
-                f"Sanskrit: {entry.get('sanskrit','')}\nTranslation: {trans_text}\nExplanation: {expl_text}\n\n"
-                "Bitte antworte auf Deutsch kurz und bestimmt (assertiv), nenne die Quelle und den Vers." 
-            )
-            resp = openai.ChatCompletion.create(
-                model='gpt-3.5-turbo',
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=200,
-                temperature=0.2,
-            )
-            ans = resp['choices'][0]['message']['content'].strip()
-            return ans
-        except Exception:
-            pass
-
-    chapter = entry.get('chapter') or ''
-    verse = entry.get('verse') or ''
-    ref_line = ""
-    if chapter and verse and str(verse).lower() != 'full':
-        ref_line = f"\n📖 Quelle: {chapter}\n📜 Vers: {verse}"
-    elif chapter:
-        ref_line = f"\n📖 Quelle: {chapter}"
-    elif verse:
-        ref_line = f"\n📜 Vers: {verse}"
-
-    source = str(entry.get('source',''))
-    sanskrit = str(entry.get('sanskrit',''))
-    
-    text = f"""📖 Quelle: {source}{ref_line}
-
-🕉 Sanskrit:
-{sanskrit}
-
-🌍 Übersetzung:
-{trans_text}
-
-🪷 Erklärung:
-{expl_text}"""
-    
-    # Add link to full story if this is Krishna Introduction
-    if source.lower() == "krishna" and chapter.lower() == "introduction":
-        # Get domain for link
-        railway_domain = os.getenv('RAILWAY_PUBLIC_DOMAIN', '')
-        port = os.getenv('PORT', '0')
-        
-        if railway_domain and port != '0':
-            # On Railway - use public domain
-            krishna_url = f"https://{railway_domain}/krishna"
-        elif port != '0':
-            # On server with PORT but no RAILWAY_PUBLIC_DOMAIN
-            krishna_url = f"http://localhost:{port}/krishna"
+    # Build reference string
+    if chapter and verse and verse.lower() != 'full':
+        if '.' in str(verse):
+            # verse is already "1.3" format
+            ref_str = f"{source} {verse}"
         else:
-            # Local development
-            krishna_url = "http://localhost:8001/krishna"
+            ref_str = f"{source} {chapter}.{verse}"
+    elif chapter:
+        ref_str = f"{source} - {chapter}"
+    else:
+        ref_str = source
+
+    # Determine content type for better formatting
+    is_introduction = chapter.lower() == 'introduction' if chapter else False
+    
+    # Build response with improved Markdown formatting
+    lines = []
+    
+    # Header with emojis and reference
+    if is_introduction:
+        lines.append(f"✨ *{source}* ✨")
+    else:
+        lines.append(f"📖 *{ref_str}*")
+    
+    lines.append("")  # Blank line
+    
+    # Sanskrit section with code block
+    if sanskrit:
+        lines.append("*🕉 Sanskrit:*")
+        lines.append(f"`{sanskrit}`")
+        lines.append("")
+    
+    # Translation section with emphasis
+    if trans_text:
+        lines.append("*🌍 Übersetzung:*")
+        lines.append(trans_text)
+        lines.append("")
+    
+    # Explanation section
+    if expl_text:
+        lines.append("*📚 Erklärung:*")
+        lines.append(expl_text)
+        lines.append("")
+    
+    text = "\n".join(lines)
+    
+    # Add link to full story if available
+    railway_domain = os.getenv('RAILWAY_PUBLIC_DOMAIN', '')
+    port = os.getenv('PORT', '0')
+    
+    if source.lower() == "krishna" and is_introduction:
+        if railway_domain and port != '0':
+            story_url = f"https://{railway_domain}/krishna"
+        elif port != '0':
+            story_url = f"http://localhost:{port}/krishna"
+        else:
+            story_url = "http://localhost:8001/krishna"
         
         if lang == 'de':
-            text += f"\n\n📚 Die vollständige Geschichte:\n{krishna_url}"
+            text += f"\n\n→ [Die vollständige Geschichte anzeigen]({story_url})"
         elif lang == 'en':
-            text += f"\n\n📚 Read the full story:\n{krishna_url}"
+            text += f"\n\n→ [Read the full story]({story_url})"
         else:  # Hindi
-            text += f"\n\n📚 पूरी कहानी:\n{krishna_url}"
+            text += f"\n\n→ [पूरी कहानी पढ़ें]({story_url})"
+    
+    # Add helpful hints based on content type
+    if is_introduction:
+        if lang == 'de':
+            text += "\n\n💡 _Tipp: Schreib eine Figur (z.B. 'Radha', 'Arjuna') für mehr Infos._"
+        elif lang == 'en':
+            text += "\n\n💡 _Tip: Write a character name (e.g., 'Radha', 'Arjuna') for more info._"
+        else:
+            text += "\n\n💡 _सुझाव: अधिक जानकारी के लिए कोई नाम लिखें (उदा. 'राधा', 'अर्जुन')।_"
     
     return text
 

@@ -755,3 +755,53 @@ def reload_index() -> int:
         return len(_ENTRIES)
     except Exception:
         return 0
+
+
+# ============= NEW FEATURES =============
+
+def get_random_entry() -> Optional[Dict[str, Any]]:
+    """Get a random verse or figure introduction."""
+    import random
+    entries = _load_documents()
+    if not entries:
+        return None
+    return random.choice(entries)
+
+
+def search_entries(query: str, filters: Dict[str, str] = None) -> List[Dict[str, Any]]:
+    """Advanced search with filters (source, chapter, lang)."""
+    query_lower = query.lower()
+    entries = _load_documents()
+    results = []
+    
+    for entry in entries:
+        # Check query match
+        text = _entry_to_corpus_text(entry).lower()
+        if query_lower not in text:
+            continue
+        
+        # Apply filters
+        if filters:
+            if 'source' in filters and entry.get('source', '').lower() != filters['source'].lower():
+                continue
+            if 'chapter' in filters and entry.get('chapter', '').lower() != filters['chapter'].lower():
+                continue
+        
+        results.append(entry)
+    
+    return results[:20]  # Limit to 20 results
+
+
+def get_entry_sequence(source: str, chapter: str = None) -> List[Dict[str, Any]]:
+    """Get all verses in a source or chapter for navigation."""
+    entries = _load_documents()
+    results = []
+    
+    for entry in entries:
+        if entry.get('source', '').lower() == source.lower():
+            if chapter and entry.get('chapter', '').lower() != chapter.lower():
+                continue
+            results.append(entry)
+    
+    return results
+

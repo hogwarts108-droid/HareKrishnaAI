@@ -27,7 +27,7 @@ except ImportError:
     logger_temp = logging.getLogger(__name__)
     logger_temp.warning("langdetect not installed. Install with: pip install langdetect")
 
-from app.knowledge import find_answer, generate_answer_text, reload_index, suggest_corrections
+from app.knowledge import find_answer, generate_answer_text, reload_index, suggest_corrections, get_random_entry, search_entries, get_entry_sequence
 from app.database import save_favorite, get_favorites, remove_favorite, set_user_language, get_user_language
 
 # Setup logging
@@ -194,8 +194,13 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "━━━━━━━━━━━━━━━━━━━━\n"
             "*📌 Hauptbefehle:*\n"
             "`/start` - Sprache neu wählen\n"
-            "`/figures` - Alle Figuren ansehen\n"
             "`/help` - Diese Hilfe\n"
+            "`/figures` - Alle Figuren ansehen\n"
+            "`/random` - Zufälliger Vers\n"
+            "`/search <keyword>` - Verse suchen\n"
+            "`/stats` - Deine Lernstatistiken\n"
+            "`/save <verse>` - Favorit speichern\n"
+            "`/favorites` - Favoriten ansehen\n"
             "`/reload` - Index aktualisieren\n\n"
             "━━━━━━━━━━━━━━━━━━━━\n"
             "*💬 Fragen stellen (Beispiele):*\n"
@@ -221,8 +226,13 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "━━━━━━━━━━━━━━━━━━━━\n"
             "*📌 Main Commands:*\n"
             "`/start` - Choose language again\n"
-            "`/figures` - View all characters\n"
             "`/help` - This help\n"
+            "`/figures` - View all characters\n"
+            "`/random` - Random verse\n"
+            "`/search <keyword>` - Search verses\n"
+            "`/stats` - Your learning stats\n"
+            "`/save <verse>` - Save favorite\n"
+            "`/favorites` - View favorites\n"
             "`/reload` - Refresh index\n\n"
             "━━━━━━━━━━━━━━━━━━━━\n"
             "*💬 Ask Questions (Examples):*\n"
@@ -248,8 +258,13 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "━━━━━━━━━━━━━━━━━━━━\n"
             "*📌 मुख्य आदेश:*\n"
             "`/start` - भाषा फिर से चुनें\n"
-            "`/figures` - सभी पात्र देखें\n"
             "`/help` - यह सहायता\n"
+            "`/figures` - सभी पात्र देखें\n"
+            "`/random` - यादृच्छिक श्लोक\n"
+            "`/search <keyword>` - श्लोक खोजें\n"
+            "`/stats` - आपके सीखने की प्रगति\n"
+            "`/save <verse>` - पसंदीदा सहेजें\n"
+            "`/favorites` - पसंदीदा देखें\n"
             "`/reload` - इंडेक्स रीफ्रेश करें\n\n"
             "━━━━━━━━━━━━━━━━━━━━\n"
             "*💬 प्रश्न पूछें (उदाहरण):*\n"
@@ -697,6 +712,130 @@ async def share_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer("📤 Link kopiert!", show_alert=False)
     await query.message.reply_text(share_msg, parse_mode="Markdown")
     logger.info(f"User {user_id} shared: {source}")
+
+
+async def cmd_random(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Send a random verse."""
+    user_id = update.effective_user.id
+    lang = get_user_lang(user_id)
+    
+    entry = get_random_entry()
+    if not entry:
+        if lang == 'de':
+            msg = "❌ Keine Einträge gefunden."
+        elif lang == 'en':
+            msg = "❌ No entries found."
+        else:
+            msg = "❌ कोई प्रविष्टि नहीं मिली।"
+        await update.message.reply_text(msg)
+        return
+    
+    if lang == 'de':
+        msg = "🎲 *Zufälliger Vers:*\n"
+    elif lang == 'en':
+        msg = "🎲 *Random Verse:*\n"
+    else:
+        msg = "🎲 *यादृच्छिक श्लोक:*\n"
+    
+    text = msg + "\n" + generate_answer_text("", entry, lang=lang)
+    await update.message.reply_text(text, parse_mode="Markdown")
+    logger.info(f"User {user_id} got random: {entry.get('source')}")
+
+
+async def cmd_search(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Search for verses with keywords."""
+    user_id = update.effective_user.id
+    lang = get_user_lang(user_id)
+    
+    if not context.args:
+        if lang == 'de':
+            msg = "🔍 *Verwendung:* `/search keyword`\n\nBeispiel: `/search Krishna`"
+        elif lang == 'en':
+            msg = "🔍 *Usage:* `/search keyword`\n\nExample: `/search Krishna`"
+        else:
+            msg = "🔍 *उपयोग:* `/search keyword`\n\nउदाहरण: `/search कृष्ण`"
+        await update.message.reply_text(msg, parse_mode="Markdown")
+        return
+    
+    query = " ".join(context.args)
+    results = search_entries(query)
+    
+    if not results:
+        if lang == 'de':
+            msg = f"❌ Keine Ergebnisse für '{query}' gefunden."
+        elif lang == 'en':
+            msg = f"❌ No results found for '{query}'."
+        else:
+            msg = f"❌ '{query}' के लिए कोई परिणाम नहीं मिला।"
+        await update.message.reply_text(msg)
+        return
+    
+    if lang == 'de':
+        text = f"🔍 *{len(results)} Ergebnisse für '{query}':*\n\n"
+    elif lang == 'en':
+        text = f"🔍 *{len(results)} Results for '{query}':*\n\n"
+    else:
+        text = f"🔍 *'{query}' के लिए {len(results)} परिणाम:*\n\n"
+    
+    for i, entry in enumerate(results[:5], 1):
+        source = entry.get('source', '')
+        chapter = entry.get('chapter', '')
+        verse = entry.get('verse', '')
+        ref = f"{source} {chapter}.{verse}" if chapter and verse else source
+        text += f"{i}. `{ref}`\n"
+    
+    if len(results) > 5:
+        if lang == 'de':
+            text += f"\n... und {len(results) - 5} weitere"
+        elif lang == 'en':
+            text += f"\n... and {len(results) - 5} more"
+        else:
+            text += f"\n... और {len(results) - 5} अधिक"
+    
+    await update.message.reply_text(text, parse_mode="Markdown")
+    logger.info(f"User {user_id} searched: {query}")
+
+
+async def cmd_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Show user statistics."""
+    user_id = update.effective_user.id
+    lang = get_user_lang(user_id)
+    
+    favorites = get_favorites(user_id)
+    
+    if lang == 'de':
+        stats = (
+            f"📊 *Deine Statistiken:*\n\n"
+            f"❤️ Gespeicherte Favoriten: `{len(favorites)}`\n"
+            f"🎲 Verse gelesen: _(tracking coming soon)_\n"
+            f"📚 Schriften erforscht: _(tracking coming soon)_\n"
+            f"⏱️ Zeit heute: _(tracking coming soon)_\n\n"
+            f"💡 _Tipp: Verwende `/save` um deine Lieblingverse zu speichern!_"
+        )
+    elif lang == 'en':
+        stats = (
+            f"📊 *Your Statistics:*\n\n"
+            f"❤️ Saved Favorites: `{len(favorites)}`\n"
+            f"🎲 Verses Read: _(tracking coming soon)_\n"
+            f"📚 Scriptures Explored: _(tracking coming soon)_\n"
+            f"⏱️ Time Today: _(tracking coming soon)_\n\n"
+            f"💡 _Tip: Use `/save` to save your favorite verses!_"
+        )
+    else:
+        stats = (
+            f"📊 *आपके आंकड़े:*\n\n"
+            f"❤️ सहेजे गए पसंदीदा: `{len(favorites)}`\n"
+            f"🎲 श्लोक पढ़े गए: _(ट्रैकिंग आने वाली है)_\n"
+            f"📚 शास्त्र खोजे गए: _(ट्रैकिंग आने वाली है)_\n"
+            f"⏱️ आज का समय: _(ट्रैकिंग आने वाली है)_\n\n"
+            f"💡 _सुझाव: अपने पसंदीदा श्लोकों को बचाने के लिए `/save` का उपयोग करें!_"
+        )
+    
+    
+    await update.message.reply_text(stats, parse_mode="Markdown")
+    logger.info(f"User {user_id} viewed stats")
+
+
 if not TOKEN:
     raise RuntimeError("TELEGRAM_TOKEN fehlt in .env")
 
@@ -705,6 +844,9 @@ app = Application.builder().token(TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("help", help_cmd))
 app.add_handler(CommandHandler("list", list_cmd))
+app.add_handler(CommandHandler("random", cmd_random))
+app.add_handler(CommandHandler("search", cmd_search))
+app.add_handler(CommandHandler("stats", cmd_stats))
 app.add_handler(CommandHandler("reload", cmd_reload))
 app.add_handler(CommandHandler("clear", cmd_clear))
 app.add_handler(CommandHandler("save", save_fav))

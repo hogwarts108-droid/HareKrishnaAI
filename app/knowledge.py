@@ -225,25 +225,34 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
     if not entries:
         return None
 
-    # PRIORITY 1: Special handling for concept questions (Who is X?)
-    if any(x in q_proc for x in ["wer ist", "who is", "कौन है", "क्या है", "what is"]):
-        if "krishna" in q_proc:
-            for entry in entries:
-                src_lower = entry.get("source", "").lower()
-                chapter_lower = entry.get("chapter", "").lower()
-                if src_lower == "krishna" and chapter_lower == "introduction":
-                    return {
-                        "source": entry.get("source", "Unbekannt"),
-                        "chapter": entry.get("chapter", ""),
-                        "verse": entry.get("verse", ""),
-                        "sanskrit": entry.get("sanskrit", ""),
-                        "translation": entry.get("translation", {}),
-                        "explanation": entry.get("explanation", {}),
-                    }
-        # Look for introduction chapters for other scriptures
+    # PRIORITY 1: Match "Who is X?" to the named introduction, never the
+    # first introduction in the data set.
+    concept_markers = ["wer ist", "who is", "कौन है", "क्या है", "what is"]
+    if any(marker in q_proc for marker in concept_markers):
+        question_without_marker = q_proc
+        for marker in concept_markers:
+            question_without_marker = question_without_marker.replace(marker, " ")
+        question_without_marker = re.sub(r"[?!.,;:]", " ", question_without_marker)
+        requested_name = " ".join(question_without_marker.split()).strip()
+
+        # Prefer exact source names, then normalized aliases such as "baladeva".
+        aliases = {
+            "baladeva": "balarama",
+            "balaji": "balarama",
+            "govinda": "krishna",
+            "madhava": "krishna",
+        }
+        requested_name = aliases.get(requested_name, requested_name)
         for entry in entries:
-            chapter_lower = entry.get("chapter", "").lower()
-            if chapter_lower == "introduction" or chapter_lower == "philosophy":
+            if str(entry.get("chapter", "")).lower() not in {"introduction", "philosophy"}:
+                continue
+            source = str(entry.get("source", "")).strip()
+            source_normalized = _normalize_source(source)
+            if requested_name and (
+                requested_name == source_normalized
+                or requested_name in source_normalized
+                or source_normalized in requested_name
+            ):
                 return {
                     "source": entry.get("source", "Unbekannt"),
                     "chapter": entry.get("chapter", ""),
@@ -670,50 +679,30 @@ def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de')
     
     text = "\n".join(lines)
     
-    # Add link to full story if available
-    railway_domain = os.getenv('RAILWAY_PUBLIC_DOMAIN', '')
-    port = os.getenv('PORT', '0')
-    
-    if source.lower() == "krishna" and is_introduction:
-        if railway_domain and port != '0':
-            story_url = f"https://{railway_domain}/krishna"
-        elif port != '0':
-            story_url = f"http://localhost:{port}/krishna"
-        else:
-            story_url = "http://localhost:8001/krishna"
-        
-        if lang == 'de':
-            text += f"\n\n→ [Die vollständige Geschichte anzeigen]({story_url})"
-        elif lang == 'en':
-            text += f"\n\n→ [Read the full story]({story_url})"
-        else:  # Hindi
-            text += f"\n\n→ [पूरी कहानी पढ़ें]({story_url})"
-    
-    # Add helpful hints based on content type
+    # Add a conversational interpretation based on the matched figure.
     if is_introduction:
-        # Get media resources for this figure
-        media = _get_media_for_source(source)
-        
-        # Add media links if available
-        if media:
-            text += "\n\n*📺 Ressourcen:*\n"
-            
-            # Add video links
-            if media.get('youtube_videos'):
-                text += "🎬 _Videos:_\n"
-                for video in media.get('youtube_videos', [])[:2]:  # Max 2 videos
-                    title = video.get('title', 'Video')
-                    url = video.get('url', '#')
-                    text += f"  • [{title}]({url})\n"
-            
-            # Add audio links
-            if media.get('audio_resources'):
-                text += "🎵 _Audio:_\n"
-                for audio in media.get('audio_resources', [])[:2]:  # Max 2 audio
-                    title = audio.get('title', 'Audio')
-                    url = audio.get('url', '#')
-                    text += f"  • [{title}]({url})\n"
-        
+        figure_insights = {
+            "balarama": {
+                "de": "Kurz gesagt: Balarama ist nicht Krishna, sondern sein älterer Bruder und eine eigenständige zentrale Gestalt der Krishna-Tradition.",
+                "en": "In short: Balarama is not Krishna, but his elder brother and a distinct central figure in the Krishna tradition.",
+                "hi": "संक्षेप में: बलराम कृष्ण नहीं हैं, बल्कि उनके बड़े भाई और कृष्ण परंपरा के एक प्रमुख स्वतंत्र व्यक्तित्व हैं।",
+            },
+            "krishna": {
+                "de": "Kurz gesagt: Krishna steht im Mittelpunkt dieser Überlieferungen als Lehrer der Bhagavad Gita und als zentrale göttliche Gestalt.",
+                "en": "In short: Krishna is central to these traditions as the teacher of the Bhagavad Gita and a principal divine figure.",
+                "hi": "संक्षेप में: कृष्ण इन परंपराओं के केंद्र में हैं—वे भगवद्गीता के शिक्षक और प्रमुख दिव्य व्यक्तित्व हैं।",
+            },
+            "arjuna": {
+                "de": "Die Verbindung zur Bhagavad Gita ist entscheidend: Arjuna stellt die Fragen, durch die Krishna seine Lehren entfaltet.",
+                "en": "The connection to the Bhagavad Gita is essential: Arjuna asks the questions through which Krishna unfolds his teachings.",
+                "hi": "भगवद्गीता से उनका संबंध अत्यंत महत्वपूर्ण है: अर्जुन के प्रश्नों के माध्यम से कृष्ण अपनी शिक्षाएँ प्रकट करते हैं।",
+            },
+        }
+        insight = figure_insights.get(source.lower(), {}).get(lang)
+        if insight:
+            heading = "Einordnung" if lang == "de" else "Context" if lang == "en" else "संदर्भ"
+            text += f"\n\n*💡 {heading}:*\n{insight}"
+
         # Add helpful tip
         if lang == 'de':
             text += "\n\n💡 _Tipp: Schreib eine Figur (z.B. 'Radha', 'Arjuna') für mehr Infos._"
@@ -721,26 +710,6 @@ def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de')
             text += "\n\n💡 _Tip: Write a character name (e.g., 'Radha', 'Arjuna') for more info._"
         else:
             text += "\n\n💡 _सुझाव: अधिक जानकारी के लिए कोई नाम लिखें (उदा. 'राधा', 'अर्जुन')।_"
-    else:
-        # For verse entries, add scripture media links
-        media = _get_media_for_source(source)
-        if media.get('recitation_links'):
-            if lang == 'de':
-                text += "\n\n*🎧 Rezitation:*\n"
-            elif lang == 'en':
-                text += "\n\n*🎧 Recitation:*\n"
-            else:
-                text += "\n\n*🎧 पाठ:*\n"
-            
-            for recitation in media.get('recitation_links', [])[:1]:
-                url = recitation.get('url', '#')
-                lang_name = recitation.get('language', 'Sanskrit')
-                if lang == 'de':
-                    text += f"  [Sanskrit Rezitation hören]({url})\n"
-                elif lang == 'en':
-                    text += f"  [Listen to Sanskrit recitation]({url})\n"
-                else:
-                    text += f"  [संस्कृत पाठ सुनें]({url})\n"
     
     return text
 
@@ -804,4 +773,3 @@ def get_entry_sequence(source: str, chapter: str = None) -> List[Dict[str, Any]]
             results.append(entry)
     
     return results
-

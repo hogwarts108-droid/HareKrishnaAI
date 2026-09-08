@@ -894,6 +894,25 @@ def _load_krishna_entries():
         return []
 
 
+def _story_text_for_figure(figure):
+    """Build a longer readable story from the figure's knowledge entry."""
+    entry = figure.get('entries', [{}])[0]
+    source = figure['source']
+    translation = entry.get('translation', {}).get('de', '')
+    explanation = entry.get('explanation', {}).get('de', '')
+    category = figure.get('category', 'Weitere Gestalten')
+    category_context = {
+        'Götter und göttliche Gestalten': f'{source} gehört zu den göttlichen Gestalten der Überlieferung.',
+        'Dämonen und Gegenspieler': f'{source} steht in den Erzählungen für eine zerstörerische oder gegnerische Kraft.',
+        'Menschen und Weise': f'{source} wird als Mensch, Lehrer, Elternfigur oder Weiser erinnert.',
+        'Gemeinschaften': f'{source} bezeichnet eine Gemeinschaft, deren gemeinsames Handeln eine wichtige Bedeutung trägt.',
+    }.get(category, '')
+    paragraphs = [translation, explanation]
+    if category_context:
+        paragraphs.insert(0, category_context)
+    return ' '.join(part.strip() for part in paragraphs if part and part.strip())
+
+
 @flask_app.route('/')
 def website_home():
     """Serve the public knowledge home page."""
@@ -950,7 +969,12 @@ def figure_story(slug):
         entry for entry in _load_krishna_entries()
         if figure['source'].lower() in json.dumps(entry, ensure_ascii=False).lower()
     ]
-    return render_template('figure.html', figure=figure, related_stories=related_stories)
+    return render_template(
+        'figure.html',
+        figure=figure,
+        related_stories=related_stories,
+        long_story=_story_text_for_figure(figure),
+    )
 
 
 @flask_app.route('/stories')
@@ -972,10 +996,14 @@ def stories_index():
             ).lower()
         ]
     categories = [dict(data, name=name) for name, data in FIGURE_CATEGORIES.items()]
+    grouped = {}
+    for figure in figures:
+        grouped.setdefault(figure['category'], []).append(figure)
     return render_template(
         'stories.html',
         figures=figures,
         categories=categories,
+        grouped_figures=grouped,
         selected_category=category,
         q=request.args.get('q', ''),
     )

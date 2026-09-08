@@ -14,7 +14,8 @@
         .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
         .card { background:white; border-radius:18px; padding:22px; box-shadow:0 8px 22px #30205012; text-decoration:none; color:inherit; }
         .card:hover { outline:2px solid #6846c7; } .card h2 { margin:0 0 10px; color:#6846c7; }
-        .card p { color:#68718a; line-height:1.5; margin:0; }
+        .card p { color:#68718a; line-height:1.5; margin:0 0 12px; }
+        .card .read { color:#6846c7; font-weight:700; }
         .search { display:flex; gap:10px; margin:0 auto 24px; max-width:700px; }
         .search input { flex:1; padding:13px 16px; border:1px solid #ddd; border-radius:999px; font-size:1rem; }
         .search button { padding:0 20px; border:0; border-radius:999px; background:#6846c7; color:white; font-weight:700; }
@@ -37,16 +38,35 @@
             {% endfor %}
         </div>
         {% if selected_category %}<h2>{{ selected_category }}</h2>{% endif %}
-        <div class="grid">
-            {% for figure in figures %}
-            <a class="card" href="/figure/{{ figure.slug }}">
-                <h2>{{ figure.source }}</h2>
-                {% if figure.entries and figure.entries[0].get('translation', {}).get('de') %}
-                <p>{{ figure.entries[0].translation.de }}</p>
-                {% endif %}
-            </a>
+        {% if not selected_category %}
+            {% for category in categories %}
+            <h2>{{ category.icon }} {{ category.name }}</h2>
+            <p>{{ category.description }}</p>
+            <div class="grid">
+                {% for figure in grouped_figures.get(category.name, []) %}
+                <a class="card" href="/figure/{{ figure.slug }}">
+                    <h2>{{ figure.source }}</h2>
+                    {% if figure.entries and figure.entries[0].get('translation', {}).get('de') %}
+                    <p>{{ figure.entries[0].translation.de }}</p>
+                    {% endif %}
+                    <span class="read">Ausführliche Geschichte lesen →</span>
+                </a>
+                {% endfor %}
+            </div>
             {% endfor %}
-        </div>
+        {% else %}
+            <div class="grid">
+                {% for figure in figures %}
+                <a class="card" href="/figure/{{ figure.slug }}">
+                    <h2>{{ figure.source }}</h2>
+                    {% if figure.entries and figure.entries[0].get('translation', {}).get('de') %}
+                    <p>{{ figure.entries[0].translation.de }}</p>
+                    {% endif %}
+                    <span class="read">Ausführliche Geschichte lesen →</span>
+                </a>
+                {% endfor %}
+            </div>
+        {% endif %}
     </main>
 </body>
 </html>

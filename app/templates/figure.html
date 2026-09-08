@@ -18,6 +18,8 @@
         .search input { flex:1; padding:12px 16px; border:1px solid #ddd; border-radius:999px; }
         .search button { border:0; border-radius:999px; padding:0 18px; background:#6846c7; color:white; font-weight:700; }
         .related { border-left:4px solid #f2b84b; }
+        .long-story { border-top:6px solid #6846c7; }
+        .long-story h2 { font-size:1.8rem; }
     </style>
 </head>
 <body>
@@ -33,6 +35,11 @@
             <button type="submit">Suchen</button>
         </form>
         <a class="back" href="/stories">← Zurück zu den Geschichten</a>
+        <article class="long-story">
+            <h2>📚 Die ausführliche Geschichte von {{ figure.source }}</h2>
+            <p class="text">{{ long_story }}</p>
+            <p class="text">Diese Geschichte ist Teil der Kategorie <strong>{{ figure.category }}</strong>. Lies die einzelnen Abschnitte weiter unten, um die Bedeutung und die Rolle von {{ figure.source }} noch genauer kennenzulernen.</p>
+        </article>
         {% for entry in figure.entries %}
         <article>
             <h2>{{ entry.get('chapter', 'Geschichte') }}</h2>

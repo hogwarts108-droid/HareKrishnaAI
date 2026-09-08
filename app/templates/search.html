@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Suche – BhaktiAI</title>
+    <style>
+        body { margin:0; font-family:Segoe UI,Arial,sans-serif; color:#17213b; background:#f7f3ff; }
+        header { padding:38px 20px; color:white; text-align:center; background:linear-gradient(135deg,#6846c7,#39206f); }
+        header h1 { margin:0 0 18px; }
+        form { display:flex; gap:10px; max-width:700px; margin:auto; }
+        input { flex:1; padding:14px 18px; border:0; border-radius:999px; font-size:1rem; }
+        button { padding:0 22px; border:0; border-radius:999px; background:#f2b84b; font-weight:700; }
+        main { max-width:950px; margin:30px auto; padding:0 20px 50px; }
+        .back { color:#6846c7; text-decoration:none; font-weight:700; }
+        .result { margin-top:18px; padding:20px; border-radius:16px; background:white; box-shadow:0 8px 20px #30205012; }
+        .result h2 { margin:0 0 8px; color:#6846c7; } .result p { line-height:1.6; color:#68718a; }
+        .result a { color:#6846c7; font-weight:700; }
+    </style>
+</head>
+<body>
+    <header><h1>🔎 BhaktiAI-Suche</h1><form action="/search" method="get"><input name="q" value="{{ query }}" placeholder="Krishna, Balarama, Geburt ..."><button type="submit">Suchen</button></form></header>
+    <main>
+        <p><a class="back" href="/">← Startseite</a></p>
+        {% if query %}
+        <h2>Ergebnisse für „{{ query }}“</h2>
+        {% if not figures and not stories %}<p>Keine passenden Geschichten gefunden.</p>{% endif %}
+        {% for figure in figures %}
+        <article class="result"><h2>🪷 {{ figure.source }}</h2><p>{{ figure.entries[0].translation.de }}</p><a href="/figure/{{ figure.slug }}">Geschichte lesen →</a></article>
+        {% endfor %}
+        {% for story in stories %}
+        <article class="result"><h2>📖 Krishna: {{ story.chapter }}{% if story.verse %} – {{ story.verse }}{% endif %}</h2><p>{{ story.translation.de }}</p><a href="/krishna">Zur Krishna-Geschichte →</a></article>
+        {% endfor %}
+        {% else %}<p>Suche nach Figuren, Geschichten oder Begriffen.</p>{% endif %}
+    </main>
+</body>
+</html>

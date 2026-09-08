@@ -22,6 +22,12 @@
         .card:hover { transform:translateY(-4px); box-shadow:0 10px 25px #34204718; border-color:var(--purple); }
         .card h3 { margin:0 0 8px; color:var(--purple); }
         .card p { margin:0; color:var(--muted); line-height:1.5; }
+        .search { display:flex; gap:10px; max-width:700px; margin:28px auto 0; }
+        .search input { flex:1; padding:14px 18px; border:0; border-radius:999px; font-size:1rem; }
+        .search button { padding:0 22px; border:0; border-radius:999px; background:var(--gold); font-weight:700; cursor:pointer; }
+        .category { margin:0 0 22px; padding:20px; border:1px solid #e8e0f8; border-radius:18px; background:white; }
+        .category h3 { margin:0 0 6px; color:var(--purple); }
+        .category p { margin:0 0 12px; color:var(--muted); }
         footer { text-align:center; padding:30px; color:var(--muted); }
     </style>
 </head>
@@ -35,9 +41,21 @@
             <a class="button alt" href="/krishna">Krishnas Geschichte</a>
             <a class="button alt" href="/figures">Alle Figuren</a>
         </nav>
+        <form class="search" action="/search" method="get">
+            <input name="q" placeholder="Suche nach Krishna, Balarama oder einer Geschichte">
+            <button type="submit">Suchen</button>
+        </form>
     </header>
     <main>
         <section class="panel">
+            <h2>Geschichten nach Themen</h2>
+            {% for category in categories %}
+            <div class="category">
+                <h3>{{ category.icon }} {{ category.name }}</h3>
+                <p>{{ category.description }}</p>
+                <a class="button" href="/stories?category={{ category.name|urlencode }}">Geschichten öffnen</a>
+            </div>
+            {% endfor %}
             <h2>Beliebte Figuren</h2>
             <div class="grid">
                 {% for figure in figures %}

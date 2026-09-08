@@ -827,6 +827,37 @@ def _slugify(value: str) -> str:
     return slug
 
 
+FIGURE_CATEGORIES = {
+    'Götter und göttliche Gestalten': {
+        'icon': '✨',
+        'description': 'Götter, Avatare und kosmische Kräfte',
+        'figures': {'Krishna', 'Vishnu', 'Shiva', 'Brahma', 'Indra', 'Balarama', 'Radha'},
+    },
+    'Dämonen und Gegenspieler': {
+        'icon': '🔥',
+        'description': 'Mächte des Chaos, der Angst und des Ego',
+        'figures': {'Kamsa', 'Putana', 'Hiranyakashipu'},
+    },
+    'Menschen und Weise': {
+        'icon': '📜',
+        'description': 'Könige, Eltern, Dichter und spirituelle Lehrer',
+        'figures': {'Arjuna', 'Devaki', 'Vasudeva', 'Nanda', 'Yasoda', 'Vyasa', 'Valmiki', 'Prahlada'},
+    },
+    'Gemeinschaften': {
+        'icon': '🪷',
+        'description': 'Gruppen und Gemeinschaften der Überlieferung',
+        'figures': {'Gopis'},
+    },
+}
+
+
+def _category_for_figure(source):
+    for category, data in FIGURE_CATEGORIES.items():
+        if source in data['figures']:
+            return category
+    return 'Weitere Gestalten'
+
+
 def _load_figures():
     figures_file = BASE_DIR / "data" / "scriptures" / "figures_introductions.json"
     try:
@@ -845,6 +876,7 @@ def _load_figures():
             figures[source] = {
                 'source': source,
                 'slug': _slugify(source),
+                'category': _category_for_figure(source),
                 'wikipedia': entry.get('wikipedia', ''),
                 'entries': []
             }
@@ -852,25 +884,31 @@ def _load_figures():
     return sorted(figures.values(), key=lambda item: item['source'])
 
 
+def _load_krishna_entries():
+    krishna_file = BASE_DIR / "data" / "scriptures" / "krishna_book.json"
+    try:
+        with open(krishna_file, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except (OSError, ValueError) as e:
+        logger.error(f"Error loading Krishna data: {e}")
+        return []
+
+
 @flask_app.route('/')
 def website_home():
     """Serve the public knowledge home page."""
     figures = _load_figures()
-    return render_template('home.html', figures=figures[:6])
+    categories = [
+        dict(data, name=name)
+        for name, data in FIGURE_CATEGORIES.items()
+    ]
+    return render_template('home.html', figures=figures[:6], categories=categories)
 
 
 @flask_app.route('/krishna')
 def krishna_story():
     """Serve the complete Krishna story page."""
-    krishna_file = BASE_DIR / "data" / "scriptures" / "krishna_book.json"
-    try:
-        with open(krishna_file, 'r', encoding='utf-8') as f:
-            krishna_entries = json.load(f)
-    except Exception as e:
-        logger.error(f"Error loading Krishna data: {e}")
-        krishna_entries = []
-    
-    return render_template('krishna.html', entries=krishna_entries)
+    return render_template('krishna.html', entries=_load_krishna_entries(), search_query='')
 
 
 @flask_app.route('/figures')
@@ -897,16 +935,73 @@ def figures_index():
 def figure_story(slug):
     """Serve one figure's introduction and story entries."""
     figure = next((item for item in _load_figures() if item['slug'] == slug), None)
+    if not figure and slug == 'krishna':
+        krishna_entries = _load_krishna_entries()
+        figure = {
+            'source': 'Krishna',
+            'slug': 'krishna',
+            'category': 'Götter und göttliche Gestalten',
+            'wikipedia': 'https://en.wikipedia.org/wiki/Krishna',
+            'entries': krishna_entries,
+        }
     if not figure:
         return render_template('not_found.html', title='Figur nicht gefunden'), 404
-    return render_template('figure.html', figure=figure)
+    related_stories = [
+        entry for entry in _load_krishna_entries()
+        if figure['source'].lower() in json.dumps(entry, ensure_ascii=False).lower()
+    ]
+    return render_template('figure.html', figure=figure, related_stories=related_stories)
 
 
 @flask_app.route('/stories')
 def stories_index():
     """Serve the stories landing page."""
     figures = _load_figures()
-    return render_template('stories.html', figures=figures)
+    category = request.args.get('category', '').strip()
+    query = request.args.get('q', '').strip().lower()
+    if category:
+        figures = [figure for figure in figures if figure['category'] == category]
+    if query:
+        figures = [
+            figure for figure in figures
+            if query in figure['source'].lower()
+            or query in ' '.join(
+                str(entry.get('translation', {}).get(language, ''))
+                for entry in figure['entries']
+                for language in ('de', 'en', 'hi')
+            ).lower()
+        ]
+    categories = [dict(data, name=name) for name, data in FIGURE_CATEGORIES.items()]
+    return render_template(
+        'stories.html',
+        figures=figures,
+        categories=categories,
+        selected_category=category,
+        q=request.args.get('q', ''),
+    )
+
+
+@flask_app.route('/search')
+def website_search():
+    """Search figures and Krishna story chapters from the top search field."""
+    query = request.args.get('q', '').strip()
+    if not query:
+        return render_template('search.html', query='', figures=[], stories=[])
+    query_lower = query.lower()
+    figures = [
+        figure for figure in _load_figures()
+        if query_lower in figure['source'].lower()
+        or query_lower in ' '.join(
+            str(entry.get('translation', {}).get(language, ''))
+            for entry in figure['entries']
+            for language in ('de', 'en', 'hi')
+        ).lower()
+    ]
+    stories = [
+        entry for entry in _load_krishna_entries()
+        if query_lower in json.dumps(entry, ensure_ascii=False).lower()
+    ]
+    return render_template('search.html', query=query, figures=figures, stories=stories)
 
 @flask_app.route('/health')
 def health():

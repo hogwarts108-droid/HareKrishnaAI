@@ -132,6 +132,9 @@
         .empty-state p {
             font-size: 1.1em;
         }
+        .top-search { display:flex; gap:8px; margin-bottom:20px; }
+        .top-search input { flex:1; padding:12px; border:1px solid #ddd; border-radius:8px; }
+        .top-search button { padding:10px 16px; border:0; border-radius:8px; background:#667eea; color:white; font-weight:600; }
     </style>
 </head>
 <body>
@@ -140,6 +143,10 @@
             <h1>🪷 Hindu Figuren</h1>
             <p>Lerne die wichtigsten Götter und Heiligen kennen</p>
         </div>
+        <form class="top-search" action="/search" method="get">
+            <input name="q" placeholder="Alles durchsuchen">
+            <button type="submit">Suchen</button>
+        </form>
 
         <!-- Search form -->
         <form method="get" action="/figures" style="margin-bottom:20px; text-align:center;">

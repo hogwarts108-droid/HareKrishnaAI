@@ -123,6 +123,26 @@
         .back-link:hover {
             background: #764ba2;
         }
+        .top-search {
+            display: flex;
+            gap: 10px;
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+        .top-search input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 999px;
+        }
+        .top-search button {
+            padding: 0 18px;
+            border: 0;
+            border-radius: 999px;
+            background: #667eea;
+            color: white;
+            font-weight: 700;
+        }
         
         @media (max-width: 600px) {
             header h1 {
@@ -147,6 +167,10 @@
         </header>
         
         <div class="content">
+            <form class="top-search" action="/search" method="get">
+                <input name="q" placeholder="In Geschichten suchen">
+                <button type="submit">Suchen</button>
+            </form>
             <a href="/" class="back-link">← Zurück zum Bot</a>
             
             {% for entry in entries %}

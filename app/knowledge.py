@@ -687,6 +687,11 @@ def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de')
                 "en": "In short: Balarama is not Krishna, but his elder brother and a distinct central figure in the Krishna tradition.",
                 "hi": "संक्षेप में: बलराम कृष्ण नहीं हैं, बल्कि उनके बड़े भाई और कृष्ण परंपरा के एक प्रमुख स्वतंत्र व्यक्तित्व हैं।",
             },
+            "radha": {
+                "de": "Radha steht für die vollkommen persönliche Form der Bhakti. Ihre Beziehung zu Krishna wird als Liebe verstanden, in der Hingabe wichtiger ist als eigener Vorteil.",
+                "en": "Radha represents the most intimate form of bhakti. Her relationship with Krishna shows devotion that seeks no personal reward.",
+                "hi": "राधा भक्ति के सबसे अंतरंग रूप का प्रतिनिधित्व करती हैं। कृष्ण के साथ उनका संबंध ऐसी भक्ति दिखाता है जिसमें अपना लाभ नहीं, समर्पण प्रधान है।",
+            },
             "krishna": {
                 "de": "Kurz gesagt: Krishna steht im Mittelpunkt dieser Überlieferungen als Lehrer der Bhagavad Gita und als zentrale göttliche Gestalt.",
                 "en": "In short: Krishna is central to these traditions as the teacher of the Bhagavad Gita and a principal divine figure.",
@@ -696,6 +701,81 @@ def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de')
                 "de": "Die Verbindung zur Bhagavad Gita ist entscheidend: Arjuna stellt die Fragen, durch die Krishna seine Lehren entfaltet.",
                 "en": "The connection to the Bhagavad Gita is essential: Arjuna asks the questions through which Krishna unfolds his teachings.",
                 "hi": "भगवद्गीता से उनका संबंध अत्यंत महत्वपूर्ण है: अर्जुन के प्रश्नों के माध्यम से कृष्ण अपनी शिक्षाएँ प्रकट करते हैं।",
+            },
+            "devaki": {
+                "de": "Devakis Rolle zeigt, dass die Krishna-Geschichte auch von Schutz, Leid und Vertrauen handelt: Trotz Kamsas Verfolgung bewahrte sie ihre Hoffnung.",
+                "en": "Devaki's role shows that Krishna's story is also about protection, suffering, and trust: she kept hope despite Kamsa's persecution.",
+                "hi": "देवकी की भूमिका दिखाती है कि कृष्ण की कथा संरक्षण, पीड़ा और विश्वास की भी कथा है; कंस के अत्याचार के बावजूद उन्होंने आशा बनाए रखी।",
+            },
+            "vasudeva": {
+                "de": "Vasudeva verkörpert mutige Verantwortung. Seine Flucht mit dem neugeborenen Krishna verbindet praktische Handlung mit tiefem Vertrauen in das Göttliche.",
+                "en": "Vasudeva embodies courageous responsibility. Carrying the newborn Krishna to safety joins decisive action with deep trust in the Divine.",
+                "hi": "वसुदेव साहसी जिम्मेदारी का प्रतीक हैं। नवजात कृष्ण को सुरक्षित ले जाना निर्णायक कर्म और ईश्वर में गहरे विश्वास को जोड़ता है।",
+            },
+            "kamsa": {
+                "de": "Kamsa ist mehr als ein einfacher Bösewicht: Seine Angst vor der Prophezeiung zeigt, wie Furcht Macht in Grausamkeit und Kontrolle verwandeln kann.",
+                "en": "Kamsa is more than a simple villain: his fear of the prophecy shows how fear can turn power into cruelty and control.",
+                "hi": "कंस केवल एक खलनायक नहीं हैं; भविष्यवाणी का उनका भय दिखाता है कि डर सत्ता को क्रूरता और नियंत्रण में बदल सकता है।",
+            },
+            "nanda": {
+                "de": "Nanda zeigt die menschliche Seite der Krishna-Geschichte: Seine väterliche Liebe macht Bhakti im Alltag als Fürsorge und Verantwortung sichtbar.",
+                "en": "Nanda shows the human side of Krishna's story: his fatherly love makes bhakti visible through everyday care and responsibility.",
+                "hi": "नंद कृष्ण-कथा का मानवीय पक्ष दिखाते हैं; उनका पितृ प्रेम दैनिक सेवा और जिम्मेदारी के रूप में भक्ति को प्रकट करता है।",
+            },
+            "yasoda": {
+                "de": "Yasoda verkörpert Vatsalya-Bhakti, die Liebe einer Mutter. Ihre Beziehung zu Krishna zeigt, dass Hingabe auch vertraut, direkt und fürsorglich sein kann.",
+                "en": "Yasoda embodies vatsalya-bhakti, the love of a mother. Her relationship with Krishna shows that devotion can also be intimate, direct, and caring.",
+                "hi": "यशोदा वात्सल्य-भक्ति, अर्थात माता के प्रेम, का प्रतीक हैं। उनका कृष्ण से संबंध दिखाता है कि भक्ति आत्मीय, सरल और स्नेहमयी भी हो सकती है।",
+            },
+            "indra": {
+                "de": "Indras Geschichte mit Govardhana lehrt Demut: Äußere Macht und Rang sind weniger wichtig als Respekt vor der Hingabe und dem Schutz der Gemeinschaft.",
+                "en": "Indra's Govardhana story teaches humility: status and power matter less than honoring devotion and protecting the community.",
+                "hi": "गोवर्धन की इंद्र-कथा विनम्रता सिखाती है: पद और शक्ति से अधिक महत्वपूर्ण भक्ति का सम्मान और समुदाय की रक्षा है।",
+            },
+            "brahma": {
+                "de": "Brahma steht für kosmische Schöpfung und Wissen. In den Krishna-Erzählungen lernt er zugleich, dass intellektuelle Macht Demut vor dem Göttlichen braucht.",
+                "en": "Brahma represents cosmic creation and knowledge. Krishna's stories also teach him that intellectual power requires humility before the Divine.",
+                "hi": "ब्रह्मा सृष्टि और ज्ञान के प्रतीक हैं। कृष्ण की कथाएँ यह भी सिखाती हैं कि बौद्धिक शक्ति को ईश्वर के सामने विनम्रता चाहिए।",
+            },
+            "vishnu": {
+                "de": "Vishnu verkörpert den Schutz der kosmischen Ordnung. Seine Avatare zeigen das Grundmotiv, dass Dharma wiederhergestellt wird, wenn Unrecht übermächtig wird.",
+                "en": "Vishnu represents the preservation of cosmic order. His avatars express the principle that dharma is restored when injustice becomes dominant.",
+                "hi": "विष्णु ब्रह्मांडीय व्यवस्था की रक्षा के प्रतीक हैं। उनके अवतार दिखाते हैं कि अन्याय बढ़ने पर धर्म की पुनः स्थापना होती है।",
+            },
+            "shiva": {
+                "de": "Shiva steht für Transformation, Meditation und Loslassen. Zerstörung bedeutet hier nicht nur Ende, sondern auch den Raum für Erneuerung.",
+                "en": "Shiva represents transformation, meditation, and letting go. Destruction here is not only an ending, but also space for renewal.",
+                "hi": "शिव परिवर्तन, ध्यान और त्याग के प्रतीक हैं। यहाँ विनाश केवल अंत नहीं, बल्कि नवीनीकरण के लिए स्थान भी है।",
+            },
+            "gopis": {
+                "de": "Die Gopis stehen gemeinsam für eine Beziehung zum Göttlichen, die von spontaner, selbstloser Liebe geprägt ist. Deshalb gelten sie als starkes Bhakti-Symbol.",
+                "en": "The Gopis collectively represent a relationship with the Divine shaped by spontaneous, selfless love, which is why they are a central symbol of bhakti.",
+                "hi": "गोपियाँ ईश्वर के साथ सहज और निःस्वार्थ प्रेमपूर्ण संबंध का सामूहिक प्रतीक हैं; इसलिए वे भक्ति का महत्वपूर्ण आदर्श मानी जाती हैं।",
+            },
+            "vyasa": {
+                "de": "Vyasa ist nicht nur ein Autor, sondern ein Bewahrer von Wissen. Seine Arbeit verbindet mündliche Überlieferung, Ordnung und Weitergabe spiritueller Lehren.",
+                "en": "Vyasa is not only an author but a preserver of knowledge. His work connects oral tradition, organization, and the transmission of spiritual teachings.",
+                "hi": "व्यास केवल लेखक नहीं, बल्कि ज्ञान के संरक्षक हैं। उनका कार्य मौखिक परंपरा, व्यवस्था और आध्यात्मिक शिक्षाओं के प्रसार को जोड़ता है।",
+            },
+            "valmiki": {
+                "de": "Valmiki zeigt die Kraft spiritueller Wandlung und dichterischer Erkenntnis. Das Ramayana macht durch seine Erzählung Dharma menschlich und nachvollziehbar.",
+                "en": "Valmiki represents spiritual transformation and poetic insight. Through the Ramayana, he makes dharma human and understandable.",
+                "hi": "वाल्मीकि आध्यात्मिक परिवर्तन और काव्यात्मक अंतर्दृष्टि के प्रतीक हैं। रामायण के माध्यम से वे धर्म को मानवीय और समझने योग्य बनाते हैं।",
+            },
+            "putana": {
+                "de": "Putanas Geschichte gehört zu den frühen Prüfungen Krishnas. Sie zeigt in der Erzähltradition den Gegensatz zwischen täuschender Gefahr und göttlichem Schutz.",
+                "en": "Putana's story is one of Krishna's early trials. In the tradition, it contrasts deceptive danger with divine protection.",
+                "hi": "पुतना की कथा कृष्ण की प्रारंभिक परीक्षाओं में से एक है। परंपरा में यह छलपूर्ण खतरे और दिव्य संरक्षण का अंतर दिखाती है।",
+            },
+            "hiranyakashipu": {
+                "de": "Hiranyakashipu verkörpert den Versuch, durch Macht und vermeintliche Unbesiegbarkeit jede Transzendenz zu beherrschen. Seine Geschichte stellt Ego der Hingabe gegenüber.",
+                "en": "Hiranyakashipu embodies the attempt to control transcendence through power and supposed invulnerability. His story places ego against devotion.",
+                "hi": "हिरण्यकशिपु शक्ति और अजेयता के अहंकार से दिव्यता को नियंत्रित करना चाहते हैं। उनकी कथा अहंकार और भक्ति का विरोध दिखाती है।",
+            },
+            "prahlada": {
+                "de": "Prahlada steht für innere Standhaftigkeit. Seine Bhakti hängt nicht von seiner Umgebung ab und bleibt selbst unter Druck friedlich und vertrauensvoll.",
+                "en": "Prahlada represents inner steadfastness. His bhakti does not depend on his surroundings and remains peaceful and trusting under pressure.",
+                "hi": "प्रह्लाद आंतरिक दृढ़ता के प्रतीक हैं। उनकी भक्ति परिस्थितियों पर निर्भर नहीं रहती और दबाव में भी शांत और विश्वासपूर्ण बनी रहती है।",
             },
         }
         insight = figure_insights.get(source.lower(), {}).get(lang)

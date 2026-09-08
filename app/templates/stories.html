@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Geschichten – BhaktiAI</title>
+    <style>
+        body { margin:0; font-family:Segoe UI,Arial,sans-serif; color:#17213b; background:#f7f3ff; }
+        header { padding:44px 20px; text-align:center; color:white; background:linear-gradient(135deg,#6846c7,#39206f); }
+        header h1 { margin:0 0 10px; font-size:2.8rem; } header p { margin:0; opacity:.9; }
+        main { max-width:1100px; margin:30px auto; padding:0 20px; }
+        .top { display:flex; justify-content:space-between; align-items:center; gap:15px; flex-wrap:wrap; margin-bottom:20px; }
+        .back { color:#6846c7; font-weight:700; text-decoration:none; }
+        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
+        .card { background:white; border-radius:18px; padding:22px; box-shadow:0 8px 22px #30205012; text-decoration:none; color:inherit; }
+        .card:hover { outline:2px solid #6846c7; } .card h2 { margin:0 0 10px; color:#6846c7; }
+        .card p { color:#68718a; line-height:1.5; margin:0; }
+    </style>
+</head>
+<body>
+    <header><h1>📚 Geschichten und Figuren</h1><p>Entdecke die Personen hinter den großen Erzählungen.</p></header>
+    <main>
+        <div class="top"><a class="back" href="/">← Startseite</a><a class="back" href="/krishna">Krishna-Geschichte →</a></div>
+        <div class="grid">
+            {% for figure in figures %}
+            <a class="card" href="/figure/{{ figure.slug }}">
+                <h2>{{ figure.source }}</h2>
+                {% if figure.entries and figure.entries[0].get('translation', {}).get('de') %}
+                <p>{{ figure.entries[0].translation.de }}</p>
+                {% endif %}
+            </a>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>

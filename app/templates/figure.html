@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ figure.source }} – BhaktiAI</title>
+    <style>
+        body { margin:0; font-family:Segoe UI,Arial,sans-serif; color:#17213b; background:linear-gradient(145deg,#f7f3ff,#fffaf0); }
+        header { padding:55px 20px; text-align:center; color:white; background:linear-gradient(135deg,#6846c7,#39206f); }
+        header h1 { margin:0 0 12px; font-size:3rem; } header p { margin:0 auto; max-width:700px; opacity:.9; }
+        main { max-width:850px; margin:30px auto; padding:0 20px 50px; }
+        .back { display:inline-block; margin-bottom:22px; color:#6846c7; font-weight:700; text-decoration:none; }
+        article { background:white; border-radius:20px; padding:26px; margin-bottom:20px; box-shadow:0 8px 25px #30205012; }
+        article h2 { margin-top:0; color:#6846c7; } .label { color:#a16c13; font-weight:700; }
+        .sanskrit { font-size:1.5rem; padding:14px; background:#fff8e8; border-radius:12px; }
+        .text { line-height:1.75; color:#414b64; } .wiki { color:#6846c7; font-weight:700; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🪷 {{ figure.source }}</h1>
+        {% if figure.entries and figure.entries[0].get('translation', {}).get('de') %}
+        <p>{{ figure.entries[0].translation.de }}</p>
+        {% endif %}
+    </header>
+    <main>
+        <a class="back" href="/stories">← Zurück zu den Geschichten</a>
+        {% for entry in figure.entries %}
+        <article>
+            <h2>{{ entry.get('chapter', 'Geschichte') }}</h2>
+            {% if entry.get('sanskrit') %}<div class="sanskrit">{{ entry.sanskrit }}</div>{% endif %}
+            {% if entry.get('translation', {}).get('de') %}
+            <p class="text"><span class="label">🌍 Bedeutung:</span><br>{{ entry.translation.de }}</p>
+            {% endif %}
+            {% if entry.get('explanation', {}).get('de') %}
+            <p class="text"><span class="label">📖 Geschichte und Einordnung:</span><br>{{ entry.explanation.de }}</p>
+            {% endif %}
+        </article>
+        {% endfor %}
+        {% if figure.wikipedia %}<a class="wiki" href="{{ figure.wikipedia }}" target="_blank" rel="noopener">Weitere Informationen auf Wikipedia →</a>{% endif %}
+    </main>
+</body>
+</html>

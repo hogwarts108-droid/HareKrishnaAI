@@ -12,6 +12,7 @@ import time
 import threading
 from flask import Flask, render_template, request
 import json
+import re
 from pathlib import Path
 
 # Fix encoding for Windows
@@ -815,9 +816,48 @@ app.add_handler(
 logger.info("Bot started successfully")
 print("Bot is running...")
 
-# Create Flask app for web routes
-flask_app = Flask(__name__, template_folder='app/templates')
 BASE_DIR = Path(__file__).resolve().parent.parent
+# Create Flask app for web routes using an absolute template path so it works
+# regardless of the process working directory.
+flask_app = Flask(__name__, template_folder=str(BASE_DIR / 'app' / 'templates'))
+
+def _slugify(value: str) -> str:
+    """Create a stable URL slug for a figure or story."""
+    slug = re.sub(r"[^a-z0-9]+", "-", str(value or "").lower()).strip("-")
+    return slug
+
+
+def _load_figures():
+    figures_file = BASE_DIR / "data" / "scriptures" / "figures_introductions.json"
+    try:
+        with open(figures_file, 'r', encoding='utf-8') as f:
+            entries = json.load(f)
+    except (OSError, ValueError) as e:
+        logger.error(f"Error loading figures data: {e}")
+        return []
+
+    figures = {}
+    for entry in entries:
+        source = entry.get('source')
+        if not source:
+            continue
+        if source not in figures:
+            figures[source] = {
+                'source': source,
+                'slug': _slugify(source),
+                'wikipedia': entry.get('wikipedia', ''),
+                'entries': []
+            }
+        figures[source]['entries'].append(entry)
+    return sorted(figures.values(), key=lambda item: item['source'])
+
+
+@flask_app.route('/')
+def website_home():
+    """Serve the public knowledge home page."""
+    figures = _load_figures()
+    return render_template('home.html', figures=figures[:6])
+
 
 @flask_app.route('/krishna')
 def krishna_story():
@@ -836,44 +876,37 @@ def krishna_story():
 @flask_app.route('/figures')
 def figures_index():
     """Serve figure index page with Wikipedia links and optional search."""
-    figures_file = BASE_DIR / "data" / "scriptures" / "figures_introductions.json"
     q = request.args.get('q', '').strip().lower()
-    try:
-        with open(figures_file, 'r', encoding='utf-8') as f:
-            figures_data = json.load(f)
-        
-        # Group by source (figure name)
-        figures_dict = {}
-        for entry in figures_data:
-            source = entry.get('source')
-            if source not in figures_dict:
-                figures_dict[source] = {
-                    'source': source,
-                    'wikipedia': entry.get('wikipedia', ''),
-                    'entries': []
-                }
-            figures_dict[source]['entries'].append(entry)
-        
-        figures = list(figures_dict.values())
-        figures.sort(key=lambda x: x['source'])
-        
-        # If search query provided, filter figures
-        if q:
-            filtered = []
-            for fig in figures:
-                name = (fig['source'] or '').lower()
-                wiki = (fig.get('wikipedia') or '').lower()
-                translations_text = ' '.join(
-                    [entry.get('translation', {}).get('de','') + ' ' + entry.get('translation', {}).get('en','') + ' ' + entry.get('translation', {}).get('hi','') for entry in fig.get('entries', [])]
-                ).lower()
-                if q in name or q in wiki or q in translations_text:
-                    filtered.append(fig)
-            figures = filtered
-    except Exception as e:
-        logger.error(f"Error loading figures data: {e}")
-        figures = []
+    figures = _load_figures()
+    if q:
+        figures = [
+            figure for figure in figures
+            if q in figure['source'].lower()
+            or q in figure.get('wikipedia', '').lower()
+            or q in ' '.join(
+                str(entry.get('translation', {}).get(language, ''))
+                for entry in figure['entries']
+                for language in ('de', 'en', 'hi')
+            ).lower()
+        ]
     
     return render_template('figures.html', figures=figures, q=request.args.get('q',''))
+
+
+@flask_app.route('/figure/<slug>')
+def figure_story(slug):
+    """Serve one figure's introduction and story entries."""
+    figure = next((item for item in _load_figures() if item['slug'] == slug), None)
+    if not figure:
+        return render_template('not_found.html', title='Figur nicht gefunden'), 404
+    return render_template('figure.html', figure=figure)
+
+
+@flask_app.route('/stories')
+def stories_index():
+    """Serve the stories landing page."""
+    figures = _load_figures()
+    return render_template('stories.html', figures=figures)
 
 @flask_app.route('/health')
 def health():

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BhaktiAI – Geschichten und Weisheit</title>
+    <style>
+        :root { --ink:#17213b; --muted:#68718a; --purple:#6846c7; --gold:#f2b84b; --paper:#fffdf9; }
+        * { box-sizing:border-box; }
+        body { margin:0; font-family:Segoe UI,Arial,sans-serif; color:var(--ink); background:linear-gradient(145deg,#f4efff,#fffaf0); }
+        .hero { padding:70px 22px 90px; text-align:center; background:radial-gradient(circle at top,#8d6de2,#412781 70%); color:white; }
+        .hero h1 { margin:0 0 14px; font-size:clamp(2.2rem,6vw,4.6rem); }
+        .hero p { max-width:650px; margin:0 auto 28px; font-size:1.15rem; opacity:.9; }
+        .nav { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
+        .button { display:inline-block; padding:12px 20px; border-radius:999px; background:var(--gold); color:#342047; text-decoration:none; font-weight:700; }
+        .button.alt { background:white; }
+        main { max-width:1100px; margin:-45px auto 60px; padding:0 20px; position:relative; }
+        .panel { background:var(--paper); border-radius:24px; padding:30px; box-shadow:0 18px 50px #3420471c; }
+        .panel h2 { margin-top:0; font-size:2rem; }
+        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+        .card { padding:20px; border:1px solid #e8e0f8; border-radius:18px; background:white; text-decoration:none; color:inherit; transition:.2s; }
+        .card:hover { transform:translateY(-4px); box-shadow:0 10px 25px #34204718; border-color:var(--purple); }
+        .card h3 { margin:0 0 8px; color:var(--purple); }
+        .card p { margin:0; color:var(--muted); line-height:1.5; }
+        footer { text-align:center; padding:30px; color:var(--muted); }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div aria-label="Lotus">🪷</div>
+        <h1>BhaktiAI</h1>
+        <p>Geschichten, Figuren und Weisheit aus der vedischen Überlieferung – verständlich erklärt.</p>
+        <nav class="nav">
+            <a class="button" href="/stories">Alle Geschichten</a>
+            <a class="button alt" href="/krishna">Krishnas Geschichte</a>
+            <a class="button alt" href="/figures">Alle Figuren</a>
+        </nav>
+    </header>
+    <main>
+        <section class="panel">
+            <h2>Beliebte Figuren</h2>
+            <div class="grid">
+                {% for figure in figures %}
+                <a class="card" href="/figure/{{ figure.slug }}">
+                    <h3>{{ figure.source }}</h3>
+                    {% if figure.entries and figure.entries[0].get('translation', {}).get('de') %}
+                    <p>{{ figure.entries[0].translation.de }}</p>
+                    {% endif %}
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer>🙏 Hare Krishna · BhaktiAI</footer>
+</body>
+</html>

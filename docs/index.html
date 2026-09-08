@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BhaktiAI – Geschichten und Weisheit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="lotus">🪷</div>
+    <h1>BhaktiAI</h1>
+    <p>Geschichten, Figuren und Weisheit aus der vedischen Überlieferung.</p>
+    <form id="search-form" class="search"><input id="search" placeholder="Krishna, Balarama, Putana ..."><button>Suchen</button></form>
+  </header>
+  <main>
+    <nav class="nav"><a href="#stories">Geschichten</a><a href="#figures">Figuren</a><a href="#krishna">Krishna</a></nav>
+    <section id="search-results" class="panel hidden"></section>
+    <section id="stories" class="panel">
+      <h2>📚 Geschichten nach Kategorien</h2>
+      <div id="categories"></div>
+    </section>
+    <section id="figures" class="panel">
+      <h2>🪷 Alle Figuren</h2>
+      <div id="figure-grid" class="grid"></div>
+    </section>
+    <section id="krishna" class="panel">
+      <h2>✨ Krishnas Geschichten</h2>
+      <div id="krishna-stories"></div>
+    </section>
+  </main>
+  <footer>🙏 Hare Krishna · BhaktiAI</footer>
+  <script src="app.js"></script>
+</body>
+</html>

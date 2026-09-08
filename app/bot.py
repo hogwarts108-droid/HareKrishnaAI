@@ -918,6 +918,17 @@ logger.info("Starting bot in polling mode (24/7)")
 logger.info("Bot will receive updates continuously from Telegram servers")
 
 if __name__ == '__main__':
+    # Railway routes the public domain to PORT. Keep the web pages available
+    # while Telegram polling runs in the main thread.
+    web_port = int(os.getenv('PORT', '8080'))
+    web_thread = threading.Thread(
+        target=flask_app.run,
+        kwargs={'host': '0.0.0.0', 'port': web_port, 'debug': False, 'use_reloader': False},
+        daemon=True,
+    )
+    web_thread.start()
+    logger.info(f"Web server listening on port {web_port}")
+
     # Ensure webhook removed and use resilient polling with retries on Conflict
     import telegram as _telegram
     import time as _time

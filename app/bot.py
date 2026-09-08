@@ -894,6 +894,117 @@ def _load_krishna_entries():
         return []
 
 
+EXTENDED_STORIES = {
+    'putana': {
+        'title': 'PUTANA – Die Prüfung im Haus von Nanda',
+        'de': (
+            'Nachdem Krishna in Vrindavan verborgen aufwuchs, suchte Kamsa weiter nach dem Kind, '
+            'von dem die Prophezeiung sprach. Er schickte Putana, eine mächtige Dämonin, die sich '
+            'als schöne und vertrauenswürdige Frau verkleiden konnte. Sie zog von Dorf zu Dorf und '
+            'gab vor, Säuglinge segnen zu wollen. In Wahrheit trug sie Gift und wollte Krishna töten. '
+            'Als sie Nandas Haus erreichte, nahm Yasoda das fremde Kind zunächst nicht aus den Augen. '
+            'Doch Putanas Auftreten wirkte so überzeugend, dass sie Krishna auf den Arm nehmen durfte. '
+            'Sie setzte sich und bot ihm ihre vergiftete Brust an. Krishna ließ sich nicht täuschen. '
+            'Er nahm die Nahrung an, aber zugleich entzog er Putana ihre Lebenskraft. Die Dämonin '
+            'versuchte, ihn abzuschütteln, wuchs zu ihrer wahren riesigen Gestalt an und stürzte '
+            'mit einem gewaltigen Schrei zu Boden. Die Bewohner von Vrindavan erschraken, doch Krishna '
+            'lag unversehrt auf ihrem Körper. Nanda, Yasoda und die Frauen des Dorfes schützten ihn '
+            'mit Gebeten und Reinigungsritualen. In der Erzählung wird Putanas Ende dennoch nicht nur '
+            'als Niederlage beschrieben: Weil sie Krishna, wenn auch mit böser Absicht, die Rolle einer '
+            'Mutter angeboten hatte, erhielt sie eine besondere Gnade. Die Geschichte verbindet damit '
+            'Gefahr, Schutz und die Vorstellung, dass göttliche Barmherzigkeit sogar eine verhärtete '
+            'Gestalt erreichen kann. Sie erklärt außerdem, warum Kamsas Angst vor Krishna weiter wuchs.'
+        ),
+        'en': 'Putana is told here in an original retelling based on the traditional Krishna narrative.',
+    },
+    'birth': {
+        'title': 'DIE GEBURT KRISHNAS – Von Mathura nach Gokula',
+        'de': (
+            'Kamsa hatte von einer Prophezeiung erfahren, dass ein Kind aus der Familie seiner Schwester '
+            'Devaki sein Ende bringen würde. Aus Angst machte er Devaki und Vasudeva zu Gefangenen und '
+            'ließ ihre Kinder bewachen. Als Krishna geboren wurde, geschah dies mitten in der Nacht. '
+            'Die Fesseln fielen ab, die Türen öffneten sich, und die Wachen versanken in Schlaf. '
+            'Vasudeva verstand, dass er das Kind sofort in Sicherheit bringen musste. Er trug Krishna '
+            'durch die dunklen Straßen von Mathura und überquerte den angeschwollenen Yamuna-Fluss. '
+            'In Gokula nahm Yasoda das Kind auf, während ein anderes Neugeborenes nach Mathura gebracht '
+            'wurde. So wuchs Krishna zunächst bei Nanda und Yasoda auf. Die Geschichte ist deshalb nicht '
+            'nur eine Geburtserzählung, sondern auch eine Geschichte über Mut, Vertrauen und den Schutz '
+            'eines Kindes vor tyrannischer Macht.'
+        ),
+        'en': 'Krishna birth story in an original German narrative summary.',
+    },
+    'childhood': {
+        'title': 'KRISHNAS KINDHEIT IN VRINDAVAN',
+        'de': (
+            'In Vrindavan lebte Krishna zwischen Kühen, Hirtenfamilien und den Wegen am Yamuna. '
+            'Nanda und Yasoda behandelten ihn wie ihren eigenen Sohn. Gerade darin liegt der besondere '
+            'Charme der Kindheitserzählungen: Das Göttliche erscheint nicht fern, sondern im Alltag. '
+            'Krishna spielte mit den Jungen, neckte die Gopis und brachte durch seine Streiche das ganze '
+            'Dorf in Bewegung. Gleichzeitig begegneten ihm immer wieder Gefahren, die Kamsa oder andere '
+            'feindliche Kräfte geschickt hatten. Die Bewohner erkannten erst nach und nach, dass hinter '
+            'dem fröhlichen Kind eine außergewöhnliche Macht stand. Seine Kindheit verbindet daher '
+            'Humor und Nähe mit Schutz, Verantwortung und der wachsenden Erkenntnis seiner göttlichen Rolle.'
+        ),
+        'en': 'Krishna childhood story in an original German narrative summary.',
+    },
+    'govardhana': {
+        'title': 'GOVARDHANA – Als Krishna den Berg hob',
+        'de': (
+            'Die Menschen von Vrindavan bereiteten jedes Jahr ein Fest für Indra vor, den mächtigen '
+            'Herrn des Regens. Krishna fragte, ob nicht eher Govardhana, die Kühe, die Felder und die '
+            'Menschen geehrt werden sollten, die ihr tägliches Leben tatsächlich trugen. Nanda und die '
+            'Gemeinschaft folgten seinem Vorschlag. Indra empfand dies als Kränkung und sandte schwere '
+            'Wolken über das Land. Regen und Sturm drohten Häuser, Tiere und Familien fortzureißen. '
+            'Krishna hob daraufhin den Govardhana-Berg an und hielt ihn wie einen Schirm über die '
+            'Menschen. Sieben Tage lang blieben alle unter seinem Schutz. Als Indra erkannte, dass '
+            'seine Macht die Gemeinschaft nicht brechen konnte, legte er den Stolz ab und beendete '
+            'den Sturm. Die Geschichte erzählt von Schutz und Zusammenhalt, aber auch davon, dass Macht '
+            'ohne Demut zerstörerisch werden kann.'
+        ),
+        'en': 'Govardhana story in an original German narrative summary.',
+    },
+    'teaching': {
+        'title': 'DIE BHAGAVAD GITA – Krishnas Gespräch mit Arjuna',
+        'de': (
+            'Vor der Schlacht von Kurukshetra sah Arjuna Verwandte, Lehrer und Freunde auf beiden Seiten. '
+            'Sein Bogen sank, weil er nicht wusste, wie er handeln sollte, ohne Schuld auf sich zu laden. '
+            'Krishna antwortete nicht mit einem einfachen Befehl. Er führte Arjuna Schritt für Schritt '
+            'durch Fragen über Körper und Seele, Pflicht, selbstloses Handeln, Meditation und Hingabe. '
+            'Arjuna lernte, dass verantwortliches Handeln nicht dasselbe ist wie Handeln aus Gier oder '
+            'Angst. Am Ende blieb die Entscheidung bei ihm. Er nahm seinen Bogen wieder auf, nicht weil '
+            'seine Zweifel verspottet wurden, sondern weil er Klarheit gewonnen hatte. Darin liegt die '
+            'besondere Form der Gita: Krishna lehrt, aber Arjuna muss selbst verstehen und entscheiden.'
+        ),
+        'en': 'Bhagavad Gita story in an original German narrative summary.',
+    },
+}
+
+
+def _expanded_krishna_entries():
+    entries = _load_krishna_entries()
+    expanded = []
+    for entry in entries:
+        item = dict(entry)
+        key = str(entry.get('verse', '')).lower()
+        story = EXTENDED_STORIES.get(key)
+        if story:
+            item['story_title'] = story['title']
+            item['story_de'] = story['de']
+        expanded.append(item)
+    for key in ('putana', 'govardhana'):
+        story = EXTENDED_STORIES[key]
+        expanded.append({
+            'source': 'Krishna',
+            'chapter': 'Vrindavan',
+            'verse': key.upper(),
+            'story_title': story['title'],
+            'story_de': story['de'],
+            'translation': {'de': story['de']},
+            'explanation': {'de': story['de']},
+        })
+    return expanded
+
+
 def _story_text_for_figure(figure):
     """Build a longer readable story from the figure's knowledge entry."""
     entry = figure.get('entries', [{}])[0]
@@ -910,6 +1021,9 @@ def _story_text_for_figure(figure):
     paragraphs = [translation, explanation]
     if category_context:
         paragraphs.insert(0, category_context)
+    custom_story = EXTENDED_STORIES.get(source.lower(), {}).get('de')
+    if custom_story:
+        paragraphs.append(custom_story)
     return ' '.join(part.strip() for part in paragraphs if part and part.strip())
 
 
@@ -927,7 +1041,7 @@ def website_home():
 @flask_app.route('/krishna')
 def krishna_story():
     """Serve the complete Krishna story page."""
-    return render_template('krishna.html', entries=_load_krishna_entries(), search_query='')
+    return render_template('krishna.html', entries=_expanded_krishna_entries(), search_query='')
 
 
 @flask_app.route('/figures')
@@ -966,9 +1080,21 @@ def figure_story(slug):
     if not figure:
         return render_template('not_found.html', title='Figur nicht gefunden'), 404
     related_stories = [
-        entry for entry in _load_krishna_entries()
+        entry for entry in _expanded_krishna_entries()
         if figure['source'].lower() in json.dumps(entry, ensure_ascii=False).lower()
     ]
+    custom_story = EXTENDED_STORIES.get(figure['source'].lower())
+    if custom_story and not any(
+        entry.get('story_title') == custom_story['title'] for entry in related_stories
+    ):
+        related_stories.insert(0, {
+            'chapter': 'Ausführliche Geschichte',
+            'verse': figure['source'].upper(),
+            'story_title': custom_story['title'],
+            'story_de': custom_story['de'],
+            'translation': {'de': custom_story['de']},
+            'explanation': {'de': custom_story['de']},
+        })
     return render_template(
         'figure.html',
         figure=figure,

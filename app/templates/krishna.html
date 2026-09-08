@@ -177,7 +177,7 @@
             <div class="section">
                 <h2>
                     <span class="emoji">📖</span>
-                    {{ entry.get('chapter', 'Unbekannt') }}
+                    {{ entry.get('story_title', entry.get('chapter', 'Unbekannt')) }}
                 </h2>
                 
                 {% if entry.get('verse') and entry['verse'].lower() != 'full' %}
@@ -216,6 +216,12 @@
                 <div class="explanation">
                     <strong>🪷 Explanation (English):</strong><br>
                     {{ entry.get('explanation', {}).get('en') }}
+                </div>
+                {% endif %}
+                {% if entry.get('story_de') %}
+                <div class="explanation">
+                    <strong>📚 Die ausführliche Erzählung:</strong><br>
+                    {{ entry.story_de }}
                 </div>
                 {% endif %}
             </div>

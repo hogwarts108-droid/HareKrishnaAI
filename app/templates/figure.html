@@ -54,11 +54,12 @@
         {% endfor %}
         {% if related_stories %}
         <h2>📚 Größere Geschichten mit {{ figure.source }}</h2>
-        {% for story in related_stories %}
+        {% for entry in related_stories %}
         <article class="related">
-            <h2>{{ story.get('chapter', 'Geschichte') }}{% if story.get('verse') %} – {{ story.verse }}{% endif %}</h2>
-            {% if story.get('translation', {}).get('de') %}<p class="text">{{ story.translation.de }}</p>{% endif %}
-            {% if story.get('explanation', {}).get('de') %}<p class="text">{{ story.explanation.de }}</p>{% endif %}
+            <h2>{{ entry.get('story_title', entry.get('chapter', 'Geschichte')) }}</h2>
+            {% if entry.get('story_de') %}<p class="text">{{ entry.story_de }}</p>{% endif %}
+            {% if not entry.get('story_de') and entry.get('translation', {}).get('de') %}<p class="text">{{ entry.translation.de }}</p>{% endif %}
+            {% if not entry.get('story_de') and entry.get('explanation', {}).get('de') %}<p class="text">{{ entry.explanation.de }}</p>{% endif %}
         </article>
         {% endfor %}
         {% endif %}

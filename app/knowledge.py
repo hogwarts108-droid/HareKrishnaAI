@@ -33,7 +33,9 @@ except Exception:
 try:
     from sentence_transformers import SentenceTransformer
     import numpy as np
-    _SENTENCE_MODEL = SentenceTransformer('all-MiniLM-L6-v2')
+    # Loading the transformer during import blocks Railway's health check.
+    # The lightweight TF-IDF index remains available immediately.
+    _SENTENCE_MODEL = None
 except Exception:
     SentenceTransformer = None
     np = None

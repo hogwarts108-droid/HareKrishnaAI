@@ -9,7 +9,7 @@
 <body>
   <header class="hero">
     <div class="site-language-bar">
-      <label for="site-language">Sprache</label>
+      <label for="site-language" data-i18n="language">Sprache</label>
       <select id="site-language" aria-label="Sprache auswählen">
         <option value="de">Deutsch</option>
         <option value="en">English</option>
@@ -17,42 +17,37 @@
     </div>
     <div class="lotus">🪷</div>
     <h1>BhaktiAI</h1>
-    <p>Geschichten, Figuren und Weisheit aus der vedischen Überlieferung.</p>
-    <form id="search-form" class="search"><input id="search" placeholder="Krishna, Balarama, Putana ..."><button>Suchen</button></form>
+    <p data-i18n="heroSubtitle">Geschichten, Figuren und Weisheit aus der vedischen Überlieferung.</p>
+    <form id="search-form" class="search"><input id="search" data-i18n-placeholder="searchPlaceholder" placeholder="Krishna, Balarama, Putana ..."><button data-i18n="search">Suchen</button></form>
   </header>
   <main>
-    <nav class="nav"><a href="#books">Bücher</a><a href="#stories">Geschichten</a><a href="#figures">Figuren</a><a href="#krishna">Krishna</a></nav>
+    <nav class="nav"><a href="#books" data-i18n="books">Bücher</a><a href="#stories" data-i18n="stories">Geschichten</a><a href="#figures" data-i18n="figures">Figuren</a><a href="#krishna" data-i18n="krishnaStories">Krishna</a></nav>
     <section id="books" class="panel book-panel">
-      <h2>📖 Bücher</h2>
+      <h2>📖 <span data-i18n="books">Bücher</span></h2>
       <article class="book-card">
         <div>
           <h3>Bhagavad-gita</h3>
-          <p>Die vollständige Original-PDF mit unverändertem Seitenlayout und Illustrationen.</p>
-          <p class="muted">Im PDF-Leser kannst du Seite für Seite blättern. Jede Seite endet exakt wie im Original.</p>
+          <p data-i18n="bookDescription">Die vollständige Original-PDF mit unverändertem Seitenlayout und Illustrationen.</p>
+          <p class="muted" data-i18n="bookNote">Im PDF-Leser kannst du Seite für Seite blättern. Jede Seite endet exakt wie im Original.</p>
         </div>
-        <a class="button" href="book.html">Buch öffnen</a>
+        <a class="button" data-book-link href="book.html">Buch öffnen</a>
       </article>
     </section>
     <section id="search-results" class="panel hidden"></section>
     <section id="stories" class="panel">
-      <h2>📚 Geschichten nach Kategorien</h2>
+      <h2>📚 <span data-i18n="storiesByCategory">Geschichten nach Kategorien</span></h2>
       <div id="categories"></div>
     </section>
     <section id="figures" class="panel">
-      <h2>🪷 Alle Figuren</h2>
+      <h2>🪷 <span data-i18n="allFigures">Alle Figuren</span></h2>
       <div id="figure-grid" class="grid"></div>
     </section>
     <section id="krishna" class="panel">
-      <h2>✨ Krishnas Geschichten</h2>
+      <h2>✨ <span data-i18n="krishnaStories">Krishnas Geschichten</span></h2>
       <div id="krishna-stories"></div>
     </section>
   </main>
-  <footer>🙏 Hare Krishna · BhaktiAI</footer>
+  <footer data-i18n="footer">🙏 Hare Krishna · BhaktiAI</footer>
   <script src="app.js"></script>
-  <script>
-    document.getElementById("site-language").addEventListener("change", (event) => {
-      window.location.href = `book.html?lang=${event.target.value}`;
-    });
-  </script>
 </body>
 </html>

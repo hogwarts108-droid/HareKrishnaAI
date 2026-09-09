@@ -11,6 +11,12 @@
     <div class="lotus">🪷</div>
     <h1>BhaktiAI</h1>
     <p>Geschichten, Figuren und Weisheit aus der vedischen Überlieferung.</p>
+    <label class="language-picker">Buchsprache:
+      <select id="site-language" aria-label="Buchsprache auswählen">
+        <option value="de">Deutsch</option>
+        <option value="en">English</option>
+      </select>
+    </label>
     <form id="search-form" class="search"><input id="search" placeholder="Krishna, Balarama, Putana ..."><button>Suchen</button></form>
   </header>
   <main>
@@ -19,7 +25,7 @@
       <h2>📖 Bücher</h2>
       <article class="book-card">
         <div>
-          <h3>Bhagavad-gita As It Is</h3>
+          <h3>Bhagavad-gita</h3>
           <p>Die vollständige Original-PDF mit unverändertem Seitenlayout und Illustrationen.</p>
           <p class="muted">Im PDF-Leser kannst du Seite für Seite blättern. Jede Seite endet exakt wie im Original.</p>
         </div>
@@ -42,5 +48,10 @@
   </main>
   <footer>🙏 Hare Krishna · BhaktiAI</footer>
   <script src="app.js"></script>
+  <script>
+    document.getElementById("site-language").addEventListener("change", (event) => {
+      window.location.href = `book.html?lang=${event.target.value}`;
+    });
+  </script>
 </body>
 </html>

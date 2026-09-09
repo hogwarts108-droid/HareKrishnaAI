@@ -3,22 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bhagavad-gita As It Is – BhaktiAI</title>
+  <title>Bhagavad-gita – BhaktiAI</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="hero book-hero">
     <div class="lotus">📖</div>
-    <h1>Bhagavad-gita As It Is</h1>
-    <p>Das vollständige Originaldokument mit Originalseiten und Illustrationen.</p>
-    <nav class="nav"><a href="index.html">← Zur Startseite</a><a href="books/bhagavad-gita-as-it-is.pdf" download>PDF herunterladen</a></nav>
+    <h1 id="book-title">Bhagavad-gita</h1>
+    <p id="book-description">Das vollständige deutsche Originaldokument mit Originalseiten und Illustrationen.</p>
+    <label class="language-picker">Sprache:
+      <select id="book-language" aria-label="Sprache des Buches auswählen">
+        <option value="de">Deutsch</option>
+        <option value="en">English</option>
+      </select>
+    </label>
+    <nav class="nav"><a href="index.html">← Zur Startseite</a><a id="download-link" href="books/bhagavad-gita.pdf" download>PDF herunterladen</a></nav>
   </header>
   <main class="reader-main">
     <section class="panel">
       <p class="reader-note">Nutze die Seitensteuerung des PDF-Lesers zum Blättern. Das Dokument wird nicht neu formatiert.</p>
-      <iframe class="pdf-reader" src="books/bhagavad-gita-as-it-is.pdf#page=1&view=FitH" title="Bhagavad-gita As It Is"></iframe>
-      <p class="reader-fallback">Falls der Leser nicht angezeigt wird: <a href="books/bhagavad-gita-as-it-is.pdf">PDF direkt öffnen</a>.</p>
+      <iframe id="pdf-reader" class="pdf-reader" src="books/bhagavad-gita.pdf#page=1&view=FitH" title="Bhagavad-gita"></iframe>
+      <p class="reader-fallback">Falls der Leser nicht angezeigt wird: <a id="direct-link" href="books/bhagavad-gita.pdf">PDF direkt öffnen</a>.</p>
     </section>
   </main>
+  <script>
+    const variants = {
+      de: { file: "books/bhagavad-gita.pdf", title: "Bhagavad-gita", description: "Das vollständige deutsche Originaldokument mit Originalseiten und Illustrationen." },
+      en: { file: "books/bhagavad-gita-as-it-is.pdf", title: "Bhagavad-gita As It Is", description: "The complete English original document with original pages and illustrations." }
+    };
+    const selector = document.getElementById("book-language");
+    const params = new URLSearchParams(window.location.search);
+    selector.value = variants[params.get("lang")] ? params.get("lang") : "de";
+    function showVariant(language) {
+      const variant = variants[language];
+      const pdfUrl = `${variant.file}#page=1&view=FitH`;
+      document.documentElement.lang = language;
+      document.getElementById("book-title").textContent = variant.title;
+      document.getElementById("book-description").textContent = variant.description;
+      document.getElementById("pdf-reader").src = pdfUrl;
+      document.getElementById("download-link").href = variant.file;
+      document.getElementById("direct-link").href = variant.file;
+      history.replaceState(null, "", `book.html?lang=${language}`);
+    }
+    selector.addEventListener("change", () => showVariant(selector.value));
+    showVariant(selector.value);
+  </script>
 </body>
 </html>

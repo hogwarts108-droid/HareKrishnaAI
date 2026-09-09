@@ -24,7 +24,18 @@
   <script>
     const books = {
       "bhagavad-gita": ["Bhagavad-gita", 2],
-      bhagavatam: ["Srimad-Bhagavatam", 574],
+      "bhagavatam-1": ["Srimad-Bhagavatam – Erster Canto", "books/bhagavatam/srimad-bhagavatam-erster-canto.pdf"],
+      "bhagavatam-2": ["Srimad-Bhagavatam – Zweiter Canto", "books/bhagavatam/srimad-bhagavatam-zweiter-canto.pdf"],
+      "bhagavatam-3-1": ["Srimad-Bhagavatam – Dritter Canto, Teil 1", "books/bhagavatam/srimad-bhagavatam-dritter-canto-teil-1.pdf"],
+      "bhagavatam-3-2": ["Srimad-Bhagavatam – Dritter Canto, Teil 2", "books/bhagavatam/srimad-bhagavatam-dritter-canto-teil-2.pdf"],
+      "bhagavatam-4-1": ["Srimad-Bhagavatam – Vierter Canto, Teil 1", "books/bhagavatam/srimad-bhagavatam-vierter-canto-teil-1.pdf"],
+      "bhagavatam-4-2": ["Srimad-Bhagavatam – Vierter Canto, Teil 2", "books/bhagavatam/srimad-bhagavatam-vierter-canto-teil-2.pdf"],
+      "bhagavatam-5": ["Srimad-Bhagavatam – Fünfter Canto", "books/bhagavatam/srimad-bhagavatam-fuenfter-canto.pdf"],
+      "bhagavatam-6": ["Srimad-Bhagavatam – Sechster Canto", "books/bhagavatam/srimad-bhagavatam-sechster-canto.pdf"],
+      "bhagavatam-7": ["Srimad-Bhagavatam – Siebter Canto", "books/bhagavatam/srimad-bhagavatam-siebter-canto.pdf"],
+      "bhagavatam-8": ["Srimad-Bhagavatam – Achter Canto", "books/bhagavatam/srimad-bhagavatam-achter-canto.pdf"],
+      "bhagavatam-9": ["Srimad-Bhagavatam – Neunter Canto", "books/bhagavatam/srimad-bhagavatam-neunter-canto.pdf"],
+      "bhagavatam-10-1": ["Srimad-Bhagavatam – Zehnter Canto, Teil 1", "books/bhagavatam/srimad-bhagavatam-zehnter-canto-teil-1.pdf"],
       caitanya: ["Caitanya-caritamrta", 5633],
       nectar: ["Nectar of Devotion", 6311],
       journey: ["Easy Journey to Other Planets", 4327],
@@ -39,7 +50,7 @@
     document.getElementById("reader-language").value = language;
     document.getElementById("reader-title").textContent = book[0];
     document.title = `${book[0]} – BhaktiAI`;
-    const url = `https://prabhupadabooks.com/d.php?id=${book[1]}`;
+    const url = typeof book[1] === "string" && book[1].startsWith("books/") ? book[1] : `https://prabhupadabooks.com/d.php?id=${book[1]}`;
     document.getElementById("external-reader").src = url;
     document.getElementById("direct-reader").href = url;
     function applyReaderLanguage(value) {

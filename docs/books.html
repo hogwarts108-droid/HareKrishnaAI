@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="de">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Bücher – BhaktiAI</title><link rel="stylesheet" href="styles.css?v=20260910"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Bücher – BhaktiAI</title><link rel="stylesheet" href="styles.css?v=20260911"></head>
 <body>
-  <header class="hero book-hero"><div class="chatbot-promo"><div class="promo-art" aria-hidden="true"><span class="promo-icon">🤖</span></div><div class="promo-copy"><span class="promo-badge">✦ NEU · DEIN SPIRITUELLER COPILOT</span><strong>BhaktiAI <em>im Chat</em></strong><small>Fragen zu Krishna und Weisheit – direkt auf Telegram.</small></div><a href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="BhaktiAI auf Telegram öffnen"><span>Chat starten</span><span aria-hidden="true">↗</span></a></div>
+  <header class="hero book-hero"><div class="chatbot-promo"><div class="promo-art" aria-hidden="true"><span class="promo-icon">🤖</span></div><div class="promo-copy"><span class="promo-badge">✦ NEU · DEIN SPIRITUELLER COPILOT</span><strong>BhaktiAI <em>im Chat</em></strong><small>Fragen zu Krishna und Weisheit – direkt auf Telegram.</small></div><a href="https://t.me/HareKrishnaAI_bot" target="_blank" rel="noopener noreferrer" aria-label="BhaktiAI auf Telegram öffnen"><span>Chat starten</span><span aria-hidden="true">↗</span></a></div>
     <div class="site-language-bar"><label for="language">Sprache</label><select id="language"><option value="de">Deutsch</option><option value="en">English</option></select></div>
     <div class="lotus">📚</div><h1 data-de="Bücher" data-en="Books">Bücher</h1>
     <p data-de="Originale Bücher mit unveränderten Seiten und Illustrationen." data-en="Original books with unchanged pages and illustrations.">Originale Bücher mit unveränderten Seiten und Illustrationen.</p>
@@ -39,5 +39,5 @@
     const english=document.getElementById("english-collections");
     const copy=language=>{document.documentElement.lang=language;document.querySelectorAll("[data-de]").forEach(el=>el.textContent=el.dataset[language==="en"?"en":"de"]);german.classList.toggle("hidden",language==="en");english.classList.toggle("hidden",language!=="en");localStorage.setItem("bhaktiai-language",language)};
     selector.value=localStorage.getItem("bhaktiai-language")||"de";selector.addEventListener("change",()=>copy(selector.value));copy(selector.value);
-  </script>
+  </script><script src="promo.js?v=20260911"></script>
 </body></html>

@@ -9,12 +9,12 @@
     <nav class="nav"><a href="index.html" data-de="← Zur Startseite" data-en="← Home">← Zur Startseite</a></nav>
   </header>
   <main class="reader-main">
-    <section class="panel">
-      <h2 data-de="📖 Bhagavad-gita" data-en="📖 Bhagavad-gita">📖 Bhagavad-gita</h2>
-      <p data-de="Wähle die deutsche oder englische Originalausgabe." data-en="Read the complete English original edition.">Wähle die deutsche oder englische Originalausgabe.</p>
-      <a class="button" id="gita-link" href="book.html?lang=de" data-de="Buch öffnen" data-en="Open book">Buch öffnen</a>
-    </section>
     <section id="german-collections">
+      <section class="panel language-book-section">
+        <h2>📖 Bhagavad-gita</h2>
+        <p>Die vollständige deutsche Originalausgabe.</p>
+        <a class="button" href="book.html?lang=de">Buch öffnen</a>
+      </section>
       <section class="panel folder-panel"><div class="folder-icon">📁</div><div><h2>Srimad-Bhagavatam</h2><p>Deutsche Cantos 1 bis 10.</p><a class="button" href="bhagavatam.html">Mappe öffnen</a></div></section>
       <section class="panel folder-panel"><div class="folder-icon">📁</div><div><h2>Krishna-Bücher</h2><p>Fünf deutsche Krishna-Bände.</p><a class="button" href="krishna-books.html">Mappe öffnen</a></div></section>
     </section>
@@ -35,7 +35,7 @@
     const selector=document.getElementById("language");
     const german=document.getElementById("german-collections");
     const english=document.getElementById("english-collections");
-    const copy=language=>{document.documentElement.lang=language;document.querySelectorAll("[data-de]").forEach(el=>el.textContent=el.dataset[language==="en"?"en":"de"]);document.getElementById("gita-link").href=`book.html?lang=${language}`;german.classList.toggle("hidden",language==="en");english.classList.toggle("hidden",language!=="en");localStorage.setItem("bhaktiai-language",language)};
+    const copy=language=>{document.documentElement.lang=language;document.querySelectorAll("[data-de]").forEach(el=>el.textContent=el.dataset[language==="en"?"en":"de"]);german.classList.toggle("hidden",language==="en");english.classList.toggle("hidden",language!=="en");localStorage.setItem("bhaktiai-language",language)};
     selector.value=localStorage.getItem("bhaktiai-language")||"de";selector.addEventListener("change",()=>copy(selector.value));copy(selector.value);
   </script>
 </body></html>

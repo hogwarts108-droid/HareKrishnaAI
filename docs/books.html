@@ -39,5 +39,5 @@
     const english=document.getElementById("english-collections");
     const copy=language=>{document.documentElement.lang=language;document.querySelectorAll("[data-de]").forEach(el=>el.textContent=el.dataset[language==="en"?"en":"de"]);german.classList.toggle("hidden",language==="en");english.classList.toggle("hidden",language!=="en");localStorage.setItem("bhaktiai-language",language)};
     selector.value=localStorage.getItem("bhaktiai-language")||"de";selector.addEventListener("change",()=>copy(selector.value));copy(selector.value);
-  </script><script src="promo.js?v=20260911"></script>
+  </script><script src="promo.js?v=20260912"></script>
 </body></html>

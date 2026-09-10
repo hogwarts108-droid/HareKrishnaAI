@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="de">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Krishna-Bücher – BhaktiAI</title><link rel="stylesheet" href="styles.css?v=20260909"></head>
-<body><header class="hero book-hero"><div class="lotus">📁</div><h1>Krishna-Bücher</h1><p>Die deutschen Krishna-Bände als einzelne Original-PDF-Bücher.</p><nav class="nav"><a href="books.html">← Zur Bücherseite</a></nav></header><main class="reader-main"><section class="panel"><div class="books-grid">
+<body><header class="hero book-hero"><div class="site-language-bar"><label for="language">Sprache</label><select id="language"><option value="de">Deutsch</option><option value="en">English</option></select></div><div class="lotus">📁</div><h1 id="page-title">Krishna-Bücher</h1><p id="page-subtitle">Die deutschen Krishna-Bände als einzelne Original-PDF-Bücher.</p><nav class="nav"><a id="back-link" href="books.html">← Zur Bücherseite</a></nav></header><main class="reader-main"><section class="panel"><div class="books-grid">
 <article class="card"><h3>Krishna – Die Quelle aller Freude, Band 1</h3><a class="button" href="book-reader.html?book=krishna-source-1">Buch lesen</a></article>
 <article class="card"><h3>Krishna – Die Quelle aller Freude, Band 2</h3><a class="button" href="book-reader.html?book=krishna-source-2">Buch lesen</a></article>
 <article class="card"><h3>Krishna-Buch 1974, Band 1</h3><a class="button" href="book-reader.html?book=krishna-1974-1">Buch lesen</a></article>
 <article class="card"><h3>Krishna-Buch 1974, Band 2</h3><a class="button" href="book-reader.html?book=krishna-1974-2">Buch lesen</a></article>
 <article class="card"><h3>Krishna-Buch 1975, Band 3</h3><a class="button" href="book-reader.html?book=krishna-1975-3">Buch lesen</a></article>
-</div></section></main></body></html>
+</div></section></main><script>const s=document.getElementById("language"),l=localStorage.getItem("bhaktiai-language")||"de";s.value=l;function setLang(v){localStorage.setItem("bhaktiai-language",v);document.documentElement.lang=v;document.getElementById("page-title").textContent=v==="en"?"Krishna Books":"Krishna-Bücher";document.getElementById("page-subtitle").textContent=v==="en"?"German Krishna volumes as individual original PDF books.":"Die deutschen Krishna-Bände als einzelne Original-PDF-Bücher.";document.getElementById("back-link").textContent=v==="en"?"← Back to books":"← Zur Bücherseite"}s.addEventListener("change",e=>setLang(e.target.value));setLang(l);</script></body></html>

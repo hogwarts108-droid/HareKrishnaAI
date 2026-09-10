@@ -2,11 +2,40 @@
 <html lang="de">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Bücher – BhaktiAI</title><link rel="stylesheet" href="styles.css?v=20260909"></head>
 <body>
-  <header class="hero book-hero"><div class="site-language-bar"><label for="language">Sprache</label><select id="language"><option value="de">Deutsch</option><option value="en">English</option></select></div><div class="lotus">📚</div><h1>Bücher</h1><p>Originale Bücher mit unveränderten Seiten und Illustrationen.</p><nav class="nav"><a href="index.html">← Zur Startseite</a></nav></header>
+  <header class="hero book-hero">
+    <div class="site-language-bar"><label for="language">Sprache</label><select id="language"><option value="de">Deutsch</option><option value="en">English</option></select></div>
+    <div class="lotus">📚</div><h1 data-de="Bücher" data-en="Books">Bücher</h1>
+    <p data-de="Originale Bücher mit unveränderten Seiten und Illustrationen." data-en="Original books with unchanged pages and illustrations.">Originale Bücher mit unveränderten Seiten und Illustrationen.</p>
+    <nav class="nav"><a href="index.html" data-de="← Zur Startseite" data-en="← Home">← Zur Startseite</a></nav>
+  </header>
   <main class="reader-main">
-    <section class="panel"><h2>📖 Bhagavad-gita</h2><p>Die vollständige Ausgabe als eigener Buchleser.</p><a class="button" id="gita-link" href="book.html?lang=de">Buch öffnen</a></section>
-    <section class="panel folder-panel"><div class="folder-icon">📁</div><div><h2>Srimad-Bhagavatam</h2><p>Eine Mappe mit den deutschen Cantos 1 bis 10.</p><a class="button" href="bhagavatam.html">Mappe öffnen</a></div></section>
-    <section class="panel folder-panel"><div class="folder-icon">📁</div><div><h2>Krishna-Bücher</h2><p>Eine Mappe mit den fünf deutschen Krishna-Bänden.</p><a class="button" href="krishna-books.html">Mappe öffnen</a></div></section>
+    <section class="panel">
+      <h2 data-de="📖 Bhagavad-gita" data-en="📖 Bhagavad-gita">📖 Bhagavad-gita</h2>
+      <p data-de="Wähle die deutsche oder englische Originalausgabe." data-en="Choose the German or English original edition.">Wähle die deutsche oder englische Originalausgabe.</p>
+      <a class="button" id="gita-link" href="book.html?lang=de" data-de="Buch öffnen" data-en="Open book">Buch öffnen</a>
+    </section>
+    <section id="german-collections">
+      <section class="panel folder-panel"><div class="folder-icon">📁</div><div><h2>Srimad-Bhagavatam</h2><p>Deutsche Cantos 1 bis 10.</p><a class="button" href="bhagavatam.html">Mappe öffnen</a></div></section>
+      <section class="panel folder-panel"><div class="folder-icon">📁</div><div><h2>Krishna-Bücher</h2><p>Fünf deutsche Krishna-Bände.</p><a class="button" href="krishna-books.html">Mappe öffnen</a></div></section>
+    </section>
+    <section id="english-collections" class="panel hidden">
+      <h2>📚 English Books</h2>
+      <div class="books-grid">
+        <article class="card"><h3>Bhagavad-gita As It Is</h3><p>Complete English original edition.</p><a class="button" href="book.html?lang=en">Open book</a></article>
+        <article class="card"><h3>Caitanya-caritamrta</h3><p>Teachings and activities of Sri Caitanya.</p><a class="button" href="book-reader.html?book=caitanya">Read book</a></article>
+        <article class="card"><h3>Nectar of Devotion</h3><p>An introduction to devotional service.</p><a class="button" href="book-reader.html?book=nectar">Read book</a></article>
+        <article class="card"><h3>Easy Journey to Other Planets</h3><p>Spiritual perspectives on travel and consciousness.</p><a class="button" href="book-reader.html?book=journey">Read book</a></article>
+        <article class="card"><h3>Light of the Bhagavata</h3><p>Selected wisdom from Srimad-Bhagavatam.</p><a class="button" href="book-reader.html?book=light">Read book</a></article>
+        <article class="card"><h3>Teachings of Lord Kapila</h3><p>The teachings of Lord Kapila.</p><a class="button" href="book-reader.html?book=kapila">Read book</a></article>
+        <article class="card"><h3>Brahma Samhita</h3><p>A summary of Vedanta philosophy.</p><a class="button" href="book-reader.html?book=brahma">Read book</a></article>
+      </div>
+    </section>
   </main>
-  <script>const s=document.getElementById("language");s.value=localStorage.getItem("bhaktiai-language")||"de";s.addEventListener("change",e=>{localStorage.setItem("bhaktiai-language",e.target.value);document.getElementById("gita-link").href=`book.html?lang=${e.target.value}`});</script>
+  <script>
+    const selector=document.getElementById("language");
+    const german=document.getElementById("german-collections");
+    const english=document.getElementById("english-collections");
+    const copy=language=>{document.documentElement.lang=language;document.querySelectorAll("[data-de]").forEach(el=>el.textContent=el.dataset[language==="en"?"en":"de"]);document.getElementById("gita-link").href=`book.html?lang=${language}`;german.classList.toggle("hidden",language==="en");english.classList.toggle("hidden",language!=="en");localStorage.setItem("bhaktiai-language",language)};
+    selector.value=localStorage.getItem("bhaktiai-language")||"de";selector.addEventListener("change",()=>copy(selector.value));copy(selector.value);
+  </script>
 </body></html>

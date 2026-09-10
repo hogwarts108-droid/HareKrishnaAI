@@ -8,82 +8,17 @@
 </head>
 <body>
   <header class="hero">
-    <div class="site-language-bar">
-      <label for="site-language" data-i18n="language">Sprache</label>
-      <select id="site-language" aria-label="Sprache auswählen">
-        <option value="de">Deutsch</option>
-        <option value="en">English</option>
-      </select>
-    </div>
-    <div class="lotus">🪷</div>
-    <h1>BhaktiAI</h1>
+    <div class="site-language-bar"><label for="site-language" data-i18n="language">Sprache</label><select id="site-language" aria-label="Sprache auswählen"><option value="de">Deutsch</option><option value="en">English</option></select></div>
+    <div class="lotus">🪷</div><h1>BhaktiAI</h1>
     <p data-i18n="heroSubtitle">Geschichten, Figuren und Weisheit aus der vedischen Überlieferung.</p>
     <form id="search-form" class="search"><input id="search" data-i18n-placeholder="searchPlaceholder" placeholder="Krishna, Balarama, Putana ..."><button data-i18n="search">Suchen</button></form>
   </header>
   <main>
-    <nav class="nav"><a href="#books" data-i18n="books">Bücher</a><a href="#stories" data-i18n="stories">Geschichten</a><a href="#figures" data-i18n="figures">Figuren</a><a href="#krishna" data-i18n="krishnaStories">Krishna</a></nav>
-    <section id="books" class="panel book-panel">
-      <h2>📖 <span data-i18n="books">Bücher</span></h2>
-      <article class="book-card">
-        <div>
-          <h3>Bhagavad-gita</h3>
-          <p data-i18n="bookDescription">Die vollständige Original-PDF mit unverändertem Seitenlayout und Illustrationen.</p>
-          <p class="muted" data-i18n="bookNote">Im PDF-Leser kannst du Seite für Seite blättern. Jede Seite endet exakt wie im Original.</p>
-        </div>
-        <a class="button" data-book-link data-i18n="openBook" href="book.html">Buch öffnen</a>
-      </article>
-      <section class="language-book-section bhagavatam-section">
-        <h3 class="book-section-title" data-i18n="germanBhagavatam">Srimad-Bhagavatam – Deutsche Cantos</h3>
-        <div class="books-grid">
-          <article class="card"><h3>Erster Canto</h3><p data-i18n="completeGermanPdf">Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=bhagavatam-1" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Zweiter Canto</h3><p data-i18n="completeGermanPdf">Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=bhagavatam-2" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Dritter Canto – Teil 1</h3><p>Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=bhagavatam-3-1" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Dritter Canto – Teil 2</h3><p>Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=bhagavatam-3-2" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Vierter Canto – Teil 1</h3><p>Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=bhagavatam-4-1" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Vierter Canto – Teil 2</h3><p>Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=bhagavatam-4-2" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Fünfter Canto</h3><p>Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=bhagavatam-5" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Sechster Canto</h3><p>Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=bhagavatam-6" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Siebter Canto</h3><p>Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=bhagavatam-7" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Achter Canto</h3><p>Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=bhagavatam-8" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Neunter Canto</h3><p>Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=bhagavatam-9" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Zehnter Canto – Teil 1</h3><p>Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=bhagavatam-10-1" data-i18n="readBook">Buch lesen</a></article>
-        </div>
-      </section>
-      <section class="language-book-section krishna-book-section">
-        <h3 class="book-section-title" data-i18n="germanKrishnaBooks">Krishna-Bücher – Deutsche Ausgaben</h3>
-        <div class="books-grid">
-          <article class="card"><h3>Krishna – Die Quelle aller Freude, Band 1</h3><p data-i18n="completeGermanPdf">Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=krishna-source-1" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Krishna – Die Quelle aller Freude, Band 2</h3><p data-i18n="completeGermanPdf">Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=krishna-source-2" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Krishna-Buch 1974, Band 1</h3><p data-i18n="completeGermanPdf">Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=krishna-1974-1" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Krishna-Buch 1974, Band 2</h3><p data-i18n="completeGermanPdf">Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=krishna-1974-2" data-i18n="readBook">Buch lesen</a></article>
-          <article class="card"><h3>Krishna-Buch 1975, Band 3</h3><p data-i18n="completeGermanPdf">Vollständiger deutscher PDF-Band.</p><a class="button" href="book-reader.html?book=krishna-1975-3" data-i18n="readBook">Buch lesen</a></article>
-        </div>
-      </section>
-      <section class="language-book-section">
-        <h3 class="book-section-title" data-i18n="englishBooks">English Books</h3>
-        <div id="prabhupada-books" class="books-grid">
-        <article class="card"><h3>Caitanya-caritamrta</h3><p data-i18n="bookOriginal">Die Lehren und Taten Sri Caitanyas.</p><a class="button" href="book-reader.html?book=caitanya" data-i18n="readBook">Buch lesen</a></article>
-        <article class="card"><h3>Nectar of Devotion</h3><p data-i18n="bookOriginal">Eine Einführung in die Bhakti-Praxis.</p><a class="button" href="book-reader.html?book=nectar" data-i18n="readBook">Buch lesen</a></article>
-        <article class="card"><h3>Easy Journey to Other Planets</h3><p data-i18n="bookOriginal">Spirituelle Sicht auf Reisen und Bewusstsein.</p><a class="button" href="book-reader.html?book=journey" data-i18n="readBook">Buch lesen</a></article>
-        <article class="card"><h3>Light of the Bhagavata</h3><p data-i18n="bookOriginal">Ausgewählte Weisheiten aus dem Bhagavatam.</p><a class="button" href="book-reader.html?book=light" data-i18n="readBook">Buch lesen</a></article>
-        <article class="card"><h3>Teachings of Lord Kapila</h3><p data-i18n="bookOriginal">Die Unterweisungen von Lord Kapila.</p><a class="button" href="book-reader.html?book=kapila" data-i18n="readBook">Buch lesen</a></article>
-        <article class="card"><h3>Brahma Samhita</h3><p data-i18n="bookOriginal">Eine Zusammenfassung der Vedanta-Lehre.</p><a class="button" href="book-reader.html?book=brahma" data-i18n="readBook">Buch lesen</a></article>
-        </div>
-      </section>
-    </section>
+    <nav class="nav"><a href="books.html" data-i18n="books">Bücher</a><a href="#stories" data-i18n="stories">Geschichten</a><a href="#figures" data-i18n="figures">Figuren</a><a href="#krishna" data-i18n="krishnaStories">Krishna</a></nav>
     <section id="search-results" class="panel hidden"></section>
-    <section id="stories" class="panel">
-      <h2>📚 <span data-i18n="storiesByCategory">Geschichten nach Kategorien</span></h2>
-      <div id="categories"></div>
-    </section>
-    <section id="figures" class="panel">
-      <h2>🪷 <span data-i18n="allFigures">Alle Figuren</span></h2>
-      <div id="figure-grid" class="grid"></div>
-    </section>
-    <section id="krishna" class="panel">
-      <h2>✨ <span data-i18n="krishnaStories">Krishnas Geschichten</span></h2>
-      <div id="krishna-stories"></div>
-    </section>
+    <section id="stories" class="panel"><h2>📚 <span data-i18n="storiesByCategory">Geschichten nach Kategorien</span></h2><div id="categories"></div></section>
+    <section id="figures" class="panel"><h2>🪷 <span data-i18n="allFigures">Alle Figuren</span></h2><div id="figure-grid" class="grid"></div></section>
+    <section id="krishna" class="panel"><h2>✨ <span data-i18n="krishnaStories">Krishnas Geschichten</span></h2><div id="krishna-stories"></div></section>
   </main>
   <footer data-i18n="footer">🙏 Hare Krishna · BhaktiAI</footer>
   <script src="app.js?v=20260911"></script>

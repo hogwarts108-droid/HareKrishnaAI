@@ -1,6 +1,7 @@
 :root{--ink:#17213b;--muted:#68718a;--purple:#6846c7;--gold:#f2b84b;--paper:#fffdf9}
 *{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;color:var(--ink);background:linear-gradient(145deg,#f4efff,#fffaf0);line-height:1.6}
 .hero{position:relative;padding:58px 20px 70px;text-align:center;color:white;background:radial-gradient(circle at top,#8d6de2,#412781 70%)}
+.chatbot-promo{display:flex;align-items:center;gap:12px;max-width:760px;margin:-38px auto 28px;padding:12px 16px;text-align:left;color:#fff;background:linear-gradient(100deg,#25164f,#7b4bd1);border:1px solid #c5adff;border-radius:16px;box-shadow:0 8px 24px #170c3b66}.chatbot-promo .promo-icon{font-size:1.8rem}.chatbot-promo span:nth-child(2){display:flex;flex:1;flex-direction:column}.chatbot-promo strong{font-size:1rem}.chatbot-promo small{opacity:.82}.chatbot-promo a{white-space:nowrap;padding:8px 13px;border-radius:999px;background:var(--gold);color:#342047;text-decoration:none;font-weight:700}
 .site-language-bar{position:absolute;top:16px;right:20px;display:flex;align-items:center;gap:8px;font-weight:700;z-index:2}.site-language-bar select{padding:8px 30px 8px 11px;border:0;border-radius:999px;color:var(--ink);background:white;font:inherit;cursor:pointer}
 .lotus{font-size:2.5rem}.hero h1{margin:0 0 8px;font-size:clamp(2.5rem,7vw,5rem)}.hero p{margin:0 auto 25px;opacity:.9}
 .search{display:flex;gap:10px;max-width:720px;margin:auto}.search input{flex:1;padding:15px 20px;border:0;border-radius:999px;font-size:1rem}.search button,.button{border:0;border-radius:999px;padding:0 22px;background:var(--gold);color:#342047;font-weight:700;cursor:pointer}
@@ -16,3 +17,4 @@ main{position:relative;z-index:1;max-width:1100px;margin:24px auto 50px;padding:
 .folder-panel{display:flex;align-items:center;gap:24px;border-left:7px solid var(--purple)}.folder-icon{font-size:4rem}.folder-panel h2{margin:0 0 5px;color:var(--purple)}.folder-panel p{color:var(--muted);margin:0 0 14px}
 .standalone-book-card{margin-top:22px;border-left:7px solid var(--gold)}.standalone-book-card h2{margin:0 0 5px;color:var(--purple)}.standalone-book-card p{color:var(--muted);margin:0}
 @media(max-width:600px){.site-language-bar{top:10px;right:12px;font-size:.9rem}}
+@media(max-width:650px){.chatbot-promo{align-items:flex-start;margin:-40px auto 24px;padding:11px}.chatbot-promo a{font-size:.82rem}.chatbot-promo small{font-size:.78rem}}

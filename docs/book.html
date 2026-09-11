@@ -19,7 +19,7 @@
     <div class="lotus">📖</div>
     <h1 id="book-title">Bhagavad-gita</h1>
     <p id="book-description">Das vollständige deutsche Originaldokument mit Originalseiten und Illustrationen.</p>
-    <nav class="nav"><a href="index.html" data-i18n="home">← Zur Startseite</a><a id="download-link" href="books/bhagavad-gita.pdf" download data-i18n="download">PDF herunterladen</a></nav>
+    <nav class="nav"><a href="books.html" data-i18n="home">← Zurück zu den Büchern</a><a id="download-link" href="books/bhagavad-gita.pdf" download data-i18n="download">PDF herunterladen</a></nav>
   </header>
   <main class="reader-main">
     <section class="panel">
@@ -34,8 +34,8 @@
       en: { file: "books/bhagavad-gita-as-it-is.pdf", title: "Bhagavad-gita As It Is", description: "The complete English original document with original pages and illustrations." }
     };
     const labels = {
-      de: { language: "Sprache", home: "← Zur Startseite", download: "PDF herunterladen", readerNote: "Nutze die Seitensteuerung des PDF-Lesers zum Blättern. Das Dokument wird nicht neu formatiert.", fallback: "Falls der Leser nicht angezeigt wird:", openDirect: "PDF direkt öffnen" },
-      en: { language: "Language", home: "← Home", download: "Download PDF", readerNote: "Use the PDF reader controls to turn pages. The document is not reformatted.", fallback: "If the reader does not appear:", openDirect: "Open PDF directly" }
+      de: { language: "Sprache", home: "← Zurück zu den Büchern", download: "PDF herunterladen", readerNote: "Nutze die Seitensteuerung des PDF-Lesers zum Blättern. Das Dokument wird nicht neu formatiert.", fallback: "Falls der Leser nicht angezeigt wird:", openDirect: "PDF direkt öffnen" },
+      en: { language: "Language", home: "← Back to books", download: "Download PDF", readerNote: "Use the PDF reader controls to turn pages. The document is not reformatted.", fallback: "If the reader does not appear:", openDirect: "Open PDF directly" }
     };
     const selector = document.getElementById("book-language");
     const params = new URLSearchParams(window.location.search);

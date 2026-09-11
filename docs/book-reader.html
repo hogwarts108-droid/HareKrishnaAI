@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Buch lesen – BhaktiAI</title>
   <meta name="description" content="Lies originale BhaktiAI-Bücher direkt im integrierten Buchleser.">
-  <link rel="stylesheet" href="styles.css?v=20260913">
+  <link rel="stylesheet" href="styles.css?v=20260914">
 </head>
 <body>
   <header class="hero book-hero">
@@ -14,13 +14,13 @@
     <div class="lotus">📖</div>
     <h1 id="reader-title">Buch</h1>
     <p id="reader-subtitle">Originaltext im integrierten Leser</p>
-    <nav class="nav"><a href="books.html">← Zurück zu den Büchern</a></nav>
+    <nav class="reader-toolbar"><a href="books.html" id="reader-back">← Zurück zu den Büchern</a><a href="#" id="reader-prev">← Vorheriger Band</a><a href="#" id="reader-next">Nächster Band →</a><a href="#" id="direct-reader" class="primary" target="_blank" rel="noopener noreferrer">Original öffnen</a></nav>
   </header>
   <main class="reader-main">
     <section class="panel">
       <p id="reader-note" class="reader-note">Das Original wird direkt innerhalb dieser Seite angezeigt.</p>
       <iframe id="external-reader" class="external-reader" title="Buchleser"></iframe>
-      <p id="reader-fallback" class="reader-fallback">Falls der Leser nicht angezeigt wird: <a id="direct-reader" target="_blank" rel="noopener noreferrer">Originalleser öffnen</a>.</p>
+      <p id="reader-fallback" class="reader-fallback">Falls der Leser nicht angezeigt wird: <a id="fallback-reader" target="_blank" rel="noopener noreferrer">Originalleser öffnen</a>.</p>
     </section>
   </main>
   <script>
@@ -66,6 +66,7 @@
     const labels = { de: ["Sprache", "Originaltext im integrierten Leser", "Das Original wird direkt innerhalb dieser Seite angezeigt.", "Originalleser öffnen", "← Zurück zu den Büchern"], en: ["Language", "Original text in the integrated reader", "The original is displayed directly inside this page.", "Open original reader", "← Back to books"] };
     const key = new URLSearchParams(location.search).get("book") || "bhagavad-gita";
     const book = books[key] || books["bhagavad-gita"];
+    const bookKeys = Object.keys(books);
     const language = localStorage.getItem("bhaktiai-language") || "de";
     document.getElementById("reader-language").value = language;
     document.getElementById("reader-title").textContent = book[0];
@@ -73,6 +74,7 @@
     const url = typeof book[1] === "string" && book[1].startsWith("books/") ? book[1] : `https://prabhupadabooks.com/d.php?id=${book[1]}`;
     document.getElementById("external-reader").src = url;
     document.getElementById("direct-reader").href = url;
+    document.getElementById("fallback-reader").href = url;
     function applyReaderLanguage(value) {
       localStorage.setItem("bhaktiai-language", value);
       document.documentElement.lang = value;
@@ -81,8 +83,18 @@
       document.getElementById("reader-subtitle").textContent = copy[1];
       document.getElementById("reader-note").textContent = copy[2];
       document.getElementById("reader-fallback").firstChild.textContent = `${copy[2]} `;
-      document.querySelector(".nav a").textContent = copy[4];
+      document.getElementById("reader-back").textContent = copy[4];
+      document.getElementById("direct-reader").textContent = value === "en" ? "Open original" : "Original öffnen";
+      document.getElementById("reader-prev").textContent = value === "en" ? "← Previous volume" : "← Vorheriger Band";
+      document.getElementById("reader-next").textContent = value === "en" ? "Next volume →" : "Nächster Band →";
     }
+    const index = bookKeys.indexOf(key);
+    const previous = bookKeys[index - 1];
+    const next = bookKeys[index + 1];
+    const previousLink = document.getElementById("reader-prev");
+    const nextLink = document.getElementById("reader-next");
+    if (previous) previousLink.href = `book-reader.html?book=${previous}`; else previousLink.remove();
+    if (next) nextLink.href = `book-reader.html?book=${next}`; else nextLink.remove();
     document.getElementById("reader-language").addEventListener("change", event => applyReaderLanguage(event.target.value));
     applyReaderLanguage(language);
   </script><script src="promo.js?v=20260912"></script>

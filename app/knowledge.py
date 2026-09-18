@@ -2,9 +2,14 @@ import json
 import re
 from pathlib import Path
 from typing import Optional, Dict, Any, List, Tuple
-from dotenv import load_dotenv
 
-load_dotenv()
+from app.config import (
+    LOCAL_LLM_BASE_URL,
+    LOCAL_LLM_ENABLED,
+    LOCAL_LLM_MODEL,
+    LOCAL_LLM_PROVIDER,
+    LOCAL_LLM_TIMEOUT,
+)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 KNOWLEDGE_DIR = Path(BASE_DIR / "data" / "scriptures")
@@ -45,6 +50,11 @@ try:
     import openai
 except Exception:
     openai = None
+
+try:
+    import httpx
+except Exception:
+    httpx = None
 
 import os
 _LAST_INDEX_MTIME = 0.0
@@ -290,7 +300,11 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
                 continue
             chapter = str(entry.get('chapter') or "").strip()
             verse = str(entry.get('verse') or "").strip()
-            entry_ref = f"{chapter}.{verse}" if chapter and verse and verse.lower() != 'full' else ''
+            entry_ref = (
+                verse if re.match(r"^\d+\.", verse)
+                else f"{chapter}.{verse}" if chapter and verse and verse.lower() != 'full'
+                else ''
+            )
             if entry_ref == ref:
                 return {
                     'source': entry.get('source','Unbekannt'),
@@ -311,13 +325,15 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
 
         # build variants to match against processed query
         variants = []
-        if chapter and verse and verse.lower() != 'full':
+        has_explicit_reference = bool(re.search(r"\d+(?:\.\d+)+", q_proc))
+        if chapter and verse and verse.lower() != 'full' and not has_explicit_reference:
             variants.append(f"{src} {chapter}.{verse}")
-        if chapter:
+        if chapter and not has_explicit_reference:
             variants.append(f"{src} {chapter}")
-        if verse and verse.lower() != 'full':
+        if verse and verse.lower() != 'full' and not has_explicit_reference:
             variants.append(f"{src} {verse}")
-        variants.append(src)
+        if not has_explicit_reference:
+            variants.append(src)
 
         if any(v and v in q_proc for v in variants):
             return {
@@ -336,7 +352,11 @@ def _query_exact_reference_matches(question: str) -> Optional[Dict[str, Any]]:
         for entry in entries:
             chapter = str(entry.get("chapter") or "").strip()
             verse = str(entry.get("verse") or "").strip()
-            entry_ref = f"{chapter}.{verse}" if chapter and verse and verse.lower() != "full" else ""
+            entry_ref = (
+                verse if re.match(r"^\d+\.", verse)
+                else f"{chapter}.{verse}" if chapter and verse and verse.lower() != "full"
+                else ""
+            )
             if entry_ref == ref:
                 exact_matches.append(entry)
         
@@ -603,6 +623,73 @@ def _get_media_for_source(source: str) -> Dict[str, Any]:
     return {}
 
 
+def _call_local_llm(prompt: str, lang: str = 'de') -> Optional[str]:
+    """Call a local model via Ollama or an OpenAI-compatible local endpoint."""
+    if not LOCAL_LLM_ENABLED or httpx is None:
+        return None
+
+    provider = LOCAL_LLM_PROVIDER
+    base_url = LOCAL_LLM_BASE_URL
+    model = LOCAL_LLM_MODEL
+    timeout = LOCAL_LLM_TIMEOUT
+
+    try:
+        if provider == "ollama":
+            endpoint = f"{base_url}/api/chat"
+            payload = {
+                "model": model,
+                "stream": False,
+                "messages": [{"role": "user", "content": prompt}],
+            }
+            response = httpx.post(endpoint, json=payload, timeout=timeout)
+            response.raise_for_status()
+            data = response.json()
+            content = data.get("message", {}).get("content") or data.get("response")
+            return content.strip() if isinstance(content, str) and content.strip() else None
+
+        endpoint = f"{base_url}/v1/chat/completions"
+        payload = {
+            "model": model,
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.2,
+        }
+        response = httpx.post(endpoint, json=payload, timeout=timeout)
+        response.raise_for_status()
+        data = response.json()
+        choices = data.get("choices") or []
+        if not choices:
+            return None
+        content = choices[0].get("message", {}).get("content")
+        return content.strip() if isinstance(content, str) and content.strip() else None
+    except Exception:
+        return None
+
+
+def generate_local_llm_answer(question: str, lang: str = 'de', context: Optional[str] = None) -> Optional[str]:
+    """Use a local model as a fallback when the scripture index cannot answer."""
+    if not LOCAL_LLM_ENABLED:
+        return None
+
+    if context:
+        prompt = (
+            "You are HareKrishnaAI, a Sanskrit and Vaishnava knowledge assistant. "
+            "Answer faithfully using the provided source context. "
+            "If uncertain, say so gently.\n\n"
+            f"Language: {lang}\n\n"
+            f"Question: {question}\n\n"
+            f"Source context:\n{context}"
+        )
+    else:
+        prompt = (
+            "You are HareKrishnaAI, a Sanskrit and Vaishnava knowledge assistant. "
+            "Answer in a respectful, concise and spiritually grounded way. "
+            "If you do not know the answer, say so clearly.\n\n"
+            f"Language: {lang}\n\nQuestion: {question}"
+        )
+
+    return _call_local_llm(prompt, lang=lang)
+
+
 def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de') -> str:
     """Generate a beautifully formatted answer with proper Markdown structure."""
     if not entry:
@@ -657,7 +744,8 @@ def generate_answer_text(question: str, entry: Dict[str, Any], lang: str = 'de')
     if is_introduction:
         lines.append(f"✨ *{source}* ✨")
     else:
-        lines.append(f"📖 *{ref_str}*")
+        label = "Vers" if lang == "de" else "Verse" if lang == "en" else "श्लोक"
+        lines.append(f"📖 *{label}: {ref_str}*")
     
     lines.append("")  # Blank line
     

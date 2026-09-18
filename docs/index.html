@@ -18,12 +18,19 @@
   <main>
     <nav class="nav"><a href="books.html" data-i18n="books">Bücher</a><a href="#stories" data-i18n="stories">Geschichten</a><a href="#figures" data-i18n="figures">Figuren</a><a href="#krishna" data-i18n="krishnaStories">Krishna</a></nav>
     <section id="search-results" class="panel hidden"></section>
+    <section id="chat" class="panel chat-panel" aria-labelledby="chat-title">
+      <div class="chat-heading"><div><p class="eyebrow">✦ BhaktiAI</p><h2 id="chat-title">🪷 Frag HareKrishnaAI</h2><p data-i18n="chatIntro">Frage zu Bhagavad Gita, Krishna und vedischer Weisheit.</p></div><span class="chat-status" id="chat-status" aria-live="polite"></span></div>
+      <div id="chat-messages" class="chat-messages" aria-live="polite"><div class="chat-message assistant" data-i18n="chatWelcome">🙏 Hare Krishna! Wie kann ich dir helfen?</div></div>
+      <form id="chat-form" class="chat-form"><label class="sr-only" for="chat-input" data-i18n="chatPlaceholder">Deine Frage</label><textarea id="chat-input" rows="2" maxlength="2000" data-i18n-placeholder="chatPlaceholder" placeholder="Deine Frage …"></textarea><div class="chat-controls"><select id="chat-language" aria-label="Chat language"><option value="de">Deutsch</option><option value="en">English</option></select><button type="submit" data-i18n="chatSend">Senden</button></div></form>
+      <p id="chat-error" class="chat-error hidden" role="alert"></p>
+    </section>
     <section id="stories" class="panel"><h2>📚 <span data-i18n="storiesByCategory">Geschichten nach Kategorien</span></h2><div id="categories"></div></section>
     <section id="figures" class="panel"><h2>🪷 <span data-i18n="allFigures">Alle Figuren</span></h2><div id="figure-grid" class="grid"></div></section>
     <section id="krishna" class="panel"><h2>✨ <span data-i18n="krishnaStories">Krishnas Geschichten</span></h2><div id="krishna-stories"></div></section>
   </main>
   <footer data-i18n="footer">🙏 Hare Krishna · BhaktiAI</footer>
-  <script src="app.js?v=20260912"></script>
+  <script>window.BHAKTI_CHAT_API_URL = window.BHAKTI_CHAT_API_URL || "";</script>
+  <script src="app.js?v=20260918"></script>
   <script src="promo.js?v=20260912"></script>
 </body>
 </html>

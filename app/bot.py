@@ -10,7 +10,7 @@ from datetime import datetime
 from functools import lru_cache
 import time
 import threading
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request
 import json
 import re
 from pathlib import Path
@@ -28,7 +28,9 @@ except ImportError:
     logger_temp = logging.getLogger(__name__)
     logger_temp.warning("langdetect not installed. Install with: pip install langdetect")
 
-from app.knowledge import find_answer, generate_answer_text, reload_index, suggest_corrections, get_random_entry, search_entries, get_entry_sequence
+from app.knowledge import find_answer, generate_answer_text, reload_index, suggest_corrections, get_random_entry, search_entries, get_entry_sequence, generate_local_llm_answer
+from app.chat import answer_chat
+from app.config import CHAT_ALLOWED_ORIGINS
 from app.database import save_favorite, get_favorites, remove_favorite, set_user_language, get_user_language
 
 # Setup logging
@@ -430,7 +432,10 @@ async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
             else:
                 await update.message.reply_text(text, reply_markup=reply_markup)
         else:
-            if lang == 'de':
+            local_text = generate_local_llm_answer(question, lang=lang)
+            if local_text:
+                text = local_text
+            elif lang == 'de':
                 text = (
                     "🙏 *Hare Krishna!*\n\n"
                     "Ich habe dazu keinen passenden Vers in meiner Datenbank.\n\n"
@@ -1160,6 +1165,52 @@ def website_search():
 @flask_app.route('/health')
 def health():
     return {'status': 'ok'}
+
+
+@flask_app.route('/api/chat', methods=['POST', 'OPTIONS'])
+def chat_api():
+    """Answer website chat requests without exposing local model endpoints."""
+    origin = request.headers.get('Origin')
+    response_headers = {}
+    if origin and origin in CHAT_ALLOWED_ORIGINS:
+        response_headers.update({
+            'Access-Control-Allow-Origin': origin,
+            'Vary': 'Origin',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        })
+    if request.method == 'OPTIONS':
+        response = flask_app.make_response('', 204)
+        response.headers.update(response_headers)
+        return response
+    if origin and CHAT_ALLOWED_ORIGINS and origin not in CHAT_ALLOWED_ORIGINS:
+        response = jsonify({'error': 'origin_not_allowed'})
+        response.status_code = 403
+        response.headers.update(response_headers)
+        return response
+
+    payload = request.get_json(silent=True)
+    if not isinstance(payload, dict):
+        response = jsonify({'error': 'invalid_json', 'message': 'JSON body required'})
+        response.status_code = 400
+        response.headers.update(response_headers)
+        return response
+    try:
+        result = answer_chat(payload.get('message'), payload.get('language', 'de'))
+    except ValueError as error:
+        response = jsonify({'error': 'invalid_request', 'message': str(error)})
+        response.status_code = 400
+        response.headers.update(response_headers)
+        return response
+    except Exception:
+        logger.exception("Web chat request failed")
+        response = jsonify({'error': 'chat_unavailable', 'message': 'Chat is temporarily unavailable.'})
+        response.status_code = 503
+        response.headers.update(response_headers)
+        return response
+    response = jsonify(result)
+    response.headers.update(response_headers)
+    return response
 
 # Use polling mode for reliability (handles all updates in order)
 # This is more stable than webhooks and doesn't require domain configuration

@@ -34,22 +34,28 @@ async function sendMessage(event) {
   input.value = "";
   button.disabled = true;
   button.textContent = text("loading");
-  try {
-    const response = await fetch(`${apiUrl.replace(/\/$/, "")}/api/chat`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message, language: chatLanguage })
-    });
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(data.message || text("error"));
-    addMessage(data.answer || text("error"), "assistant");
-  } catch (requestError) {
-    error.textContent = requestError.message || text("error");
-    error.classList.remove("hidden");
-  } finally {
-    button.disabled = false;
-    button.textContent = text("send");
+  for (let attempt = 1; attempt <= 5; attempt++) {
+    try {
+      const response = await fetch(`${apiUrl.replace(/\/$/, "")}/api/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message, language: chatLanguage })
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.message || text("error"));
+      addMessage(data.answer || text("error"), "assistant");
+      break;
+    } catch (requestError) {
+      if (attempt < 5) {
+        await new Promise(resolve => setTimeout(resolve, 8000));
+      } else {
+        error.textContent = requestError.message || text("error");
+        error.classList.remove("hidden");
+      }
+    }
   }
+  button.disabled = false;
+  button.textContent = text("send");
 }
 document.querySelector("#chat-language").value = chatLanguage;
 document.querySelector("#chat-language").addEventListener("change", event => {

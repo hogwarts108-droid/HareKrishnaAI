@@ -1088,7 +1088,7 @@ def chat_api():
             'Access-Control-Allow-Methods': 'POST, OPTIONS',
         })
     if request.method == 'OPTIONS':
-        response = flask_app.make_response('', 204)
+        response = flask_app.make_response(('', 204))
         response.headers.update(response_headers)
         return response
     if origin and CHAT_ALLOWED_ORIGINS and origin not in CHAT_ALLOWED_ORIGINS:

@@ -33,13 +33,12 @@ LLM_FALLBACK_MODELS = [
     model.strip()
     for model in (
         os.getenv("LLM_FALLBACK_MODELS")
-        or "qwen/qwen3.8-27b:free,thinkingmachines/inkling-small:free,"
-           "nvidia/nemotron-3.5-lightning:free,dots-studio/dots-3-note-preview:free,"
-           "google/gemma-4-26b-a4b-it:free"
+        or "google/gemma-4-26b-a4b-it:free,z-ai/glm-5.2:free,"
+           "qwen/qwen3.8-27b:free,google/gemma-4-31b-it:free"
     ).split(",")
     if model.strip()
 ]
-LLM_TIMEOUT = float(os.getenv("LLM_TIMEOUT") or "40.0")
+LLM_TIMEOUT = float(os.getenv("LLM_TIMEOUT") or "30.0")
 CHAT_ALLOWED_ORIGINS = {
     origin.strip().rstrip("/")
     for origin in (os.getenv("CHAT_ALLOWED_ORIGINS") or "").split(",")

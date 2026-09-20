@@ -24,6 +24,12 @@ LOCAL_LLM_PROVIDER = (os.getenv("LOCAL_LLM_PROVIDER") or "ollama").strip().lower
 LOCAL_LLM_BASE_URL = _normalize_url(os.getenv("LOCAL_LLM_BASE_URL"), "http://localhost:11434")
 LOCAL_LLM_MODEL = (os.getenv("LOCAL_LLM_MODEL") or os.getenv("OLLAMA_MODEL") or "llama3.1").strip() or "llama3.1"
 LOCAL_LLM_TIMEOUT = float(os.getenv("LOCAL_LLM_TIMEOUT") or "30.0")
+# Real AI via an external LLM provider (OpenAI-compatible API, e.g. OpenRouter).
+# Runs on Render: set LLM_API_KEY (and optionally LLM_MODEL) in the service env.
+LLM_API_KEY = os.getenv("LLM_API_KEY") or os.getenv("OPENROUTER_API_KEY") or os.getenv("OPENAI_API_KEY")
+LLM_BASE_URL = _normalize_url(os.getenv("LLM_BASE_URL"), "https://openrouter.ai/api/v1")
+LLM_MODEL = (os.getenv("LLM_MODEL") or "meta-llama/llama-3.3-70b-instruct:free").strip()
+LLM_TIMEOUT = float(os.getenv("LLM_TIMEOUT") or "60.0")
 CHAT_ALLOWED_ORIGINS = {
     origin.strip().rstrip("/")
     for origin in (os.getenv("CHAT_ALLOWED_ORIGINS") or "").split(",")

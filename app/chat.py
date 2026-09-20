@@ -2,6 +2,7 @@
 
 import logging
 import time as _time
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeoutError
 from typing import Any, Dict, Optional
 
 from openai import OpenAI
@@ -10,6 +11,7 @@ from app.config import (
     LLM_API_KEY,
     LLM_BASE_URL,
     LLM_FALLBACK_MODELS,
+    LLM_MAX_WAIT,
     LLM_MODEL,
     LLM_TIMEOUT,
 )
@@ -81,34 +83,48 @@ def generate_ai_answer(message: str, language: str, rag_context: str) -> Optiona
             "ohne erfundene Versangaben. Bleib warm, klar und sehr kurz (max. ca. 120 "
             "Wörter), verwende einfaches Markdown."
         )
+    user_content = rag_context if rag_context else (
+        "Es gibt nichts Passendes aus der Wissensdatenbank – antworte aus deinem "
+        "allgemeinen Wissen über die Bhagavad-gita und die vedische Weisheit."
+    )
+    user_content += f"\n\nFrage: {message}"
+    executor = ThreadPoolExecutor(max_workers=1)
+    future = executor.submit(_request_llm, system, user_content)
     try:
-        client = OpenAI(api_key=LLM_API_KEY, base_url=LLM_BASE_URL, timeout=LLM_TIMEOUT, max_retries=1)
-        user_content = rag_context if rag_context else (
-            "Es gibt nichts Passendes aus der Wissensdatenbank – antworte aus deinem "
-            "allgemeinen Wissen über die Bhagavad-gita und die vedische Weisheit."
-        )
-        user_content += f"\n\nFrage: {message}"
-        for model in [LLM_MODEL] + LLM_FALLBACK_MODELS:
-            try:
-                response = client.chat.completions.create(
-                    model=model,
-                    messages=[
-                        {"role": "system", "content": system},
-                        {"role": "user", "content": user_content},
-                    ],
-                    temperature=0.3,
-                    max_tokens=400,
-                )
-                answer = response.choices[0].message.content
-                if answer and answer.strip():
-                    return answer.strip()
-            except Exception as exc:
-                logger.warning("LLM model %s failed: %s", model, exc)
-                _time.sleep(0.6)
+        return future.result(timeout=LLM_MAX_WAIT)
+    except FutureTimeoutError:
+        logger.warning("LLM answer exceeded budget of %.1fs, using knowledge base", LLM_MAX_WAIT)
+        executor.shutdown(wait=False)
         return None
     except Exception:
         logger.exception("External LLM request failed")
+        executor.shutdown(wait=False)
         return None
+    finally:
+        executor.shutdown(wait=False)
+
+
+def _request_llm(system: str, user_content: str) -> Optional[str]:
+    """Try the configured model, then fallbacks (called in a bounded thread)."""
+    client = OpenAI(api_key=LLM_API_KEY, base_url=LLM_BASE_URL, timeout=LLM_TIMEOUT, max_retries=1)
+    for model in [LLM_MODEL] + LLM_FALLBACK_MODELS:
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": user_content},
+                ],
+                temperature=0.3,
+                max_tokens=400,
+            )
+            answer = response.choices[0].message.content
+            if answer and answer.strip():
+                return answer.strip()
+        except Exception as exc:
+            logger.warning("LLM model %s failed: %s", model, exc)
+            _time.sleep(0.6)
+    return None
 
 
 def answer_chat(message: str, language: str = "de") -> Dict[str, Any]:

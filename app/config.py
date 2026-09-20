@@ -28,15 +28,15 @@ LOCAL_LLM_TIMEOUT = float(os.getenv("LOCAL_LLM_TIMEOUT") or "30.0")
 # Runs on Render: set LLM_API_KEY (and optionally LLM_MODEL) in the service env.
 LLM_API_KEY = os.getenv("LLM_API_KEY") or os.getenv("OPENROUTER_API_KEY") or os.getenv("OPENAI_API_KEY")
 LLM_BASE_URL = _normalize_url(os.getenv("LLM_BASE_URL"), "https://openrouter.ai/api/v1")
-LLM_MODEL = (os.getenv("LLM_MODEL") or "google/gemma-4-26b-a4b-it:free").strip()
+LLM_MODEL = (os.getenv("LLM_MODEL") or "qwen/qwen3.8-27b:free").strip()
 # Hard wall-clock budget for one AI answer; after that, fall back to the knowledge base.
 LLM_MAX_WAIT = float(os.getenv("LLM_MAX_WAIT") or "45.0")
 LLM_FALLBACK_MODELS = [
     model.strip()
     for model in (
         os.getenv("LLM_FALLBACK_MODELS")
-        or "google/gemma-4-26b-a4b-it:free,z-ai/glm-5.2:free,"
-           "qwen/qwen3.8-27b:free,google/gemma-4-31b-it:free"
+        or "qwen/qwen3.8-27b:free,google/gemma-4-26b-a4b-it:free,"
+           "z-ai/glm-5.2:free,google/gemma-4-31b-it:free"
     ).split(",")
     if model.strip()
 ]

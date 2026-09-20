@@ -177,6 +177,19 @@
   }
 }
 
+/* Fenster-Navigation unten: nur im installierten App-Fenster (Standalone) sichtbar */
+.window-tabbar{display:none}
+
+@media (display-mode: standalone) {
+  .window-tabbar{position:fixed;inset:auto 0 0;z-index:60;display:flex;gap:4px;margin:0;padding:8px 10px;padding-bottom:calc(8px + env(safe-area-inset-bottom));justify-content:stretch;align-items:stretch;border-top:1px solid #e4e0f2;background:#ffffff;box-shadow:0 -8px 24px rgba(41,26,80,0.08)}
+  .window-tabbar a{flex:1;display:grid;place-items:center;min-height:52px;padding:6px 4px;border-radius:14px;color:#5c5470;text-decoration:none;font-size:0.72rem;font-weight:600;text-align:center;line-height:1.15}
+  .window-tabbar a .tab-icon{font-size:1.15rem;line-height:1}
+  .window-tabbar a.active{background:#f0ecfb;color:var(--purple,#6846c7)}
+  .app-shell{padding-bottom:110px}
+  .hub-page main{padding-bottom:110px}
+  @media(max-width:600px){.window-tabbar a{min-height:48px;font-size:0.64rem}.window-tabbar a .tab-icon{font-size:1rem}}
+}
+
 /* Denk-Indikator: pulsierende Punkte, während die AI überlegt */
 .chat-message.typing {
   display: inline-flex;

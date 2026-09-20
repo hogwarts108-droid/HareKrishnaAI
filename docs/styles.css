@@ -22,3 +22,28 @@ main{position:relative;z-index:1;max-width:1100px;margin:24px auto 50px;padding:
 @media(max-width:600px){.site-language-bar{top:10px;right:12px;font-size:.9rem}.nav a,.button,.search button{min-height:44px;display:inline-flex;align-items:center;justify-content:center}}
 @media(max-width:650px){.chatbot-promo{grid-template-columns:auto 1fr;gap:13px;margin:-34px auto 26px;padding:16px;border-radius:20px}.promo-art{width:52px;height:52px;border-radius:16px}.promo-art::after{inset:5px;border-radius:12px}.promo-art .promo-icon{font-size:1.7rem}.promo-badge{font-size:.58rem;letter-spacing:.08em}.chatbot-promo strong{font-size:1.22rem}.chatbot-promo small{font-size:.82rem}.chatbot-promo a{grid-column:1 / -1;width:100%;min-height:46px;font-size:.9rem}}
 @media(prefers-reduced-motion:reduce){.chatbot-promo a{transition:none}}
+
+/* Start-Zentrale: jedes Thema als eigenes Fenster */
+.hub-hero{padding:44px 20px 58px}
+.windows-title{text-align:center;margin:0 0 20px;color:var(--purple)}
+.windows-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:16px}
+.window-card{display:flex;align-items:center;gap:14px;padding:18px;background:#fff;border:1px solid #e8e0f8;border-radius:18px;color:var(--ink);text-decoration:none;box-shadow:0 10px 26px #34204712;transition:transform .15s ease,box-shadow .15s ease}
+.window-card:hover{transform:translateY(-3px);box-shadow:0 16px 34px #3420471c}
+.window-card:hover .window-arrow{background:#f2c45c}
+.window-icon{font-size:2.1rem}
+.window-copy{display:flex;flex-direction:column;min-width:0;flex:1}
+.window-copy strong{color:var(--purple);font-size:1.05rem;line-height:1.25}
+.window-copy small{color:var(--muted);line-height:1.4}
+.window-arrow{flex-shrink:0;padding:7px 13px;border-radius:999px;background:var(--gold);color:#342047;font-size:.8rem;font-weight:800}
+@media(max-width:600px){.window-card{flex-wrap:wrap}.window-arrow{width:100%;text-align:center}}
+
+/* Eigene Fenster-Seiten (Geschichten, Figuren, Krishna) */
+.app-page{min-height:100vh;background:radial-gradient(circle at 50% -10%,#8d6de2 0,#412781 38%,#f4efff 38%,#fffaf0 100%)}
+.app-shell{max-width:900px;margin:42px auto 70px;padding:0 18px}
+.app-window{padding:30px;background:var(--paper);border:1px solid #ded1f4;border-radius:28px;box-shadow:0 24px 70px #24104d38}
+.app-window-heading{margin-bottom:22px}
+.app-window-heading h1{margin:.15rem 0 .35rem;font-size:clamp(1.8rem,4.5vw,2.8rem);color:var(--ink)}
+.app-window-heading p{margin:0;color:var(--muted)}
+.app-window>.search{margin:0 0 22px}
+.app-window #figure-grid{margin-top:0}
+@media(max-width:600px){.app-shell{margin-top:18px}.app-window{padding:20px 14px;border-radius:20px}}

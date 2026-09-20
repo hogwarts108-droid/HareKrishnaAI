@@ -4,34 +4,57 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VedaAmrita – Geschichten und Weisheit</title>
-  <meta name="description" content="VedaAmrita: vedische Geschichten, Krishna-Weisheit, Figuren und originale Bücher – kostenlos entdecken.">
-  <link rel="stylesheet" href="styles.css?v=20260914"><link rel="stylesheet" href="app.css">
+  <meta name="description" content="VedaAmrita: vedische Geschichten, Krishna-Weisheit, Figuren und originale Bücher – jedes Thema in einem eigenen Fenster.">
+  <link rel="stylesheet" href="styles.css?v=20260922"><link rel="stylesheet" href="app.css">
   <meta name="theme-color" content="#412781">
 </head>
-<body>
-  <header class="hero">
-    <div class="chatbot-promo"><div class="promo-art" aria-hidden="true"><span class="promo-icon">🤖</span></div><div class="promo-copy"><span class="promo-badge">✦ NEU · DEIN SPIRITUELLER COPILOT</span><strong>VedaAmrita <em>im eigenen Chat</em></strong><small>Frage die AI in einem eigenen Fenster – mit Antworten aus deiner Wissensbasis.</small></div><a href="chat.html" aria-label="Eigenes VedaAmrita-Chatfenster öffnen"><span>AI-Chat öffnen</span><span aria-hidden="true">↗</span></a></div>
+<body class="hub-page">
+  <header class="hero hub-hero">
+    <div class="chatbot-promo"><div class="promo-art" aria-hidden="true"><span class="promo-icon">🤖</span></div><div class="promo-copy"><span class="promo-badge">✦ NEU · DEIN SPIRITUELLER COPILOT</span><strong>VedaAmrita <em>im eigenen Chat-Fenster</em></strong><small>Die AI antwortet in einem eigenen Fenster – mit Antworten aus deiner Wissensbasis.</small></div><a href="chat.html" aria-label="VedaAmrita-Chatfenster öffnen"><span data-i18n="chatOpen">🪷 AI-Chat</span><span aria-hidden="true">↗</span></a></div>
     <div class="site-language-bar"><label for="site-language" data-i18n="language">Sprache</label><select id="site-language" aria-label="Sprache auswählen"><option value="de">Deutsch</option><option value="en">English</option></select></div>
     <div class="lotus">🪷</div><h1>VedaAmrita</h1>
     <p data-i18n="heroSubtitle">Geschichten, Figuren und Weisheit aus der vedischen Überlieferung.</p>
-    <form id="search-form" class="search"><input id="search" data-i18n-placeholder="searchPlaceholder" placeholder="Krishna, Balarama, Putana ..."><button data-i18n="search">Suchen</button></form>
   </header>
   <main>
-    <nav class="nav"><a href="chat.html" class="chat-link" data-i18n="chatOpen">🪷 AI-Chat</a><a href="books.html" data-i18n="books">Bücher</a><a href="#stories" data-i18n="stories">Geschichten</a><a href="#figures" data-i18n="figures">Figuren</a><a href="#krishna" data-i18n="krishnaStories">Krishna</a></nav>
-    <section id="search-results" class="panel hidden"></section>
-    <section id="chat" class="panel chat-panel" aria-labelledby="chat-title">
-      <div class="chat-heading"><div><p class="eyebrow">✦ VedaAmrita</p><h2 id="chat-title">🪷 Frag HareKrishnaAI</h2><p data-i18n="chatIntro">Frage zu Bhagavad Gita, Krishna und vedischer Weisheit.</p></div><span class="chat-status" id="chat-status" aria-live="polite"></span></div>
-      <div id="chat-messages" class="chat-messages" aria-live="polite"><div class="chat-message assistant" data-i18n="chatWelcome">🙏 Hare Krishna! Wie kann ich dir helfen?</div></div>
-      <form id="chat-form" class="chat-form"><label class="sr-only" for="chat-input" data-i18n="chatPlaceholder">Deine Frage</label><textarea id="chat-input" rows="2" maxlength="2000" data-i18n-placeholder="chatPlaceholder" placeholder="Deine Frage …"></textarea><div class="chat-controls"><select id="chat-language" aria-label="Chat language"><option value="de">Deutsch</option><option value="en">English</option></select><button type="submit" data-i18n="chatSend">Senden</button></div></form>
-      <p id="chat-error" class="chat-error hidden" role="alert"></p>
+    <section class="windows" aria-label="Fenster">
+      <h2 class="windows-title">🗂️ <span data-i18n="windows">Wähle ein Fenster</span></h2>
+      <div class="windows-grid">
+        <a class="window-card" href="chat.html">
+          <span class="window-icon">🪷</span>
+          <span class="window-copy"><strong data-i18n="chatOpen">🪷 AI-Chat</strong><small data-i18n="descChat">Frage die AI zu Bhagavad Gita, Krishna und vedischer Weisheit.</small></span>
+          <span class="window-arrow" data-i18n="windowOpen">Öffnen</span>
+        </a>
+        <a class="window-card" href="stories.html">
+          <span class="window-icon">📚</span>
+          <span class="window-copy"><strong data-i18n="stories">Geschichten</strong><small data-i18n="descStories">Geschichten nach Kategorien – Götter, Dämonen, Menschen und Gemeinschaften.</small></span>
+          <span class="window-arrow" data-i18n="windowOpen">Öffnen</span>
+        </a>
+        <a class="window-card" href="figures.html">
+          <span class="window-icon">🌟</span>
+          <span class="window-copy"><strong data-i18n="figures">Figuren</strong><small data-i18n="descFigures">Alle Figuren der Überlieferung mit Einführungen.</small></span>
+          <span class="window-arrow" data-i18n="windowOpen">Öffnen</span>
+        </a>
+        <a class="window-card" href="krishna.html">
+          <span class="window-icon">✨</span>
+          <span class="window-copy"><strong data-i18n="krishnaStories">Krishnas Geschichten</strong><small data-i18n="descKrishna">Die wichtigsten Geschichten aus Krishnas Leben.</small></span>
+          <span class="window-arrow" data-i18n="windowOpen">Öffnen</span>
+        </a>
+        <a class="window-card" href="books.html">
+          <span class="window-icon">📖</span>
+          <span class="window-copy"><strong data-i18n="books">Bücher</strong><small data-i18n="descBooks">Original-Bücher als PDF mit vollständigem Seitenlayout.</small></span>
+          <span class="window-arrow" data-i18n="windowOpen">Öffnen</span>
+        </a>
+      </div>
     </section>
-    <section id="stories" class="panel"><h2>📚 <span data-i18n="storiesByCategory">Geschichten nach Kategorien</span></h2><div id="categories"></div></section>
-    <section id="figures" class="panel"><h2>🪷 <span data-i18n="allFigures">Alle Figuren</span></h2><div id="figure-grid" class="grid"></div></section>
-    <section id="krishna" class="panel"><h2>✨ <span data-i18n="krishnaStories">Krishnas Geschichten</span></h2><div id="krishna-stories"></div></section>
   </main>
   <footer data-i18n="footer">🙏 Hare Krishna · VedaAmrita</footer>
-  <script>window.BHAKTI_CHAT_API_URL = "https://harekrishnaai.onrender.com";</script>
-  <script src="app.js?v=20260921"></script>
-  <script src="promo.js?v=20260912"></script>
+  <nav class="window-tabbar" aria-label="Fenster">
+    <a href="chat.html"><span class="tab-icon">🪷</span><span data-i18n="chatOpen">AI-Chat</span></a>
+    <a href="stories.html"><span class="tab-icon">📚</span><span data-i18n="stories">Geschichten</span></a>
+    <a href="figures.html"><span class="tab-icon">🌟</span><span data-i18n="figures">Figuren</span></a>
+    <a href="krishna.html"><span class="tab-icon">✨</span><span data-i18n="krishnaStories">Krishna</span></a>
+    <a href="books.html"><span class="tab-icon">📖</span><span data-i18n="books">Bücher</span></a>
+  </nav>
+  <script src="app.js?v=20260922"></script>
 </body>
 </html>

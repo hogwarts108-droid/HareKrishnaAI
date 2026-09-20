@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VedaAmrita – Geschichten</title>
+  <meta name="description" content="VedaAmrita: Geschichten nach Kategorien – Götter, Dämonen, Menschen und Gemeinschaften.">
+  <link rel="stylesheet" href="styles.css?v=20260922"><link rel="stylesheet" href="app.css">
+  <meta name="theme-color" content="#412781">
+</head>
+<body class="app-page">
+  <header class="chat-topbar app-topbar">
+    <a class="chat-back" href="index.html">← <span data-i18n="home">Zur Startseite</span></a>
+    <div class="chat-brand"><span class="chat-brand-icon">📚</span><span><strong>VedaAmrita</strong><small data-i18n="stories">Geschichten</small></span></div>
+    <label class="chat-language"><span class="sr-only" data-i18n="language">Sprache</span><select id="site-language" aria-label="Sprache"><option value="de">Deutsch</option><option value="en">English</option></select></label>
+  </header>
+  <main class="app-shell">
+    <section class="app-window" aria-labelledby="page-title">
+      <div class="app-window-heading">
+        <div><p class="eyebrow">✦ VEDAAMRITA</p><h1 id="page-title" data-i18n="storiesByCategory">Geschichten nach Kategorien</h1><p data-i18n="descStories">Geschichten nach Kategorien – Götter, Dämonen, Menschen und Gemeinschaften.</p></div>
+      </div>
+      <div id="categories"></div>
+      <section id="search-results" class="panel hidden"></section>
+    </section>
+  </main>
+  <script src="app.js?v=20260922"></script>
+  <nav class="window-tabbar" aria-label="Fenster">
+    <a href="chat.html"><span class="tab-icon">🪷</span><span data-i18n="chatOpen">AI-Chat</span></a>
+    <a href="stories.html" class="active"><span class="tab-icon">📚</span><span data-i18n="stories">Geschichten</span></a>
+    <a href="figures.html"><span class="tab-icon">🌟</span><span data-i18n="figures">Figuren</span></a>
+    <a href="krishna.html"><span class="tab-icon">✨</span><span data-i18n="krishnaStories">Krishna</span></a>
+    <a href="books.html"><span class="tab-icon">📖</span><span data-i18n="books">Bücher</span></a>
+  </nav>
+</body>
+</html>

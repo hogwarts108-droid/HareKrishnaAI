@@ -1,0 +1,178 @@
+/* Native-App-Look: greift nur im installierten PWA-Fenster (Standalone-Modus,
+   also ohne Browser-Chrome); Web-Besucher sehen nichts davon. */
+@media (display-mode: standalone) {
+  :root {
+    -webkit-tap-highlight-color: transparent;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior-y: none;
+    font-family: -apple-system, "Segoe UI Variable", "Segoe UI", system-ui, Roboto, Arial, sans-serif;
+    background: #f6f3fd;
+  }
+  main {
+    flex: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 18px 96px;
+  }
+
+  /* Kompakter App-Kopf statt Webseiten-Intro */
+  .hero {
+    padding: 40px 20px 30px;
+  }
+  .hero h1 {
+    margin: 0 0 6px;
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    letter-spacing: -0.02em;
+  }
+  .hero p {
+    margin: 0 auto 18px;
+    max-width: 620px;
+  }
+  .chatbot-promo,
+  .lotus,
+  .site-language-bar {
+    display: none !important;
+  }
+  .search {
+    max-width: 640px;
+  }
+  .search input {
+    padding: 13px 18px;
+  }
+  .book-hero {
+    padding-bottom: 30px;
+  }
+
+  /* Untere Tab-Leiste wie in einer nativen App */
+  .nav {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 60;
+    display: flex;
+    gap: 4px;
+    margin: 0;
+    padding: 8px 10px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+    justify-content: stretch;
+    align-items: stretch;
+    border-top: 1px solid #e4e0f2;
+    background: #ffffff;
+    box-shadow: 0 -8px 24px rgba(41, 26, 80, 0.08);
+  }
+  .nav a {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    min-height: 52px;
+    padding: 6px 8px;
+    border-radius: 14px;
+    background: transparent;
+    box-shadow: none;
+    color: #5c5470;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.25;
+  }
+  .nav a:active {
+    background: #f0ecfb;
+  }
+  .nav a.chat-link {
+    border: 0 !important;
+    background: #f6ecd0 !important;
+    color: #7a5207 !important;
+  }
+  .nav a.chat-link:active {
+    background: #eedca8 !important;
+  }
+  main section[id] {
+    scroll-margin-top: 14px;
+  }
+
+  /* Panels & Karten: ruhiger, weniger "Website"-Schatten */
+  .panel {
+    border: 1px solid #ece8f6;
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: 0 4px 18px rgba(41, 26, 80, 0.06);
+  }
+  .card {
+    border-radius: 20px;
+    border: 1px solid #ece8f6;
+    box-shadow: 0 3px 12px rgba(41, 26, 80, 0.05);
+    transition: transform 0.12s ease;
+  }
+  .card:active {
+    transform: scale(0.975);
+  }
+
+  /* Chat-Seite: hochgezogen wie ein Messenger, Eingabe fix unten */
+  .chat-page {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #412781 0%, #3a2270 16%, #f6f3fd 16%, #f6f3fd 100%);
+  }
+  .chat-shell {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 14px 18px 0;
+  }
+  .chat-window {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 18px;
+    border-radius: 22px;
+  }
+  .chat-window-messages {
+    flex: 1;
+    min-height: 0;
+  }
+  .chat-window .chat-form {
+    position: sticky;
+    bottom: 12px;
+    margin-top: 12px;
+  }
+  .chat-note {
+    padding-bottom: calc(18px + env(safe-area-inset-bottom));
+  }
+
+  /* Reader: PDF nutzt die volle verfügbare Höhe */
+  .reader-main {
+    max-width: 1250px;
+  }
+  .pdf-reader {
+    height: calc(100dvh - 210px);
+    min-height: 420px;
+  }
+  .external-reader {
+    height: calc(100dvh - 210px);
+    min-height: 420px;
+  }
+}
+
+@media (display-mode: standalone) and (max-width: 600px) {
+  .nav a {
+    min-height: 48px;
+    font-size: 0.75rem;
+  }
+  .chat-shell {
+    padding: 10px 12px 0;
+  }
+  .chat-window {
+    padding: 14px 10px;
+  }
+}

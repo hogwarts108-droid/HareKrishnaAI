@@ -28,7 +28,17 @@ LOCAL_LLM_TIMEOUT = float(os.getenv("LOCAL_LLM_TIMEOUT") or "30.0")
 # Runs on Render: set LLM_API_KEY (and optionally LLM_MODEL) in the service env.
 LLM_API_KEY = os.getenv("LLM_API_KEY") or os.getenv("OPENROUTER_API_KEY") or os.getenv("OPENAI_API_KEY")
 LLM_BASE_URL = _normalize_url(os.getenv("LLM_BASE_URL"), "https://openrouter.ai/api/v1")
-LLM_MODEL = (os.getenv("LLM_MODEL") or "meta-llama/llama-3.3-70b-instruct:free").strip()
+LLM_MODEL = (os.getenv("LLM_MODEL") or "google/gemma-4-31b-it:free").strip()
+LLM_FALLBACK_MODELS = [
+    model.strip()
+    for model in (
+        os.getenv("LLM_FALLBACK_MODELS")
+        or "qwen/qwen3.8-27b:free,thinkingmachines/inkling-small:free,"
+           "nvidia/nemotron-3.5-lightning:free,dots-studio/dots-3-note-preview:free,"
+           "google/gemma-4-26b-a4b-it:free"
+    ).split(",")
+    if model.strip()
+]
 LLM_TIMEOUT = float(os.getenv("LLM_TIMEOUT") or "60.0")
 CHAT_ALLOWED_ORIGINS = {
     origin.strip().rstrip("/")

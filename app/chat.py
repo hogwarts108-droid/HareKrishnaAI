@@ -1,11 +1,18 @@
 """Shared web-chat orchestration for the Telegram/web application."""
 
 import logging
+import time as _time
 from typing import Any, Dict, Optional
 
 from openai import OpenAI
 
-from app.config import LLM_API_KEY, LLM_BASE_URL, LLM_MODEL, LLM_TIMEOUT
+from app.config import (
+    LLM_API_KEY,
+    LLM_BASE_URL,
+    LLM_FALLBACK_MODELS,
+    LLM_MODEL,
+    LLM_TIMEOUT,
+)
 from app.knowledge import (
     find_answer,
     generate_answer_text,
@@ -81,17 +88,24 @@ def generate_ai_answer(message: str, language: str, rag_context: str) -> Optiona
             "allgemeinen Wissen über die Bhagavad-gita und die vedische Weisheit."
         )
         user_content += f"\n\nFrage: {message}"
-        response = client.chat.completions.create(
-            model=LLM_MODEL,
-            messages=[
-                {"role": "system", "content": system},
-                {"role": "user", "content": user_content},
-            ],
-            temperature=0.4,
-            max_tokens=700,
-        )
-        answer = response.choices[0].message.content
-        return (answer or "").strip() or None
+        for model in [LLM_MODEL] + LLM_FALLBACK_MODELS:
+            try:
+                response = client.chat.completions.create(
+                    model=model,
+                    messages=[
+                        {"role": "system", "content": system},
+                        {"role": "user", "content": user_content},
+                    ],
+                    temperature=0.4,
+                    max_tokens=700,
+                )
+                answer = response.choices[0].message.content
+                if answer and answer.strip():
+                    return answer.strip()
+            except Exception as exc:
+                logger.warning("LLM model %s failed: %s", model, exc)
+                _time.sleep(1.5)
+        return None
     except Exception:
         logger.exception("External LLM request failed")
         return None

@@ -304,5 +304,600 @@
       "hi": "प्रह्लाद ने अपने पिता हिरण्यकशिपु के अत्याचारों का विरोध किया और अपनी आध्यात्मिक मान्यताओं के प्रति सच्चे रहे। उनकी कथा आस्था में दृढ़ता सिखाती है।"
     },
     "wikipedia": "https://en.wikipedia.org/wiki/Prahlada"
+  },
+  {
+    "source": "Krishna",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "कृष्ण",
+    "translation": {
+      "de": "Krishna ist die Höchste Persönlichkeit Gottes, der Lehrer der Bhagavad-gita und das Herz der Krishna-Tradition.",
+      "en": "Krishna is the Supreme Personality of Godhead, the teacher of the Bhagavad-gita and the heart of the Krishna tradition.",
+      "hi": "कृष्ण भगवान के सर्वोच्च व्यक्तित्व, भगवद्-गीता के शिक्षक और कृष्ण परंपरा के हृदय हैं।"
+    },
+    "explanation": {
+      "de": "Krishna erschien in Mathura als Sohn von Devaki und Vasudeva, wuchs als Sohn von Nanda und Yasoda in Vrindavan auf und besiegte später den tyrannischen König Kamsa. Seine Kindheitsspiele mit den Kuhhirten und Gopis, das Heben des Govardhana-Berges und der Tanz auf der Schlange Kaliya gehören zu den geliebten Erzählungen der Überlieferung.\n\nAls Wagenlenker Arjunas sprach Krishna am Beginn des großen Krieges die Bhagavad-gita: Er erklärte die Ewigkeit der Seele, das selbstlose Handeln, die verschiedenen Wege des Yoga und die Hingabe (Bhakti). Für seine Verehrer ist Krishna nicht nur ein Lehrer, sondern die Quelle allen Glücks, dem man mit Liebe und Vertrauen dienen kann.",
+      "en": "Krishna appeared in Mathura as the son of Devaki and Vasudeva, grew up as the son of Nanda and Yasoda in Vrindavan, and later defeated the tyrannical King Kamsa. His childhood pastimes with the cowherds and gopis, the lifting of Govardhana Hill and the dance on the serpent Kaliya are among the most beloved stories of the tradition.\n\nAs Arjuna's charioteer, Krishna spoke the Bhagavad-gita at the start of the great war: he explained the eternity of the soul, selfless action, the paths of yoga and devotion (bhakti). For his devotees Krishna is not only a teacher but the source of all happiness, whom one can serve with love and trust.",
+      "hi": "कृष्ण मथुरा में देवकी और वसुदेव के पुत्र के रूप में प्रकट हुए, वृंदावन में नंद और यशोदा के पुत्र के रूप में पले बड़े और बाद में त्यान्रणी राजा कंस का वध किया। अर्जुन के सारथि के रूप में उन्होंने भगवद्-गीता का उपदेश दिया।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Krishna"
+  },
+  {
+    "source": "Rama",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "राम",
+    "translation": {
+      "de": "Rama ist der idealen König und Held des Ramayana, eine Inkarnation von Vishnu.",
+      "en": "Rama is the ideal king and hero of the Ramayana, an incarnation of Vishnu.",
+      "hi": "राम रामायण के आदर्श राजा और नायक हैं, विष्णु के अवतार।"
+    },
+    "explanation": {
+      "de": "Rama, der Prinz von Ayodhya, ist der Held der großen Epos Ramayana, das Valmiki verfasste. Er wurde als Sohn von König Dasharatha und Kaushalya geboren. Bei einem Wettbewerb entschied er sich für Sita, die Tochter von König Janaka, die er durch das Zerbrechen von Shivas Bogen gewann. Aus einem Hofintrige heraus musste er vierzehn Jahre in den Wald gehen, begleitet von Sita und seinem Bruder Lakshmana.\n\nWährenddessen entführte der Dämonenkönig Ravana Sita nach Lanka. Rama verbündete sich mit dem Affenkönig Hanuman und seinem Heer, baute eine Brücke über das Meer und besiegte Ravana. Rama kehrte zurück und folgte dabei stets der eigenen Pflichterfüllung: Er ist das Vorbild für rechtschaffenes Handeln (Dharma) und für einen Herrscher, der das Wohl seines Volkes über alles stellt.",
+      "en": "Rama, the prince of Ayodhya, is the hero of the great epic Ramayana written by Valmiki. He was born as the son of King Dasharatha and Kaushalya. In a competition he chose Sita, the daughter of King Janaka, whom he won by breaking Shiva's bow. Due to a court intrigue he had to go into the forest for fourteen years, accompanied by Sita and his brother Lakshmana.\n\nMeanwhile King Ravana abducted Sita to Lanka. Rama allied with the monkey king Hanuman and his army, built a bridge across the sea and defeated Ravana. Rama always followed his duty (dharma) and is the model for a ruler who places the welfare of his people above all.",
+      "hi": "राम अयोध्या के राजकुमार और रामायण के नायक हैं। धर्म और आदर्श राजा का प्रतीक।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Rama"
+  },
+  {
+    "source": "Sita",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "सीता",
+    "translation": {
+      "de": "Sita ist die Gattin von Rama und verkörpert Hingabe, Reinheit und Treue.",
+      "en": "Sita is the consort of Rama and embodies devotion, purity and fidelity.",
+      "hi": "सीता राम की पत्नी हैं और भक्ति, शुद्धता और निष्ठा का प्रतीक हैं।"
+    },
+    "explanation": {
+      "de": "Sita, auch bekannt als Janaki, ist die Tochter von König Janaka und gilt als Erscheinung der Göttin Lakshmi. Sie wuchs in Mithila auf und wurde durch den Wettbewerb, bei dem Rama Shivas Bogen zerbrach, mit Rama vermählt. Als Rama in den Wald ging, folgte sie ihm freiwillig und teilte ganz selbstverständlich seine Entbehrungen.\n\nNach ihrer Entführung durch Ravana blieb sie ihm gegenüber völlig treu und zeigte Kämpfergeist im Umgang mit den Dämonen. Ihre Geschichte ist ein Spiegelbild innerer Stärke: Ihre Geduld, Reinheit und Liebe machen sie zu einer der bedeutendsten Frauengestalten der vedischen Überlieferung.",
+      "en": "Sita, also known as Janaki, is the daughter of King Janaka and is regarded as an appearance of Goddess Lakshmi. She grew up in Mithila and married Rama through the contest in which he broke Shiva's bow. When Rama went to the forest, she followed him willingly and shared his hardships without complaint.\n\nAfter her abduction by Ravana she remained completely faithful and showed great strength in the presence of the demons. Her story mirrors inner strength: her patience, purity and love make her one of the most important women of the Vedic tradition.",
+      "hi": "सीता राम की पत्नी, लक्ष्मी का अवतार और निष्ठा और शुद्धता का प्रतीक।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Sita"
+  },
+  {
+    "source": "Lakshmana",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "लक्ष्मण",
+    "translation": {
+      "de": "Lakshmana ist der treue Bruder von Rama und Verkörperung hingebungsvollen Dienens.",
+      "en": "Lakshmana is the loyal brother of Rama and an embodiment of devoted service.",
+      "hi": "लक्ष्मण राम के निष्ठावान भाई और भक्ति सेवा का प्रतीक हैं।"
+    },
+    "explanation": {
+      "de": "Lakshmana, der jüngere Bruder Ramas aus dem Ramayana, begleitete Rama freiwillig in den Wald und wachte über ihn und Sita. Er gilt als Erscheinung von Ananta-Shesha, der Schlange, auf der Vishnu ruht. Ohne eigene Ehrwünsche zu stellen, übernahm er Schutz und Sorge im Feldzug: Er verteidigte das Lager, während Rama jagte, und versuchte, die Kraft Sitas zu schützen, auch wenn er sie zeitweise missverstand.\n\nSein Dienen ist im Ramayana ein tiefes Bild der Bhakti: Demut, die keine eigene Belohnung sucht. Im Kampf gegen Ravanas Bruder Indrajit zeigte er außerdem großen Mut. Lakshmana lehrt, dass Hingabe oft gerade darin besteht, die eigene Rolle zu übernehmen, ohne nach dem Scheinwerferlicht zu greifen.",
+      "en": "Lakshmana, Rama's younger brother in the Ramayana, voluntarily accompanied Rama to the forest and watched over him and Sita. He is regarded as an appearance of Ananta-Shesha, the serpent on whom Vishnu rests. Without seeking his own honors he took on protection and care during the campaign: he defended the camp, protected Sita and showed great courage in battle against Ravana's allies.\n\nHis service is a deep image of bhakti in the Ramayana: humility that seeks no reward. Lakshmana teaches that devotion often consists of taking up one's role without reaching for the spotlight.",
+      "hi": "लक्ष्मण राम के भाई और साथी हैं, सेवा और निष्ठा का प्रतीक।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Lakshmana"
+  },
+  {
+    "source": "Hanuman",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "हनुमान्",
+    "translation": {
+      "de": "Hanuman ist der mächtige Affengott und hingebungsvolle Diener von Rama.",
+      "en": "Hanuman is the mighty monkey-god and the devoted servant of Rama.",
+      "hi": "हनुमान् वीर वानर देवता और राम के भक्त सेवक हैं।"
+    },
+    "explanation": {
+      "de": "Hanuman, Sohn von Vayu, dem Windgott, und Anjana, gehört zu den großen Helden des Ramayana. Er wurde für seine mächtige Stärke und seine Sprengkraft berühmt. Bei der Suche nach der entführten Sita sprang Hanuman über das Meer nach Lanka, fand Sita im Garten des Dämonenkönigs und überbrachte ihr den Ring von Rama.\n\nAls Lanka in Brand gesetzt wurde und die Dämonen ihm auflauerten, blieb Hanuman unerschrocken. Seine wahre Größe zeigt sich jedoch in der Demut: Obwohl er Berge tragen kann, nennt er sich selbst „einer, der nur dient“. Hanuman gilt daher als Vorbild unbegrenzter Kraft, die sich der Hingabe unterordnet, und als Schutzherr auf Reisen und in Gefahren.",
+      "en": "Hanuman, son of Vayu, the wind god, and Anjana, is one of the great heroes of the Ramayana. He became famous for his mighty strength and explosive energy. Searching for the abducted Sita, Hanuman jumped across the sea to Lanka, found Sita in the demon king's garden and gave her Rama's ring.\n\nWhen Lanka was set ablaze and demons cornered him, Hanuman remained fearless. His true greatness shows in humility: although he can carry mountains, he calls himself one who merely serves. Hanuman therefore represents unlimited power that is subordinate to devotion, and is a protector on journeys and in danger.",
+      "hi": "हनुमान् राम के शक्तिशाली और भक्त सेवक हैं, शक्ति और नम्रता का प्रतीक।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Hanuman"
+  },
+  {
+    "source": "Ganesha",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "गणेश",
+    "translation": {
+      "de": "Ganesha ist der Gott der Weisheit und Beseitiger von Hindernissen.",
+      "en": "Ganesha is the god of wisdom and the remover of obstacles.",
+      "hi": "गणेश विद्या के देवता और विघ्न हर्ता हैं।"
+    },
+    "explanation": {
+      "de": "Ganesha, der Sohn von Shiva und Parvati, wird mit dem Kopf eines Elefanten dargestellt und an den Beginn vieler Zeremonien gerufen. Er steht für Weisheit, Klugheit, Glück und das Gelingen von Anfängen. Vyasa wählte Ganesha als Schreiber für die Niederschrift des Mahabharata, wobei Ganesha die Verse ohne Unterbrechung aufschrieb.\n\nIn der Symbolebene mahnt er, dass wahre Einsicht nicht nur von Intellekt, sondern von Geduld und Demut kommt. Als erster Verehrter vor allem anderen gilt er als Helfer, der Wege eröffnet und Hindernisse räumt – eine Figur der Zuversicht für jeden Anfang.",
+      "en": "Ganesha, son of Shiva and Parvati, is depicted with the head of an elephant and is invoked at the beginning of many ceremonies. He stands for wisdom, intelligence, fortune and the success of beginnings. Vyasa chose Ganesha as the scribe for the writing down of the Mahabharata, whose verses Ganesha wrote without interruption.\n\nSymbolically he reminds us that true insight comes not only from intellect but from patience and humility. As the first to be honored, he is a helper who opens paths and removes obstacles – a figure of confidence for every beginning.",
+      "hi": "गणेश विघ्नहर्ता और विद्या के देवता हैं।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Ganesha"
+  },
+  {
+    "source": "Lakshmi",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "लक्ष्मी",
+    "translation": {
+      "de": "Lakshmi ist die Göttin des Glücks, des Wohlstands und der Schönheit.",
+      "en": "Lakshmi is the goddess of fortune, prosperity and beauty.",
+      "hi": "लक्ष्मी समृद्धि, धन-धान्य और सौंदर्य की देवी हैं।"
+    },
+    "explanation": {
+      "de": "Lakshmi, auch Sri genannt, ist die Gemahlin von Vishnu und die Verkörperung von Glück, Fülle und Wohlstand. Sie erscheint nach der kosmischen Geschichte aus dem Milchozean und erwählt Vishnu als ihren ewigen Gefährten. Ihre Gegenwart gilt als Geschenk, das durch Reinheit, Praxis und Demut gehältigt wird.\n\nFür ihre Verehrer zeigt Lakshmi, dass Reichtum kein Selbstzweck ist, sondern segensreich wirkt, wenn er geteilt und gerecht verwendet wird. Ihr Fest Diwali feiert Licht, Hoffnung und den Beginn von Wohlstand. Als Radha gilt sie als die vorgestellte ewige Gefährtin Krishnas, die höchste Form der Liebe.",
+      "en": "Lakshmi, also called Sri, is the consort of Vishnu and the embodiment of fortune, abundance and prosperity. She appears at the beginning of the cosmic story from the ocean of milk and chooses Vishnu as her eternal companion. Her presence is regarded as a gift refined by purity, practice and humility.\n\nFor her devotees Lakshmi shows that wealth is not an end in itself but brings blessings when shared and used fairly. Her festival Diwali celebrates light, hope and the beginning of prosperity. She is honored as the eternal companion of the Lord, the highest form of love.",
+      "hi": "लक्ष्मी समृद्धि की देवी और विष्णु की पत्नी हैं।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Lakshmi"
+  },
+  {
+    "source": "Sarasvati",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "सरस्वती",
+    "translation": {
+      "de": "Sarasvati ist die Göttin des Wissens, der Musik und der Künste.",
+      "en": "Sarasvati is the goddess of knowledge, music and the arts.",
+      "hi": "सरस्वती ज्ञान और संगीत की देवी हैं।"
+    },
+    "explanation": {
+      "de": "Sarasvati, Gemahlin von Brahma und Trägerin der Vina (Laute), ist die Göttin der Sprache, des Wissens und der Künste. Sie wird oft mit einem Buch, Wasser und einem Schwan dargestellt. Schülerinnen und Schüler, Musiker und Sänger wenden sich an sie, weil ihr Wort als Ursprung von Einsicht gilt.\n\nIn der vedischen Überlieferung steht sie für die Unterscheidung zwischen wahrem und bloßem Wissen. Ihre reine, gegenwärtige Kraft soll den Geist hell und das Herz dem Lernen gegenüber offen machen. Ihre Geschichten erinnern daran, dass Bildung fruchtbar wird, wenn sie mit Bescheidenheit und Dienst verbunden ist.",
+      "en": "Sarasvati, consort of Brahma and bearer of the vina (lute), is the goddess of speech, knowledge and the arts. She is often depicted with a book, water and a swan. Students, musicians and singers turn to her because her speech is regarded as the source of insight.\n\nIn the Vedic tradition she stands for the distinction between true and mere knowledge. Her pure, present power is meant to make the mind bright and the heart open to learning. Her stories remind us that education becomes fruitful when joined with humility and service.",
+      "hi": "सरस्वती ज्ञान और कला की देवी हैं।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Sarasvati"
+  },
+  {
+    "source": "Durga",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "दुर्गा",
+    "translation": {
+      "de": "Durga ist die kriegerische Göttin, die das Böse besiegt und ihre Verehrer beschützt.",
+      "en": "Durga is the warrior goddess who defeats evil and protects her devotees.",
+      "hi": "दुर्गा योधा देवी हैं जो बुराई का नाश करती हैं।"
+    },
+    "explanation": {
+      "de": "Durga, auch bekannt als Uma und in vielen Formen verehrt, ist die kriegerische Erscheinung des Göttlichen, die mit zehn Armen und auf einem Löwen reitend dargestellt wird. Im Kampf gegen den Büfel-Dämon Mahishasura, der die Welten bedrohte, versammelten sich die Götter und gaben ihr ihre Waffen. Durga besiegte den Dämon und stellte die Ordnung wieder her.\n\nIhre Verehrung an Navaratri feiert neun Nächte der Kraft, in denen die verschieden Seiten der Muttergottheit betrachtet werden. Durga lehrt, dass Schutz und Frieden nicht wehrlos sind, sondern auch den Mut verlangen, das Zerstörerische zu begrenzen. Sie steht für Vertrauen inmitten von Gefahr.",
+      "en": "Durga, also known as Uma and worshiped in many forms, is the warrior appearance of the Divine, depicted with ten arms and riding a lion. In the battle against the buffalo demon Mahishasura, who threatened the worlds, the gods assembled and gave her their weapons. Durga defeated the demon and restored order.\n\nHer worship at Navaratri celebrates nine nights of power, contemplating the different aspects of the mother goddess. Durga teaches that protection and peace are not helpless but also require the courage to limit the destructive. She stands for trust in the midst of danger.",
+      "hi": "दुर्गा शक्ति की देवी हैं जो संरक्षण और न्याय के लिए लड़ती हैं।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Durga"
+  },
+  {
+    "source": "Narada",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "नारद",
+    "translation": {
+      "de": "Narada ist der himmlische Weise, Sänger und Vermittler zwischen den Welten.",
+      "en": "Narada is the celestial sage, singer and intermediary between the worlds.",
+      "hi": "नारद दिव्य ऋषि, संगीतज्ञ और लोकों के मध्य मध्यस्थ हैं।"
+    },
+    "explanation": {
+      "de": "Narada Muni zieht mit seiner Vina durch alle Welten, singt den Namen des Herrn und bringt Botschaften zwischen Göttern, Weisen und Menschen. Er erscheint in vielen Geschichten der Puranas und des Mahabharata oft als Auslöser, der Schicksale ordentlich durcheinanderwirbelt, damit aus ihrer Verknotung Einsicht entstehen kann.\n\nZugleich ist Narada ein Beispiel für bedingungslose Hingabe: Er dient dem Herrn ohne eigene Ambitionen und sucht nur dessen Freude. Seine Reisegeschichten lehren, dass wahre Unabhängigkeit im Loslassen liegt, nicht in Anhäufung von Reichtum oder Ruhm. Er gilt als Lehrer der Bhakti-Philosophie, die Liebe und Ehrfurcht über alles stellt.",
+      "en": "Narada Muni travels through all the worlds with his vina, singing the names of the Lord and carrying messages between gods, sages and humans. He appears in many stories of the Puranas and the Mahabharata, often as the catalyst who stirs up destinies so that insight can grow from their entanglement.\n\nAt the same time Narada is an example of unconditional devotion: he serves the Lord without personal ambition. His travel stories teach that true independence lies in letting go, not in accumulating wealth or fame. He is regarded as a teacher of bhakti philosophy, which places love and reverence above all.",
+      "hi": "नारद एक दिव्य ऋषि हैं जो भक्ति का प्रचार करते हैं।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Narada"
+  },
+  {
+    "source": "Garuda",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "गरुड",
+    "translation": {
+      "de": "Garuda ist der große Adler, das Reittier von Vishnu und König der Vögel.",
+      "en": "Garuda is the great eagle, the mount of Vishnu and king of the birds.",
+      "hi": "गरुड बड़ा उक्ष, विष्णु का वाहन और पक्षियों का राजा है।"
+    },
+    "explanation": {
+      "de": "Garuda, der gewaltige Adler mit goldenen Federn, ist der ewige Begleiter und das Reittier von Vishnu. Er wurde geboren, nachdem es seiner Mutter zur Lösung ihrer Knechtschaft gelang, die göttliche Nektarpflanze Soma zu holen; dabei besiegte er die Wächter der Götter. Vishnu machte ihn zu seinem Träger.\n\nGaruda steht für Macht, Schnelligkeit und die Fähigkeit, das zu überwinden, was gewöhnliche Wesen bindet – insbesondere auch die Schlange (Gift des Herzens). Sein Name wird bei Krankheit und Gefahr angerufen. Als Adler, der hoch über allem schwebt, erinnert er an die Einsicht, dass wahre Freiheit im schauenden Vertrauen zum Göttlichen besteht.",
+      "en": "Garuda, the mighty golden eagle, is the eternal companion and mount of Vishnu. He was born after freeing his mother by obtaining the divine nectar plant Soma, defeating the guardians of the gods. Vishnu made him his carrier.\n\nGaruda stands for power, speed and the ability to overcome what binds ordinary beings – especially the serpent. He is invoked in illness and danger. As an eagle soaring above all, he reminds us that true freedom lies in trusting vision of the Divine.",
+      "hi": "गरुड विष्णु का वाहन और पक्षीओं का राजा है।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Garuda"
+  },
+  {
+    "source": "Chaitanya Mahaprabhu",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "चैतन्य महाप्रभु",
+    "translation": {
+      "de": "Chaitanya Mahaprabhu ist der göttliche Heilige, der im 16. Jahrhundert das gemeinsame Singen des Hare-Krishna-Mantras verbreitete.",
+      "en": "Chaitanya Mahaprabhu is the divine saint who spread the communal chanting of the Hare Krishna mantra in the 16th century.",
+      "hi": "चैतन्य महाप्रभु अस्तरारिए संत हैं जिन्होंने हरे कृष्ण मंत्र की सामूहिक कीर्तन का प्रचार किया।"
+    },
+    "explanation": {
+      "de": "Chaitanya Mahaprabhu, geboren 1486 in Navadvipa in Bengalen, wird in der Krishna-Tradition nicht als gewöhnlicher Heiliger, sondern als Erscheinung der Verbindung von Radha und Krishna verehrt. Als Gelehrter verwirrt er zunächst die Gelehrten, bis ihn eine Reise nach Gaya zu voller Hingabe verwandelt. Die Liebe zum Herrn wurde für ihn intensiver als alles übrige.\n\nEr verschenkte diese Liebe freigebig: Er lehrte das Singen des Maha-Mantras (Hare Krishna, Hare Krishna, Krishna Krishna, Hare Hare / Hare Rama, Hare Rama, Rama Rama, Hare Hare) und begründete die Bewegung des gemeinsamen Kirtans. An Sein Vorbild knüpft auch das moderne Hare-Krishna an. Sein Leben zeigt, dass Frömmigkeit keine starre Disziplin, sondern ekstatische Freundschaft zu Gott sein kann.",
+      "en": "Chaitanya Mahaprabhu, born in 1486 in Navadvipa, Bengal, is honored in the Krishna tradition not as an ordinary saint but as an appearance of the union of Radha and Krishna. As a scholar he first impressed the learned, until a pilgrimage to Gaya transformed him into complete devotion. Love for the Lord became stronger to him than everything else.\n\nHe gave this love away generously: he taught the singing of the mahamantra (Hare Krishna, Hare Krishna, Krishna Krishna, Hare Hare / Hare Rama, Hare Rama, Rama Rama, Hare Hare) and founded the tradition of communal kirtana. Modern Hare Krishna movements follow his example. His life shows that piety can be ecstatic friendship with God, not rigid discipline.",
+      "hi": "चैतन्य श्री कृष्ण भक्ति के महान् प्रचारक हैं।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Chaitanya_Mahaprabhu"
+  },
+  {
+    "source": "Nityananda",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "नित्यानंद",
+    "translation": {
+      "de": "Nityananda, auch Balarama genannt, ist der ewige Gefährte von Chaitanya Mahaprabhu.",
+      "en": "Nityananda, also called Balarama, is the eternal companion of Chaitanya Mahaprabhu.",
+      "hi": "नित्यानंद, बलराम के नाम से भी जाने जाते हैं, चैतन्य के सदा साथी हैं।"
+    },
+    "explanation": {
+      "de": "Nityananda Prabhu, auch Nitai genannt, trat zusammen mit Chaitanya Mahaprabhu als Verkörperung von Balarama auf. Während Chaitanya die ekstatische Seite der Hingabe zeigte, verkörperte Nityananda die schützende, kraftvolle und bedingungslos barmherzige Seite. Er ging zu den Menschen, die von der Gesellschaft ausgegrenzt wurden, und zeigte, dass Liebe keine Auswahl kennt.\n\nSeine bekannteste Geschichte erzählt von den Brüdern Jagai und Madhai, die ihn gewaltsam angriffen; als sie kurze Zeit später in Not waren, vergab Nityananda ihnen und schenkte ihnen den Namen des Herrn. Nityananda lehrt, dass wahre Stärke sich in Vergebung zeigt – er wird als der „freundliche Herr“ verehrt, der niemanden zurückweist.",
+      "en": "Nityananda Prabhu, also called Nitai, appeared with Chaitanya Mahaprabhu as an embodiment of Balarama. While Chaitanya showed the ecstatic side of devotion, Nityananda embodied the protective, powerful and unconditionally merciful side. He went to people excluded by society and showed that love knows no selection.\n\nHis best-known story tells of the brothers Jagai and Madhai, who violently attacked him; when they were later in distress, Nityananda forgave them and gave them the Lord's name. Nityananda teaches that true strength shows in forgiveness – he is worshiped as the kind Lord who rejects no one.",
+      "hi": "नित्यानंद कृपालु और क्षमाशील शक्ति का प्रतीक हैं।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Nityananda"
+  },
+  {
+    "source": "Ravana",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "रावण",
+    "translation": {
+      "de": "Ravana ist der zehnköpfige Dämonenkönig von Lanka und Gegenspieler Ramas im Ramayana.",
+      "en": "Ravana is the ten-headed demon king of Lanka and the antagonist of Rama in the Ramayana.",
+      "hi": "रावण लंका का दशानन राक्षस राजा और रामायण में राम का विरोधी है।"
+    },
+    "explanation": {
+      "de": "Ravana war ein außergewöhnlich gebildeter und mächtiger König, der durch strenge Askese Brahmas Gunst erlangte und dafür bat, von keinem Wesen und keinem Gott besiegbar zu sein – ohne an Menschen zu denken. Er beherrschte die Vedas und Musik, doch sein Stolz und seine Gier wurden ihm zum Verhängnis: Er entführte Sita, obwohl er nicht begreifen wollte, dass sich Hinterlist erzwingen lässt, was nur aus Liebe entsteht.\n\nIm Kampf gegen Rama und sein Heer zeigte er große Kraft, verlor aber, weil Menschen alle Ziele und Wesenheit vereinen. Seine Geschichte ist ein Bild dafür, dass Wissen und Macht ohne Rechtschaffenheit zerstörerisch werden. Bis heute wird an Ravanas Ende erkennbar: Ego braucht zuletzt keinen äußeren Feind.\n\nAm Ende bekommt er sogar Barmherzigkeit: Rama gedenkt seiner Klugheit und nennt ihn im Scheiden einen Gelehrten. Die Überlieferung lässt ihn deshalb nicht nur als Bösewicht, sondern als tragische Größe erscheinen, deren Stolz die Größe selbst zerstört.",
+      "en": "Ravana was an extraordinarily learned and powerful king who through severe austerity gained Brahma's favor and asked to be undefeatable by any being or god – not thinking of humans. He mastered the Vedas and music, yet his pride and greed became his downfall: he abducted Sita, unable to understand that what arises only from love cannot be forced.\n\nIn battle against Rama and his army he showed great force, but he lost, because a human combines all ends and essences. His story shows that knowledge and power without righteousness become destructive. His end reveals that ego ultimately needs no external enemy.\n\nIn the end he receives mercy: Rama honors his wisdom and calls him a scholar at parting. The tradition therefore shows him not only as a villain but as a tragic greatness whose pride destroys greatness itself.",
+      "hi": "रावण लंका का शक्तिशाली राक्षस राजा था जो अहंकार के कारण नष्ट हुआ।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Ravana"
+  },
+  {
+    "source": "Kaliya",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "कालिय",
+    "translation": {
+      "de": "Kaliya ist die vielköpfige Schlange, die den Yamuna-Fluss vergiftete, bis Krishna sie besiegte.",
+      "en": "Kaliya is the many-headed serpent who poisoned the Yamuna river until Krishna defeated him.",
+      "hi": "कालिय यमुना नदी में विष फैलाने वाला नाग था, जिसे कृष्ण ने पराजित किया।"
+    },
+    "explanation": {
+      "de": "Kaliya, ein mächtiger Schlangenfürst mit vielen Häuptern, lebte in einer tiefen Stelle der Yamuna und vergiftete das Wasser. Das Ufer verdorrte, Vögel konnten nicht mehr über den Fluss fliegen, und die Kühe erkrankten. Als Krishna die Leiden sah, sprang er ins Wasser, und Kaliya umschlang ihn gewaltig.\n\nDoch Krishna wurde größer, befreite sich und tanzte auf den Häuptern der Schlange, bis Kalia erschöpft war und seine Frauen flehentlich um Gnade baten. Krishna schonte ihn, gebot ihm aber, die Yamuna zu verlassen und fortan im Meer zu leben. Seitdem geben Yamuna und Ufer den Tieren wieder Leben. Die Geschichte lehrt, dass Reinheit nötig ist, damit Leben bestehen kann, und dass selbst zerstörerische Mächte ihre Stellung ändern können.",
+      "en": "Kaliya, a mighty serpent prince with many heads, lived in a deep pool of the Yamuna and poisoned the water. The banks withered, birds could no longer fly over the river, and the cows fell ill. Seeing the suffering, Krishna jumped into the water, and Kaliya wrapped himself around him mightily.\n\nBut Krishna grew larger, freed himself and danced on the serpent's hoods until Kaliya was exhausted and his wives begged for mercy. Krishna spared him but ordered him to leave the Yamuna and live henceforth in the ocean. Since then the river and its banks give life again. The story teaches that purity is needed for life, and that even destructive powers can change their place.",
+      "hi": "कालिय नाग को कृष्ण ने माताधात यमुना को शुद्ध किया।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kaliya"
+  },
+  {
+    "source": "Kesi",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "केशी",
+    "translation": {
+      "de": "Kesi war das gewaltige Pferd-Dämon, das Kamsa gegen Krishna schickte.",
+      "en": "Kesi was the colossal horse-demon that Kamsa sent against Krishna.",
+      "hi": "केशी वह प्रचंड अश्व राक्षस था जिसे कंस ने कृष्ण के विरुद्ध भेजा।"
+    },
+    "explanation": {
+      "de": "Kesi, ein gewaltiger Dämon in Pferdegestalt, kam, um Krishna in Mathura anzugreifen. Sein Wiehern erschütterte die Erde, und sein Atem versetzte die Stadt in Furcht. Währenddessen ging Krishna durch die Straßen, als ob er sich auf einen friedlichen Gang vorbereitete. Als Kesi sich ihm mit offenem Rachen näherte, streckte Krishna seine Hand in dessen Rachen – und die gewaltige Kraft des Dämons brach zusammen.\n\nDie Überlieferung erzählt, dass Krishna Kesi nicht mit Waffen, sondern mit scheinbarer Zurückhaltung besiegte. Kamsa, der die Niederlage seiner Dämonen als Triumph des Gegners empfand, fürchtete Krishna noch stärker. Kesins Ende zeigt: Auch Furcht erregende Mächte können durch Gelassenheit und inneres Gleichgewicht bezwungen werden.",
+      "en": "Kesi, a colossal demon in the form of a horse, came to attack Krishna in Mathura. His neighing shook the earth, and his breath filled the city with fear. Krishna walked through the streets as if preparing for a peaceful walk. When Kesi approached with open jaws, Krishna thrust his hand into that mouth – and the demon's mighty power collapsed.\n\nThe tradition tells that Krishna defeated Kesi not with weapons but with apparent restraint. Kamsa, who felt the loss of his demons as the enemy's triumph, feared Krishna even more. Kesi's end shows: even terrifying forces can be mastered through serenity and inner balance.",
+      "hi": "केशी अश्व राक्षस अपने अहंकार के कारण नष्ट हुआ।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kesi_(demon)"
+  },
+  {
+    "source": "Arishtasura",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "अरिष्टासुर",
+    "translation": {
+      "de": "Arishtasura war der Stier-Dämon, den Kamsa nach Vrindavan schickte.",
+      "en": "Arishtasura was the bull-demon that Kamsa sent to Vrindavan.",
+      "hi": "अरिष्टासुर वह वृषभ राक्षस था जिसे कंस ने वृंदावन भेजा।"
+    },
+    "explanation": {
+      "de": "Arishtasura, ein kolossaler Stier, erschien vor Vrindavan und standplow vor den Törern mit gewaltigen Hörnern und brüllte, dass die Erde selbst erzitterte. Die Menschen liefen erschrocken zusammen, und die Kühe flohen. Krishna aber wartete und gab dem Tier Gelegenheit, sich zu nähern. Mit einer einzigen Drehung packte er es bei den Hörnern, wirbelte es herum und beendete seine Wut.\n\nDiese Begegnung, so erzählt die Erzählung, geschah genau an der Schwelle zwischen Krishnas einfachem Dorfleben und der wachsenden Aufmerksamkeit, die Kamsas Sorge auf ihn zog. Die Hirten erkannten: Selbst ein Sturm der Angst wurde durch die ruhige Gegenwart Krishnas zur Ruhe gebracht. Arishtas Bedeutung liegt im Gegensatz zwischen roher Kraft und gelassener Weitsicht.",
+      "en": "Arishtasura, a colossal bull, appeared before Vrindavan, pawed the ground with tremendous horns and roared so that the earth trembled. The people fled in fear, and the cows scattered. Krishna waited and gave the animal room to approach. With a single swing he seized it by the horns, whirled it around and ended its fury.\n\nThis meeting, the tradition says, happened precisely at the threshold between Krishna's simple village life and the growing attention that Kamsa's concern drew to him. The cowherds recognized that even a storm of fear was calmed by Krishna's peaceful presence. Arishta's significance lies in the contrast between raw force and serene foresight.",
+      "hi": "अरिष्टासुर को कृष्ण ने सिंगों से पकड़कर नष्ट किया।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Arishtasura"
+  },
+  {
+    "source": "Dhenuka",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "धेनुक",
+    "translation": {
+      "de": "Dhenuka war der Esel-Dämon im Garten der Palmyra-Palmen, den Balarama besiegte.",
+      "en": "Dhenuka was the ass-demon of the palm grove defeated by Balarama.",
+      "hi": "धेनुक ताड़ का गदहा राक्षस था जिसे बलराम ने हराया।"
+    },
+    "explanation": {
+      "de": "Im Talagruna-Tal östlich von Vrindavan gab es einen Hain von Palmyra-Palmen, dessen Früchte süß und wohlriechend waren. Den Hain bewohnte jedoch Dhenuka, ein Esel-Dämon, der mit seinem Gefolge die Hirtenpriester vertrieb, die dort Zuckersaft sammeln wollten. Krishna und Balarama baten ihre Freunde von den Früchten; Dhenuka aber griff wütend an.\n\nBalarama packte den Dämon bei den Hinterbeinen, wirbelte ihn in die Krone der Palme, wo seine Gefolgsleute ebenfalls vernichtet wurden – wohl ein Hinweis auf die Hindernisse, die ein reines Leben schwer machen. Die Hirten konnten fortan Palmenfrüchte genießt. Dhenuka steht symbolisch für jene Blockaden, die uns ein gutes Leben verwehren, und Balarama für die Kraft, sie dauerhaft zu beseitigen.",
+      "en": "In the Talavana grove east of Vrindavan grew tailaka palms whose fruit was sweet and fragrant. But the grove was inhabited by Dhenuka, an ass-demon who with his followers drove off the cowherds wanting to collect sugar juice. Krishna and Balarama asked their friends for the fruit; Dhenuka attacked in fury.\n\nBalarama seized the demon by his hind legs, whirled him into the crown of the palm where his followers were also destroyed – a hint of the obstacles that make a pure life difficult. The cowherds could then enjoy palm fruit. Dhenuka symbolizes blocks that prevent a good life, and Balarama the strength to remove them permanently.",
+      "hi": "धेनुक बलराम का भक्ति का मार्ग का अवरोधक था।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Dhenuka"
+  },
+  {
+    "source": "Aghasura",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "अघासुर",
+    "translation": {
+      "de": "Aghasura war der Riesen-Dämon in Schlangengestalt, der Krishna und die Hirtenjungen verschlingen wollte.",
+      "en": "Aghasura was the giant serpent-demon who wanted to swallow Krishna and the cowherd boys.",
+      "hi": "अघासुर बॉम सर्प-राक्षस था जो कृष्ण और गोपाल बालकों को निगल ना चाहता था।"
+    },
+    "explanation": {
+      "de": "Aghasura, ein gewaltiger Dämon in der Form einer riesigen Schlange, breitete seinen Rachen wie einen Bergpass aus, und die neugierigen Hirtenjungen traten ahnungslos hinein. Krishna, der die tödliche Täuschung sofort erkannte, folgte ihnen. Als sein Leib im Inneren wuchs, konnte Aghasura den Rachen nicht mehr schließen. Krishna löste die Einklemmung und führte seine Freunde sicher heraus.\n\nDie Kinder, die aus dem Schlund traten, erinnerten sich nicht an den Tod – sie glaubten, aus einem fröhlichen Traum erwacht zu sein. Aghasura, von dessen übertriebener Gier die Überlieferung berichtet, erfährt am Ende sogar Milde, weil er, wenn auch ohne Liebe, seine Ahnen zur Ruhe brachte. Die Geschichte zeigt: Wer sich in reiner Freundschaft an das Göttliche wendet, bleibt auch im Gefährlichsten bewahrt.",
+      "en": "Aghasura, a colossal demon in the form of a giant serpent, spread his jaws like a mountain pass, and the curious cowherd boys stepped in unsuspectingly. Krishna, who immediately recognized the deadly deception, followed them. As his body grew within, Aghasura could no longer close his jaws. Krishna released the grip and led his friends out safely.\n\nThe children who emerged remembered no death – they believed they had awakened from a joyful dream. Aghasura, whose excessive greed the tradition records, even receives mercy at the end. The story shows: those who turn to the Divine in pure friendship remain preserved even in the most dangerous place.",
+      "hi": "अघासुर की लोलुपता के कारण नष्ट्व हुआ।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Aghasura"
+  },
+  {
+    "source": "Bakasura",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "बकासुर",
+    "translation": {
+      "de": "Bakasura war der Kranich-Dämon, der Krishna am Seeufer angriff.",
+      "en": "Bakasura was the crane-demon who attacked Krishna by the lake.",
+      "hi": "बकासुर वह बगुला राक्षस था जिसने झील के किनारे हमला किया।"
+    },
+    "explanation": {
+      "de": "Bakasura, ein riesiger Kranich, erschien plötzlich am Ufer des Sees, als Krishna mit den Hirtenjungen spielte. Er packte Krishna mit seinem langen Schnabel und schüttelte ihn, doch Krishna ließ sich nicht fressen. Er griff die beiden Schnabelhälften, öffnete den Rachen des Dämons mit ruhiger Kraft und riss ihn auseinander.\n\nDie Erzählung hebt das wundersame Ende hervor, weil die Jungen vorher voller Angst waren: Ein einziger, gelassener Griff verwandelte ihre Not. Als Bakasura tot war, kehrten die Jungen zu ihren Kühen zurück, und Vrindavan feierte mit den Familien. Die Geschichte erinnert daran, dass Furcht klein macht, während Gegenwart und Vertrauen die größte Bedrohung verwandeln können.",
+      "en": "Bakasura, a giant crane, suddenly appeared at the lake as Krishna played with the cowherd boys. He seized Krishna with his long beak and shook him, but Krishna refused to be eaten. He grasped both halves of the beak, opened the demon's jaws with calm strength and tore it apart.\n\nThe story highlights the miraculous end because the boys were full of fear: a single calm grip transformed their distress. When Bakasura lay dead, the boys returned to their cows and Vrindavan celebrated with the families. The story reminds that fear diminishes, while presence and trust can transform the greatest threat.",
+      "hi": "बकासुर कृष्ण की शान्त शक्ति के सामने नष्ट हुआ।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bakasura"
+  },
+  {
+    "source": "Sisupala",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "शिशुपाल",
+    "translation": {
+      "de": "Sisupala war der König von Chedi und der erbitterte Widersacher Krishnas, erzählt im Mahabharata.",
+      "en": "Sisupala was the king of Chedi and Krishna's bitter adversary, told in the Mahabharata.",
+      "hi": "शिशुपाल चेदी का राजा और कृष्ण का कड़ा विरोधी था।"
+    },
+    "explanation": {
+      "de": "Sisupala, König von Chedi, hegte lebenslangen Hass auf Krishna, seit dieser in seiner Kindheit zwei merkwürdige Vorfälle verursacht hatte. Von Lerchen, Brahma selbst hatte versprochen, dass Sisupala erst sterben würde, wenn 101 Beleidigungen gesäthaft waren. Als Yudhishthira Krishna zum Ehrenvorsitzenden des Rajasuya-Opfers wählte, konnte Sisupala seine Wut nicht mehr zügeln.\n\nEr überhäufte Krishna vor der ganzen Versammlung mit Schmähungen. Als die 100. zählung erreicht war, erinnerte Krishna still an die letzte – und die beiden kämpften. Am Ende starb Sisupala, und Krishna nahm ihn an. Die Geschichte mahnt, dass ungezähmter Groll sich selbst in einer glanzvollen Versammlung in seinen eigenen Untergang verwandelt.",
+      "en": "Sisupala, king of Chedi, felt lifelong hatred for Krishna since childhood incidents. It had been promised that Sisupala would die only after 101 insults. When Yudhishthira chose Krishna to preside at the Rajasuya sacrifice, Sisupala could no longer contain his fury.\n\nHe heaped insults on Krishna before the whole assembly. As the hundredth was counted, Krishna quietly recalled the last – and the two fought. At the end Sisupala died and Krishna accepted him. The story warns that unbridled resentment turns into its own destruction even in a brilliant assembly.",
+      "hi": "शिशुपाल के क्रोध का विनाश ऋजु सयासु में कृष्ण को समर्पित होने से हुआ।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Sisupala"
+  },
+  {
+    "source": "Jarasandha",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "जरासंध",
+    "translation": {
+      "de": "Jarasandha war der mächtige König von Magadha, ein zäher Gegner der Yadavas.",
+      "en": "Jarasandha was the mighty king of Magadha, a stubborn enemy of the Yadavas.",
+      "hi": "जरासंध मगध का शक्तिशाली राजा और यादवों का कठोर शत्रु था।"
+    },
+    "explanation": {
+      "de": "Jarasandha, der König von Magadha, war ein Heerführer von gewaltiger körperlicher Kraft und dehnte seine Herrschaft weit aus. In der Erzählung heirateten zwei seiner Töchter die Söhne von Kamsa, und es war von Anfang an Jarasandhas zähe Gegnerschaft, die die Yadavas zwang, von Mathura nach Dvaraka zu ziehen.\n\nErst als Yudhishthira das Rajasuya-Opfer vollführen wollte, besiegte Bhima Jarasandha im Zweikampf unter Krishnas Lenkung. Seine Geschichte verbindet militärische Macht mit politischem Ehrgeiz und lehrt, dass Eroberungskriege das eigene Land nicht sicherer machen – Dvaraka zeigt, dass Klugheit und Schutz vor Macht den Menschen wichtiger sind als Gebietsgewinne.",
+      "en": "Jarasandha, the king of Magadha, was a commander of immense physical strength who extended his rule widely. In the story two daughters married Kamsa's sons, and from the start Jarasandha's stubborn hostility forced the Yadavas to move from Mathura to Dvaraka.\n\nBhima defeated Jarasandha in the Rajasuya campaign under Krishna's guidance. His story joins military power with political ambition and teaches that wars of conquest do not make one's country safer – Dvaraka shows that prudence and protection matter more than territorial gain.",
+      "hi": "जरासंध का कशक्त के कारण नष्टान्त हुआ।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Jarasandha"
+  },
+  {
+    "source": "Sudama",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "सुदामा",
+    "translation": {
+      "de": "Sudama ist der arme Brahmane und Kindheitsfreund von Krishna, berühmt für seine aufrichtige Hingabe.",
+      "en": "Sudama is the poor brahmana and childhood friend of Krishna, famous for his sincere devotion.",
+      "hi": "सुदामा कृष्ण के बाल सहचार और भक्त थे।"
+    },
+    "explanation": {
+      "de": "Sudama, ein armer Brahmane, war in Sandipanis Ashram der Schulfreund von Krishna. Seine Frau drängte ihn, Krishna in Dvaraka zu besuchen. Verlegen nahm er ein Bündel gesottener Reiskörner mit. Krishna empfing ihn, wusch ihm die Füße und teilte mit ihm, während sie Erinnerungen an die Schulzeit weckten. Sudama brachte das mitgebrachte Bündel nicht zum Vorschein aus Scham.\n\nErst am Ende sprach Sudama von seiner Armut, und Krishna lachte – nicht boshaft, sondern hilfreich, denn das geschenkte Reismahl war ihm lieb wie ein Schatz. Zu Hause angekommen fand Sudama aus ebendiesem Grund sein Haus verwandelt vor. Die Geschichte lehrt: Wer aus Liebe gibt, gibt mehr, als wer aus Berechnung gibt; Krishnas Freundschaft bleibt für Sudama der wahre Gewinn.",
+      "en": "Sudama, a poor brahmana, had been Krishna's school friend at Sandipani's ashram. His wife urged him to visit Krishna in Dvaraka. Embarrassed, he carried a bundle of flattened rice. Krishna welcomed him, washed his feet and shared memories of their school days. Sudama, ashamed, did not bring out his bundle.\n\nFinally Sudama spoke of his poverty, and Krishna laughed – not mockingly, but gladly, for the gift of rice was dear to him as a treasure. At home Sudama found his house transformed. The story teaches: those who give out of love give more than those who give out of calculation; Krishna's friendship remained Sudama's true gain.",
+      "hi": "सुदामा की काहानी निष्कलुप भक्ति का उदाहरण है।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Sudama"
+  },
+  {
+    "source": "Rukmini",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "रुक्मिणी",
+    "translation": {
+      "de": "Rukmini ist Krishnas erste Königin in Dvaraka und gilt als Erscheinung der Göttin Lakshmi.",
+      "en": "Rukmini is Krishna's first queen of Dvaraka and is regarded as an appearance of Goddess Lakshmi.",
+      "hi": "रुक्मिणी द्वारका की रानी और लक्ष्मी का अवतार हैं।"
+    },
+    "explanation": {
+      "de": "Rukmini, die Tochter von König Bhishmaka, verliebte sich in die Erzählungen über Krishna und entschied, ihn zum Mann zu nehmen. Ihr Bruder Rukmi aber plante, sie mit dem verwandten Fürsten Sisupala zu vermählen. In einem geheimen Brief – über einen Brahmanen überbracht – bat sie Krishna, sie am Tag der geplanten Hochzeit aus dem Tempel der Göttin Ambika zu holen, bevor der Fehler geschehen sei.\n\nKrishna kam mit seinem Wagen, Rukmini stieg zu ihm, und die beiden entzogen sich der Verfolgung – Balarama und die Yadavas deckten ihn, bis sie Dvaraka erreichten. Rukmini wurde seine erste Königin. Ihre Geschichte erzählt von selbstbestimmter Wahl, Mut zur Liebe und der tiefen Verbindung zwischen Lakshmi und Vishnu, Radha und Krishna.",
+      "en": "Rukmini, daughter of King Bhishmaka, fell in love with the stories of Krishna and decided to marry him. Her brother Rukmi, however, planned to wed her to Prince Sisupala. In a secret letter she asked Krishna to take her from the temple of Goddess Ambika on the wedding day before the mistake happened.\n\nKrishna came in his chariot, Rukmini joined him, and the two escaped the pursuit – Balarama and the Yadavas covered them until they reached Dvaraka. Rukmini became his first queen. Her story tells of self-determined choice, courage in love and the deep connection between Lakshmi and Vishnu, Radha and Krishna.",
+      "hi": "रुक्मिणी की काहानी स्वयं चुनी गई प्रेम का प्रतीक है।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Rukmini"
+  },
+  {
+    "source": "Yudhishthira",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "युधिष्ठिर",
+    "translation": {
+      "de": "Yudhishthira ist der älteste Pandava-Prinz, bekannt für Rechtschaffenheit und Ehrlichkeit.",
+      "en": "Yudhishthira is the eldest Pandava prince, known for righteousness and honesty.",
+      "hi": "युधिष्ठिर ज्येष्ठ पांडव राजकुमार और धर्म के प्रतीक हैं।"
+    },
+    "explanation": {
+      "de": "Yudhishthira, ältester Sohn von Pandu und Kunti, heißt von Jugend auf Dharma-Raja, König der Rechtschaffenheit. Doch auch ihn treiben die Ereignisse des Mahabharata in ein Netz von Loyalitäten, Widrigkeiten und schmerzhaften Entscheidungen. Als er im aufgetürmten Würfelspiel seine Herrschaft und alles verlor, trug er die Folge mit großer, fast zwanghafter Geduld – dreizehn Jahre im Exil.\n\nBesonders tief ist seine Bewährungsprobe am Ende: Als nur ein treuer Hund ihn auf dem letzten Weg begleitet, weigert er sich, ihn zu verlassen, und erfährt dadurch die Gunst des Himmels. Yudhishthira zeigt, dass Rechtlichkeit nicht vor Leid schützt, aber einen inneren Halt gibt und dass aus dieser Haltung schließlich Gnade erwächst.",
+      "en": "Yudhishthira, eldest son of Pandu and Kunti, was called Dharma-rajas, king of righteousness, already in youth. Yet he too was drawn into a web of loyalties, adversities and painful decisions by the events of the Mahabharata. When in the fateful dice game he lost his rule and everything, he bore the consequence with great, almost obsessive patience – thirteen years of exile.\n\nHis test at the end is especially deep: when only a faithful dog accompanies him on the last path, he refuses to abandon it and thereby wins heaven's favor. Yudhishthira shows that righteousness does not protect from suffering but gives inner strength, and that from this attitude grace eventually grows.",
+      "hi": "युधिष्ठिर धर्म और सत्य के प्रतीक हैं।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Yudhishthira"
+  },
+  {
+    "source": "Bhima",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "भीम",
+    "translation": {
+      "de": "Bhima ist der mächtige zweite Pandava, bekannt für unübertroffene Kraft und Treue.",
+      "en": "Bhima is the mighty second Pandava, known for unmatched strength and loyalty.",
+      "hi": "भीम दूसरे पांडव और महान् योद्धा थे।"
+    },
+    "explanation": {
+      "de": "Bhima, der zweite Sohn Pandus, erhielt seine Kraft nicht nur durch seinen Leib, sondern auch durch die Götter, die ihm zur Geburt halfen. In der Kindheit der Pandavas fürchen ihn schon alle; doch seine Stärke ist selten Übermut: Sie schützt seine Mutter und Brüder, besiegte Riesen und Dämonen und durchbrach in Kurukshetra die Reihen des Gegners.\n\nSeine bekannteste Tat ist jedoch ein Sieg der Sorge: Als ihr gemeinsames Exil schwer wurde und sein Bruder Arjuna am Versagen litt, versetzte Bhima allein die Feigheit des Jungen in Schrecken und eroberte seine Wärde zurück. Am Ende, als Duryodhana sich vor den Pandavas überlegen fühlte, stand Bhima für den Sieg der Vergebung über Rache. Bhima zeigt: Kraft wird erst durch Gerechtigkeit zu einer Tugend.",
+      "en": "Bhima, the second son of Pandu, received his strength not only through his body but also through the gods who assisted his birth. Already in the childhood of the Pandavas everyone feared him; yet his power is rarely arrogance: it protects his mother and brothers, defeated giants and demons, and in Kurukshetra broke through the enemy lines.\n\nHis best-known deed is a victory of care: when their common exile grew hard and his brother Arjuna failed, Bhima's presence alone terrified the boy's cowardice and won back his dignity. At the end, when Duryodhana felt superior to the Pandavas, Bhima stood for the victory of forgiveness over revenge. Bhima shows: strength becomes a virtue only through justice.",
+      "hi": "भीम महान् फ्यूतिदे सबल थे और न्याय के लिए लड़ते थे।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bhima"
+  },
+  {
+    "source": "Draupadi",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "द्रौपदी",
+    "translation": {
+      "de": "Draupadi ist die gemeinsame Gattin der fünf Pandavas und eine der großen Frauengestalten des Mahabharata.",
+      "en": "Draupadi is the common wife of the five Pandavas and one of the great women of the Mahabharata.",
+      "hi": "द्रौपदी पांच पांडवों की पत्नी और महाभारत की महान नारी थीं।"
+    },
+    "explanation": {
+      "de": "Draupadi, die im Swayamvara die Wahl zwischen den Bewerbern austrug und Arjuna in die Hand kam, wurde die gemeinsame Gattin der vier Brüder, die über ihre Zukunft zu Rate saßen. Im Königreich der Pandavas verlor ihr Mann Yudhishthira im Würfelspiel nicht nur Land, sondern auch sie: die Kauravas zerrten sie in die Versammlung und scheuten selbst vor der Schmähung ihrer Kleidung nicht zurück.\n\nDoch Draupadi rief Krishna an, und ihr Gewand dehnte sich endlos, sodass der Schmähe nichts blieb. Dieser Moment durchbricht das Schweigen der Ohnmächtigen. Draupadi steht für Würde, die sich auch in höchster Erniedrigung verteidigt, und erinnert daran, dass aus Unrecht – auch wenn es gesetzlich ist – niemals Ehre erwächst.",
+      "en": "Draupadi, who made her choice at the swayamvara and came into Arjuna's hand, became the common wife of the four brothers. In the Pandavas' kingdom her husband Yudhishthira lost not only land in the dice game but also her: the Kauravas dragged her into the assembly and did not shrink from insulting her clothing.\n\nDraupadi called on Krishna, and her garment stretched endlessly, leaving nothing for the shame. This moment breaks the silence of the powerless. Draupadi stands for dignity that defends itself even in utmost humiliation and reminds that from injustice, even if legal, honor never grows.",
+      "hi": "द्रौपदी गौरव और धैर्य का प्रतीक हैं।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Draupadi"
+  },
+  {
+    "source": "Kunti",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "कुंती",
+    "translation": {
+      "de": "Kunti ist die Mutter der Pandavas und bekannt für ihre Hingabe, Klugheit und Demut.",
+      "en": "Kunti is the mother of the Pandavas, known for her devotion, wisdom and humility.",
+      "hi": "कुंती पांडवों की माता और भक्त नारी थीं।"
+    },
+    "explanation": {
+      "de": "Kunti, ursprünglich Pritha, war die Tochter von Kunti-Bhoja und begann als junges Mädchen durch einen Mantra göttliche Kräfte zu erlangen. Als Mutter von Karna – der vor der Ehe geboren und ausgesetzt wurde –, später von den fünf Pandavas, trug sie eine Lebenslast von Schuldgefühlen, Geheimnissen und Entscheidungsschmerz. Sie zog ihre Söhne fern vom Hof auf, in der Verborgenheit, und lehrte sie, Mut und Rechtschaffenheit zu verbinden.\n\nIhre berühmteste Gebetsstelle in der Bhagavatam-Purana: Nach dem Kurukshetra-Krieg bittet sie Krishna nicht um neues Glück, sondern darum, ständig in der Erinnerung an ihn zu bleiben – weil Widrigkeiten ihn hervorbringen und Wohlstand entfernt. Kunti lehrt, dass Vertrauen nicht am Erfolg hängt, sondern in der Angst seine tägliche Probe findet.",
+      "en": "Kunti, originally Pritha, was the daughter of Kunti-Bhoja and as a young girl gained divine powers through a mantra. As the mother of Karna, born before marriage and exposed, and later of the five Pandavas, she carried a burden of guilt, secrets and painful decisions. She raised her sons far from the court, in seclusion, teaching them to join courage and righteousness.\n\nHer most famous prayer in the Bhagavata Purana: after the Kurukshetra war she asks Krishna not for new happiness but to remain always in remembrance of him – because adversity brings him near and prosperity removes him. Kunti teaches that trust does not depend on success but finds its daily test in fear.",
+      "hi": "कुंती धैर्य और भक्ति की माता थीं।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kunti"
+  },
+  {
+    "source": "Uddhava",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "उद्धव",
+    "translation": {
+      "de": "Uddhava ist Krishnas vertrauter Berater und Empfänger der Uddhava-Gita im Srimad Bhagavatam.",
+      "en": "Uddhava is Krishna's trusted advisor and the recipient of the Uddhava-gita in the Srimad Bhagavatam.",
+      "hi": "उद्धव कृष्ण के विश्वसनीय सफल हैं।"
+    },
+    "explanation": {
+      "de": "Uddhava, ein Weiser des Yadava-Stamms und Schüler Brihaspatis, gehörte zu den engsten Vertrauten Krishnas in Dvaraka. Er war an Krishnas Seite bei vielen stadtpolitischen Aufgaben, und als Krishna die gopis betrübt sah und ihre Entfernung von ihm bemerkte, sandte er Uddhava nach Vrindavan – gerade deshalb, weil Uddhava zu den wenigen gehörte, die mit den gopis die Sehnsucht der Liebe verstehen konnten.\n\nAm Ende, als Krishna Dvaraka verließ und die Welt verlassen wollte, lehrten er und Uddhava sich gegenseitig; Uddhava empfing daraufhin die umfassende Belehrung über Yoga, Wissen und Bhakti, die als Uddhava-Gita bekannt ist – die letzte große Lehre des Krishna. Uddhava verkörpert den Freund und Schüler, der bereit ist zu dienen und zugleich alles lernt, was ihm anvertraut wird.",
+      "en": "Uddhava, a sage of the Yadava clan and a student of Brihaspati, was one of Krishna's closest confidants in Dvaraka. When Krishna noticed the gopis' sorrow and their separation from him, he sent Uddhava to Vrindavan – precisely because Uddhava was among the few who could understand with the gopis the longing of love.\n\nAt the end, when Krishna left Dvaraka, he and Uddhava taught each other; Uddhava then received the comprehensive instruction on yoga, knowledge and bhakti known as the Uddhava-gita, the last great teaching of Krishna. Uddhava embodies the friend and student ready to serve and to learn everything entrusted to him.",
+      "hi": "उद्धव कृष्ण के महान् सन्निधि सेवक थे।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Uddhava"
+  },
+  {
+    "source": "Akrura",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "अक्रूर",
+    "translation": {
+      "de": "Akrura ist der treue Bote Kamsas, der Krishna und Balarama nach Mathura brachte.",
+      "en": "Akrura is Kamsa's faithful messenger who brought Krishna and Balarama to Mathura.",
+      "hi": "अक्रूर वह संदेशवाहक था जो कृष्ण और बलराम को मथुरा ले गया।"
+    },
+    "explanation": {
+      "de": "Akrura, ein angesehener Ältester der Yadava-Familie und Verwandter Krishnas, wurde von Kamsa beauftragt, Krishna nach Mathura zu bringen. Unterwegs, an einer Stelle des Yamuna-Flusses beim Baden, erblickte Akrura im Wasser plötzlich das göttliche Bild: Er sah Krishna und zugleich die kosmische Erscheinung des Herrn in ihm, die seine innere Reinheit offenbarte und ihn in tiefe Ehrfurcht versetzte.\n\nDanach verhielt er sich gegenüber Kamsa loyal, blieb aber innerlich auf Krishnas Seite und wurde später der Bote zwischen Krishna und den Pandavas, der wichtige Botschaften nach Hastinapura brachte. Akrura zeigt, dass Treue gegenüber dem Auftraggeber nicht Verrat an der Wahrheit bedeutet – und dass einsichtige Hingabe sich auch in verdeckter Rolle bewähren kann.",
+      "en": "Akrura, a respected elder of the Yadava family and a relative of Krishna, was commissioned by Kamsa to bring Krishna to Mathura. On the way, while bathing in a place of the Yamuna, Akrura suddenly saw in the water the divine image: he saw Krishna and at the same time the cosmic appearance of the Lord within him, which revealed his inner purity and filled him with deep reverence.\n\nAfterwards he remained loyal to Kamsa outwardly but stayed inwardly on Krishna's side and later became the messenger between Krishna and the Pandavas. Akrura shows that loyalty to one's employer does not mean betrayal of truth – and that insightful devotion can prove itself even in a hidden role.",
+      "hi": "अक्रूर कृष्ण के भक्त थे जिन्होंने यमुना में कृष्ण का दर्शन किया।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Akrura"
+  },
+  {
+    "source": "Bhishma",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "भीष्म",
+    "translation": {
+      "de": "Bhishma ist der ehrwürdige Großvater der Kuru-Dynastie und ein großer Verehrer Krishnas.",
+      "en": "Bhishma is the venerable grandsire of the Kuru dynasty and a great devotee of Krishna.",
+      "hi": "भीष्म कुरु वंश के महान् पितामह और कृष्ण क्ष महान् भक्त थे।"
+    },
+    "explanation": {
+      "de": "Bhishma, ursprünglich Devavrata, legte einen gewaltigen Schwur ab: Auf Lebenszeit auf Thron und Heirat zu verzichten, damit sein Vater Shantanu seinen Wunsch erfüllen konnte. Dafür erhielt er die Gabe, den Zeitpunkt des eigenen Todes zu bestimmen. Sein Wort war sein Herz – er diente als Heerführer der Kauravas in Kurukshetra, obwohl er das Unrecht auf beiden Seiten sah, und fiel in der Erfüllung seiner Pflicht.\n\nKrshnas Gnade zeigt sich in seiner letzten Stunde: Auf dem Pfeilbett liegend verstand Bhishma das Göttliche und sprach große Lobpreisungen auf Krishna. Er wies Arjuna und Yudhishthira den Weg. Bhishma lehrt, dass Schwur, Pflicht und Hingabe eine eine mächtige, aber auch gefährliche Mischung sein können – und dass über allem der Glaube steht, der selbst den großen Alten verwandelt.",
+      "en": "Bhishma, originally Devavrata, made a tremendous vow: to renounce throne and marriage for life so that his father Shantanu could fulfil his wish. In return he received the gift of choosing the moment of his own death. His word was his heart – he served as commander of the Kauravas in Kurukshetra, although he saw injustice on both sides, and fell in the fulfilment of his duty.\n\nKrishna's grace shows in his last hour: lying on the arrow-bed, Bhishma understood the Divine and spoke great praises of Krishna. He guided Arjuna and Yudhishthira. Bhishma teaches that vow, duty and devotion can be a powerful but also dangerous mixture – and that above all stands the faith that transforms even the great elder.",
+      "hi": "भीष्म के शरपश्या पर कृष्ण का दर्शन और भक्ति हुई।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Bhishma"
+  },
+  {
+    "source": "Karna",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "कर्ण",
+    "translation": {
+      "de": "Karna ist der edle König von Anga, der tragische Held des Mahabharata und Freund Duryodhanas.",
+      "en": "Karna is the noble king of Anga, the tragic hero of the Mahabharata and friend of Duryodhana.",
+      "hi": "कर्ण महाभारत का त्रासद नायक और दुर्योधन का मित्र था।"
+    },
+    "explanation": {
+      "de": "Karna, der Sohn von Kunti (vor ihrer Ehe geboren) und an einer Brücke ausgesetzt, wuchs bei einem Wagenlenker-Ehepaar auf. Seine Lebensgeschichte ist von Ausgrenzung geprägt: Wegen seiner Herkunft verweigerten ihm die Pandavas mehrfach die ebenbürtige Stellung unter den Ritters, nur Duryodhana gewann ihn als Freund und erhob ihn zum König von Anga.\n\nSeine Freigebigkeit war berühmt – er gab nie eine Bitte ab. In Kurukshetra stand er an Duryodhanas Seite, wissend, dass er Krishnas Mahnung verpasste, und fiel durch eine täuschende List Arjunas. Erst in seiner Todesstunde offenbarte Kunti ihre Verwandtschaft, und Krishna tröstete ihn, weil er um seine Tragik wusste. Karna erzählt von Würde trotz Herkunft, von Freundschaft und von dem Preis, den ein Selbstbildnis kostet.",
+      "en": "Karna, the son of Kunti born before her marriage and exposed on a river, grew up with a charioteer couple. His life is marked by exclusion: because of his origin the Pandavas repeatedly denied him the equal place among the knights; only Duryodhana won him as a friend and raised him to king of Anga.\n\nHis generosity was famous – he never refused a request. In Kurukshetra he stood at Duryodhana's side and fell through a deceptive trick of Arjuna. Only in his dying hour did Kunti reveal their kinship, and Krishna consoled him. Karna tells of dignity despite origin, of friendship and of the price a self-image costs.",
+      "hi": "कर्ण उदारता और विराग के प्रतीक थे।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Karna"
+  },
+  {
+    "source": "Pandavas",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "पांडव",
+    "translation": {
+      "de": "Die Pandavas sind die fünf Brüder Yudhishthira, Bhima, Arjuna, Nakula und Sahadeva.",
+      "en": "The Pandavas are the five brothers Yudhishthira, Bhima, Arjuna, Nakula and Sahadeva.",
+      "hi": "पांडव पांच भाई थे: युधिष्ठिर, भीम, अर्जुन, नकुल और सहदेव।"
+    },
+    "explanation": {
+      "de": "Die Pandavas sind die fünf Söhne von König Pandu, deren Erschlaffung treffend beschreibt, wie ihre Existenz begann: Sie wurden durch göttliche Hilfe empfangen. Yudhishthira (Dharma), Bhima (Wind), Arjuna (Indra) und die Zwillinge Nakula und Sahadeva (Ashvinis) wuchsen am Hof auf, verloren aber nach dem Tod ihres Vaters fast ihr Reich an die Vettern.\n\nGemeinsam mit Draupadi teilten sie das Reich und das Exil, bis Krishnas Wagenlenken und der große Krieg ihnen den Sieg brachten. Ihre Gemeinschaft ist ein Vorbild für Teamgeist in der Geschichte: Verschiedene Kräfte, ein gemeinsames Ziel. Zugleich zeigen ihre persönlichen Schwächen, dass Heldengesellschaft die menschliche Fehlerhaftigkeit einschließt.",
+      "en": "The Pandavas are the five sons of King Pandu. Yudhishthira (of Dharma), Bhima (of the wind), Arjuna (of Indra) and the twins Nakula and Sahadeva (of the Ashvinis) grew up at court but after their father's death lost almost their kingdom to their cousins.\n\nTogether with Draupadi they shared the kingdom and exile, until Krishna's guidance and the great war brought them victory. Their community is a model of teamwork in history: different strengths, one goal. At the same time their personal weaknesses show that a hero-society includes human fallibility.",
+      "hi": "पांडव धर्म और न्याय के प्रतीक थे।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Pandava"
+  },
+  {
+    "source": "Kauravas",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "कौरव",
+    "translation": {
+      "de": "Die Kauravas sind die hundert Söhne von Dhritarashtra, die gegen die Pandavas um Kurukshetra kämpften.",
+      "en": "The Kauravas are the hundred sons of Dhritarashtra who fought against the Pandavas at Kurukshetra.",
+      "hi": "कौरव धृतराष्ट्र के सौ पुत्र थे।"
+    },
+    "explanation": {
+      "de": "Die Kauravas, die hundert Söhne von Dhritarashtra und Gandhari, bilden die Gegenpole zu den fünf Pandavas. Ihr ältester, Duryodhana, sah im Reich der Ältesten kaum seine Chance der Herrschaft, weil Yudhishthira als ältester des Stammes den Thron beanspruchen konnte. So wandelte sich ihr Verhältnis von Cousins in Rivalität – bis zum Würfelspiel, das die Pandavas um ihr Reich brachte.\n\nIn Kurukshetra trugen die Kaurava-Heere die schwere Last: Bhishma, Drona und Karna standen bei ihnen, doch ohne den Wagenlenker Krishna und die innere Gerechtigkeit der Pandavas verloren sie. Die Kaurava-Geschichte mahnt, dass Macht, gelenkt von Angst und Eifersucht, sich selbst zerstört, und dass die Versammlung der Klugen ohne Ordnungsgeist wirkungslos bleibt.",
+      "en": "The Kauravas, the hundred sons of Dhritarashtra and Gandhari, form the counterpart to the five Pandavas. Their eldest, Duryodhana, saw little chance of rule because Yudhishthira as eldest of the clan could claim the throne. Their relation turned from cousins into rivalry – up to the dice game that cost the Pandavas their kingdom.\n\nIn Kurukshetra the Kaurava armies bore a heavy burden: Bhishma, Drona and Karna stood with them, yet without the charioteer Krishna and the inner justice of the Pandavas they lost. The Kaurava story warns that power, driven by fear and jealousy, destroys itself.",
+      "hi": "कौरव माया और अहंकार के प्रतीक थे।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Kaurava"
+  },
+  {
+    "source": "Yadavas",
+    "chapter": "Introduction",
+    "verse": "who_is",
+    "sanskrit": "यादव",
+    "translation": {
+      "de": "Die Yadavas sind die königliche Sippe, aus der Krishna stammt und deren Hauptstadt Dvaraka wurde.",
+      "en": "The Yadavas are the royal clan from which Krishna came and whose capital became Dvaraka.",
+      "hi": "यादव वह कुल था जिसमें कृष्ण ने जन्म लिया।"
+    },
+    "explanation": {
+      "de": "Die Yadavas, auch Vrishnis und Bhojas genannt, sind der weitverzweigte Stamm, aus dem Krishna hervorging. Ihre Wohnsitze wechselten von Mathura nach Dvaraka, der von Krishna geplanten Seestadt, als die Angriffe des Königs Jarasandha gegen die Stadt zur Häufung führten. In Dvaraka erblühte die Stadt zu einer Handels- und Kulturmacht.\n\nIn der Erzählung ist die Yadava-Sippe aber auch ein Spiegel für das Ende Krishnas: Durch inneren Streit, den die Überlieferung letztlich auf die Verwicklung eines Fluches zurückführt, verlöschte die Sippe. Die Yadavas zeigen den Glanz und die Zerbrechlichkeit eines großen Stammes – wer in der Nähe der höchsten Macht lebt, trägt auch besondere Verantwortung für deren Bewahrung.",
+      "en": "The Yadavas, also called Vrishnis and Bhojas, are the widespread clan from which Krishna came. Their homes moved from Mathura to Dvaraka, the sea city planned by Krishna, when King Jarasandha's attacks increased. In Dvaraka the city flourished as a trading and cultural power.\n\nIn the narrative the Yadava clan is also a mirror of Krishna's end: through inner quarrel, traced back ultimately to the involvement of a curse, the clan was extinguished. The Yadavas show the splendor and brittleness of a great clan – those who live near the highest power also bear special responsibility for its preservation.",
+      "hi": "यादव कृष्ण का अपना वंश था।"
+    },
+    "wikipedia": "https://en.wikipedia.org/wiki/Yadava"
   }
 ]

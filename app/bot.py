@@ -839,22 +839,22 @@ FIGURE_CATEGORIES = {
     'Götter und göttliche Gestalten': {
         'icon': '✨',
         'description': 'Götter, Avatare und kosmische Kräfte',
-        'figures': {'Krishna', 'Vishnu', 'Shiva', 'Brahma', 'Indra', 'Balarama', 'Radha'},
+        'figures': {'Krishna', 'Vishnu', 'Shiva', 'Brahma', 'Indra', 'Balarama', 'Radha', 'Rama', 'Sita', 'Lakshmana', 'Hanuman', 'Ganesha', 'Lakshmi', 'Sarasvati', 'Durga', 'Narada', 'Garuda', 'Chaitanya Mahaprabhu', 'Nityananda'},
     },
     'Dämonen und Gegenspieler': {
         'icon': '🔥',
         'description': 'Mächte des Chaos, der Angst und des Ego',
-        'figures': {'Kamsa', 'Putana', 'Hiranyakashipu'},
+        'figures': {'Kamsa', 'Putana', 'Hiranyakashipu', 'Ravana', 'Kaliya', 'Kesi', 'Arishtasura', 'Dhenuka', 'Aghasura', 'Bakasura', 'Sisupala', 'Jarasandha'},
     },
     'Menschen und Weise': {
         'icon': '📜',
         'description': 'Könige, Eltern, Dichter und spirituelle Lehrer',
-        'figures': {'Arjuna', 'Devaki', 'Vasudeva', 'Nanda', 'Yasoda', 'Vyasa', 'Valmiki', 'Prahlada'},
+        'figures': {'Arjuna', 'Devaki', 'Vasudeva', 'Nanda', 'Yasoda', 'Vyasa', 'Valmiki', 'Prahlada', 'Sudama', 'Rukmini', 'Yudhishthira', 'Bhima', 'Draupadi', 'Kunti', 'Uddhava', 'Akrura', 'Bhishma', 'Karna'},
     },
     'Gemeinschaften': {
         'icon': '🪷',
         'description': 'Gruppen und Gemeinschaften der Überlieferung',
-        'figures': {'Gopis'},
+        'figures': {'Gopis', 'Pandavas', 'Kauravas', 'Yadavas'},
     },
 }
 
@@ -991,15 +991,22 @@ EXTENDED_STORIES = {
 def _expanded_krishna_entries():
     entries = _load_krishna_entries()
     expanded = []
+    verses = set()
     for entry in entries:
         item = dict(entry)
         key = str(entry.get('verse', '')).lower()
+        verses.add(key)
         story = EXTENDED_STORIES.get(key)
         if story:
             item['story_title'] = story['title']
             item['story_de'] = story['de']
+        elif item.get('title') and item.get('explanation', {}).get('de'):
+            item['story_title'] = item['title']
+            item['story_de'] = item['explanation']['de']
         expanded.append(item)
-    for key in ('putana', 'govardhana'):
+    for key in EXTENDED_STORIES:
+        if key in verses:
+            continue
         story = EXTENDED_STORIES[key]
         expanded.append({
             'source': 'Krishna',
@@ -1030,6 +1037,11 @@ def _story_text_for_figure(figure):
     if category_context:
         paragraphs.insert(0, category_context)
     custom_story = EXTENDED_STORIES.get(source.lower(), {}).get('de')
+    if not custom_story:
+        for kentry in _load_krishna_entries():
+            if str(kentry.get('verse', '')).lower() == source.lower():
+                custom_story = kentry.get('explanation', {}).get('de')
+                break
     if custom_story:
         paragraphs.append(custom_story)
     return ' '.join(part.strip() for part in paragraphs if part and part.strip())

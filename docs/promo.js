@@ -2,17 +2,17 @@
   const copy = {
     de: {
       badge: "✦ NEU · DEIN SPIRITUELLER COPILOT",
-      title: "BhaktiAI <em>im Chat</em>",
+      title: "VedaAmrita <em>im Chat</em>",
       description: "Geschichten, Verse und Antworten – direkt auf Telegram.",
       button: "Chat starten",
-      ariaLabel: "BhaktiAI auf Telegram öffnen"
+      ariaLabel: "VedaAmrita auf Telegram öffnen"
     },
     en: {
       badge: "✦ NEW · YOUR SPIRITUAL COPILOT",
-      title: "BhaktiAI <em>in chat</em>",
+      title: "VedaAmrita <em>in chat</em>",
       description: "Stories, verses and answers – directly on Telegram.",
       button: "Start chat",
-      ariaLabel: "Open BhaktiAI on Telegram"
+      ariaLabel: "Open VedaAmrita on Telegram"
     }
   };
 

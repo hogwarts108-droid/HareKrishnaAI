@@ -1,6 +1,7 @@
 """Shared web-chat orchestration for the Telegram/web application."""
 
 import logging
+import re
 import time as _time
 from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeoutError
 from typing import Any, Dict, Optional
@@ -26,6 +27,50 @@ logger = logging.getLogger(__name__)
 
 SUPPORTED_LANGUAGES = {"de", "en"}
 MAX_MESSAGE_LENGTH = 2000
+
+_COT_PATTERNS = re.compile(
+    r"(?i)here('|i)?s?\s+a\s+thinking\s+process|here\s+is\s+my\s+thinking|"
+    r"let\s+me\s+think|let'?s\s+think|shall\s+we\s+think|ich\s+überlege|"
+    r"gedankenprozess|chain\s+of\s+thought|reasoning\s+process|"
+    r"analy[sz]e\s+(the\s+)?user\s+input|anal[ys]es?e\s+der\s+eingabe|"
+    r"^1\.\s+analy[sz]e|^schritt\s*1:|^step\s*1:"
+)
+
+
+def _looks_like_chain_of_thought(text: str) -> bool:
+    """Reject model output that is an exposed reasoning chain, not an answer."""
+    return bool(_COT_PATTERNS.search(text or ""))
+
+
+_GREETING_PATTERNS = re.compile(
+    r"(?i)^(hare|jay|jai|om)\b|^(hallo|hello|hi|hey|namaste|namaskar)\b|"
+    r"^(guten\s+(morgen|tag|abend)|good\s+(morning|afternoon|evening))\b|"
+    r"\bhare\s+krishna\b|\bjay\s+srila\b"
+)
+
+_GREETINGS = {
+    "de": (
+        "🙏 Hare Krishna! Schön, dass du da bist.\n\n"
+        "Ich bin VedaAmrita – dein kleiner Seelenfreund aus der vedischen Tradition. "
+        "Frag mich alles über die *Bhagavad-gita*, *Srimad-Bhagavatam*, Karma, Reinkarnation "
+        "oder das Mantra. Wie kann ich dir heute dienen?"
+    ),
+    "en": (
+        "🙏 Hare Krishna! So nice to have you here.\n\n"
+        "I am VedaAmrita, your little soul-friend from the Vedic tradition. "
+        "Ask me anything about the *Bhagavad-gita*, *Srimad-Bhagavatam*, karma, reincarnation "
+        "or the mantra. How may I serve you today?"
+    ),
+}
+
+
+def _greeting_for(message: str, language: str) -> Optional[str]:
+    """Return an instant warm greeting for pure greetings so the user never waits."""
+    if len(message) > 120:
+        return None
+    if _GREETING_PATTERNS.search(message):
+        return _GREETINGS.get(language, _GREETINGS["de"])
+    return None
 
 
 def _build_rag_context(message: str, entry: Optional[Dict[str, Any]], language: str) -> str:
@@ -120,6 +165,10 @@ def _request_llm(system: str, user_content: str) -> Optional[str]:
             )
             answer = response.choices[0].message.content
             if answer and answer.strip():
+                if _looks_like_chain_of_thought(answer):
+                    logger.warning("LLM model %s returned chain-of-thought, skipping it", model)
+                    _time.sleep(0.6)
+                    continue
                 return answer.strip()
         except Exception as exc:
             logger.warning("LLM model %s failed: %s", model, exc)
@@ -138,6 +187,10 @@ def answer_chat(message: str, language: str = "de") -> Dict[str, Any]:
         raise ValueError("message must not be empty")
     if len(normalized_message) > MAX_MESSAGE_LENGTH:
         raise ValueError(f"message must be at most {MAX_MESSAGE_LENGTH} characters")
+
+    greeting = _greeting_for(normalized_message, normalized_language)
+    if greeting:
+        return {"answer": greeting, "source": "greeting", "language": normalized_language}
 
     entry = find_answer(normalized_message)
     context = None

@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
+<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VedaAmrita – AI-Chat</title>
   <meta name="description" content="HareKrishnaAI – dein spiritueller Chat für Bhagavad Gita, Krishna und vedische Weisheit.">
-  <link rel="stylesheet" href="styles.css?v=20260918"><link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="styles.css?v=20260922"><link rel="stylesheet" href="app.css?v=20260922">
   <meta name="theme-color" content="#412781">
 </head>
 <body class="chat-page">
@@ -18,7 +18,7 @@
     <section class="chat-window" aria-labelledby="chat-title">
       <div class="chat-window-heading">
         <div><p class="eyebrow">✦ HAREKRISHNAAI</p><h1 id="chat-title" data-chat-i18n="title">Frage die AI</h1><p data-chat-i18n="intro">Antworten zu Bhagavad Gita, Krishna und vedischer Weisheit.</p></div>
-        <span class="chat-online"><i></i><span data-chat-i18n="online">Bereit</span></span>
+        <span class="chat-online"><i></i><span id="chat-engine" data-chat-i18n="online">Bereit</span></span>
       </div>
       <div id="chat-messages" class="chat-messages chat-window-messages" aria-live="polite"><div class="chat-message assistant" data-chat-i18n="welcome">🙏 Hare Krishna! Was möchtest du wissen?</div></div>
       <form id="chat-form" class="chat-form">
@@ -27,10 +27,12 @@
         <div class="chat-controls"><button id="chat-send" type="submit" data-chat-i18n="send">Senden</button></div>
       </form>
       <p id="chat-error" class="chat-error hidden" role="alert"></p>
-      <p class="chat-note" data-chat-i18n="note">Die AI antwortet über das HareKrishnaAI-Backend. Deine lokale Modelladresse bleibt im Browser verborgen.</p>
+      <p id="chat-note" class="chat-note" data-chat-i18n="note">Die AI antwortet über das HareKrishnaAI-Backend. Deine lokale Modelladresse bleibt im Browser verborgen.</p>
     </section>
   </main>
-  <script>window.BHAKTI_CHAT_API_URL = "https://harekrishnaai.onrender.com";</script>
-  <script src="chat.js?v=20260921"></script>
+  <script>window.BHAKTI_CHAT_API_URL = "https://harekrishnaai.onrender.com";
+  window.BHAKTI_LOCAL_AI_URL = "http://127.0.0.1:11434";
+  window.BHAKTI_LOCAL_AI_MODEL = "qwen-coder-abliterated:latest";</script>
+  <script src="chat.js?v=20260922"></script>
 </body>
 </html>

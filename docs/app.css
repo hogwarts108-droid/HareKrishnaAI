@@ -191,6 +191,10 @@
 }
 
 /* Denk-Indikator: pulsierende Punkte, während die AI überlegt */
+.chat-online.engine-online{background:#f0ecfb;color:#6846c7}
+.chat-online.engine-online i{background:#8a6bd1}
+.chat-online.engine-local{background:#ecf9ef;color:#2d7b42}
+.chat-online.engine-local i{background:#42ad5e}
 .chat-message.typing {
   display: inline-flex;
   align-items: center;

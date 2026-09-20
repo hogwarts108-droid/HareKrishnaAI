@@ -39,7 +39,7 @@ LLM_FALLBACK_MODELS = [
     ).split(",")
     if model.strip()
 ]
-LLM_TIMEOUT = float(os.getenv("LLM_TIMEOUT") or "60.0")
+LLM_TIMEOUT = float(os.getenv("LLM_TIMEOUT") or "40.0")
 CHAT_ALLOWED_ORIGINS = {
     origin.strip().rstrip("/")
     for origin in (os.getenv("CHAT_ALLOWED_ORIGINS") or "").split(",")

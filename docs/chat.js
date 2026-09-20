@@ -16,6 +16,26 @@ function addMessage(content, role) {
   document.querySelector("#chat-messages").append(node);
   node.scrollIntoView({ block: "nearest" });
 }
+function showTyping() {
+  const host = document.querySelector("#chat-messages");
+  if (!host) return;
+  let el = document.getElementById("typing-indicator");
+  if (!el) {
+    el = document.createElement("div");
+    el.className = "chat-message assistant typing";
+    el.id = "typing-indicator";
+    const dots = document.createElement("span");
+    dots.className = "dots";
+    dots.innerHTML = "<i></i><i></i><i></i>";
+    el.appendChild(dots);
+    host.appendChild(el);
+  }
+  el.scrollIntoView({ block: "nearest" });
+}
+function removeTyping() {
+  const el = document.getElementById("typing-indicator");
+  if (el) el.remove();
+}
 async function sendMessage(event) {
   event.preventDefault();
   const input = document.querySelector("#chat-input");
@@ -31,6 +51,7 @@ async function sendMessage(event) {
     return;
   }
   addMessage(message, "user");
+  showTyping();
   input.value = "";
   button.disabled = true;
   button.textContent = text("loading");
@@ -43,17 +64,20 @@ async function sendMessage(event) {
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.message || text("error"));
+      removeTyping();
       addMessage(data.answer || text("error"), "assistant");
       break;
     } catch (requestError) {
       if (attempt < 5) {
         await new Promise(resolve => setTimeout(resolve, 8000));
       } else {
+        removeTyping();
         error.textContent = requestError.message || text("error");
         error.classList.remove("hidden");
       }
     }
   }
+  removeTyping();
   button.disabled = false;
   button.textContent = text("send");
 }

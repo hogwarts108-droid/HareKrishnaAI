@@ -68,7 +68,7 @@ def generate_ai_answer(message: str, language: str, rag_context: str) -> Optiona
             "Use the provided verses from the knowledge base as authoritative quotes when "
             "relevant and cite them. If no provided verse fits, answer from general Vedic "
             "wisdom (Bhagavad-gita, Srimad-Bhagavatam) honestly, without inventing exact "
-            "verse references. Keep answers warm, clear and concise (max ~300 words), "
+            "verse references. Keep answers warm, clear and very short (max ~120 words), "
             "use simple markdown."
         )
     else:
@@ -78,11 +78,11 @@ def generate_ai_answer(message: str, language: str, rag_context: str) -> Optiona
             "gelieferten Verse aus der Wissensdatenbank als maßgebliche Zitate, sofern "
             "passend, und zitiere sie. Wenn kein gelieferter Vers passt, antworte aus "
             "allgemeinem vedischem Wissen (Bhagavad-gita, Srimad-Bhagavatam) ehrlich und "
-            "ohne erfundene Versangaben. Bleib warm, klar und prägnant (max. ca. 300 "
+            "ohne erfundene Versangaben. Bleib warm, klar und sehr kurz (max. ca. 120 "
             "Wörter), verwende einfaches Markdown."
         )
     try:
-        client = OpenAI(api_key=LLM_API_KEY, base_url=LLM_BASE_URL, timeout=LLM_TIMEOUT)
+        client = OpenAI(api_key=LLM_API_KEY, base_url=LLM_BASE_URL, timeout=LLM_TIMEOUT, max_retries=1)
         user_content = rag_context if rag_context else (
             "Es gibt nichts Passendes aus der Wissensdatenbank – antworte aus deinem "
             "allgemeinen Wissen über die Bhagavad-gita und die vedische Weisheit."
@@ -96,15 +96,15 @@ def generate_ai_answer(message: str, language: str, rag_context: str) -> Optiona
                         {"role": "system", "content": system},
                         {"role": "user", "content": user_content},
                     ],
-                    temperature=0.4,
-                    max_tokens=700,
+                    temperature=0.3,
+                    max_tokens=400,
                 )
                 answer = response.choices[0].message.content
                 if answer and answer.strip():
                     return answer.strip()
             except Exception as exc:
                 logger.warning("LLM model %s failed: %s", model, exc)
-                _time.sleep(1.5)
+                _time.sleep(0.6)
         return None
     except Exception:
         logger.exception("External LLM request failed")

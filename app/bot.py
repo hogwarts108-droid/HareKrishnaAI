@@ -10,7 +10,7 @@ from datetime import datetime
 from functools import lru_cache
 import time
 import threading
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, redirect, render_template, request
 import json
 import re
 from pathlib import Path
@@ -822,6 +822,9 @@ logger.info("Bot started successfully")
 print("Bot is running...")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+# Complete app (AI-Chat, Bücher, Stories, Figuren, PWA) is served from GitHub Pages.
+# onrender.com acts only as the AI/API backend and forwards visitors to the app.
+APP_URL = "https://hogwarts108-droid.github.io/HareKrishnaAI"
 # Create Flask app for web routes using an absolute template path so it works
 # regardless of the process working directory.
 flask_app = Flask(__name__, template_folder=str(BASE_DIR / 'app' / 'templates'))
@@ -1034,133 +1037,38 @@ def _story_text_for_figure(figure):
 
 @flask_app.route('/')
 def website_home():
-    """Serve the public knowledge home page."""
-    figures = _load_figures()
-    categories = [
-        dict(data, name=name)
-        for name, data in FIGURE_CATEGORIES.items()
-    ]
-    return render_template('home.html', figures=figures[:6], categories=categories)
+    """Forward to the full app (AI-Chat, Bücher, Stories, Figuren, PWA)."""
+    return redirect(APP_URL, code=302)
 
 
 @flask_app.route('/krishna')
 def krishna_story():
-    """Serve the complete Krishna story page."""
-    return render_template('krishna.html', entries=_expanded_krishna_entries(), search_query='')
+    """Forward to the full app."""
+    return redirect(APP_URL, code=302)
 
 
 @flask_app.route('/figures')
 def figures_index():
-    """Serve figure index page with Wikipedia links and optional search."""
-    q = request.args.get('q', '').strip().lower()
-    figures = _load_figures()
-    if q:
-        figures = [
-            figure for figure in figures
-            if q in figure['source'].lower()
-            or q in figure.get('wikipedia', '').lower()
-            or q in ' '.join(
-                str(entry.get('translation', {}).get(language, ''))
-                for entry in figure['entries']
-                for language in ('de', 'en', 'hi')
-            ).lower()
-        ]
-    
-    return render_template('figures.html', figures=figures, q=request.args.get('q',''))
+    """Forward to the full app."""
+    return redirect(APP_URL, code=302)
 
 
 @flask_app.route('/figure/<slug>')
 def figure_story(slug):
-    """Serve one figure's introduction and story entries."""
-    figure = next((item for item in _load_figures() if item['slug'] == slug), None)
-    if not figure and slug == 'krishna':
-        krishna_entries = _load_krishna_entries()
-        figure = {
-            'source': 'Krishna',
-            'slug': 'krishna',
-            'category': 'Götter und göttliche Gestalten',
-            'wikipedia': 'https://en.wikipedia.org/wiki/Krishna',
-            'entries': krishna_entries,
-        }
-    if not figure:
-        return render_template('not_found.html', title='Figur nicht gefunden'), 404
-    related_stories = [
-        entry for entry in _expanded_krishna_entries()
-        if figure['source'].lower() in json.dumps(entry, ensure_ascii=False).lower()
-    ]
-    custom_story = EXTENDED_STORIES.get(figure['source'].lower())
-    if custom_story and not any(
-        entry.get('story_title') == custom_story['title'] for entry in related_stories
-    ):
-        related_stories.insert(0, {
-            'chapter': 'Ausführliche Geschichte',
-            'verse': figure['source'].upper(),
-            'story_title': custom_story['title'],
-            'story_de': custom_story['de'],
-            'translation': {'de': custom_story['de']},
-            'explanation': {'de': custom_story['de']},
-        })
-    return render_template(
-        'figure.html',
-        figure=figure,
-        related_stories=related_stories,
-        long_story=_story_text_for_figure(figure),
-    )
+    """Forward to the full app."""
+    return redirect(APP_URL, code=302)
 
 
 @flask_app.route('/stories')
 def stories_index():
-    """Serve the stories landing page."""
-    figures = _load_figures()
-    category = request.args.get('category', '').strip()
-    query = request.args.get('q', '').strip().lower()
-    if category:
-        figures = [figure for figure in figures if figure['category'] == category]
-    if query:
-        figures = [
-            figure for figure in figures
-            if query in figure['source'].lower()
-            or query in ' '.join(
-                str(entry.get('translation', {}).get(language, ''))
-                for entry in figure['entries']
-                for language in ('de', 'en', 'hi')
-            ).lower()
-        ]
-    categories = [dict(data, name=name) for name, data in FIGURE_CATEGORIES.items()]
-    grouped = {}
-    for figure in figures:
-        grouped.setdefault(figure['category'], []).append(figure)
-    return render_template(
-        'stories.html',
-        figures=figures,
-        categories=categories,
-        grouped_figures=grouped,
-        selected_category=category,
-        q=request.args.get('q', ''),
-    )
+    """Forward to the full app."""
+    return redirect(APP_URL, code=302)
 
 
 @flask_app.route('/search')
 def website_search():
-    """Search figures and Krishna story chapters from the top search field."""
-    query = request.args.get('q', '').strip()
-    if not query:
-        return render_template('search.html', query='', figures=[], stories=[])
-    query_lower = query.lower()
-    figures = [
-        figure for figure in _load_figures()
-        if query_lower in figure['source'].lower()
-        or query_lower in ' '.join(
-            str(entry.get('translation', {}).get(language, ''))
-            for entry in figure['entries']
-            for language in ('de', 'en', 'hi')
-        ).lower()
-    ]
-    stories = [
-        entry for entry in _load_krishna_entries()
-        if query_lower in json.dumps(entry, ensure_ascii=False).lower()
-    ]
-    return render_template('search.html', query=query, figures=figures, stories=stories)
+    """Forward to the full app."""
+    return redirect(APP_URL, code=302)
 
 @flask_app.route('/health')
 def health():

@@ -19,6 +19,11 @@
       <div class="app-window-heading">
         <div><p class="eyebrow">✦ VEDAAMRITA</p><h1 id="page-title" data-i18n="krishnaStories">Krishnas Geschichten</h1><p data-i18n="descKrishna">Die wichtigsten Geschichten aus Krishnas Leben.</p></div>
       </div>
+      <form id="krishna-search-form" class="search" role="search">
+        <input id="krishna-search" autocomplete="off" data-i18n-placeholder="searchPlaceholder" placeholder="Krishna, Kamsa, Govardhana ..." aria-label="Suche">
+        <button type="submit" data-i18n="search">Suchen</button>
+      </form>
+      <div id="krishna-search-results" class="panel hidden"></div>
       <div id="krishna-stories"></div>
     </section>
   </main>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="500" viewBox="0 0 1400 500">
+  <defs>
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd978" stop-opacity="0.75"/>
+      <stop offset="45%" stop-color="#f7b84b" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#f7b84b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- rising sun over Kurukshetra -->
+  <circle cx="720" cy="255" r="235" fill="url(#sunGlow)"/>
+  <circle cx="720" cy="255" r="98" fill="#ffd978" opacity="0.5"/>
+
+  <!-- ground strata -->
+  <path d="M0 425 Q 240 405 480 418 T 980 416 T 1400 412 L 1400 500 L 0 500 Z" fill="#ffffff" opacity="0.10"/>
+  <path d="M0 462 Q 300 446 620 456 T 1400 452 L 1400 500 L 0 500 Z" fill="#ffffff" opacity="0.13"/>
+
+  <!-- chariot wheels -->
+  <g stroke="#ffffff" stroke-opacity="0.55" stroke-width="6" fill="none">
+    <circle cx="735" cy="400" r="66"/>
+    <circle cx="915" cy="400" r="66"/>
+    <path d="M735 334 L735 466"/><path d="M669 400 L801 400"/>
+    <path d="M688 353 L782 447"/><path d="M782 353 L688 447"/>
+    <path d="M915 334 L915 466"/><path d="M849 400 L981 400"/>
+    <path d="M868 353 L962 447"/><path d="M962 353 L868 447"/>
+  </g>
+
+  <!-- chariot platform and shaft -->
+  <g stroke="#ffffff" stroke-opacity="0.6" stroke-width="6" fill="none">
+    <path d="M680 340 L990 340"/>
+    <path d="M680 340 L680 402"/>
+    <path d="M990 340 L990 402"/>
+    <path d="M980 330 L1010 335"/>
+  </g>
+  <path d="M680 330 L460 315" stroke="#ffffff" stroke-opacity="0.35" stroke-width="5"/>
+  <path d="M675 350 L430 386" stroke="#ffffff" stroke-opacity="0.22" stroke-width="5"/>
+
+  <!-- two horses pulling the chariot -->
+  <g fill="#ffffff" opacity="0.5">
+    <path d="M565 300 C 558 272 532 262 508 266 C 486 252 452 256 443 273 C 424 265 408 276 410 290 C 388 286 374 300 378 314 C 386 330 404 334 420 326 L 428 402 L 452 402 L 458 330 C 476 336 492 334 506 326 L 512 402 L 536 402 L 540 320 C 552 318 566 306 565 300 Z"/>
+    <path d="M470 300 C 463 272 437 262 413 266 C 391 252 357 256 348 273 C 329 265 313 276 315 290 C 293 286 279 300 283 314 C 291 330 309 334 325 326 L 333 402 L 357 402 L 363 330 C 381 336 397 334 411 326 L 417 402 L 441 402 L 445 320 C 457 318 471 306 470 300 Z"/>
+  </g>
+
+  <!-- Krishna, the charioteer -->
+  <g fill="#ffffff" opacity="0.6">
+    <circle cx="760" cy="268" r="17"/>
+    <path d="M742 285 C 738 300 738 318 744 334 L 762 348 C 768 330 774 312 776 296 C 786 300 796 300 806 296 C 812 314 810 336 800 352 C 790 362 762 362 752 352 C 742 336 738 316 742 285 Z"/>
+    <path d="M800 302 L 830 308 L 852 362" stroke="#ffffff" stroke-opacity="0.6" stroke-width="7" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Arjuna, the archer -->
+  <g fill="#ffffff" opacity="0.6">
+    <circle cx="920" cy="268" r="17"/>
+    <path d="M902 285 C 898 302 898 322 906 340 L 924 352 C 932 334 938 314 938 298 C 948 302 960 302 968 296 C 964 316 958 338 946 352 C 936 362 906 362 896 352 C 888 336 884 314 888 285 Z"/>
+    <path d="M905 292 Q 860 280 848 320 Q 862 336 905 292" stroke="#ffffff" stroke-opacity="0.55" stroke-width="6" fill="none"/>
+    <path d="M848 320 L 830 360" stroke="#ffffff" stroke-opacity="0.5" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>
